@@ -27,7 +27,7 @@ interface CosmicParallaxBgProps {
 /**
  * A cosmic parallax background component with animated stars and text
  */
-const CosmicParallaxBg: React.FC<CosmicParallaxBgProps> = ({
+const CosmicParallaxBg: React.FC<CosmicParallaxBgProps> = React.memo(({
   head,
   text,
   loop = true,
@@ -105,6 +105,8 @@ const CosmicParallaxBg: React.FC<CosmicParallaxBgProps> = ({
       ) : null}
     </div>
   );
-};
+});
+
+CosmicParallaxBg.displayName = 'CosmicParallaxBg';
 
 export { CosmicParallaxBg };

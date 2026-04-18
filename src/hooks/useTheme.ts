@@ -47,7 +47,11 @@ export const useTheme = (): UseThemeReturn => {
       updateThemeVariables(effective);
 
       // Store preference
-      localStorage.setItem(THEME_CONFIG.storageKey, selectedTheme);
+      try {
+        localStorage.setItem(THEME_CONFIG.storageKey, selectedTheme);
+      } catch (error) {
+        // localStorage not available, continue without storing
+      }
     },
     [updateThemeVariables]
   );
@@ -56,14 +60,19 @@ export const useTheme = (): UseThemeReturn => {
   useEffect(() => {
     setIsMounted(true);
 
-    // Get stored theme or default to 'system'
-    const storedTheme = localStorage.getItem(THEME_CONFIG.storageKey) as Theme | null;
-    const initialTheme: Theme = storedTheme && THEME_CONFIG.availableThemes.includes(storedTheme)
-      ? storedTheme
-      : 'system';
+    try {
+      // Get stored theme or default to 'system'
+      const storedTheme = localStorage.getItem(THEME_CONFIG.storageKey) as Theme | null;
+      const initialTheme: Theme = storedTheme && THEME_CONFIG.availableThemes.includes(storedTheme)
+        ? storedTheme
+        : 'system';
 
-    setThemeState(initialTheme);
-    applyTheme(initialTheme);
+      setThemeState(initialTheme);
+      applyTheme(initialTheme);
+    } catch (error) {
+      // localStorage not available, use default
+      applyTheme('system');
+    }
   }, [applyTheme]);
 
   // Handle system preference changes
@@ -102,21 +111,8 @@ export const useTheme = (): UseThemeReturn => {
 
 // Server-side rendering safe hook
 export const useThemeSafe = (): UseThemeReturn => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Return safe defaults until client-side hydration
-  if (!isClient) {
-    return {
-      theme: 'system',
-      effectiveTheme: 'dark',
-      setTheme: () => {},
-      toggleTheme: () => {},
-    };
-  }
-
-  return useTheme();
+  // Always call useTheme - it handles client-side detection internally
+  const themeReturn = useTheme();
+  
+  return themeReturn;
 };
