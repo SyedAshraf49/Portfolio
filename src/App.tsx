@@ -1,4 +1,4 @@
-import { Section, Badge, ThemeToggle } from '@/components/common';
+import { Section, Badge } from '@/components/common';
 import { CosmicParallaxBg } from '@/components/ui/parallax-cosmic-background';
 import HeroDock from '@/components/ui/dock';
 import AnimeScrollbar from '@/components/ui/anime-scrollbar';
@@ -40,9 +40,6 @@ export default function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Header */}
         <header className="mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-r from-cyan-500/70 via-sky-500/50 to-fuchsia-500/60 p-6 text-center shadow-xl md:mt-8 relative">
-          <div className="absolute right-6 top-6">
-            <ThemeToggle variant="icon" />
-          </div>
           <div>
             <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
               Syed Ashraf S.N
