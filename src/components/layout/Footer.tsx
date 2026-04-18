@@ -12,12 +12,12 @@ export const Footer: React.FC = () => {
     },
     {
       name: 'LinkedIn',
-      href: 'https://linkedin.com/in/syedashraf49',
+      href: 'https://www.linkedin.com/in/syed-ashraf49',
       icon: Linkedin,
     },
     {
       name: 'Instagram',
-      href: 'https://instagram.com/syedashraf49',
+      href: 'https://www.instagram.com/asher49_',
       icon: Instagram,
     },
   ];
