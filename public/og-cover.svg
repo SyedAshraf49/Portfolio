@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Syed Ashraf portfolio preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="45%" stop-color="#082f49" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.42" />
+      <stop offset="60%" stop-color="#3b82f6" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+
+  <g fill="none" stroke="#22d3ee" stroke-opacity="0.4">
+    <circle cx="180" cy="120" r="3" />
+    <circle cx="1030" cy="150" r="2" />
+    <circle cx="980" cy="520" r="3" />
+    <circle cx="260" cy="500" r="2" />
+  </g>
+
+  <rect x="100" y="100" width="1000" height="430" rx="28" fill="#020617" fill-opacity="0.5" stroke="#38bdf8" stroke-opacity="0.35" />
+
+  <text x="150" y="255" fill="#e2e8f0" font-family="Poppins, Segoe UI, Arial, sans-serif" font-size="68" font-weight="700">
+    Syed Ashraf S.N
+  </text>
+
+  <text x="150" y="320" fill="#bae6fd" font-family="Poppins, Segoe UI, Arial, sans-serif" font-size="30" font-weight="500">
+    Machine Learning, AI Safety, and Full-Stack Projects
+  </text>
+
+  <g transform="translate(150 385)">
+    <rect x="0" y="0" width="220" height="52" rx="26" fill="#155e75" fill-opacity="0.4" stroke="#22d3ee" stroke-opacity="0.65" />
+    <text x="32" y="33" fill="#cffafe" font-family="Poppins, Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">Portfolio</text>
+  </g>
+</svg>

@@ -1,0 +1,250 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --background: #1a1a2e;
+  --foreground: #f5f5f7;
+  --primary: #22d3ee;
+  --card: #2d1f4d;
+  --muted: #c8d1e0;
+  --animation-iteration: infinite;
+}
+
+.dark {
+  --background: oklch(0 0 0);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Accessibility - Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus Visible for Keyboard Navigation */
+*:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 2px;
+}
+
+.cosmic-parallax-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 70%, rgba(31, 93, 214, 0.22), transparent 46%),
+    radial-gradient(circle at 50% 120%, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 1) 60%);
+}
+
+.cosmic-stars,
+.cosmic-stars-medium,
+.cosmic-stars-large {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
+
+.cosmic-stars {
+  width: 1px;
+  height: 1px;
+  animation: animStar 150s linear var(--animation-iteration);
+}
+
+.cosmic-stars-medium {
+  width: 2px;
+  height: 2px;
+  animation: animStar 100s linear var(--animation-iteration);
+}
+
+.cosmic-stars-large {
+  width: 3px;
+  height: 3px;
+  animation: animStar 70s linear var(--animation-iteration);
+}
+
+#horizon {
+  position: absolute;
+  left: 50%;
+  bottom: 12vh;
+  width: min(1200px, 130vw);
+  height: 110px;
+  transform: translateX(-50%);
+  border-top: 2px solid rgba(95, 150, 255, 0.35);
+  border-radius: 50%;
+}
+
+#horizon .glow {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 -20px 60px rgba(86, 152, 255, 0.28);
+}
+
+#earth {
+  position: absolute;
+  left: 50%;
+  bottom: -45vh;
+  width: min(1200px, 130vw);
+  height: min(1200px, 130vw);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 25%, rgba(18, 127, 255, 0.18), rgba(2, 6, 23, 0.95) 58%, #020617 85%);
+  box-shadow: inset 0 40px 120px rgba(102, 178, 255, 0.14), 0 -40px 120px rgba(42, 125, 255, 0.12);
+}
+
+#title {
+  position: absolute;
+  left: 50%;
+  top: 24%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: clamp(1.8rem, 5vw, 4.6rem);
+  letter-spacing: 0.35em;
+  font-weight: 700;
+  color: rgba(232, 245, 255, 0.82);
+  text-shadow: 0 0 36px rgba(95, 176, 255, 0.4);
+}
+
+#subtitle {
+  position: absolute;
+  left: 50%;
+  top: 36%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: min(90vw, 900px);
+  text-align: center;
+  font-size: clamp(0.7rem, 1.4vw, 1rem);
+  letter-spacing: 0.4em;
+  color: rgba(196, 226, 255, 0.85);
+}
+
+.subtitle-part-1 {
+  animation: animGravity 5.2s ease-in-out var(--animation-iteration);
+}
+
+.subtitle-part-2 {
+  animation: animDont 5.2s ease-in-out var(--animation-iteration);
+}
+
+.subtitle-part-3 {
+  animation: animLet 5.2s ease-in-out var(--animation-iteration);
+}
+
+.subtitle-part-4,
+.subtitle-part-5,
+.subtitle-part-6,
+.subtitle-part-7,
+.subtitle-part-8,
+.subtitle-part-9,
+.subtitle-part-10 {
+  animation: animGo 5.2s ease-in-out var(--animation-iteration);
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+@keyframes animGravity {
+  0% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+  30%,
+  80% {
+    letter-spacing: 40px;
+    padding-left: 40px;
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  92%,
+  100% {
+    letter-spacing: 35px;
+    padding-left: 35px;
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+@keyframes animDont {
+  0%,
+  15% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+  35%,
+  80% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  92%,
+  100% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+@keyframes animLet {
+  0%,
+  25% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+  45%,
+  80% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  92%,
+  100% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+@keyframes animGo {
+  0%,
+  35% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+  55%,
+  80% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  92%,
+  100% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}

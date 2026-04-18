@@ -1,0 +1,147 @@
+/**
+ * Responsive Typography Scaling
+ * Uses clamp() and CSS custom properties for fluid typography
+ * Automatically scales across all breakpoints without media queries
+ */
+
+@media (min-width: 640px) {
+  :root {
+    /* Tablet: Scale text sizes by 10-15% */
+    --text-sm: 0.9375rem;
+    --text-base: 1.0625rem;
+    --text-lg: 1.1875rem;
+    --text-xl: 1.3125rem;
+    --text-2xl: 1.625rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    /* Desktop: Scale text sizes by 15-20% */
+    --text-sm: 0.9375rem;
+    --text-base: 1.125rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 1.875rem;
+    --text-3xl: 2.25rem;
+    --text-4xl: 3rem;
+  }
+}
+
+/* Fluid typography using clamp() for smooth scaling */
+/* Syntax: clamp(min, preferred, max) */
+.text-fluid-sm {
+  font-size: clamp(0.875rem, 2vw, 0.9375rem);
+}
+
+.text-fluid-base {
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+}
+
+.text-fluid-lg {
+  font-size: clamp(1.125rem, 3vw, 1.25rem);
+}
+
+.text-fluid-xl {
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+}
+
+.text-fluid-2xl {
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+}
+
+.text-fluid-3xl {
+  font-size: clamp(1.875rem, 5vw, 2.25rem);
+}
+
+.text-fluid-4xl {
+  font-size: clamp(2.25rem, 6vw, 3rem);
+}
+
+/* Responsive spacing with clamp() */
+.p-fluid {
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.p-fluid-lg {
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+.gap-fluid {
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Responsive scaling for containers */
+.container-fluid {
+  max-width: clamp(90vw, 95vw, 80rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 2vw, 2rem);
+  padding-right: clamp(1rem, 2vw, 2rem);
+}
+
+/* Line height scaling based on text size */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: var(--font-weight-semibold);
+}
+
+h1 {
+  font-size: var(--text-4xl);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+h5 {
+  font-size: var(--text-lg);
+}
+
+h6 {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+p {
+  line-height: 1.5;
+  font-size: var(--text-base);
+}
+
+small {
+  font-size: var(--text-sm);
+}
+
+/* Code typography */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+pre {
+  font-family: var(--font-mono);
+  overflow-x: auto;
+  padding: var(--space-lg);
+  background: var(--card);
+  border-radius: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Strong and emphasis */
+strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+em {
+  font-style: italic;
+}
