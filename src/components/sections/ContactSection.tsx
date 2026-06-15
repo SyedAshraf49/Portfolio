@@ -30,14 +30,14 @@ export const ContactSection: React.FC = () => {
               Let&apos;s Connect
             </p>
             <p className="text-sm text-cyan-100/90 md:text-base">
-              Open to internships and collaboration
+              Open to work
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-2">
-            <Badge variant="primary">AI Safety</Badge>
-            <Badge variant="primary">Machine Learning</Badge>
-            <Badge variant="primary">Backend Systems</Badge>
+            <Badge variant="primary">Software developer</Badge>
+            <Badge variant="primary">full stack developer</Badge>
+            <Badge variant="primary">Tech Enthusiast</Badge>
           </div>
 
           <div className="flex items-center justify-center">

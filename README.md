@@ -14,7 +14,7 @@ I'm a **Software Developer | Full-Stack Developer and Tech Enthusiast** driven b
 - **🎨 Frontend Development**: Creating intuitive, responsive user interfaces with React, TypeScript, and modern CSS
 - **⚙️ DevOps & Systems**: Automating deployments, system monitoring, and building developer-friendly CLIs
 
-Currently **open to internships and collaborations** in machine learning, AI safety, and backend systems engineering.
+Currently **open to work** focusing on AI safety, Machine Learning, and Backend Systems.
 
 📄 **[Download My Resume](public/resume/asher-resume.pdf)**
 
