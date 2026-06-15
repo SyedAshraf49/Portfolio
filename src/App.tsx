@@ -45,7 +45,7 @@ export default function App() {
               Syed Ashraf S.N
             </h1>
             <p className="mt-2 text-sm text-slate-100 md:text-base">
-              Computer Science Student | Cybersecurity and AI Enthusiast
+              Software Developer | Full-Stack Developer and Tech Enthusiast
             </p>
           </div>
           <HeroDock />

@@ -7,7 +7,7 @@ I'm a passionate full-stack developer and AI/ML enthusiast exploring the interse
 
 ## 🎯 About Me
 
-I'm a **Computer Science Student** driven by curiosity and a love for solving real-world problems through code. My work spans across multiple domains:
+I'm a **Software Developer | Full-Stack Developer and Tech Enthusiast** driven by curiosity and a love for solving real-world problems through code. My work spans across multiple domains:
 
 - **🧠 AI/ML & Safety**: Building toxicity detection systems, sentiment analysis pipelines, and content moderation tools with a focus on responsible AI
 - **🔧 Backend Systems**: Designing microservices, RESTful APIs, and robust data pipelines using Python and Flask
