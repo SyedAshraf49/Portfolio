@@ -60,7 +60,7 @@ export const ContactSection: React.FC = () => {
                 disabled={isSubmitting}
               />
               <Input
-                label="Context"
+                label="Subject"
                 placeholder="Context"
                 {...register('subject')}
                 error={errors.subject?.message}
@@ -69,7 +69,7 @@ export const ContactSection: React.FC = () => {
             </div>
 
             <Textarea
-              label="Explanation"
+              label="Message"
               placeholder="Explanation"
               rows={5}
               {...register('message')}
