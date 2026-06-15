@@ -54,14 +54,14 @@ export const ContactSection: React.FC = () => {
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               <Input
                 label="Your name"
-                placeholder="John Doe"
+                placeholder="Enter your Name"
                 {...register('name')}
                 error={errors.name?.message}
                 disabled={isSubmitting}
               />
               <Input
-                label="Subject"
-                placeholder="Project Inquiry"
+                label="Context"
+                placeholder="Context"
                 {...register('subject')}
                 error={errors.subject?.message}
                 disabled={isSubmitting}
@@ -69,8 +69,8 @@ export const ContactSection: React.FC = () => {
             </div>
 
             <Textarea
-              label="Message"
-              placeholder="Tell me about your project..."
+              label="Explanation"
+              placeholder="Explanation"
               rows={5}
               {...register('message')}
               error={errors.message?.message}
