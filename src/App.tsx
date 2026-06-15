@@ -91,7 +91,9 @@ export default function App() {
           {/* Education Section */}
           <Section id="education" title="Education">
             <p className="text-center text-lg text-[var(--muted)]">
-              <strong className="text-white">BSc Computer Science</strong> - Pursuing
+              <strong className="text-white">BSc Computer Science</strong> — Graduated 2026
+              <br />
+              <span className="text-[var(--muted)]">CGPA: 8.44 / 10.0</span>
             </p>
           </Section>
 

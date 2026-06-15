@@ -18,6 +18,11 @@ Currently **open to internships and collaborations** in machine learning, AI saf
 
 📄 **[Download My Resume](public/resume/asher-resume.pdf)**
 
+## 🎓 Education
+
+**BSc Computer Science** — Graduated 2026  
+CGPA: 8.44 / 10.0
+
 ---
 
 ## 🛠️ Technology Stack
