@@ -108,7 +108,7 @@ export const EXPERIENCE_DATA = [
     title: 'Project Lead - Machine Learning & Deep Learning Intern',
     company: 'G-TEC Computer Education',
     location: 'Anna Nagar, Chennai',
-    period: 'June 2025 to May 2025',
+    period: 'June 2025 to july 2025',
     highlights: [
       'Led the complete development of a Career Path Prediction System using ML models to help and guide students and professionals in their career decisions.',
       'Managed four teams: Frontend, Data Collection & Preprocessing, Backend, and Testing & Debugging.',
