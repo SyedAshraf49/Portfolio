@@ -91,30 +91,30 @@ export const NAVIGATION_ITEMS = [
 
 export const EXPERIENCE_DATA = [
   {
+    id: 'exp-2',
+    title: 'Software Development Intern – IT Wing',
+    company: 'Chennai Metro Rail Limited',
+    location: 'Nandanam, Chennai',
+    period: 'Jan 2026 to Feb 2026',
+    highlights: [
+      'Designed and developed a staff management dashboard for the IT Wing serving 200+ employees, reducing manual data access time by ~30% through streamlined UI and optimized data retrieval.',
+      'Implemented secure authentication with Role-Based Access Control (RBAC), improving access security by ~40% and enforcing department-level data segregation across the organization.',
+      'Optimized backend validation logic and input sanitization, reducing unauthorized access attempts and data entry errors by ~25%.',
+      'Gained hands-on exposure to enterprise-grade government IT infrastructure, security compliance protocols, and production deployment standards.',
+    ],
+  },
+  {
     id: 'exp-1',
     title: 'Project Lead - Machine Learning & Deep Learning Intern',
     company: 'G-TEC Computer Education',
     location: 'Anna Nagar, Chennai',
-    period: '',
+    period: 'June 2025 to May 2025',
     highlights: [
       'Led the complete development of a Career Path Prediction System using ML models to help and guide students and professionals in their career decisions.',
       'Managed four teams: Frontend, Data Collection & Preprocessing, Backend, and Testing & Debugging.',
       'Built a predictive model using RandomForest and advanced ML models, achieved optimal accuracy by fine-tuning the models iteratively.',
       'Applied machine learning algorithms such as regression and classification to solve real-world problems using Python.',
       'Arranged daily team meetings to ensure productivity and project advancement, communicating with team members to improve the project continuously.',
-    ],
-  },
-  {
-    id: 'exp-2',
-    title: 'Software Development Intern – IT Wing',
-    company: 'Chennai Metro Rail Limited',
-    location: 'Nandanam, Chennai',
-    period: 'Jan 2026',
-    highlights: [
-      'Designed and developed a staff management dashboard for the IT Wing serving 200+ employees, reducing manual data access time by ~30% through streamlined UI and optimized data retrieval.',
-      'Implemented secure authentication with Role-Based Access Control (RBAC), improving access security by ~40% and enforcing department-level data segregation across the organization.',
-      'Optimized backend validation logic and input sanitization, reducing unauthorized access attempts and data entry errors by ~25%.',
-      'Gained hands-on exposure to enterprise-grade government IT infrastructure, security compliance protocols, and production deployment standards.',
     ],
   },
 ];
