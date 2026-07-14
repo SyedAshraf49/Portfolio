@@ -42,8 +42,8 @@ export const ContactSection: React.FC = () => {
 
           <div className="flex items-center justify-center">
             <a
-              href="/resume/asher-resume.pdf"
-              download="Asher_Resume.pdf"
+              href="/resume/Syed Ashraf S N Resume.pdf"
+              download="Syed Ashraf S N Resume.pdf"
               className="inline-flex items-center rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 min-h-[44px]"
             >
               📥 Download Resume

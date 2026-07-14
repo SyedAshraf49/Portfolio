@@ -85,7 +85,7 @@ export const NAVIGATION_ITEMS = [
   { label: 'Education', href: '#education' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Resume', href: '/resume/asher-resume.pdf', isResume: true },
+  { label: 'Resume', href: '/resume/Syed Ashraf S N Resume.pdf', isResume: true },
   { label: 'Contact', href: '#contact' },
 ];
 
