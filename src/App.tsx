@@ -41,17 +41,19 @@ export default function App() {
       {/* Main Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Header */}
-        <AnimatedHero className="mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-r from-cyan-500/70 via-sky-500/50 to-fuchsia-500/60 p-6 text-center shadow-xl md:mt-8">
-          <div>
-            <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
-              Syed Ashraf S.N
-            </h1>
-            <p className="mt-2 text-sm text-slate-100 md:text-base">
-              Software Developer | Full-Stack Developer and Tech Enthusiast
-            </p>
-          </div>
-          <HeroDock />
-        </AnimatedHero>
+        <header>
+          <AnimatedHero className="mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-r from-cyan-500/70 via-sky-500/50 to-fuchsia-500/60 p-6 text-center shadow-xl md:mt-8">
+            <div>
+              <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
+                Syed Ashraf S.N
+              </h1>
+              <p className="mt-2 text-sm text-slate-100 md:text-base">
+                Software Developer | Full-Stack Developer and Tech Enthusiast
+              </p>
+            </div>
+            <HeroDock />
+          </AnimatedHero>
+        </header>
 
         {/* Navigation */}
         <div className="sticky top-0 z-20 mt-4">

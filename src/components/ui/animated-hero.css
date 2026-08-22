@@ -1,9 +1,3 @@
-@property --gradient-angle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 0deg;
-}
-
 .animated-hero {
   --gradient-angle: 0deg;
   --mouse-x: 50%;
@@ -22,19 +16,32 @@
   border-radius: 1.75rem;
   padding: 2px;
   background: linear-gradient(
-    var(--gradient-angle),
+    45deg,
     #06b6d4,
     #3b82f6,
     #8b5cf6,
     #ec4899,
     #06b6d4
   );
+  background-size: 300% 300%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0.8;
-  animation: borderPulse 3s ease-in-out infinite;
+  animation: gradientRotate 4s linear infinite, borderPulse 3s ease-in-out infinite;
   pointer-events: none;
+}
+
+@keyframes gradientRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Glow effect that follows mouse */
@@ -149,7 +156,7 @@
   }
 
   .animated-hero::before {
-    animation: none;
+    animation: borderPulse 3s ease-in-out infinite;
   }
 
   .animated-hero:hover .animated-hero__content {

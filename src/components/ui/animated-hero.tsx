@@ -14,14 +14,6 @@ export const AnimatedHero: React.FC<AnimatedHeroProps> = ({ children, className 
     const hero = heroRef.current;
     if (!hero) return;
 
-    // Animated gradient border animation
-    gsap.to(hero, {
-      '--gradient-angle': '360deg',
-      duration: 4,
-      repeat: -1,
-      ease: 'none',
-    });
-
     // Magnetic effect on hover
     const handleMouseMove = (e: MouseEvent) => {
       const rect = hero.getBoundingClientRect();
