@@ -248,3 +248,35 @@ body {
     opacity: 0;
   }
 }
+
+/* Section fade-in animation */
+.section-fade-in {
+  animation: sectionFadeIn 0.8s ease-out;
+}
+
+@keyframes sectionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Experience card stagger animation */
+.experience-card {
+  animation: cardFadeIn 0.6s ease-out backwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

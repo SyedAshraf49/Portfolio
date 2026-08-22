@@ -1,39 +1,18 @@
-import React, { useEffect, useRef } from 'react';
-import { Card, Section, Badge } from '../common';
+import React from 'react';
+import { Card, Section } from '../common';
 import { EXPERIENCE_DATA } from '@/constants/data';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const ExperienceSection: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const cards = container.querySelectorAll('.experience-card');
-
-    gsap.from(cards, {
-      y: 60,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.2,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: container,
-        start: 'top 75%',
-        toggleActions: 'play none none none',
-      },
-    });
-  }, []);
-
   return (
     <Section id="experience" title="Experience">
-      <div ref={containerRef} className="mx-auto max-w-4xl space-y-6">
-        {EXPERIENCE_DATA.map((experience) => (
-          <Card key={experience.id} variant="experience" className="experience-card">
+      <div className="mx-auto max-w-4xl space-y-6">
+        {EXPERIENCE_DATA.map((experience, index) => (
+          <Card 
+            key={experience.id} 
+            variant="experience" 
+            className="experience-card"
+            style={{ animationDelay: `${index * 0.15}s` } as React.CSSProperties}
+          >
             <div className="mb-4">
               <div className="flex flex-col justify-between gap-2 md:flex-row md:items-start">
                 <div>
