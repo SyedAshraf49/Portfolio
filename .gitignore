@@ -11,3 +11,8 @@ pnpm-debug.log*
 .env
 .env.*
 !.env.example
+
+# Build artifacts
+*.tsbuildinfo
+vite.config.d.ts
+vite.config.js

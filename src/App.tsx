@@ -2,6 +2,8 @@ import { Section, Badge } from '@/components/common';
 import { CosmicParallaxBg } from '@/components/ui/parallax-cosmic-background';
 import HeroDock from '@/components/ui/dock';
 import AnimeScrollbar from '@/components/ui/anime-scrollbar';
+import { AnimatedHero } from '@/components/ui/animated-hero';
+import '@/components/ui/animated-hero.css';
 import GooeyNav from './GooeyNav';
 import MagicBento from './MagicBento';
 import { useThemeSafe } from '@/hooks/useTheme';
@@ -39,7 +41,7 @@ export default function App() {
       {/* Main Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Header */}
-        <header className="mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-r from-cyan-500/70 via-sky-500/50 to-fuchsia-500/60 p-6 text-center shadow-xl md:mt-8 relative">
+        <AnimatedHero className="mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-r from-cyan-500/70 via-sky-500/50 to-fuchsia-500/60 p-6 text-center shadow-xl md:mt-8">
           <div>
             <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
               Syed Ashraf S.N
@@ -49,7 +51,7 @@ export default function App() {
             </p>
           </div>
           <HeroDock />
-        </header>
+        </AnimatedHero>
 
         {/* Navigation */}
         <div className="sticky top-0 z-20 mt-4">

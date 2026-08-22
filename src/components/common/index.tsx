@@ -191,7 +191,7 @@ export const Card: React.FC<CardProps> = ({ children, className, variant = 'defa
   );
 };
 
-// Section Wrapper with Accessibility
+// Section Wrapper with Accessibility and Scroll Reveal
 interface SectionProps {
   id: string;
   title: string;
@@ -200,8 +200,34 @@ interface SectionProps {
 }
 
 export const Section: React.FC<SectionProps> = ({ id, title, children, subtitle }) => {
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // Dynamically import gsap only when needed
+    import('gsap').then(({ gsap }) => {
+      import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(section, {
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        });
+      });
+    });
+  }, []);
+
   return (
-    <section id={id} className="mx-auto w-full max-w-5xl px-4 py-6 md:py-8">
+    <section ref={sectionRef} id={id} className="mx-auto w-full max-w-5xl px-4 py-6 md:py-8">
       <Card variant="default">
         <div className="mb-4">
           <h2 className="text-center text-2xl font-semibold text-[var(--primary)]">{title}</h2>
