@@ -19,9 +19,9 @@
 /* Hexagon Cell - Individual Skill Container */
 .hexagon-cell {
   position: relative;
-  width: 58px;
-  height: 50px;
-  margin: -2px -2px;
+  width: 80px;
+  height: 70px;
+  margin: -3px -3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,13 +30,12 @@
 }
 
 /* Offset every other row for true honeycomb pattern */
-.hexagon-cell:nth-child(12n+7),
-.hexagon-cell:nth-child(12n+8),
-.hexagon-cell:nth-child(12n+9),
-.hexagon-cell:nth-child(12n+10),
-.hexagon-cell:nth-child(12n+11),
-.hexagon-cell:nth-child(12n+12) {
-  margin-left: 28px;
+.hexagon-cell:nth-child(10n+6),
+.hexagon-cell:nth-child(10n+7),
+.hexagon-cell:nth-child(10n+8),
+.hexagon-cell:nth-child(10n+9),
+.hexagon-cell:nth-child(10n+10) {
+  margin-left: 39px;
 }
 
 @keyframes hexagonFloat {
@@ -58,8 +57,8 @@
 
 /* Actual Hexagon Shape */
 .hexagon {
-  width: 58px;
-  height: 58px;
+  width: 80px;
+  height: 80px;
   position: relative;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
@@ -70,25 +69,25 @@
   content: '';
   position: absolute;
   width: 0;
-  border-left: 29px solid transparent;
-  border-right: 29px solid transparent;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
   left: 0;
   transition: all 0.3s ease;
 }
 
 .hexagon::before {
   bottom: 100%;
-  border-bottom: 16.5px solid rgba(30, 41, 59, 0.95);
+  border-bottom: 23px solid rgba(30, 41, 59, 0.95);
 }
 
 .hexagon::after {
   top: 100%;
-  border-top: 16.5px solid rgba(30, 41, 59, 0.95);
+  border-top: 23px solid rgba(30, 41, 59, 0.95);
 }
 
 .hexagon-inner {
-  width: 58px;
-  height: 33px;
+  width: 80px;
+  height: 46px;
   background: rgba(30, 41, 59, 0.95);
   position: relative;
   display: flex;
@@ -209,7 +208,7 @@
 }
 
 .skill-icon {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   transition: all 0.3s ease;
   line-height: 1;
 }
@@ -221,12 +220,12 @@
 }
 
 .skill-name {
-  font-size: 0.5rem;
+  font-size: 0.65rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
-  line-height: 1;
-  max-width: 50px;
+  line-height: 1.1;
+  max-width: 70px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -387,32 +386,36 @@
   }
 
   .hexagon-cell {
-    width: 55px;
-    height: 48px;
+    width: 70px;
+    height: 62px;
   }
   
   .hexagon {
-    width: 55px;
-    height: 55px;
+    width: 70px;
+    height: 70px;
   }
   
   .hexagon::before,
   .hexagon::after {
-    border-left-width: 27.5px;
-    border-right-width: 27.5px;
+    border-left-width: 35px;
+    border-right-width: 35px;
   }
   
   .hexagon::before {
-    border-bottom-width: 15.5px;
+    border-bottom-width: 20px;
   }
   
   .hexagon::after {
-    border-top-width: 15.5px;
+    border-top-width: 20px;
   }
   
   .hexagon-inner {
-    width: 55px;
-    height: 31px;
+    width: 70px;
+    height: 40px;
+  }
+
+  .skill-name {
+    font-size: 0.6rem;
   }
 }
 
@@ -422,50 +425,49 @@
   }
 
   .hexagon-cell {
-    width: 50px;
-    height: 44px;
+    width: 60px;
+    height: 53px;
     margin: -3px -3px;
   }
 
-  .hexagon-cell:nth-child(12n+7),
-  .hexagon-cell:nth-child(12n+8),
-  .hexagon-cell:nth-child(12n+9),
-  .hexagon-cell:nth-child(12n+10),
-  .hexagon-cell:nth-child(12n+11),
-  .hexagon-cell:nth-child(12n+12) {
-    margin-left: 24px;
+  .hexagon-cell:nth-child(10n+6),
+  .hexagon-cell:nth-child(10n+7),
+  .hexagon-cell:nth-child(10n+8),
+  .hexagon-cell:nth-child(10n+9),
+  .hexagon-cell:nth-child(10n+10) {
+    margin-left: 30px;
   }
 
   .hexagon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
 
   .hexagon::before,
   .hexagon::after {
-    border-left-width: 25px;
-    border-right-width: 25px;
+    border-left-width: 30px;
+    border-right-width: 30px;
   }
 
   .hexagon::before {
-    border-bottom-width: 14px;
+    border-bottom-width: 17px;
   }
 
   .hexagon::after {
-    border-top-width: 14px;
+    border-top-width: 17px;
   }
 
   .hexagon-inner {
-    width: 50px;
-    height: 28px;
+    width: 60px;
+    height: 34px;
   }
 
   .skill-icon {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
   }
 
   .skill-name {
-    font-size: 0.45rem;
+    font-size: 0.55rem;
   }
 
   .skills-legend {

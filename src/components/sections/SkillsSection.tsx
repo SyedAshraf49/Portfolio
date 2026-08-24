@@ -7,25 +7,58 @@ import './SkillsSection.css';
 const getSkillIcon = (skill: string) => {
   const skillLower = skill.toLowerCase();
   
+  // Languages
   if (skillLower.includes('python')) return '🐍';
   if (skillLower.includes('javascript')) return 'JS';
   if (skillLower.includes('typescript')) return 'TS';
+  if (skillLower.includes('java') && !skillLower.includes('javascript')) return '☕';
   if (skillLower.includes('html')) return '<>';
   if (skillLower.includes('css')) return '🎨';
+  
+  // Frontend
   if (skillLower.includes('react')) return '⚛️';
+  
+  // Backend & Databases
   if (skillLower.includes('flask')) return '🌶️';
+  if (skillLower.includes('node')) return '🟢';
+  if (skillLower.includes('rest') || skillLower.includes('api')) return '🔌';
+  if (skillLower.includes('mysql') || skillLower.includes('postgresql')) return '🗄️';
+  
+  // ML & Data
   if (skillLower.includes('pytorch')) return '🔥';
+  if (skillLower.includes('tensorflow') || skillLower.includes('keras')) return '🧠';
   if (skillLower.includes('transformers')) return '🤖';
-  if (skillLower.includes('api')) return '🔌';
+  if (skillLower.includes('scikit') || skillLower.includes('sklearn')) return '📊';
+  if (skillLower.includes('pandas')) return '🐼';
+  if (skillLower.includes('numpy')) return '🔢';
   if (skillLower.includes('nlp')) return '💬';
   if (skillLower.includes('vision')) return '👁️';
   if (skillLower.includes('detection')) return '🎯';
   if (skillLower.includes('sentiment')) return '😊';
-  if (skillLower.includes('cli')) return '⌨️';
-  if (skillLower.includes('testing')) return '✓';
-  if (skillLower.includes('deployment')) return '🚀';
-  if (skillLower.includes('documentation')) return '📄';
+  if (skillLower.includes('fine-tuning')) return '🎛️';
+  
+  // Tools & DevOps
+  if (skillLower.includes('git') && !skillLower.includes('copilot')) return '📦';
+  if (skillLower.includes('github')) return '🐙';
+  if (skillLower.includes('vs code')) return '💻';
+  if (skillLower.includes('linux')) return '🐧';
+  if (skillLower.includes('render')) return '☁️';
+  if (skillLower.includes('copilot')) return '🤝';
+  if (skillLower.includes('chatgpt')) return '💡';
+  
+  // Concepts
+  if (skillLower.includes('oop')) return '📐';
+  if (skillLower.includes('data structures')) return '🗂️';
+  if (skillLower.includes('algorithms')) return '⚙️';
+  if (skillLower.includes('sdl')) return '🔒';
+  if (skillLower.includes('responsive')) return '📱';
+  if (skillLower.includes('integration')) return '🔗';
+  
+  // Safety & Intelligence
   if (skillLower.includes('moderation')) return '🛡️';
+  if (skillLower.includes('risk')) return '⚠️';
+  if (skillLower.includes('quality')) return '✓';
+  if (skillLower.includes('audience')) return '👥';
   
   return '◆';
 };
