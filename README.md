@@ -1,9 +1,3 @@
-<div align="center">
-
-<a href="https://github.com/SyedAshraf49/Portfolio">
-  <img src="./public/og-cover.svg" alt="Syed Ashraf S.N. portfolio" width="100%" />
-</a>
-
 # Syed Ashraf S.N.
 
 ### Full-stack developer building intelligent, safer, and production-ready software.
