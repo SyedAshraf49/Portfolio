@@ -1,4 +1,4 @@
-# Syed Ashraf S.N.
+# Syed Ashraf S.N
 
 ### Full-stack developer building intelligent, safer, and production-ready software.
 
