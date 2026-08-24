@@ -119,15 +119,15 @@
   margin: 0;
 }
 
-/* Hexagon Grid - Honeycomb Pattern */
+/* Hexagon Grid - True Honeycomb Pattern (Overlapping) */
 .hexagon-grid {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 70px);
-  gap: 2px;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 2rem 0;
   max-width: 100%;
+  margin: 0 auto;
 }
 
 /* Connection Lines SVG */
@@ -163,11 +163,12 @@
   }
 }
 
-/* Hexagon Wrapper */
+/* Hexagon Wrapper - Overlapping Layout */
 .hexagon-wrapper {
   position: relative;
-  width: 70px;
-  height: 60px;
+  width: 58px;
+  height: 50px;
+  margin: -2px -2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,21 +176,29 @@
   z-index: 2;
 }
 
+/* Offset every other row for honeycomb pattern */
+.hexagon-wrapper:nth-child(8n+5),
+.hexagon-wrapper:nth-child(8n+6),
+.hexagon-wrapper:nth-child(8n+7),
+.hexagon-wrapper:nth-child(8n+8) {
+  margin-left: 26px;
+}
+
 @keyframes hexagonFloat {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.8);
+    transform: scale(0.8);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: scale(1);
   }
 }
 
-/* Actual Hexagon Shape - Smaller and Tighter */
+/* Actual Hexagon Shape - Overlapping */
 .hexagon {
-  width: 65px;
-  height: 65px;
+  width: 58px;
+  height: 58px;
   position: relative;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
@@ -200,25 +209,25 @@
   content: '';
   position: absolute;
   width: 0;
-  border-left: 32.5px solid transparent;
-  border-right: 32.5px solid transparent;
+  border-left: 29px solid transparent;
+  border-right: 29px solid transparent;
   left: 0;
 }
 
 .hexagon::before {
   bottom: 100%;
-  border-bottom: 18.5px solid rgba(30, 41, 59, 0.9);
+  border-bottom: 16.5px solid rgba(30, 41, 59, 0.95);
 }
 
 .hexagon::after {
   top: 100%;
-  border-top: 18.5px solid rgba(30, 41, 59, 0.9);
+  border-top: 16.5px solid rgba(30, 41, 59, 0.95);
 }
 
 .hexagon-inner {
-  width: 65px;
-  height: 37px;
-  background: rgba(30, 41, 59, 0.9);
+  width: 58px;
+  height: 33px;
+  background: rgba(30, 41, 59, 0.95);
   position: relative;
   display: flex;
   align-items: center;
@@ -317,7 +326,7 @@
 }
 
 .skill-icon {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
   line-height: 1;
 }
@@ -329,12 +338,12 @@
 }
 
 .skill-name {
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
-  line-height: 1.1;
-  max-width: 55px;
+  line-height: 1;
+  max-width: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -408,8 +417,33 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .hexagon-grid {
-    grid-template-columns: repeat(auto-fit, 70px);
+  .hexagon-wrapper {
+    width: 55px;
+    height: 48px;
+  }
+  
+  .hexagon {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .hexagon::before,
+  .hexagon::after {
+    border-left-width: 27.5px;
+    border-right-width: 27.5px;
+  }
+  
+  .hexagon::before {
+    border-bottom-width: 15.5px;
+  }
+  
+  .hexagon::after {
+    border-top-width: 15.5px;
+  }
+  
+  .hexagon-inner {
+    width: 55px;
+    height: 31px;
   }
 }
 
@@ -418,46 +452,42 @@
     padding: 1.5rem;
   }
 
-  .hexagon-grid {
-    grid-template-columns: repeat(auto-fit, 65px);
-    gap: 1px;
-  }
-
   .hexagon-wrapper {
-    width: 65px;
-    height: 55px;
+    width: 50px;
+    height: 44px;
+    margin: -3px -3px;
   }
 
   .hexagon {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 
   .hexagon::before,
   .hexagon::after {
-    border-left-width: 30px;
-    border-right-width: 30px;
+    border-left-width: 25px;
+    border-right-width: 25px;
   }
 
   .hexagon::before {
-    border-bottom-width: 17px;
+    border-bottom-width: 14px;
   }
 
   .hexagon::after {
-    border-top-width: 17px;
+    border-top-width: 14px;
   }
 
   .hexagon-inner {
-    width: 60px;
-    height: 34px;
+    width: 50px;
+    height: 28px;
   }
 
   .skill-icon {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .skill-name {
-    font-size: 0.5rem;
+    font-size: 0.45rem;
   }
 
   .skill-category-header {
