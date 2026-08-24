@@ -185,9 +185,44 @@
 
 .skill-icon {
   flex: 0 0 auto;
-  font-size: clamp(1rem, 1.7vw, 1.4rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(1.05rem, 2.2vw, 1.55rem);
+  font-size: clamp(0.92rem, 1.6vw, 1.3rem);
   line-height: 1;
   transition: transform 180ms ease;
+}
+
+.skill-logo-shell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(1.05rem, 2.2vw, 1.55rem);
+  height: clamp(1.05rem, 2.2vw, 1.55rem);
+}
+
+.skill-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.skill-logo-fallback {
+  display: none;
+  color: rgba(248, 250, 252, 0.95);
+  font-size: clamp(0.72rem, 1.2vw, 0.95rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.skill-logo-shell[data-logo-failed='true'] .skill-logo {
+  display: none;
+}
+
+.skill-logo-shell[data-logo-failed='true'] .skill-logo-fallback {
+  display: inline;
 }
 
 .hexagon:hover .skill-icon,

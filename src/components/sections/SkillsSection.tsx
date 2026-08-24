@@ -48,13 +48,45 @@ const getSkillIcon = (skill: string) => {
   return '◆';
 };
 
-const getCategoryColor = (title: string) => {
-  if (title.includes('Machine Learning') || title.includes('AI')) return 'ai';
-  if (title.includes('Backend')) return 'backend';
-  if (title.includes('Frontend')) return 'frontend';
-  if (title.includes('Data') || title.includes('DevOps') || title.includes('Systems')) return 'systems';
-  if (title.includes('Safety') || title.includes('Intelligence')) return 'safety';
-  return 'default';
+const SIMPLE_ICON_SLUGS: Record<string, string> = {
+  'scikit-learn': 'scikitlearn',
+  transformers: 'huggingface',
+  tensorflow: 'tensorflow',
+  keras: 'keras',
+  pytorch: 'pytorch',
+  nlp: 'spacy',
+  pandas: 'pandas',
+  numpy: 'numpy',
+  'computer vision': 'opencv',
+  'fine-tuning': 'huggingface',
+  python: 'python',
+  javascript: 'javascript',
+  typescript: 'typescript',
+  java: 'java',
+  flask: 'flask',
+  'flask-cors': 'flask',
+  'node.js': 'nodedotjs',
+  'rest api design': 'postman',
+  mysql: 'mysql',
+  postgresql: 'postgresql',
+  'react 18': 'react',
+  html5: 'html5',
+  css3: 'css3',
+  'api integration': 'postman',
+  git: 'git',
+  github: 'github',
+  'vs code': 'visualstudiocode',
+  linux: 'linux',
+  render: 'render',
+  'github copilot': 'githubcopilot',
+  chatgpt: 'openai',
+};
+
+const getSkillLogo = (skill: string) => SIMPLE_ICON_SLUGS[skill.toLowerCase()];
+
+const getSkillFallback = (skill: string) => {
+  const fallback = getSkillIcon(skill);
+  return fallback.length > 3 ? fallback.slice(0, 3) : fallback;
 };
 
 type Skill = {
@@ -98,25 +130,44 @@ export const SkillsSection = () => {
               className={`honeycomb-row ${rowIndex % 2 === 1 ? 'honeycomb-row--offset' : ''}`}
               key={`skill-row-${rowIndex}`}
             >
-              {row.map((skill, index) => (
-                <div className="hexagon-cell" role="listitem" key={`${skill.name}-${index}`}>
-                  <button
-                    type="button"
-                    className={`hexagon hexagon--${skill.category}`}
-                    title={`${skill.name} — ${skill.categoryName}`}
-                    aria-label={`${skill.name}, ${skill.categoryName}`}
-                  >
-                    <span className="hexagon-inner">
-                      <span className="hexagon-content">
-                        <span className="skill-icon" aria-hidden="true">
-                          {getSkillIcon(skill.name)}
+              {row.map((skill, index) => {
+                const logo = getSkillLogo(skill.name);
+                return (
+                  <div className="hexagon-cell" role="listitem" key={`${skill.name}-${index}`}>
+                    <button
+                      type="button"
+                      className={`hexagon hexagon--${skill.category}`}
+                      title={`${skill.name} — ${skill.categoryName}`}
+                      aria-label={`${skill.name}, ${skill.categoryName}`}
+                    >
+                      <span className="hexagon-inner">
+                        <span className="hexagon-content">
+                          <span className="skill-icon" aria-hidden="true">
+                            {logo ? (
+                              <span className="skill-logo-shell">
+                                <img
+                                  className="skill-logo"
+                                  src={`https://cdn.simpleicons.org/${logo}/f8fafc`}
+                                  alt=""
+                                  loading="lazy"
+                                  decoding="async"
+                                  onError={(event) => {
+                                    event.currentTarget.parentElement?.setAttribute('data-logo-failed', 'true');
+                                  }}
+                                />
+                                <span className="skill-logo-fallback">{getSkillFallback(skill.name)}</span>
+                              </span>
+                            ) : (
+                              getSkillFallback(skill.name)
+                            )}
+                          </span>
+                          <span className="skill-name">{skill.name}</span>
                         </span>
-                        <span className="skill-name">{skill.name}</span>
                       </span>
-                    </span>
-                  </button>
-                </div>
-              ))}
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>
@@ -133,3 +184,12 @@ export const SkillsSection = () => {
     </Section>
   );
 };
+
+function getCategoryColor(title: string) {
+  if (title.includes('Machine Learning') || title.includes('AI')) return 'ai';
+  if (title.includes('Backend')) return 'backend';
+  if (title.includes('Frontend')) return 'frontend';
+  if (title.includes('Data') || title.includes('DevOps') || title.includes('Systems')) return 'systems';
+  if (title.includes('Safety') || title.includes('Intelligence')) return 'safety';
+  return 'default';
+}
