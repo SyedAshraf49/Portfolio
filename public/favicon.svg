@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Syed Ashraf portfolio icon</title>
+  <desc id="desc">Gold AS monogram on a midnight blue and black background</desc>
+  <defs>
+    <linearGradient id="background" x1="8" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#020617" />
+      <stop offset="0.56" stop-color="#071a33" />
+      <stop offset="1" stop-color="#102d52" />
+    </linearGradient>
+    <linearGradient id="gold" x1="14" y1="12" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f6d77a" />
+      <stop offset="0.52" stop-color="#d4af37" />
+      <stop offset="1" stop-color="#9f7d24" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#background)" />
+  <rect x="2.5" y="2.5" width="59" height="59" rx="14" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.9" />
+  <path d="M13 17.5h38M13 46.5h38" stroke="#d4af37" stroke-width="1" opacity="0.2" />
+  <circle cx="49" cy="15" r="3" fill="#38bdf8" opacity="0.9" />
+  <text x="32" y="41" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="800" letter-spacing="-1.5" fill="url(#gold)">AS</text>
+</svg>
