@@ -147,7 +147,7 @@ export const SkillsSection = () => {
                               <span className="skill-logo-shell">
                                 <img
                                   className="skill-logo"
-                                  src={`https://cdn.simpleicons.org/${logo}/f8fafc`}
+                                  src={`https://cdn.simpleicons.org/${logo}`}
                                   alt=""
                                   loading="lazy"
                                   decoding="async"

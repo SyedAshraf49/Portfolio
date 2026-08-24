@@ -201,10 +201,10 @@ interface SectionProps {
 
 export const Section: React.FC<SectionProps> = ({ id, title, children, subtitle }) => {
   return (
-    <section id={id} className="mx-auto w-full max-w-5xl px-4 py-6 md:py-8 section-fade-in">
+    <section id={id} className="section-shell mx-auto w-full max-w-5xl px-4 py-10 md:py-16 section-fade-in">
       <Card variant="default">
-        <div className="mb-4">
-          <h2 className="text-center text-2xl font-semibold text-[var(--primary)]">{title}</h2>
+        <div className="section-header mb-6 md:mb-8">
+          <h2 className="section-heading text-center text-2xl font-semibold text-[var(--primary)]">{title}</h2>
           {subtitle && <p className="mt-2 text-center text-sm text-[var(--muted)]">{subtitle}</p>}
         </div>
         {children}

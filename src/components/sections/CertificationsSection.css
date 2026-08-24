@@ -1,7 +1,7 @@
 .certifications-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.15rem;
   max-width: 64rem;
   margin: 0 auto;
 }
@@ -9,13 +9,23 @@
 .certification-card {
   position: relative;
   min-width: 0;
-  padding: 1.2rem;
+  padding: 1.25rem;
   overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  border: 1px solid rgba(103, 232, 249, 0.16);
   border-radius: 1rem;
-  background: linear-gradient(145deg, rgba(30, 41, 59, 0.58), rgba(2, 6, 23, 0.58));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: linear-gradient(145deg, rgba(12, 35, 67, 0.64), rgba(2, 6, 23, 0.76));
+  box-shadow: 0 0.9rem 2rem rgba(2, 6, 23, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.045);
   transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), border-color 180ms ease, box-shadow 180ms ease;
+}
+
+ .certification-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.25rem;
+  width: 4.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.8), rgba(103, 232, 249, 0.25), transparent);
 }
 
 .certification-card::after {
@@ -31,10 +41,11 @@
 
 .certification-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(103, 232, 249, 0.38);
-  box-shadow: 0 0.8rem 1.8rem rgba(2, 12, 28, 0.2), 0 0 1.4rem rgba(34, 211, 238, 0.08);
+  border-color: rgba(103, 232, 249, 0.36);
+  box-shadow: 0 1rem 2rem rgba(2, 12, 28, 0.24), 0 0 1.4rem rgba(34, 211, 238, 0.08);
 }
 
+.certification-card__registry,
 .certification-card__topline,
 .certification-card h3,
 .certification-card__date,
@@ -42,6 +53,33 @@
 .certification-card__skills {
   position: relative;
   z-index: 1;
+}
+
+.certification-card__registry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.certification-card__index {
+  color: rgba(246, 215, 122, 0.72);
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.certification-card__status {
+  padding: 0.25rem 0.45rem;
+  border: 1px solid rgba(103, 232, 249, 0.18);
+  border-radius: 999px;
+  color: rgba(165, 243, 252, 0.64);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .certification-card__topline {
@@ -59,7 +97,8 @@
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 0.55rem;
   color: #f8fafc;
-  background: rgba(248, 250, 252, 0.92);
+  background: rgba(248, 250, 252, 0.94);
+  box-shadow: 0 0.35rem 0.9rem rgba(2, 6, 23, 0.22);
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: -0.06em;

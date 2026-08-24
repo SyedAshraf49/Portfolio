@@ -1,8 +1,8 @@
 .skills-honeycomb-container {
-  --cell-size: clamp(64px, 7.8vw, 82px);
-  --cell-gap: clamp(3px, 0.55vw, 8px);
+  --cell-size: clamp(66px, 7.6vw, 82px);
+  --cell-gap: clamp(4px, 0.6vw, 8px);
   width: 100%;
-  padding: 1.25rem clamp(0.25rem, 1vw, 1rem) 0.25rem;
+  padding: 1rem clamp(0.25rem, 1vw, 1rem) 0.25rem;
 }
 
 .honeycomb-grid {
@@ -12,7 +12,7 @@
   gap: clamp(0.15rem, 0.55vw, 0.4rem);
   width: 100%;
   max-width: 100%;
-  padding: 1.25rem 0.5rem;
+  padding: 1rem 0.5rem 1.25rem;
   overflow: visible;
 }
 
@@ -84,7 +84,7 @@
   display: grid;
   place-items: center;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  background: rgba(15, 23, 42, 0.92);
+  background: rgba(2, 6, 23, 0.78);
   border: 1px solid rgba(255, 255, 255, 0.13);
   transition: background 180ms ease, box-shadow 180ms ease;
 }
@@ -179,7 +179,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.15rem;
+  gap: 0.22rem;
   text-align: center;
 }
 
@@ -235,7 +235,8 @@
   overflow: hidden;
   color: rgba(255, 255, 255, 0.92);
   font-size: clamp(0.52rem, 0.72vw, 0.7rem);
-  font-weight: 600;
+  font-weight: 650;
+  letter-spacing: -0.012em;
   line-height: 1.12;
   text-align: center;
   text-overflow: ellipsis;
@@ -256,8 +257,8 @@
   justify-content: center;
   gap: 0.75rem 1.35rem;
   width: 100%;
-  margin-top: 1.5rem;
-  padding: 1.2rem 1rem;
+  margin-top: 1.25rem;
+  padding: 1.05rem 1rem;
   background: rgba(15, 23, 42, 0.38);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;

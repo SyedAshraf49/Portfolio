@@ -11,8 +11,12 @@ export const CertificationsSection: React.FC = () => {
       subtitle="Continuous learning across artificial intelligence, generative AI, and practical engineering."
     >
       <div className="certifications-grid" role="list" aria-label="Professional certifications">
-        {CERTIFICATIONS_DATA.map((certification) => (
+        {CERTIFICATIONS_DATA.map((certification, index) => (
           <article className="certification-card" key={certification.id} role="listitem">
+            <div className="certification-card__registry">
+              <span className="certification-card__index">0{index + 1}</span>
+              <span className="certification-card__status">Credential record</span>
+            </div>
             <div className="certification-card__topline">
               <div
                 className={`certification-card__issuer-mark certification-card__issuer-mark--${certification.issuer.toLowerCase()}`}

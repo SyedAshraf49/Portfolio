@@ -63,6 +63,7 @@ export default function App() {
       <PrivacyFriendlyAnalytics />
       <div className="relative min-h-screen overflow-x-hidden bg-slate-950">
       <SkipLink />
+      <div className="site-texture" aria-hidden="true" />
 
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 z-0">

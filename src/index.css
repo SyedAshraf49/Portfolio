@@ -2,11 +2,15 @@
 @import "tw-animate-css";
 
 :root {
-  --background: #1a1a2e;
+  --background: #020617;
   --foreground: #f5f5f7;
   --primary: #22d3ee;
-  --card: #2d1f4d;
-  --muted: #c8d1e0;
+  --accent-gold: #d4af37;
+  --surface: rgba(8, 22, 44, 0.56);
+  --surface-strong: rgba(2, 6, 23, 0.82);
+  --border-subtle: rgba(103, 232, 249, 0.16);
+  --card: #0b1b36;
+  --muted: #aebed2;
   --animation-iteration: infinite;
 }
 
@@ -28,6 +32,51 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Poppins', sans-serif;
+}
+
+.site-texture {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(103, 232, 249, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 232, 249, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.14), transparent 35%);
+  background-size: 4rem 4rem, 4rem 4rem, 100% 100%;
+  mask-image: linear-gradient(to bottom, black, transparent 92%);
+}
+
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+.section-shell > .rounded-2xl {
+  border-color: var(--border-subtle);
+  background: linear-gradient(145deg, rgba(8, 22, 44, 0.56), rgba(2, 6, 23, 0.74));
+  box-shadow: 0 1.25rem 3rem rgba(2, 6, 23, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.section-heading {
+  position: relative;
+  display: inline-block;
+  padding-inline: 0.5rem;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  right: 25%;
+  bottom: -0.55rem;
+  left: 25%;
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.68), transparent);
+}
+
+.section-header > .section-heading {
+  display: block;
 }
 
 /* Accessibility - Screen Reader Only */
@@ -252,6 +301,24 @@ body {
 /* Section fade-in animation */
 .section-fade-in {
   animation: sectionFadeIn 0.8s ease-out;
+}
+
+@media (max-width: 640px) {
+  .section-shell {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .section-fade-in,
+  .experience-card {
+    animation: none !important;
+  }
 }
 
 @keyframes sectionFadeIn {
