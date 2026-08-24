@@ -8,7 +8,9 @@ export interface BentoCardProps {
   description?: string;
   label?: string;
   href?: string;
+  liveLink?: string;
   image?: string;
+  techStack?: string;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
 }
@@ -27,16 +29,9 @@ export interface BentoProps {
   enableMagnetism?: boolean;
 }
 
-interface RepoStats {
-  stars: number;
-  forks: number;
-  language: string;
-  updatedAt: string;
-}
-
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '132, 0, 255';
+const DEFAULT_GLOW_COLOR = '25, 118, 210';
 const MOBILE_BREAKPOINT = 768;
 
 const cardData: BentoCardProps[] = [
@@ -46,7 +41,9 @@ const cardData: BentoCardProps[] = [
     description: 'AI safety tool focused on toxicity detection, moderation checks, and safer content workflows.',
     label: 'AI Safety',
     href: 'https://github.com/SyedAshraf49/HateSheildAI-CLI',
+    liveLink: 'https://hatesheildai-v3.onrender.com/',
     image: '/project-images/HateShieldAI.png',
+    techStack: 'Python · Flask · Flask-CORS · scikit-learn · Joblib · Pillow · Transformers · PyTorch · HTML5 · CSS3 · JavaScript',
   },
   {
     color: '#060010',
@@ -54,7 +51,9 @@ const cardData: BentoCardProps[] = [
     description: 'Machine learning project that analyzes profile inputs to recommend suitable career paths.',
     label: 'Machine Learning',
     href: 'https://github.com/SyedAshraf49/Carrer-Path-Predictor-FI',
+    liveLink: 'https://carrer-path-predictor-fi.onrender.com/',
     image: '/project-images/Career-Path-Predictor.png',
+    techStack: 'Python · Flask · scikit-learn · NumPy · pandas · HTML5 · CSS3 · JavaScript · Bootstrap · FPDF · BeautifulSoup',
   },
   {
     color: '#060010',
@@ -62,7 +61,9 @@ const cardData: BentoCardProps[] = [
     description: 'Platform concept for connecting local vendors with customers through streamlined discovery and interactions.',
     label: 'Platform',
     href: 'https://github.com/SyedAshraf49/Local-Vendor__',
+    liveLink: 'https://local-vendor-v2.vercel.app/',
     image: '/project-images/Local-Vendor.png',
+    techStack: 'React.js · TypeScript · Vite · React Context API · JavaScript · CSS · Vercel',
   },
 ];
 
@@ -108,35 +109,6 @@ const updateCardGlowProperties = (
   card.style.setProperty('--glow-y', `${relativeY}%`);
   card.style.setProperty('--glow-intensity', glow.toString());
   card.style.setProperty('--glow-radius', `${radius}px`);
-};
-
-const parseGithubRepo = (href?: string) => {
-  if (!href) {
-    return null;
-  }
-
-  const match = href.match(/github\.com\/([^/]+)\/([^/#?]+)/i);
-  if (!match) {
-    return null;
-  }
-
-  return {
-    owner: match[1],
-    repo: match[2],
-  };
-};
-
-const formatDate = (isoDate: string) => {
-  const date = new Date(isoDate);
-  if (Number.isNaN(date.getTime())) {
-    return 'Unknown';
-  }
-
-  return date.toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
 };
 
 const ParticleCard: React.FC<{
@@ -594,69 +566,6 @@ const MagicBento: React.FC<BentoProps> = ({
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
-  const [statsByHref, setStatsByHref] = useState<Record<string, RepoStats>>({});
-
-  useEffect(() => {
-    const githubCards = cardData
-      .filter((card) => !!card.href)
-      .map((card) => ({ href: card.href!, parsed: parseGithubRepo(card.href) }))
-      .filter((item) => !!item.parsed);
-
-    if (githubCards.length === 0) {
-      return;
-    }
-
-    let cancelled = false;
-
-    const loadStats = async () => {
-      const entries = await Promise.all(
-        githubCards.map(async ({ href, parsed }) => {
-          try {
-            if (!parsed) {
-              return [href, null] as const;
-            }
-            
-            const response = await fetch(`https://api.github.com/repos/${parsed.owner}/${parsed.repo}`);
-            if (!response.ok) {
-              return [href, null] as const;
-            }
-
-            const payload = await response.json();
-            return [
-              href,
-              {
-                stars: payload.stargazers_count ?? 0,
-                forks: payload.forks_count ?? 0,
-                language: payload.language ?? 'Mixed',
-                updatedAt: payload.pushed_at ?? '',
-              } as RepoStats,
-            ] as const;
-          } catch {
-            return [href, null] as const;
-          }
-        }),
-      );
-
-      if (cancelled) {
-        return;
-      }
-
-      const nextStats: Record<string, RepoStats> = {};
-      entries.forEach(([href, stats]) => {
-        if (stats) {
-          nextStats[href] = stats;
-        }
-      });
-
-      setStatsByHref(nextStats);
-    };
-
-    void loadStats();
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   return (
     <>
@@ -672,7 +581,6 @@ const MagicBento: React.FC<BentoProps> = ({
 
       <BentoCardGrid gridRef={gridRef}>
         {cardData.map((card, index) => {
-          const stats = card.href ? statsByHref[card.href] : null;
           const baseClassName = `magic-bento-card ${
             textAutoHide ? 'magic-bento-card--text-autohide' : ''
           } ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
@@ -695,41 +603,44 @@ const MagicBento: React.FC<BentoProps> = ({
               <div className="magic-bento-card__content">
                 <h2 className="magic-bento-card__title">{card.title}</h2>
                 <p className="magic-bento-card__description">{card.description}</p>
-                {stats ? (
-                  <div className="magic-bento-card__metrics">
-                    <span className="magic-bento-card__stat">
-                      <svg className="magic-bento-card__stat-icon" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
-                      </svg>
-                      {stats.stars}
-                    </span>
-                    <span className="magic-bento-card__stat">
-                      <svg className="magic-bento-card__stat-icon" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-.878a2.25 2.25 0 111.5 0v.878a2.25 2.25 0 01-2.25 2.25h-1.5v2.128a2.251 2.251 0 11-1.5 0V8.5h-1.5A2.25 2.25 0 013.5 6.25v-.878a2.25 2.25 0 111.5 0zM5 3.25a.75.75 0 100-1.5.75.75 0 000 1.5zm6 0a.75.75 0 100-1.5.75.75 0 000 1.5zm-3 8.75a.75.75 0 100-1.5.75.75 0 000 1.5z" />
-                      </svg>
-                      {stats.forks}
-                    </span>
-                    <span className="magic-bento-card__language">{stats.language}</span>
-                  </div>
-                ) : (
-                  <div className="magic-bento-card__metrics">
-                    <span>GitHub project</span>
+                {card.techStack && (
+                  <div className="magic-bento-card__tech-stack">
+                    {card.techStack}
                   </div>
                 )}
+                <div className="magic-bento-card__links">
+                  {card.href && (
+                    <a 
+                      href={card.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="magic-bento-card__link-button"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <svg className="magic-bento-card__link-icon" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                      </svg>
+                      GitHub
+                    </a>
+                  )}
+                  {card.liveLink && (
+                    <a 
+                      href={card.liveLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="magic-bento-card__link-button magic-bento-card__link-button--live"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <svg className="magic-bento-card__link-icon" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                        <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                      </svg>
+                      Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
             </>
-          );
-          const cardInner = card.href ? (
-            <a
-              href={card.href}
-              className="magic-bento-card__link"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {cardContent}
-            </a>
-          ) : (
-            cardContent
           );
           const cardProps = {
             className: baseClassName,
@@ -751,14 +662,14 @@ const MagicBento: React.FC<BentoProps> = ({
                 clickEffect={clickEffect}
                 enableMagnetism={enableMagnetism}
               >
-                {cardInner}
+                {cardContent}
               </ParticleCard>
             );
           }
 
           return (
             <div key={card.href ?? `${card.title}-${index}`} {...cardProps}>
-              {cardInner}
+              {cardContent}
             </div>
           );
         })}

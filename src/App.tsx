@@ -116,7 +116,7 @@ export default function App() {
               clickEffect
               spotlightRadius={400}
               particleCount={12}
-              glowColor="132, 0, 255"
+              glowColor="25, 118, 210"
               disableAnimations={false}
             />
           </Section>
