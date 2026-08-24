@@ -112,6 +112,8 @@ export const EXPERIENCE_DATA = [
     company: 'Chennai Metro Rail Limited',
     location: 'Nandanam, Chennai',
     period: 'Jan 2026 to Feb 2026',
+    techStack: ['Python', 'Flask', 'Flask-CORS', 'SQL', 'HTML5', 'CSS3'],
+    projectUrl: 'https://github.com/Mukesh-sankaran/Reminder-dashboard-cmrl-itwing',
     highlights: [
       'Designed and developed a staff management dashboard for the IT Wing serving 200+ employees, reducing manual data access time by ~30% through streamlined UI and optimized data retrieval.',
       'Implemented secure authentication with Role-Based Access Control (RBAC), improving access security by ~40% and enforcing department-level data segregation across the organization.',
@@ -124,7 +126,18 @@ export const EXPERIENCE_DATA = [
     title: 'Project Lead - Machine Learning & Deep Learning Intern',
     company: 'G-TEC Computer Education',
     location: 'Anna Nagar, Chennai',
-    period: 'June 2025 to july 2025',
+    period: 'June 2025 to July 2025',
+    techStack: [
+      'Python',
+      'Flask',
+      'scikit-learn (Random Forest)',
+      'Joblib',
+      'HTML5',
+      'CSS3',
+      'JavaScript',
+      'CSV-based Datasets',
+    ],
+    projectUrl: 'https://github.com/SyedAshraf49/Career-Path-Predictor-V1',
     highlights: [
       'Led the complete development of a Career Path Prediction System using ML models to help and guide students and professionals in their career decisions.',
       'Managed four teams: Frontend, Data Collection & Preprocessing, Backend, and Testing & Debugging.',

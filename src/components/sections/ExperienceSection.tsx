@@ -1,43 +1,76 @@
-import React from 'react';
+import { CalendarDays, ExternalLink, Github, MapPin } from 'lucide-react';
 import { Card, Section } from '../common';
 import { EXPERIENCE_DATA } from '@/constants/data';
+import './ExperienceSection.css';
 
 export const ExperienceSection: React.FC = () => {
   return (
     <Section id="experience" title="Experience">
-      <div className="mx-auto max-w-4xl space-y-6">
+      <div className="experience-timeline">
         {EXPERIENCE_DATA.map((experience, index) => (
-          <div 
+          <article
             key={experience.id}
-            className="experience-card"
+            className="experience-timeline__item experience-card"
             style={{ animationDelay: `${index * 0.15}s` }}
           >
-            <Card variant="experience">
-              <div className="mb-4">
-                <div className="flex flex-col justify-between gap-2 md:flex-row md:items-start">
-                  <div>
-                    <h3 className="text-lg font-semibold text-cyan-300" role="heading" aria-level={3}>
-                      {experience.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-slate-400">
-                      {experience.company} | {experience.location}
-                      {experience.period && ` • ${experience.period}`}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <ul className="space-y-2.5 text-sm leading-relaxed text-[var(--muted)]">
-                {experience.highlights.map((highlight, idx) => (
-                  <li key={idx} className="flex gap-3">
-                    <span className="mt-1 flex-shrink-0 text-cyan-400" aria-hidden="true">
-                      ●
+            <div className="experience-timeline__marker" aria-hidden="true">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+            </div>
+
+            <Card variant="experience" className="experience-card-surface">
+              <div className="experience-card__header">
+                <div className="experience-card__heading">
+                  <p className="experience-card__period">
+                    <CalendarDays size={14} aria-hidden="true" />
+                    {experience.period}
+                  </p>
+                  <h3>{experience.title}</h3>
+                  <p className="experience-card__meta">
+                    <span>{experience.company}</span>
+                    <span aria-hidden="true">·</span>
+                    <span className="experience-card__location">
+                      <MapPin size={13} aria-hidden="true" />
+                      {experience.location}
                     </span>
+                  </p>
+                </div>
+
+                {experience.projectUrl && (
+                  <a
+                    className="experience-card__project-link"
+                    href={experience.projectUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`View ${experience.title} project on GitHub`}
+                  >
+                    <Github size={15} aria-hidden="true" />
+                    <span>View project</span>
+                    <ExternalLink size={13} aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+
+              <ul className="experience-card__highlights">
+                {experience.highlights.map((highlight, highlightIndex) => (
+                  <li key={highlightIndex}>
+                    <span className="experience-card__bullet" aria-hidden="true" />
                     <span>{highlight}</span>
                   </li>
                 ))}
               </ul>
+
+              {experience.techStack && (
+                <div className="experience-card__footer">
+                  <span className="experience-card__tech-label">Tech stack</span>
+                  <div className="experience-card__tech-list" aria-label={`${experience.title} technology stack`}>
+                    {experience.techStack.map((technology) => (
+                      <span key={technology}>{technology}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </Card>
-          </div>
+          </article>
         ))}
       </div>
     </Section>
