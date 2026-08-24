@@ -1,156 +1,174 @@
-# Hi, I'm Syed Ashraf 
-### A Developer in the making | Exploring AI, ML & Backend Systems
+<div align="center">
 
-I'm a passionate full-stack developer and AI/ML enthusiast exploring the intersection of intelligent systems, production-grade backends, and beautiful, responsive frontends. I love building solutions that are not just powerful, but responsible and user-centric.
+<a href="https://github.com/SyedAshraf49/Portfolio">
+  <img src="./public/og-cover.svg" alt="Syed Ashraf S.N. portfolio" width="100%" />
+</a>
 
----
+# Syed Ashraf S.N.
 
-## 🎯 About Me
+### Full-stack developer building intelligent, safer, and production-ready software.
 
-I'm a **Software Developer | Full-Stack Developer and Tech Enthusiast** driven by curiosity and a love for solving real-world problems through code. My work spans across multiple domains:
+<p>
+  <a href="https://ashraf-portfolio49.vercel.app/">View portfolio</a>
+  ·
+  <a href="https://github.com/SyedAshraf49">GitHub profile</a>
+  ·
+  <a href="mailto:galladeashraf@gmail.com">Contact me</a>
+</p>
 
-- **🧠 AI/ML & Safety**: Building toxicity detection systems, sentiment analysis pipelines, and content moderation tools with a focus on responsible AI
-- **🔧 Backend Systems**: Designing microservices, RESTful APIs, and robust data pipelines using Python and Flask
-- **🎨 Frontend Development**: Creating intuitive, responsive user interfaces with React, TypeScript, and modern CSS
-- **⚙️ DevOps & Systems**: Automating deployments, system monitoring, and building developer-friendly CLIs
+<p>
+  <img src="https://img.shields.io/badge/Focus-AI%2FML%20Safety-0f766e?style=flat-square" alt="Focus: AI and ML safety" />
+  <img src="https://img.shields.io/badge/Stack-Python%20%7C%20React%20%7C%20Flask-1d4ed8?style=flat-square" alt="Stack: Python, React, Flask" />
+  <img src="https://img.shields.io/badge/Status-Open%20to%20opportunities-9f7d24?style=flat-square" alt="Status: Open to opportunities" />
+</p>
 
-Currently **open to work** focusing on AI safety, Machine Learning, and Backend Systems.
+</div>
 
-📄 **[Download My Resume](public/resume/asher-resume.pdf)**
+## Profile
 
-## 🎓 Education
+I am **Syed Ashraf**, a software developer focused on the intersection of **machine learning, backend systems, and user experience**. I build practical applications that turn complex workflows into clear, dependable products.
 
-**BSc Computer Science** — Graduated 2026  
-CGPA: 8.44 / 10.0
+My recent work includes AI safety tooling, prediction systems, staff-management dashboards, secure access control, REST APIs, and responsive interfaces. I care about security by default, measurable iteration, and shipping software that is useful beyond a demo.
 
----
+> **Core focus:** AI/ML safety, intelligent decision-support systems, secure backend development, and thoughtful full-stack delivery.
 
-## 🛠️ Technology Stack
+## What I build
 
-## 🛠️ Technology Stack
+| Area | Capabilities | Evidence in this portfolio |
+| --- | --- | --- |
+| **Intelligent systems** | Classification, prediction, preprocessing, model iteration, and AI-assisted workflows | Career Path Predictor and machine-learning projects |
+| **Safer systems** | Toxicity detection, content moderation, RBAC, input validation, and responsible AI | HateShieldAI and the CMRL IT Wing dashboard |
+| **Usable systems** | React interfaces, responsive layouts, REST API integration, and clear interaction design | Portfolio UI, dashboards, and project applications |
 
-### Languages & Frameworks
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+## Selected work
 
-### ML & Data Science
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![Transformers](https://img.shields.io/badge/HuggingFace-FFD100?style=for-the-badge&logo=huggingface&logoColor=black)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+| Project | Description | Links |
+| --- | --- | --- |
+| **HateShieldAI** | AI safety tooling for toxicity detection, moderation checks, and safer content workflows. | [Repository](https://github.com/SyedAshraf49/HateSheildAI-CLI) · [Live demo](https://hatesheildai-v3.onrender.com/) |
+| **Career Path Predictor** | A machine-learning application that analyzes profile inputs and recommends suitable career directions. | [Repository](https://github.com/SyedAshraf49/Carrer-Path-Predictor-FI) · [Live demo](https://carrer-path-predictor-fi.onrender.com/) |
+| **Local Vendor** | A platform concept for connecting local vendors with customers through streamlined discovery. | [Repository](https://github.com/SyedAshraf49/Local-Vendor__) · [Live demo](https://local-vendor-v2.vercel.app/) |
+| **CMRL IT Wing Reminder Dashboard** | An internal staff-management dashboard built during my software development internship. | [Repository](https://github.com/Mukesh-sankaran/Reminder-dashboard-cmrl-itwing) |
 
-### Frontend & Styling
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34C26?style=for-the-badge&logo=html5&logoColor=white)
+For the interactive experience, visit the [live portfolio](https://ashraf-portfolio49.vercel.app/).
 
-### Tools & Platforms
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+## Experience
 
----
+### Software Development Intern — IT Wing
 
-## 💼 Skills Breakdown
+**Chennai Metro Rail Limited · Nandanam, Chennai · January–February 2026**
 
-### Machine Learning & AI
-- Natural Language Processing (NLP)
-- Toxicity Detection & Content Moderation
-- Sentiment Analysis
-- Computer Vision
-- Model Fine-tuning
-- PyTorch, scikit-learn, Transformers
+Built and secured a staff-management dashboard for an IT department serving more than 200 employees. The work included streamlined data retrieval, role-based access control, department-level data segregation, backend validation, input sanitization, and exposure to enterprise government IT infrastructure.
 
-### Backend Development
-- Python, Flask, RESTful APIs
-- Microservices Architecture
-- CORS & API Integration
-- Database Design & Optimization
-- System Monitoring & Logging
+**Technology:** Python · Flask · Flask-CORS · SQL · HTML5 · CSS3
 
-### Frontend Development
-- React 18, TypeScript
-- Responsive Web Design
-- Single Page Applications (SPA)
-- Tailwind CSS, Framer Motion
-- UI/UX Implementation
+[View the project repository](https://github.com/Mukesh-sankaran/Reminder-dashboard-cmrl-itwing)
 
-### DevOps & Systems
-- CLI Design & Implementation
-- Windows Automation
-- Production Deployment
-- Testing & End-to-End Testing
-- Documentation & Code Quality
+### Project Lead — Machine Learning & Deep Learning Intern
 
----
+**G-TEC Computer Education · Anna Nagar, Chennai · June–July 2025**
 
-## 🚀 Featured Projects
+Led the development of a Career Path Prediction System and coordinated teams across frontend development, data collection and preprocessing, backend development, and testing. The project used iterative model tuning and applied classification and regression techniques to a real-world prediction problem.
 
-Visit my [interactive portfolio](https://portfolio-syedashraf.vercel.app) to explore my work.
+**Technology:** Python · Flask · scikit-learn (Random Forest) · Joblib · HTML5 · CSS3 · JavaScript · CSV-based datasets
 
----
+[View the project repository](https://github.com/SyedAshraf49/Career-Path-Predictor-V1)
 
-## 📚 How to Run This Portfolio Locally
+## Certifications
 
-```bash
-# Clone the repository
-git clone https://github.com/SyedAshraf49/Portfolio.git
-cd Portfolio
+Recent credentials across artificial intelligence, generative AI, and practical engineering include:
 
-# Install dependencies
-npm install
+- **AI Fluency Framework & Foundations** — Anthropic, July 2026
+- **AI Fluency for students** — Anthropic, July 2026
+- **Getting Started with Artificial Intelligence** — IBM, July 2025
+- **Generative AI in Action** — IBM, August 2025
+- **Code Generation and Optimization Using IBM Granite** — IBM, August 2025
+- **Data Classification and Summarization Using IBM Granite** — IBM, August 2025
 
-# Start development server
-npm run dev
+Credential IDs are displayed in the live portfolio’s Certifications section.
 
-# Build for production
-npm run build
-```
-
----
-
-## 🏗️ Project Structure
-
-This portfolio is built with a modern tech stack:
-
-- **React 18** - UI Framework
-- **TypeScript** - Type-safe JavaScript
-- **Tailwind CSS 4** - Utility-first styling
-- **Vite** - Fast build tool
-- **Framer Motion** - Smooth animations
-- **Vercel** - Hosting & CI/CD
-
-### Key Components
-- `src/components/ui/parallax-cosmic-background.tsx` - Animated cosmic background
-- `src/components/ui/dock.tsx` - Social links dock component
-- `src/App.tsx` - Main portfolio application
-
----
-
-## 🌐 Let's Connect
-
-I'm always interested in talking about **AI safety**, **backend systems**, and **web development**. Feel free to reach out:
-
-- **Email**: galladeashraf@gmail.com
-- **GitHub**: [@SyedAshraf49](https://github.com/SyedAshraf49)
-- **Portfolio**: [Live Demo](https://ashraf-portfolio49.vercel.app/)
-
----
-
-## 📖 License
-
-This portfolio is open source and available under the MIT License.
-
----
+## Technology stack
 
 <div align="center">
 
-**Made with ❤️ by Syed Ashraf**
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-0f172a?style=for-the-badge&logo=flask&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=111827)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=111827)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-*Building intelligent systems, one line of code at a time.*
+</div>
+
+| Layer | Implementation |
+| --- | --- |
+| UI | React 18 and TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS and focused component stylesheets |
+| Motion | Framer Motion, GSAP, Anime.js, and CSS transitions |
+| Icons | Lucide React |
+| Deployment | Vercel |
+
+## Run locally
+
+```bash
+git clone https://github.com/SyedAshraf49/Portfolio.git
+cd Portfolio
+npm install
+npm run dev
+```
+
+The development server is available at `http://localhost:5173`. Create a production build with:
+
+```bash
+npm run build
+```
+
+## Repository structure
+
+```text
+Portfolio/
+├── public/
+│   ├── favicon.svg
+│   ├── og-cover.svg
+│   ├── project-images/
+│   └── resume/
+├── src/
+│   ├── components/
+│   │   ├── sections/       # Experience, skills, certifications, contact
+│   │   ├── ui/              # Hero, dock, navigation, background, scrollbar
+│   │   └── common/          # Shared UI primitives
+│   ├── constants/           # Portfolio content and navigation data
+│   ├── hooks/               # Theme and contact form behavior
+│   ├── App.tsx              # Page composition
+│   └── index.css            # Global theme and layout styles
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vercel.json
+└── vite.config.ts
+```
+
+## Resume and contact
+
+- [Download résumé](./public/resume/Syed%20Ashraf%20S%20N%20Resume.pdf)
+- [Email](mailto:galladeashraf@gmail.com)
+- [GitHub](https://github.com/SyedAshraf49)
+- [LinkedIn](https://linkedin.com/in/syedashraf49)
+- [Instagram](https://www.instagram.com/asher49_)
+
+## License
+
+This project is available under the MIT License.
+
+<div align="center">
+
+<br />
+
+**Building intelligent systems with care, clarity, and purpose.**
 
 </div>
