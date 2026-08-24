@@ -1,12 +1,29 @@
-/* Skills Grid Layout */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  animation: fadeInUp 0.8s ease-out;
+/* Skills Container */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-@keyframes fadeInUp {
+/* Category Section */
+.skill-category {
+  position: relative;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.5), rgba(30, 41, 59, 0.3));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+  animation: categoryFadeIn 0.6s ease-out backwards;
+}
+
+.skill-category:nth-child(1) { animation-delay: 0.1s; }
+.skill-category:nth-child(2) { animation-delay: 0.2s; }
+.skill-category:nth-child(3) { animation-delay: 0.3s; }
+.skill-category:nth-child(4) { animation-delay: 0.4s; }
+.skill-category:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes categoryFadeIn {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -17,358 +34,419 @@
   }
 }
 
-/* Category Card with Glassmorphism */
-.skill-category-card {
-  position: relative;
-  padding: 1.75rem;
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 41, 59, 0.4));
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  overflow: hidden;
-}
-
-.skill-category-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(25, 118, 210, 0.3), rgba(56, 189, 248, 0.2));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.skill-category-card:hover::before {
-  opacity: 1;
-}
-
-/* Animated Glow Background */
-.skill-category-card__glow {
-  position: absolute;
-  inset: -50%;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(25, 118, 210, 0.15) 0%,
-    rgba(56, 189, 248, 0.08) 30%,
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  animation: rotateGlow 8s linear infinite;
-  pointer-events: none;
-}
-
-.skill-category-card--active .skill-category-card__glow {
-  opacity: 1;
-}
-
-@keyframes rotateGlow {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.skill-category-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(25, 118, 210, 0.3);
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.4),
-    0 0 60px rgba(25, 118, 210, 0.15);
+.skill-category--active {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* Category Header */
-.skill-category-card__header {
+.skill-category-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.skill-category-icon-wrapper {
+.skill-category-icon-container {
   position: relative;
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.skill-category-icon-bg {
-  position: absolute;
-  inset: 0;
-  border-radius: 1rem;
-  background: linear-gradient(135deg, rgba(25, 118, 210, 0.2), rgba(56, 189, 248, 0.1));
-  border: 1px solid rgba(25, 118, 210, 0.3);
+  border-radius: 1.25rem;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.skill-category-card:hover .skill-category-icon-bg {
-  background: linear-gradient(135deg, rgba(25, 118, 210, 0.3), rgba(56, 189, 248, 0.2));
-  border-color: rgba(25, 118, 210, 0.5);
-  box-shadow: 
-    0 4px 20px rgba(25, 118, 210, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transform: scale(1.05) rotate(5deg);
+/* Category Color Schemes */
+.skill-category-header--ai .skill-category-icon-container {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(147, 51, 234, 0.1));
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.skill-category-header--backend .skill-category-icon-container {
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.2), rgba(21, 101, 192, 0.1));
+  border: 1px solid rgba(25, 118, 210, 0.3);
+}
+
+.skill-category-header--frontend .skill-category-icon-container {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.1));
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.skill-category-header--systems .skill-category-icon-container {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.1));
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.skill-category-header--safety .skill-category-icon-container {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.1));
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.skill-category:hover .skill-category-icon-container {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .skill-category-icon {
-  position: relative;
-  color: rgba(186, 230, 253, 0.95);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 1;
+  color: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
 }
 
-.skill-category-card:hover .skill-category-icon {
-  transform: scale(1.1) rotate(-5deg);
-  filter: drop-shadow(0 0 8px rgba(25, 118, 210, 0.6));
+.skill-category:hover .skill-category-icon {
+  transform: scale(1.1);
 }
 
-.skill-category-info {
+.skill-category-title-wrapper {
   flex: 1;
 }
 
 .skill-category-title {
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: rgba(255, 255, 255, 0.95);
-  margin: 0;
-  transition: color 0.3s ease;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.02em;
 }
 
-.skill-category-card:hover .skill-category-title {
-  color: rgba(186, 230, 253, 1);
-}
-
-.skill-category-subtitle {
-  font-size: 0.8rem;
+.skill-category-count {
+  font-size: 0.875rem;
   color: rgba(148, 163, 184, 0.7);
-  margin: 0.25rem 0 0;
-  transition: color 0.3s ease;
+  margin: 0;
 }
 
-.skill-category-card:hover .skill-category-subtitle {
-  color: rgba(148, 163, 184, 0.9);
-}
-
-/* Hexagon Grid */
-.skills-hexagon-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: flex-start;
-}
-
-/* Hexagon Skill Badge */
-.skill-hexagon {
+/* Hexagon Grid - Honeycomb Pattern */
+.hexagon-grid {
   position: relative;
-  animation: hexagonReveal 0.5s ease-out backwards;
+  display: grid;
+  grid-template-columns: repeat(4, 110px);
+  gap: 10px 10px;
+  justify-content: center;
+  padding: 1rem 0;
 }
 
-@keyframes hexagonReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.8) rotate(-10deg);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-.skill-hexagon__inner {
-  position: relative;
-  padding: 0.6rem 1.25rem;
-  border-radius: 0.75rem;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.skill-hexagon__inner::before {
-  content: '';
+/* Connection Lines SVG */
+.hexagon-connections {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(25, 118, 210, 0.2),
-    rgba(56, 189, 248, 0.15)
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.skill-hexagon:hover .skill-hexagon__inner::before {
-  opacity: 1;
-}
-
-/* Hexagon Glow Effect */
-.skill-hexagon__glow {
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(
-    45deg,
-    rgba(25, 118, 210, 0.6),
-    rgba(56, 189, 248, 0.4),
-    rgba(14, 165, 233, 0.6)
-  );
-  background-size: 200% 200%;
-  opacity: 0;
-  filter: blur(8px);
-  animation: hexagonGlowShift 3s ease infinite;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-@keyframes hexagonGlowShift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.skill-hexagon--active .skill-hexagon__glow {
-  opacity: 1;
-}
-
-.skill-hexagon:hover .skill-hexagon__inner {
-  transform: translateY(-3px) scale(1.05);
-  border-color: rgba(25, 118, 210, 0.6);
-  background: linear-gradient(
-    135deg,
-    rgba(25, 118, 210, 0.25),
-    rgba(56, 189, 248, 0.15)
-  );
-  box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(25, 118, 210, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.skill-hexagon__text {
-  position: relative;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: rgba(226, 232, 240, 0.9);
-  transition: all 0.3s ease;
-  z-index: 1;
-  letter-spacing: 0.02em;
-}
-
-.skill-hexagon:hover .skill-hexagon__text {
-  color: rgba(255, 255, 255, 1);
-  text-shadow: 0 0 10px rgba(25, 118, 210, 0.5);
-}
-
-/* Active State Animation */
-.skill-hexagon--active .skill-hexagon__inner {
-  animation: hexagonPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes hexagonPulse {
-  0%, 100% {
-    box-shadow: 
-      0 8px 24px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(25, 118, 210, 0.3);
-  }
-  50% {
-    box-shadow: 
-      0 8px 24px rgba(0, 0, 0, 0.3),
-      0 0 30px rgba(25, 118, 210, 0.5);
-  }
-}
-
-/* Particle Effect on Hover */
-.skill-hexagon::after {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(
-    circle at center,
-    rgba(25, 118, 210, 0.3) 0%,
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  z-index: -2;
+  z-index: 1;
 }
 
-.skill-hexagon:hover::after {
-  opacity: 1;
-  animation: particleExpand 0.6s ease-out;
+.connection-line {
+  stroke-opacity: 0;
+  transition: stroke-opacity 0.3s ease;
+  animation: dashAnimation 2s linear infinite;
 }
 
-@keyframes particleExpand {
+.connection-line--ai { stroke: rgba(168, 85, 247, 0.6); }
+.connection-line--backend { stroke: rgba(25, 118, 210, 0.6); }
+.connection-line--frontend { stroke: rgba(56, 189, 248, 0.6); }
+.connection-line--systems { stroke: rgba(34, 197, 94, 0.6); }
+.connection-line--safety { stroke: rgba(239, 68, 68, 0.6); }
+
+.hexagon-wrapper--active ~ .hexagon-connections .connection-line,
+.hexagon-wrapper:hover ~ .hexagon-connections .connection-line {
+  stroke-opacity: 1;
+}
+
+@keyframes dashAnimation {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+/* Hexagon Wrapper */
+.hexagon-wrapper {
+  position: relative;
+  width: 100px;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: hexagonFloat 0.6s ease-out backwards;
+  z-index: 2;
+}
+
+@keyframes hexagonFloat {
   from {
-    transform: scale(0.5);
     opacity: 0;
+    transform: translateY(20px) scale(0.8);
   }
   to {
-    transform: scale(1);
     opacity: 1;
+    transform: translateY(0) scale(1);
   }
+}
+
+/* Actual Hexagon Shape */
+.hexagon {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.hexagon::before,
+.hexagon::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+}
+
+.hexagon::before {
+  bottom: 100%;
+  border-bottom: 26px solid rgba(30, 41, 59, 0.8);
+}
+
+.hexagon::after {
+  top: 100%;
+  border-top: 26px solid rgba(30, 41, 59, 0.8);
+}
+
+.hexagon-inner {
+  width: 90px;
+  height: 52px;
+  background: rgba(30, 41, 59, 0.8);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Hexagon Colors by Category */
+.hexagon--ai::before { border-bottom-color: rgba(168, 85, 247, 0.3); }
+.hexagon--ai::after { border-top-color: rgba(168, 85, 247, 0.3); }
+.hexagon--ai .hexagon-inner { background: rgba(168, 85, 247, 0.15); }
+
+.hexagon--backend::before { border-bottom-color: rgba(25, 118, 210, 0.3); }
+.hexagon--backend::after { border-top-color: rgba(25, 118, 210, 0.3); }
+.hexagon--backend .hexagon-inner { background: rgba(25, 118, 210, 0.15); }
+
+.hexagon--frontend::before { border-bottom-color: rgba(56, 189, 248, 0.3); }
+.hexagon--frontend::after { border-top-color: rgba(56, 189, 248, 0.3); }
+.hexagon--frontend .hexagon-inner { background: rgba(56, 189, 248, 0.15); }
+
+.hexagon--systems::before { border-bottom-color: rgba(34, 197, 94, 0.3); }
+.hexagon--systems::after { border-top-color: rgba(34, 197, 94, 0.3); }
+.hexagon--systems .hexagon-inner { background: rgba(34, 197, 94, 0.15); }
+
+.hexagon--safety::before { border-bottom-color: rgba(239, 68, 68, 0.3); }
+.hexagon--safety::after { border-top-color: rgba(239, 68, 68, 0.3); }
+.hexagon--safety .hexagon-inner { background: rgba(239, 68, 68, 0.15); }
+
+/* Hexagon Hover Effects */
+.hexagon-wrapper:hover .hexagon,
+.hexagon-wrapper--active .hexagon {
+  transform: scale(1.15);
+}
+
+.hexagon-wrapper:hover .hexagon--ai::before,
+.hexagon-wrapper--active .hexagon--ai::before { border-bottom-color: rgba(168, 85, 247, 0.6); }
+.hexagon-wrapper:hover .hexagon--ai::after,
+.hexagon-wrapper--active .hexagon--ai::after { border-top-color: rgba(168, 85, 247, 0.6); }
+.hexagon-wrapper:hover .hexagon--ai .hexagon-inner,
+.hexagon-wrapper--active .hexagon--ai .hexagon-inner {
+  background: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+.hexagon-wrapper:hover .hexagon--backend::before,
+.hexagon-wrapper--active .hexagon--backend::before { border-bottom-color: rgba(25, 118, 210, 0.6); }
+.hexagon-wrapper:hover .hexagon--backend::after,
+.hexagon-wrapper--active .hexagon--backend::after { border-top-color: rgba(25, 118, 210, 0.6); }
+.hexagon-wrapper:hover .hexagon--backend .hexagon-inner,
+.hexagon-wrapper--active .hexagon--backend .hexagon-inner {
+  background: rgba(25, 118, 210, 0.3);
+  box-shadow: 0 0 30px rgba(25, 118, 210, 0.4), inset 0 0 20px rgba(25, 118, 210, 0.2);
+}
+
+.hexagon-wrapper:hover .hexagon--frontend::before,
+.hexagon-wrapper--active .hexagon--frontend::before { border-bottom-color: rgba(56, 189, 248, 0.6); }
+.hexagon-wrapper:hover .hexagon--frontend::after,
+.hexagon-wrapper--active .hexagon--frontend::after { border-top-color: rgba(56, 189, 248, 0.6); }
+.hexagon-wrapper:hover .hexagon--frontend .hexagon-inner,
+.hexagon-wrapper--active .hexagon--frontend .hexagon-inner {
+  background: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4), inset 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.hexagon-wrapper:hover .hexagon--systems::before,
+.hexagon-wrapper--active .hexagon--systems::before { border-bottom-color: rgba(34, 197, 94, 0.6); }
+.hexagon-wrapper:hover .hexagon--systems::after,
+.hexagon-wrapper--active .hexagon--systems::after { border-top-color: rgba(34, 197, 94, 0.6); }
+.hexagon-wrapper:hover .hexagon--systems .hexagon-inner,
+.hexagon-wrapper--active .hexagon--systems .hexagon-inner {
+  background: rgba(34, 197, 94, 0.3);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.4), inset 0 0 20px rgba(34, 197, 94, 0.2);
+}
+
+.hexagon-wrapper:hover .hexagon--safety::before,
+.hexagon-wrapper--active .hexagon--safety::before { border-bottom-color: rgba(239, 68, 68, 0.6); }
+.hexagon-wrapper:hover .hexagon--safety::after,
+.hexagon-wrapper--active .hexagon--safety::after { border-top-color: rgba(239, 68, 68, 0.6); }
+.hexagon-wrapper:hover .hexagon--safety .hexagon-inner,
+.hexagon-wrapper--active .hexagon--safety .hexagon-inner {
+  background: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.4), inset 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+/* Hexagon Content */
+.hexagon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  position: relative;
+  z-index: 3;
+}
+
+.skill-icon {
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.hexagon-wrapper:hover .skill-icon,
+.hexagon-wrapper--active .skill-icon {
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.skill-name {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  line-height: 1.2;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.hexagon-wrapper:hover .skill-name,
+.hexagon-wrapper--active .skill-name {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Tooltip */
+.skill-tooltip {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 600;
+  z-index: 10;
+  animation: tooltipFadeIn 0.2s ease-out;
+  pointer-events: none;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.skill-tooltip--ai {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(147, 51, 234, 0.9));
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+}
+
+.skill-tooltip--backend {
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.9), rgba(21, 101, 192, 0.9));
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+}
+
+.skill-tooltip--frontend {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(14, 165, 233, 0.9));
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+}
+
+.skill-tooltip--systems {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(22, 163, 74, 0.9));
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.skill-tooltip--safety {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.9));
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.skill-tooltip-text {
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .skill-category-card {
-    padding: 1.25rem;
-  }
-
-  .skill-category-icon-wrapper {
-    width: 48px;
-    height: 48px;
-  }
-
-  .skill-category-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .skills-hexagon-grid {
-    gap: 0.5rem;
-  }
-
-  .skill-hexagon__inner {
-    padding: 0.5rem 1rem;
-  }
-
-  .skill-hexagon__text {
-    font-size: 0.8rem;
+@media (max-width: 1024px) {
+  .hexagon-grid {
+    grid-template-columns: repeat(3, 110px);
   }
 }
 
-/* Accessibility - Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  .skill-category-card,
-  .skill-hexagon__inner,
-  .skill-category-icon,
-  .skill-category-icon-bg {
-    transition: none;
-    animation: none;
+@media (max-width: 768px) {
+  .skill-category {
+    padding: 1.5rem;
   }
 
-  .skill-category-card__glow,
-  .skill-hexagon__glow {
-    animation: none;
+  .hexagon-grid {
+    grid-template-columns: repeat(2, 110px);
+    gap: 5px 5px;
+  }
+
+  .skill-category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .skill-category-icon-container {
+    width: 56px;
+    height: 56px;
+  }
+
+  .skill-category-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .skill-category-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .skill-category,
+  .hexagon-wrapper,
+  .hexagon,
+  .skill-icon,
+  .connection-line {
+    animation: none !important;
+    transition: none !important;
   }
 }
