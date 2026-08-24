@@ -1,491 +1,348 @@
-/* Skills Honeycomb Container */
 .skills-honeycomb-container {
+  --cell-size: clamp(64px, 7.8vw, 82px);
+  --cell-gap: clamp(3px, 0.55vw, 8px);
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 1.25rem clamp(0.25rem, 1vw, 1rem) 0.25rem;
 }
 
-/* Unified Honeycomb Grid - ALL Skills in ONE Cluster */
 .honeycomb-grid {
-  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem 0;
+  gap: clamp(0.15rem, 0.55vw, 0.4rem);
+  width: 100%;
+  max-width: 100%;
+  padding: 1.25rem 0.5rem;
+  overflow: visible;
 }
 
-/* Hexagon Cell - Individual Skill Container */
+.honeycomb-row {
+  display: grid;
+  grid-template-columns: repeat(9, var(--cell-size));
+  gap: var(--cell-gap);
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+}
+
+.honeycomb-row--offset {
+  transform: translateX(calc((var(--cell-size) + var(--cell-gap)) / 2));
+}
+
 .hexagon-cell {
   position: relative;
-  width: 80px;
-  height: 70px;
-  margin: -3px -3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: hexagonFloat 0.6s ease-out backwards;
-  z-index: 2;
-}
-
-/* Offset every other row for true honeycomb pattern */
-.hexagon-cell:nth-child(10n+6),
-.hexagon-cell:nth-child(10n+7),
-.hexagon-cell:nth-child(10n+8),
-.hexagon-cell:nth-child(10n+9),
-.hexagon-cell:nth-child(10n+10) {
-  margin-left: 39px;
+  width: var(--cell-size);
+  aspect-ratio: 1 / 0.866;
+  display: grid;
+  place-items: center;
+  animation: hexagonFloat 0.55s ease-out both;
 }
 
 @keyframes hexagonFloat {
   from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: translateY(0.4rem) scale(0.94);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Active Hexagon Cell */
-.hexagon-cell--active .hexagon {
-  transform: scale(1.08);
-  z-index: 10;
-}
-
-/* Actual Hexagon Shape */
 .hexagon {
-  width: 80px;
-  height: 80px;
+  --hex-color: rgba(148, 163, 184, 0.72);
+  appearance: none;
   position: relative;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  display: grid;
+  place-items: center;
+  color: inherit;
+  background: transparent;
   cursor: pointer;
-}
-
-.hexagon::before,
-.hexagon::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  left: 0;
-  transition: all 0.3s ease;
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), filter 180ms ease;
 }
 
 .hexagon::before {
-  bottom: 100%;
-  border-bottom: 23px solid rgba(30, 41, 59, 0.95);
-}
-
-.hexagon::after {
-  top: 100%;
-  border-top: 23px solid rgba(30, 41, 59, 0.95);
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--hex-color);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  opacity: 0.78;
+  transition: opacity 180ms ease;
 }
 
 .hexagon-inner {
-  width: 80px;
-  height: 46px;
-  background: rgba(30, 41, 59, 0.95);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  display: grid;
+  place-items: center;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  transition: background 180ms ease, box-shadow 180ms ease;
 }
 
-/* Hexagon Colors by Category - Color-coded like Periodic Table */
-.hexagon--ai::before { border-bottom-color: rgba(168, 85, 247, 0.3); }
-.hexagon--ai::after { border-top-color: rgba(168, 85, 247, 0.3); }
-.hexagon--ai .hexagon-inner { 
-  background: rgba(168, 85, 247, 0.15);
-  border-color: rgba(168, 85, 247, 0.3);
+.hexagon--ai {
+  --hex-color: rgba(168, 85, 247, 0.72);
 }
 
-.hexagon--backend::before { border-bottom-color: rgba(25, 118, 210, 0.3); }
-.hexagon--backend::after { border-top-color: rgba(25, 118, 210, 0.3); }
-.hexagon--backend .hexagon-inner { 
-  background: rgba(25, 118, 210, 0.15);
-  border-color: rgba(25, 118, 210, 0.3);
+.hexagon--ai .hexagon-inner {
+  background: rgba(88, 28, 135, 0.42);
 }
 
-.hexagon--frontend::before { border-bottom-color: rgba(56, 189, 248, 0.3); }
-.hexagon--frontend::after { border-top-color: rgba(56, 189, 248, 0.3); }
-.hexagon--frontend .hexagon-inner { 
-  background: rgba(56, 189, 248, 0.15);
-  border-color: rgba(56, 189, 248, 0.3);
+.hexagon--backend {
+  --hex-color: rgba(37, 99, 235, 0.72);
 }
 
-.hexagon--systems::before { border-bottom-color: rgba(34, 197, 94, 0.3); }
-.hexagon--systems::after { border-top-color: rgba(34, 197, 94, 0.3); }
-.hexagon--systems .hexagon-inner { 
-  background: rgba(34, 197, 94, 0.15);
-  border-color: rgba(34, 197, 94, 0.3);
+.hexagon--backend .hexagon-inner {
+  background: rgba(30, 58, 138, 0.45);
 }
 
-.hexagon--safety::before { border-bottom-color: rgba(239, 68, 68, 0.3); }
-.hexagon--safety::after { border-top-color: rgba(239, 68, 68, 0.3); }
-.hexagon--safety .hexagon-inner { 
-  background: rgba(239, 68, 68, 0.15);
-  border-color: rgba(239, 68, 68, 0.3);
+.hexagon--frontend {
+  --hex-color: rgba(14, 165, 233, 0.72);
 }
 
-/* Hexagon Hover Effects - Enhanced Glow */
-.hexagon-cell:hover .hexagon,
-.hexagon-cell--active .hexagon {
-  transform: scale(1.1);
-  z-index: 10;
+.hexagon--frontend .hexagon-inner {
+  background: rgba(7, 89, 133, 0.45);
 }
 
-.hexagon-cell:hover .hexagon--ai::before,
-.hexagon-cell--active .hexagon--ai::before { border-bottom-color: rgba(168, 85, 247, 0.7); }
-.hexagon-cell:hover .hexagon--ai::after,
-.hexagon-cell--active .hexagon--ai::after { border-top-color: rgba(168, 85, 247, 0.7); }
-.hexagon-cell:hover .hexagon--ai .hexagon-inner,
-.hexagon-cell--active .hexagon--ai .hexagon-inner {
-  background: rgba(168, 85, 247, 0.35);
-  border-color: rgba(168, 85, 247, 0.6);
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.2);
+.hexagon--systems {
+  --hex-color: rgba(34, 197, 94, 0.72);
 }
 
-.hexagon-cell:hover .hexagon--backend::before,
-.hexagon-cell--active .hexagon--backend::before { border-bottom-color: rgba(25, 118, 210, 0.7); }
-.hexagon-cell:hover .hexagon--backend::after,
-.hexagon-cell--active .hexagon--backend::after { border-top-color: rgba(25, 118, 210, 0.7); }
-.hexagon-cell:hover .hexagon--backend .hexagon-inner,
-.hexagon-cell--active .hexagon--backend .hexagon-inner {
-  background: rgba(25, 118, 210, 0.35);
-  border-color: rgba(25, 118, 210, 0.6);
-  box-shadow: 0 0 30px rgba(25, 118, 210, 0.5), inset 0 0 20px rgba(25, 118, 210, 0.2);
+.hexagon--systems .hexagon-inner {
+  background: rgba(20, 83, 45, 0.46);
 }
 
-.hexagon-cell:hover .hexagon--frontend::before,
-.hexagon-cell--active .hexagon--frontend::before { border-bottom-color: rgba(56, 189, 248, 0.7); }
-.hexagon-cell:hover .hexagon--frontend::after,
-.hexagon-cell--active .hexagon--frontend::after { border-top-color: rgba(56, 189, 248, 0.7); }
-.hexagon-cell:hover .hexagon--frontend .hexagon-inner,
-.hexagon-cell--active .hexagon--frontend .hexagon-inner {
-  background: rgba(56, 189, 248, 0.35);
-  border-color: rgba(56, 189, 248, 0.6);
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.5), inset 0 0 20px rgba(56, 189, 248, 0.2);
+.hexagon--safety {
+  --hex-color: rgba(239, 68, 68, 0.72);
 }
 
-.hexagon-cell:hover .hexagon--systems::before,
-.hexagon-cell--active .hexagon--systems::before { border-bottom-color: rgba(34, 197, 94, 0.7); }
-.hexagon-cell:hover .hexagon--systems::after,
-.hexagon-cell--active .hexagon--systems::after { border-top-color: rgba(34, 197, 94, 0.7); }
-.hexagon-cell:hover .hexagon--systems .hexagon-inner,
-.hexagon-cell--active .hexagon--systems .hexagon-inner {
-  background: rgba(34, 197, 94, 0.35);
-  border-color: rgba(34, 197, 94, 0.6);
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.5), inset 0 0 20px rgba(34, 197, 94, 0.2);
+.hexagon--safety .hexagon-inner {
+  background: rgba(127, 29, 29, 0.46);
 }
 
-.hexagon-cell:hover .hexagon--safety::before,
-.hexagon-cell--active .hexagon--safety::before { border-bottom-color: rgba(239, 68, 68, 0.7); }
-.hexagon-cell:hover .hexagon--safety::after,
-.hexagon-cell--active .hexagon--safety::after { border-top-color: rgba(239, 68, 68, 0.7); }
-.hexagon-cell:hover .hexagon--safety .hexagon-inner,
-.hexagon-cell--active .hexagon--safety .hexagon-inner {
-  background: rgba(239, 68, 68, 0.35);
-  border-color: rgba(239, 68, 68, 0.6);
-  box-shadow: 0 0 30px rgba(239, 68, 68, 0.5), inset 0 0 20px rgba(239, 68, 68, 0.2);
+.hexagon:hover,
+.hexagon:focus-visible {
+  z-index: 5;
+  transform: translateY(-3px) scale(1.06);
+  filter: drop-shadow(0 0 0.6rem var(--hex-color));
 }
 
-/* Hexagon Content */
+.hexagon:hover::before,
+.hexagon:focus-visible::before {
+  opacity: 1;
+}
+
+.hexagon--ai:hover .hexagon-inner,
+.hexagon--ai:focus-visible .hexagon-inner {
+  background: rgba(168, 85, 247, 0.34);
+  box-shadow: inset 0 0 1.25rem rgba(216, 180, 254, 0.2);
+}
+
+.hexagon--backend:hover .hexagon-inner,
+.hexagon--backend:focus-visible .hexagon-inner {
+  background: rgba(37, 99, 235, 0.34);
+  box-shadow: inset 0 0 1.25rem rgba(147, 197, 253, 0.2);
+}
+
+.hexagon--frontend:hover .hexagon-inner,
+.hexagon--frontend:focus-visible .hexagon-inner {
+  background: rgba(14, 165, 233, 0.34);
+  box-shadow: inset 0 0 1.25rem rgba(125, 211, 252, 0.2);
+}
+
+.hexagon--systems:hover .hexagon-inner,
+.hexagon--systems:focus-visible .hexagon-inner {
+  background: rgba(34, 197, 94, 0.34);
+  box-shadow: inset 0 0 1.25rem rgba(134, 239, 172, 0.2);
+}
+
+.hexagon--safety:hover .hexagon-inner,
+.hexagon--safety:focus-visible .hexagon-inner {
+  background: rgba(239, 68, 68, 0.34);
+  box-shadow: inset 0 0 1.25rem rgba(252, 165, 165, 0.2);
+}
+
 .hexagon-content {
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.15rem 0.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.1rem;
-  position: relative;
-  z-index: 3;
+  gap: 0.15rem;
+  text-align: center;
 }
 
 .skill-icon {
-  font-size: 1.4rem;
-  transition: all 0.3s ease;
+  flex: 0 0 auto;
+  font-size: clamp(1rem, 1.7vw, 1.4rem);
   line-height: 1;
+  transition: transform 180ms ease;
 }
 
-.hexagon-cell:hover .skill-icon,
-.hexagon-cell--active .skill-icon {
-  transform: scale(1.15) rotate(5deg);
-  filter: drop-shadow(0 0 6px currentColor);
+.hexagon:hover .skill-icon,
+.hexagon:focus-visible .skill-icon {
+  transform: scale(1.12) rotate(4deg);
 }
 
 .skill-name {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  text-align: center;
-  line-height: 1.1;
-  max-width: 70px;
+  max-width: 100%;
   overflow: hidden;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(0.52rem, 0.72vw, 0.7rem);
+  font-weight: 600;
+  line-height: 1.12;
+  text-align: center;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  transition: all 0.3s ease;
 }
 
-.hexagon-cell:hover .skill-name,
-.hexagon-cell--active .skill-name {
-  color: rgba(255, 255, 255, 1);
-  text-shadow: 0 0 8px currentColor;
+.hexagon:hover .skill-name,
+.hexagon:focus-visible .skill-name {
+  color: #fff;
+  text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.55);
 }
 
-/* Tooltip */
-.skill-tooltip {
-  position: absolute;
-  bottom: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  white-space: nowrap;
-  font-size: 0.75rem;
-  font-weight: 600;
-  z-index: 100;
-  animation: tooltipFadeIn 0.2s ease-out;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-@keyframes tooltipFadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-.skill-tooltip-category {
-  font-size: 0.65rem;
-  opacity: 0.8;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.skill-tooltip-text {
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  font-size: 0.85rem;
-}
-
-.skill-tooltip--ai {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(147, 51, 234, 0.95));
-  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.5);
-  border: 1px solid rgba(168, 85, 247, 0.7);
-}
-
-.skill-tooltip--backend {
-  background: linear-gradient(135deg, rgba(25, 118, 210, 0.95), rgba(21, 101, 192, 0.95));
-  box-shadow: 0 4px 20px rgba(25, 118, 210, 0.5);
-  border: 1px solid rgba(25, 118, 210, 0.7);
-}
-
-.skill-tooltip--frontend {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(14, 165, 233, 0.95));
-  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.5);
-  border: 1px solid rgba(56, 189, 248, 0.7);
-}
-
-.skill-tooltip--systems {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(22, 163, 74, 0.95));
-  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.5);
-  border: 1px solid rgba(34, 197, 94, 0.7);
-}
-
-.skill-tooltip--safety {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.95), rgba(220, 38, 38, 0.95));
-  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5);
-  border: 1px solid rgba(239, 68, 68, 0.7);
-}
-
-/* Skills Legend - Like Periodic Table Key */
 .skills-legend {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: 3rem;
-  padding: 1.5rem;
-  background: rgba(15, 23, 42, 0.3);
-  border-radius: 1rem;
+  gap: 0.75rem 1.35rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1.2rem 1rem;
+  background: rgba(15, 23, 42, 0.38);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
 }
 
 .legend-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.8);
-  transition: all 0.3s ease;
+  font-size: clamp(0.72rem, 1.15vw, 0.875rem);
+  white-space: nowrap;
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 .legend-item:hover {
+  color: #fff;
   transform: translateY(-2px);
-  color: rgba(255, 255, 255, 1);
 }
 
 .legend-dot {
-  width: 12px;
-  height: 12px;
+  width: 0.7rem;
+  height: 0.7rem;
+  flex: 0 0 auto;
   border-radius: 50%;
-  box-shadow: 0 0 10px currentColor;
-  transition: all 0.3s ease;
-}
-
-.legend-item:hover .legend-dot {
-  box-shadow: 0 0 20px currentColor;
-  transform: scale(1.2);
+  box-shadow: 0 0 0.6rem currentColor;
 }
 
 .legend-item--ai .legend-dot {
-  background: rgba(168, 85, 247, 0.8);
   color: rgb(168, 85, 247);
+  background: currentColor;
 }
 
 .legend-item--backend .legend-dot {
-  background: rgba(25, 118, 210, 0.8);
-  color: rgb(25, 118, 210);
+  color: rgb(37, 99, 235);
+  background: currentColor;
 }
 
 .legend-item--frontend .legend-dot {
-  background: rgba(56, 189, 248, 0.8);
-  color: rgb(56, 189, 248);
+  color: rgb(14, 165, 233);
+  background: currentColor;
 }
 
 .legend-item--systems .legend-dot {
-  background: rgba(34, 197, 94, 0.8);
   color: rgb(34, 197, 94);
+  background: currentColor;
 }
 
 .legend-item--safety .legend-dot {
-  background: rgba(239, 68, 68, 0.8);
   color: rgb(239, 68, 68);
+  background: currentColor;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .honeycomb-grid {
-    max-width: 700px;
-  }
-
-  .hexagon-cell {
-    width: 70px;
-    height: 62px;
-  }
-  
-  .hexagon {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .hexagon::before,
-  .hexagon::after {
-    border-left-width: 35px;
-    border-right-width: 35px;
-  }
-  
-  .hexagon::before {
-    border-bottom-width: 20px;
-  }
-  
-  .hexagon::after {
-    border-top-width: 20px;
-  }
-  
-  .hexagon-inner {
-    width: 70px;
-    height: 40px;
-  }
-
-  .skill-name {
-    font-size: 0.6rem;
+@media (max-width: 900px) {
+  .skills-honeycomb-container {
+    --cell-size: clamp(60px, 8.5vw, 74px);
+    --cell-gap: clamp(3px, 0.55vw, 6px);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
+  .skills-honeycomb-container {
+    padding-inline: 0;
+  }
+
   .honeycomb-grid {
-    max-width: 500px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.65rem 0.35rem;
+    padding-inline: 0;
+  }
+
+  .honeycomb-row {
+    display: contents;
+  }
+
+  .honeycomb-row--offset {
+    transform: none;
   }
 
   .hexagon-cell {
-    width: 60px;
-    height: 53px;
-    margin: -3px -3px;
-  }
-
-  .hexagon-cell:nth-child(10n+6),
-  .hexagon-cell:nth-child(10n+7),
-  .hexagon-cell:nth-child(10n+8),
-  .hexagon-cell:nth-child(10n+9),
-  .hexagon-cell:nth-child(10n+10) {
-    margin-left: 30px;
-  }
-
-  .hexagon {
-    width: 60px;
-    height: 60px;
-  }
-
-  .hexagon::before,
-  .hexagon::after {
-    border-left-width: 30px;
-    border-right-width: 30px;
-  }
-
-  .hexagon::before {
-    border-bottom-width: 17px;
-  }
-
-  .hexagon::after {
-    border-top-width: 17px;
-  }
-
-  .hexagon-inner {
-    width: 60px;
-    height: 34px;
-  }
-
-  .skill-icon {
-    font-size: 1.1rem;
-  }
-
-  .skill-name {
-    font-size: 0.55rem;
+    width: 100%;
+    max-width: 74px;
+    justify-self: center;
   }
 
   .skills-legend {
-    gap: 1rem;
-    padding: 1rem;
+    gap: 0.75rem 1rem;
+    padding: 1rem 0.75rem;
   }
 
   .legend-item {
-    font-size: 0.75rem;
+    flex: 1 1 8.5rem;
   }
 }
 
-/* Reduced Motion */
+@media (max-width: 420px) {
+  .honeycomb-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.7rem 0.3rem;
+  }
+
+  .hexagon-cell {
+    max-width: 78px;
+  }
+
+  .skills-legend {
+    justify-content: flex-start;
+  }
+
+  .legend-item {
+    flex-basis: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hexagon-cell,
   .hexagon,
   .skill-icon,
-  .legend-dot {
+  .legend-item {
     animation: none !important;
     transition: none !important;
   }
