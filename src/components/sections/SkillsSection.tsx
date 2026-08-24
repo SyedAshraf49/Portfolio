@@ -122,9 +122,6 @@ export const SkillsSection: React.FC = () => {
                     className={`hexagon-wrapper ${hoveredSkill === item ? 'hexagon-wrapper--active' : ''}`}
                     style={{ 
                       animationDelay: `${index * 0.05}s`,
-                      gridColumn: (index % 4) + 1,
-                      gridRow: Math.floor(index / 4) + 1,
-                      marginTop: index % 2 === 1 ? '47.5px' : '0'
                     }}
                     onMouseEnter={() => setHoveredSkill(item)}
                     onMouseLeave={() => setHoveredSkill(null)}
