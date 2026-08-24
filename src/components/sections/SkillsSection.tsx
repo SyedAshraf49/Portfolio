@@ -1,44 +1,49 @@
 import React, { useState } from 'react';
-import { Section, Badge } from '../common';
+import { Section } from '../common';
 import { SKILL_GROUPS } from '@/constants/data';
 import './SkillsSection.css';
 
 export const SkillsSection: React.FC = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   return (
     <Section id="skills" title="Skills">
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <div className="skills-grid">
         {SKILL_GROUPS.map(({ icon: Icon, title, items }) => (
           <article
             key={title}
-            className="skill-card rounded-2xl border border-white/10 bg-black/25 p-5 transition hover:border-cyan-400/40 hover:shadow-[0_0_18px_rgba(74,144,226,0.2)]"
+            className={`skill-category-card ${hoveredCategory === title ? 'skill-category-card--active' : ''}`}
+            onMouseEnter={() => setHoveredCategory(title)}
+            onMouseLeave={() => setHoveredCategory(null)}
             role="region"
             aria-label={`${title} skills`}
           >
-            <div className="mb-4 flex items-center gap-3">
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-cyan-400/10 text-cyan-300 ring-1 ring-cyan-300/20 transition-all duration-300 skill-icon">
-                <Icon size={20} aria-hidden="true" />
+            <div className="skill-category-card__glow" />
+            <div className="skill-category-card__header">
+              <div className="skill-category-icon-wrapper">
+                <div className="skill-category-icon-bg" />
+                <Icon className="skill-category-icon" size={24} aria-hidden="true" />
               </div>
-              <div>
-                <h3 className="text-base font-semibold text-white">{title}</h3>
-                <p className="text-xs text-slate-400">Selected capabilities</p>
+              <div className="skill-category-info">
+                <h3 className="skill-category-title">{title}</h3>
+                <p className="skill-category-subtitle">{items.length} technologies</p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {items.map((item) => (
+            
+            <div className="skills-hexagon-grid">
+              {items.map((item, index) => (
                 <div
                   key={item}
-                  className="skill-badge-wrapper"
+                  className={`skill-hexagon ${hoveredSkill === item ? 'skill-hexagon--active' : ''}`}
+                  style={{ animationDelay: `${index * 0.05}s` }}
                   onMouseEnter={() => setHoveredSkill(item)}
                   onMouseLeave={() => setHoveredSkill(null)}
                 >
-                  <Badge
-                    variant="default"
-                    className={`skill-badge ${hoveredSkill === item ? 'skill-badge--active' : ''}`}
-                  >
-                    {item}
-                  </Badge>
+                  <div className="skill-hexagon__inner">
+                    <div className="skill-hexagon__glow" />
+                    <span className="skill-hexagon__text">{item}</span>
+                  </div>
                 </div>
               ))}
             </div>
