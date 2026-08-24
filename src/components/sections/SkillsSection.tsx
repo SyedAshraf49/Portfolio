@@ -3,24 +3,19 @@ import { Section } from '../common';
 import { SKILL_GROUPS } from '@/constants/data';
 import './SkillsSection.css';
 
-// Skill icons mapping - using simple SVG shapes for now, can be replaced with actual logos
+// Skill icons mapping
 const getSkillIcon = (skill: string) => {
   const skillLower = skill.toLowerCase();
   
-  // Programming Languages
   if (skillLower.includes('python')) return '🐍';
   if (skillLower.includes('javascript')) return 'JS';
   if (skillLower.includes('typescript')) return 'TS';
   if (skillLower.includes('html')) return '<>';
   if (skillLower.includes('css')) return '🎨';
-  
-  // Frameworks & Libraries
   if (skillLower.includes('react')) return '⚛️';
   if (skillLower.includes('flask')) return '🌶️';
   if (skillLower.includes('pytorch')) return '🔥';
   if (skillLower.includes('transformers')) return '🤖';
-  
-  // Tools & Concepts
   if (skillLower.includes('api')) return '🔌';
   if (skillLower.includes('nlp')) return '💬';
   if (skillLower.includes('vision')) return '👁️';
@@ -32,7 +27,6 @@ const getSkillIcon = (skill: string) => {
   if (skillLower.includes('documentation')) return '📄';
   if (skillLower.includes('moderation')) return '🛡️';
   
-  // Default
   return '◆';
 };
 
@@ -46,106 +40,74 @@ const getCategoryColor = (title: string) => {
   return 'default';
 };
 
-// Check if skills are related (for connection lines)
-const areSkillsRelated = (skill1: string, skill2: string) => {
-  const related = [
-    ['Python', 'Flask', 'PyTorch', 'scikit-learn'],
-    ['React', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3'],
-    ['NLP', 'Transformers', 'Sentiment Analysis', 'Toxicity Detection'],
-    ['RESTful APIs', 'Flask', 'Microservices', 'CORS'],
-    ['Testing', 'End-to-end Testing', 'Documentation'],
-  ];
-  
-  return related.some(group => 
-    group.some(s => skill1.includes(s)) && group.some(s => skill2.includes(s))
-  );
-};
-
 export const SkillsSection: React.FC = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+
+  // Flatten all skills with their categories into one array
+  const allSkills = SKILL_GROUPS.flatMap(({ title, items }) =>
+    items.map(item => ({
+      name: item,
+      category: getCategoryColor(title),
+      categoryName: title
+    }))
+  );
 
   return (
     <Section id="skills" title="Skills & Technologies">
-      <div className="skills-container">
-        {SKILL_GROUPS.map(({ icon: Icon, title, items }) => {
-          const categoryColor = getCategoryColor(title);
-          
-          return (
+      <div className="skills-honeycomb-container">
+        <div className="honeycomb-grid">
+          {allSkills.map((skill, index) => (
             <div
-              key={title}
-              className={`skill-category ${hoveredCategory === title ? 'skill-category--active' : ''}`}
-              onMouseEnter={() => setHoveredCategory(title)}
-              onMouseLeave={() => setHoveredCategory(null)}
+              key={`${skill.name}-${index}`}
+              className={`hexagon-cell ${hoveredSkill === skill.name ? 'hexagon-cell--active' : ''}`}
+              style={{ 
+                animationDelay: `${index * 0.03}s`,
+              }}
+              onMouseEnter={() => setHoveredSkill(skill.name)}
+              onMouseLeave={() => setHoveredSkill(null)}
             >
-              <div className={`skill-category-header skill-category-header--${categoryColor}`}>
-                <div className="skill-category-icon-container">
-                  <Icon className="skill-category-icon" size={28} />
-                </div>
-                <div className="skill-category-title-wrapper">
-                  <h3 className="skill-category-title">{title}</h3>
-                  <p className="skill-category-count">{items.length} skills</p>
-                </div>
-              </div>
-
-              <div className="hexagon-grid">
-                <svg className="hexagon-connections" aria-hidden="true">
-                  {items.map((skill1, i) => 
-                    items.slice(i + 1).map((skill2, j) => {
-                      if (areSkillsRelated(skill1, skill2) && (hoveredSkill === skill1 || hoveredSkill === skill2)) {
-                        const x1 = (i % 4) * 110 + 55;
-                        const y1 = Math.floor(i / 4) * 95 + (i % 2 === 1 ? 47.5 : 0) + 47.5;
-                        const x2 = ((i + j + 1) % 4) * 110 + 55;
-                        const y2 = Math.floor((i + j + 1) / 4) * 95 + ((i + j + 1) % 2 === 1 ? 47.5 : 0) + 47.5;
-                        
-                        return (
-                          <line
-                            key={`${i}-${j}`}
-                            x1={x1}
-                            y1={y1}
-                            x2={x2}
-                            y2={y2}
-                            className={`connection-line connection-line--${categoryColor}`}
-                            strokeWidth="2"
-                            strokeDasharray="5,5"
-                          />
-                        );
-                      }
-                      return null;
-                    })
-                  )}
-                </svg>
-
-                {items.map((item, index) => (
-                  <div
-                    key={item}
-                    className={`hexagon-wrapper ${hoveredSkill === item ? 'hexagon-wrapper--active' : ''}`}
-                    style={{ 
-                      animationDelay: `${index * 0.05}s`,
-                    }}
-                    onMouseEnter={() => setHoveredSkill(item)}
-                    onMouseLeave={() => setHoveredSkill(null)}
-                  >
-                    <div className={`hexagon hexagon--${categoryColor}`}>
-                      <div className="hexagon-inner">
-                        <div className="hexagon-content">
-                          <span className="skill-icon">{getSkillIcon(item)}</span>
-                          <span className="skill-name">{item}</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {hoveredSkill === item && (
-                      <div className={`skill-tooltip skill-tooltip--${categoryColor}`}>
-                        <span className="skill-tooltip-text">{item}</span>
-                      </div>
-                    )}
+              <div className={`hexagon hexagon--${skill.category}`}>
+                <div className="hexagon-inner">
+                  <div className="hexagon-content">
+                    <span className="skill-icon">{getSkillIcon(skill.name)}</span>
+                    <span className="skill-name">{skill.name}</span>
                   </div>
-                ))}
+                </div>
               </div>
+              
+              {hoveredSkill === skill.name && (
+                <div className={`skill-tooltip skill-tooltip--${skill.category}`}>
+                  <span className="skill-tooltip-category">{skill.categoryName}</span>
+                  <span className="skill-tooltip-text">{skill.name}</span>
+                </div>
+              )}
             </div>
-          );
-        })}
+          ))}
+        </div>
+
+        {/* Legend */}
+        <div className="skills-legend">
+          <div className="legend-item legend-item--ai">
+            <span className="legend-dot"></span>
+            <span>Machine Learning & AI</span>
+          </div>
+          <div className="legend-item legend-item--backend">
+            <span className="legend-dot"></span>
+            <span>Backend Development</span>
+          </div>
+          <div className="legend-item legend-item--frontend">
+            <span className="legend-dot"></span>
+            <span>Frontend Development</span>
+          </div>
+          <div className="legend-item legend-item--systems">
+            <span className="legend-dot"></span>
+            <span>Systems & DevOps</span>
+          </div>
+          <div className="legend-item legend-item--safety">
+            <span className="legend-dot"></span>
+            <span>Safety & Intelligence</span>
+          </div>
+        </div>
       </div>
     </Section>
   );

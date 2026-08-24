@@ -1,170 +1,23 @@
-/* Skills Container */
-.skills-container {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+/* Skills Honeycomb Container */
+.skills-honeycomb-container {
+  width: 100%;
+  padding: 2rem 1rem;
 }
 
-/* Category Section */
-.skill-category {
-  position: relative;
-  padding: 2rem;
-  border-radius: 1.5rem;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.5), rgba(30, 41, 59, 0.3));
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
-  transition: all 0.4s ease;
-  animation: categoryFadeIn 0.6s ease-out backwards;
-}
-
-.skill-category:nth-child(1) { animation-delay: 0.1s; }
-.skill-category:nth-child(2) { animation-delay: 0.2s; }
-.skill-category:nth-child(3) { animation-delay: 0.3s; }
-.skill-category:nth-child(4) { animation-delay: 0.4s; }
-.skill-category:nth-child(5) { animation-delay: 0.5s; }
-
-@keyframes categoryFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.skill-category--active {
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-/* Category Header */
-.skill-category-header {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.skill-category-icon-container {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1.25rem;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Category Color Schemes */
-.skill-category-header--ai .skill-category-icon-container {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(147, 51, 234, 0.1));
-  border: 1px solid rgba(168, 85, 247, 0.3);
-}
-
-.skill-category-header--backend .skill-category-icon-container {
-  background: linear-gradient(135deg, rgba(25, 118, 210, 0.2), rgba(21, 101, 192, 0.1));
-  border: 1px solid rgba(25, 118, 210, 0.3);
-}
-
-.skill-category-header--frontend .skill-category-icon-container {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.1));
-  border: 1px solid rgba(56, 189, 248, 0.3);
-}
-
-.skill-category-header--systems .skill-category-icon-container {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(22, 163, 74, 0.1));
-  border: 1px solid rgba(34, 197, 94, 0.3);
-}
-
-.skill-category-header--safety .skill-category-icon-container {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.1));
-  border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.skill-category:hover .skill-category-icon-container {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.skill-category-icon {
-  color: rgba(255, 255, 255, 0.95);
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-  transition: all 0.3s ease;
-}
-
-.skill-category:hover .skill-category-icon {
-  transform: scale(1.1);
-}
-
-.skill-category-title-wrapper {
-  flex: 1;
-}
-
-.skill-category-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.95);
-  margin: 0 0 0.25rem 0;
-  letter-spacing: -0.02em;
-}
-
-.skill-category-count {
-  font-size: 0.875rem;
-  color: rgba(148, 163, 184, 0.7);
-  margin: 0;
-}
-
-/* Hexagon Grid - True Honeycomb Pattern (Overlapping) */
-.hexagon-grid {
+/* Unified Honeycomb Grid - ALL Skills in ONE Cluster */
+.honeycomb-grid {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem 0;
-  max-width: 100%;
+  align-items: center;
+  max-width: 900px;
   margin: 0 auto;
+  padding: 2rem 0;
 }
 
-/* Connection Lines SVG */
-.hexagon-connections {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.connection-line {
-  stroke-opacity: 0;
-  transition: stroke-opacity 0.3s ease;
-  animation: dashAnimation 2s linear infinite;
-}
-
-.connection-line--ai { stroke: rgba(168, 85, 247, 0.6); }
-.connection-line--backend { stroke: rgba(25, 118, 210, 0.6); }
-.connection-line--frontend { stroke: rgba(56, 189, 248, 0.6); }
-.connection-line--systems { stroke: rgba(34, 197, 94, 0.6); }
-.connection-line--safety { stroke: rgba(239, 68, 68, 0.6); }
-
-.hexagon-wrapper--active ~ .hexagon-connections .connection-line,
-.hexagon-wrapper:hover ~ .hexagon-connections .connection-line {
-  stroke-opacity: 1;
-}
-
-@keyframes dashAnimation {
-  to {
-    stroke-dashoffset: -20;
-  }
-}
-
-/* Hexagon Wrapper - Overlapping Layout */
-.hexagon-wrapper {
+/* Hexagon Cell - Individual Skill Container */
+.hexagon-cell {
   position: relative;
   width: 58px;
   height: 50px;
@@ -176,12 +29,14 @@
   z-index: 2;
 }
 
-/* Offset every other row for honeycomb pattern */
-.hexagon-wrapper:nth-child(8n+5),
-.hexagon-wrapper:nth-child(8n+6),
-.hexagon-wrapper:nth-child(8n+7),
-.hexagon-wrapper:nth-child(8n+8) {
-  margin-left: 26px;
+/* Offset every other row for true honeycomb pattern */
+.hexagon-cell:nth-child(12n+7),
+.hexagon-cell:nth-child(12n+8),
+.hexagon-cell:nth-child(12n+9),
+.hexagon-cell:nth-child(12n+10),
+.hexagon-cell:nth-child(12n+11),
+.hexagon-cell:nth-child(12n+12) {
+  margin-left: 28px;
 }
 
 @keyframes hexagonFloat {
@@ -195,7 +50,13 @@
   }
 }
 
-/* Actual Hexagon Shape - Overlapping */
+/* Active Hexagon Cell */
+.hexagon-cell--active .hexagon {
+  transform: scale(1.08);
+  z-index: 10;
+}
+
+/* Actual Hexagon Shape */
 .hexagon {
   width: 58px;
   height: 58px;
@@ -212,6 +73,7 @@
   border-left: 29px solid transparent;
   border-right: 29px solid transparent;
   left: 0;
+  transition: all 0.3s ease;
 }
 
 .hexagon::before {
@@ -237,81 +99,102 @@
   transition: all 0.3s ease;
 }
 
-/* Hexagon Colors by Category */
+/* Hexagon Colors by Category - Color-coded like Periodic Table */
 .hexagon--ai::before { border-bottom-color: rgba(168, 85, 247, 0.3); }
 .hexagon--ai::after { border-top-color: rgba(168, 85, 247, 0.3); }
-.hexagon--ai .hexagon-inner { background: rgba(168, 85, 247, 0.15); }
+.hexagon--ai .hexagon-inner { 
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.3);
+}
 
 .hexagon--backend::before { border-bottom-color: rgba(25, 118, 210, 0.3); }
 .hexagon--backend::after { border-top-color: rgba(25, 118, 210, 0.3); }
-.hexagon--backend .hexagon-inner { background: rgba(25, 118, 210, 0.15); }
+.hexagon--backend .hexagon-inner { 
+  background: rgba(25, 118, 210, 0.15);
+  border-color: rgba(25, 118, 210, 0.3);
+}
 
 .hexagon--frontend::before { border-bottom-color: rgba(56, 189, 248, 0.3); }
 .hexagon--frontend::after { border-top-color: rgba(56, 189, 248, 0.3); }
-.hexagon--frontend .hexagon-inner { background: rgba(56, 189, 248, 0.15); }
+.hexagon--frontend .hexagon-inner { 
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.3);
+}
 
 .hexagon--systems::before { border-bottom-color: rgba(34, 197, 94, 0.3); }
 .hexagon--systems::after { border-top-color: rgba(34, 197, 94, 0.3); }
-.hexagon--systems .hexagon-inner { background: rgba(34, 197, 94, 0.15); }
+.hexagon--systems .hexagon-inner { 
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.3);
+}
 
 .hexagon--safety::before { border-bottom-color: rgba(239, 68, 68, 0.3); }
 .hexagon--safety::after { border-top-color: rgba(239, 68, 68, 0.3); }
-.hexagon--safety .hexagon-inner { background: rgba(239, 68, 68, 0.15); }
-
-/* Hexagon Hover Effects */
-.hexagon-wrapper:hover .hexagon,
-.hexagon-wrapper--active .hexagon {
-  transform: scale(1.08);
+.hexagon--safety .hexagon-inner { 
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
-.hexagon-wrapper:hover .hexagon--ai::before,
-.hexagon-wrapper--active .hexagon--ai::before { border-bottom-color: rgba(168, 85, 247, 0.6); }
-.hexagon-wrapper:hover .hexagon--ai::after,
-.hexagon-wrapper--active .hexagon--ai::after { border-top-color: rgba(168, 85, 247, 0.6); }
-.hexagon-wrapper:hover .hexagon--ai .hexagon-inner,
-.hexagon-wrapper--active .hexagon--ai .hexagon-inner {
-  background: rgba(168, 85, 247, 0.3);
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(168, 85, 247, 0.2);
+/* Hexagon Hover Effects - Enhanced Glow */
+.hexagon-cell:hover .hexagon,
+.hexagon-cell--active .hexagon {
+  transform: scale(1.1);
+  z-index: 10;
 }
 
-.hexagon-wrapper:hover .hexagon--backend::before,
-.hexagon-wrapper--active .hexagon--backend::before { border-bottom-color: rgba(25, 118, 210, 0.6); }
-.hexagon-wrapper:hover .hexagon--backend::after,
-.hexagon-wrapper--active .hexagon--backend::after { border-top-color: rgba(25, 118, 210, 0.6); }
-.hexagon-wrapper:hover .hexagon--backend .hexagon-inner,
-.hexagon-wrapper--active .hexagon--backend .hexagon-inner {
-  background: rgba(25, 118, 210, 0.3);
-  box-shadow: 0 0 30px rgba(25, 118, 210, 0.4), inset 0 0 20px rgba(25, 118, 210, 0.2);
+.hexagon-cell:hover .hexagon--ai::before,
+.hexagon-cell--active .hexagon--ai::before { border-bottom-color: rgba(168, 85, 247, 0.7); }
+.hexagon-cell:hover .hexagon--ai::after,
+.hexagon-cell--active .hexagon--ai::after { border-top-color: rgba(168, 85, 247, 0.7); }
+.hexagon-cell:hover .hexagon--ai .hexagon-inner,
+.hexagon-cell--active .hexagon--ai .hexagon-inner {
+  background: rgba(168, 85, 247, 0.35);
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.2);
 }
 
-.hexagon-wrapper:hover .hexagon--frontend::before,
-.hexagon-wrapper--active .hexagon--frontend::before { border-bottom-color: rgba(56, 189, 248, 0.6); }
-.hexagon-wrapper:hover .hexagon--frontend::after,
-.hexagon-wrapper--active .hexagon--frontend::after { border-top-color: rgba(56, 189, 248, 0.6); }
-.hexagon-wrapper:hover .hexagon--frontend .hexagon-inner,
-.hexagon-wrapper--active .hexagon--frontend .hexagon-inner {
-  background: rgba(56, 189, 248, 0.3);
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4), inset 0 0 20px rgba(56, 189, 248, 0.2);
+.hexagon-cell:hover .hexagon--backend::before,
+.hexagon-cell--active .hexagon--backend::before { border-bottom-color: rgba(25, 118, 210, 0.7); }
+.hexagon-cell:hover .hexagon--backend::after,
+.hexagon-cell--active .hexagon--backend::after { border-top-color: rgba(25, 118, 210, 0.7); }
+.hexagon-cell:hover .hexagon--backend .hexagon-inner,
+.hexagon-cell--active .hexagon--backend .hexagon-inner {
+  background: rgba(25, 118, 210, 0.35);
+  border-color: rgba(25, 118, 210, 0.6);
+  box-shadow: 0 0 30px rgba(25, 118, 210, 0.5), inset 0 0 20px rgba(25, 118, 210, 0.2);
 }
 
-.hexagon-wrapper:hover .hexagon--systems::before,
-.hexagon-wrapper--active .hexagon--systems::before { border-bottom-color: rgba(34, 197, 94, 0.6); }
-.hexagon-wrapper:hover .hexagon--systems::after,
-.hexagon-wrapper--active .hexagon--systems::after { border-top-color: rgba(34, 197, 94, 0.6); }
-.hexagon-wrapper:hover .hexagon--systems .hexagon-inner,
-.hexagon-wrapper--active .hexagon--systems .hexagon-inner {
-  background: rgba(34, 197, 94, 0.3);
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.4), inset 0 0 20px rgba(34, 197, 94, 0.2);
+.hexagon-cell:hover .hexagon--frontend::before,
+.hexagon-cell--active .hexagon--frontend::before { border-bottom-color: rgba(56, 189, 248, 0.7); }
+.hexagon-cell:hover .hexagon--frontend::after,
+.hexagon-cell--active .hexagon--frontend::after { border-top-color: rgba(56, 189, 248, 0.7); }
+.hexagon-cell:hover .hexagon--frontend .hexagon-inner,
+.hexagon-cell--active .hexagon--frontend .hexagon-inner {
+  background: rgba(56, 189, 248, 0.35);
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.5), inset 0 0 20px rgba(56, 189, 248, 0.2);
 }
 
-.hexagon-wrapper:hover .hexagon--safety::before,
-.hexagon-wrapper--active .hexagon--safety::before { border-bottom-color: rgba(239, 68, 68, 0.6); }
-.hexagon-wrapper:hover .hexagon--safety::after,
-.hexagon-wrapper--active .hexagon--safety::after { border-top-color: rgba(239, 68, 68, 0.6); }
-.hexagon-wrapper:hover .hexagon--safety .hexagon-inner,
-.hexagon-wrapper--active .hexagon--safety .hexagon-inner {
-  background: rgba(239, 68, 68, 0.3);
-  box-shadow: 0 0 30px rgba(239, 68, 68, 0.4), inset 0 0 20px rgba(239, 68, 68, 0.2);
+.hexagon-cell:hover .hexagon--systems::before,
+.hexagon-cell--active .hexagon--systems::before { border-bottom-color: rgba(34, 197, 94, 0.7); }
+.hexagon-cell:hover .hexagon--systems::after,
+.hexagon-cell--active .hexagon--systems::after { border-top-color: rgba(34, 197, 94, 0.7); }
+.hexagon-cell:hover .hexagon--systems .hexagon-inner,
+.hexagon-cell--active .hexagon--systems .hexagon-inner {
+  background: rgba(34, 197, 94, 0.35);
+  border-color: rgba(34, 197, 94, 0.6);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.5), inset 0 0 20px rgba(34, 197, 94, 0.2);
+}
+
+.hexagon-cell:hover .hexagon--safety::before,
+.hexagon-cell--active .hexagon--safety::before { border-bottom-color: rgba(239, 68, 68, 0.7); }
+.hexagon-cell:hover .hexagon--safety::after,
+.hexagon-cell--active .hexagon--safety::after { border-top-color: rgba(239, 68, 68, 0.7); }
+.hexagon-cell:hover .hexagon--safety .hexagon-inner,
+.hexagon-cell--active .hexagon--safety .hexagon-inner {
+  background: rgba(239, 68, 68, 0.35);
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.5), inset 0 0 20px rgba(239, 68, 68, 0.2);
 }
 
 /* Hexagon Content */
@@ -331,8 +214,8 @@
   line-height: 1;
 }
 
-.hexagon-wrapper:hover .skill-icon,
-.hexagon-wrapper--active .skill-icon {
+.hexagon-cell:hover .skill-icon,
+.hexagon-cell--active .skill-icon {
   transform: scale(1.15) rotate(5deg);
   filter: drop-shadow(0 0 6px currentColor);
 }
@@ -352,8 +235,8 @@
   transition: all 0.3s ease;
 }
 
-.hexagon-wrapper:hover .skill-name,
-.hexagon-wrapper--active .skill-name {
+.hexagon-cell:hover .skill-name,
+.hexagon-cell--active .skill-name {
   color: rgba(255, 255, 255, 1);
   text-shadow: 0 0 8px currentColor;
 }
@@ -361,17 +244,21 @@
 /* Tooltip */
 .skill-tooltip {
   position: absolute;
-  bottom: -35px;
+  bottom: -45px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   white-space: nowrap;
   font-size: 0.75rem;
   font-weight: 600;
-  z-index: 10;
+  z-index: 100;
   animation: tooltipFadeIn 0.2s ease-out;
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 @keyframes tooltipFadeIn {
@@ -385,39 +272,121 @@
   }
 }
 
-.skill-tooltip--ai {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.9), rgba(147, 51, 234, 0.9));
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
-}
-
-.skill-tooltip--backend {
-  background: linear-gradient(135deg, rgba(25, 118, 210, 0.9), rgba(21, 101, 192, 0.9));
-  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
-}
-
-.skill-tooltip--frontend {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(14, 165, 233, 0.9));
-  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
-}
-
-.skill-tooltip--systems {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(22, 163, 74, 0.9));
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
-}
-
-.skill-tooltip--safety {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.9));
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+.skill-tooltip-category {
+  font-size: 0.65rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .skill-tooltip-text {
   color: white;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: 0.85rem;
+}
+
+.skill-tooltip--ai {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(147, 51, 234, 0.95));
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.5);
+  border: 1px solid rgba(168, 85, 247, 0.7);
+}
+
+.skill-tooltip--backend {
+  background: linear-gradient(135deg, rgba(25, 118, 210, 0.95), rgba(21, 101, 192, 0.95));
+  box-shadow: 0 4px 20px rgba(25, 118, 210, 0.5);
+  border: 1px solid rgba(25, 118, 210, 0.7);
+}
+
+.skill-tooltip--frontend {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(14, 165, 233, 0.95));
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.7);
+}
+
+.skill-tooltip--systems {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(22, 163, 74, 0.95));
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.5);
+  border: 1px solid rgba(34, 197, 94, 0.7);
+}
+
+.skill-tooltip--safety {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.95), rgba(220, 38, 38, 0.95));
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5);
+  border: 1px solid rgba(239, 68, 68, 0.7);
+}
+
+/* Skills Legend - Like Periodic Table Key */
+.skills-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.legend-item:hover {
+  transform: translateY(-2px);
+  color: rgba(255, 255, 255, 1);
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+  transition: all 0.3s ease;
+}
+
+.legend-item:hover .legend-dot {
+  box-shadow: 0 0 20px currentColor;
+  transform: scale(1.2);
+}
+
+.legend-item--ai .legend-dot {
+  background: rgba(168, 85, 247, 0.8);
+  color: rgb(168, 85, 247);
+}
+
+.legend-item--backend .legend-dot {
+  background: rgba(25, 118, 210, 0.8);
+  color: rgb(25, 118, 210);
+}
+
+.legend-item--frontend .legend-dot {
+  background: rgba(56, 189, 248, 0.8);
+  color: rgb(56, 189, 248);
+}
+
+.legend-item--systems .legend-dot {
+  background: rgba(34, 197, 94, 0.8);
+  color: rgb(34, 197, 94);
+}
+
+.legend-item--safety .legend-dot {
+  background: rgba(239, 68, 68, 0.8);
+  color: rgb(239, 68, 68);
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .hexagon-wrapper {
+  .honeycomb-grid {
+    max-width: 700px;
+  }
+
+  .hexagon-cell {
     width: 55px;
     height: 48px;
   }
@@ -448,14 +417,23 @@
 }
 
 @media (max-width: 768px) {
-  .skill-category {
-    padding: 1.5rem;
+  .honeycomb-grid {
+    max-width: 500px;
   }
 
-  .hexagon-wrapper {
+  .hexagon-cell {
     width: 50px;
     height: 44px;
     margin: -3px -3px;
+  }
+
+  .hexagon-cell:nth-child(12n+7),
+  .hexagon-cell:nth-child(12n+8),
+  .hexagon-cell:nth-child(12n+9),
+  .hexagon-cell:nth-child(12n+10),
+  .hexagon-cell:nth-child(12n+11),
+  .hexagon-cell:nth-child(12n+12) {
+    margin-left: 24px;
   }
 
   .hexagon {
@@ -490,34 +468,22 @@
     font-size: 0.45rem;
   }
 
-  .skill-category-header {
-    flex-direction: column;
-    align-items: flex-start;
+  .skills-legend {
     gap: 1rem;
+    padding: 1rem;
   }
 
-  .skill-category-icon-container {
-    width: 56px;
-    height: 56px;
-  }
-
-  .skill-category-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .skill-category-title {
-    font-size: 1.25rem;
+  .legend-item {
+    font-size: 0.75rem;
   }
 }
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .skill-category,
-  .hexagon-wrapper,
+  .hexagon-cell,
   .hexagon,
   .skill-icon,
-  .connection-line {
+  .legend-dot {
     animation: none !important;
     transition: none !important;
   }
