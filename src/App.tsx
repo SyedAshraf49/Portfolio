@@ -16,6 +16,8 @@ import { CertificationsSection } from '@/components/sections/CertificationsSecti
 
 // Layout
 import { Footer } from '@/components/layout/Footer';
+import { PrivacyPolicy } from '@/pages/PrivacyPolicy';
+import { TermsAndConditions } from '@/pages/TermsAndConditions';
 
 // Accessibility
 import { SkipLink } from '@/components/accessibility';
@@ -26,6 +28,14 @@ import { NAVIGATION_ITEMS } from '@/constants/data';
 export default function App() {
   // Initialize theme system
   useThemeSafe();
+
+  const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (pathname === '/privacy-policy') {
+    return <PrivacyPolicy />;
+  }
+  if (pathname === '/terms-and-conditions') {
+    return <TermsAndConditions />;
+  }
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-slate-950">

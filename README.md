@@ -155,6 +155,11 @@ Portfolio/
 - [LinkedIn](https://linkedin.com/in/syedashraf49)
 - [Instagram](https://www.instagram.com/asher49_)
 
+## Site policies
+
+- [Privacy Policy](https://ashraf-portfolio49.vercel.app/privacy-policy)
+- [Terms & Conditions](https://ashraf-portfolio49.vercel.app/terms-and-conditions)
+
 ## License
 
 This project is available under the MIT License.

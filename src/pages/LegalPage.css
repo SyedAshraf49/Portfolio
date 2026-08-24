@@ -1,0 +1,219 @@
+.legal-page-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--foreground);
+  background: #020617;
+}
+
+.legal-page-shell__glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 12%, rgba(14, 116, 144, 0.2), transparent 32%),
+    radial-gradient(circle at 85% 78%, rgba(30, 64, 175, 0.16), transparent 36%);
+}
+
+.legal-page-header {
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(2, 6, 23, 0.76);
+  backdrop-filter: blur(1rem);
+}
+
+.legal-page-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 64rem;
+  min-height: 4.5rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.legal-page-brand,
+.legal-page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: rgba(226, 232, 240, 0.86);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.legal-page-brand:hover,
+.legal-page-brand:focus-visible,
+.legal-page-back:hover,
+.legal-page-back:focus-visible {
+  color: #f8fafc;
+}
+
+.legal-page-brand__mark {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(212, 175, 55, 0.42);
+  border-radius: 0.55rem;
+  color: rgba(246, 215, 122, 0.92);
+  background: rgba(7, 26, 51, 0.8);
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.78rem;
+}
+
+.legal-page-back {
+  color: rgba(165, 243, 252, 0.76);
+  font-size: 0.76rem;
+}
+
+.legal-page-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4.5rem) 1rem;
+}
+
+.legal-page-card {
+  overflow: hidden;
+  border: 1px solid rgba(103, 232, 249, 0.17);
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.78));
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+}
+
+.legal-page-card__intro {
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.13);
+  background: linear-gradient(135deg, rgba(8, 47, 73, 0.38), rgba(2, 6, 23, 0.12));
+}
+
+.legal-page-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.9rem;
+  color: rgba(165, 243, 252, 0.8);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.legal-page-card h1 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.legal-page-description {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+  color: rgba(203, 213, 225, 0.82);
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.legal-page-updated {
+  margin: 1rem 0 0;
+  color: rgba(148, 163, 184, 0.68);
+  font-size: 0.75rem;
+}
+
+.legal-page-content {
+  display: grid;
+  gap: 0;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.legal-page-content section {
+  padding: 0 0 1.5rem;
+}
+
+.legal-page-content section + section {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.legal-page-content h2 {
+  margin: 0;
+  color: rgba(224, 242, 254, 0.96);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.legal-page-content p {
+  max-width: 54rem;
+  margin: 0.75rem 0 0;
+  color: rgba(203, 213, 225, 0.78);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.legal-page-content p + p {
+  margin-top: 0.7rem;
+}
+
+.legal-page-content a,
+.legal-page-note a {
+  color: rgba(103, 232, 249, 0.9);
+  text-underline-offset: 0.2em;
+}
+
+.legal-page-content a:hover,
+.legal-page-content a:focus-visible,
+.legal-page-note a:hover,
+.legal-page-note a:focus-visible {
+  color: #cffafe;
+}
+
+.legal-page-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 1rem clamp(1.5rem, 5vw, 3.5rem) 1.5rem;
+  color: rgba(191, 219, 254, 0.68);
+  background: rgba(8, 47, 73, 0.2);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.legal-page-note strong {
+  color: rgba(224, 242, 254, 0.94);
+}
+
+.legal-page-external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+@media (max-width: 520px) {
+  .legal-page-header__inner {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 5.5rem;
+  }
+
+  .legal-page-back {
+    padding-bottom: 0.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .legal-page-card,
+  .legal-page-content a {
+    transition: none;
+  }
+}

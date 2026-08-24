@@ -49,8 +49,16 @@ export const Footer: React.FC = () => {
           </nav>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-2 text-xs text-slate-500 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 text-xs text-slate-500 md:flex-row">
           <p>Deployed on Vercel</p>
+          <nav className="flex flex-wrap justify-center gap-x-4 gap-y-2" aria-label="Legal links">
+            <a className="transition hover:text-cyan-300" href="/privacy-policy">
+              Privacy Policy
+            </a>
+            <a className="transition hover:text-cyan-300" href="/terms-and-conditions">
+              Terms &amp; Conditions
+            </a>
+          </nav>
           <p>Last updated: {new Date().toLocaleDateString()}</p>
         </div>
       </div>
