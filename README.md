@@ -122,6 +122,17 @@ The development server is available at `http://localhost:5173`. Create a product
 npm run build
 ```
 
+### Optional privacy-friendly analytics
+
+The portfolio includes an optional [Umami](https://umami.is/) integration. It is disabled by default. To enable it, create a local `.env` file from `.env.example` and provide the URL of your Umami instance together with the website ID:
+
+```bash
+VITE_ANALYTICS_ENDPOINT=https://your-analytics-host.example
+VITE_ANALYTICS_WEBSITE_ID=your-website-id
+```
+
+When enabled, the lightweight tracker is loaded without cookies. Do not commit private credentials or values that should remain secret.
+
 ## Repository structure
 
 ```text
@@ -129,6 +140,8 @@ Portfolio/
 ├── public/
 │   ├── favicon.svg
 │   ├── og-cover.svg
+│   ├── robots.txt
+│   ├── sitemap.xml
 │   ├── project-images/
 │   └── resume/
 ├── src/

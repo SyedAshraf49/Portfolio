@@ -32,6 +32,9 @@ export const ContactSection: React.FC = () => {
             <p className="text-sm text-cyan-100/90 md:text-base">
               Open to work
             </p>
+            <p className="mx-auto max-w-xl text-xs leading-relaxed text-slate-400 md:text-sm">
+              Share a project, opportunity, or idea. The form will open your default email client with your message prefilled.
+            </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-2">
@@ -77,16 +80,22 @@ export const ContactSection: React.FC = () => {
               disabled={isSubmitting}
             />
 
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-cyan-300/20 bg-slate-950/35 px-3 py-2">
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="text-xs text-sky-200/80 hover:text-cyan-200 md:text-sm"
-              >
-                {CONTACT_EMAIL}
-              </a>
-              <Button type="submit" variant="primary" size="md" isLoading={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </Button>
+            <div className="space-y-2 rounded-xl border border-cyan-300/20 bg-slate-950/35 px-3 py-2">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="text-xs text-sky-200/80 hover:text-cyan-200 md:text-sm"
+                  aria-label={`Email ${CONTACT_EMAIL} directly`}
+                >
+                  {CONTACT_EMAIL}
+                </a>
+                <Button type="submit" variant="primary" size="md" isLoading={isSubmitting}>
+                  {isSubmitting ? 'Opening email...' : 'Open email draft'}
+                </Button>
+              </div>
+              <p className="text-[0.68rem] leading-relaxed text-slate-500">
+                Prefer webmail? Use the email address above to contact me directly.
+              </p>
             </div>
           </form>
         </div>

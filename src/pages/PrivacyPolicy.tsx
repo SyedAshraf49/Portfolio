@@ -30,9 +30,9 @@ export const PrivacyPolicy: React.FC = () => (
     <section>
       <h2>3. Technical information</h2>
       <p>
-        The hosting provider may process standard technical information needed to deliver, secure, and
-        troubleshoot the site, such as request timestamps, browser details, device information, and network
-        information. This site does not intentionally add a separate advertising or analytics profile to visitors.
+        The hosting provider may process standard technical         information needed to deliver, secure, and troubleshoot the site, such as request timestamps, browser details, device
+        information, and network information. Optional Umami analytics may be enabled by the site owner to understand aggregate
+        page views and referral patterns without using tracking cookies or intentionally collecting personally identifiable information.
       </p>
     </section>
 

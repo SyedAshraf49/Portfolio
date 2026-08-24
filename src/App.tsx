@@ -5,6 +5,7 @@ import AnimeScrollbar from '@/components/ui/anime-scrollbar';
 import { AnimatedHero } from '@/components/ui/animated-hero';
 import '@/components/ui/animated-hero.css';
 import GooeyNav from './GooeyNav';
+import { MobileNav } from '@/components/ui/MobileNav';
 import MagicBento from './MagicBento';
 import { useThemeSafe } from '@/hooks/useTheme';
 
@@ -19,6 +20,7 @@ import { Footer } from '@/components/layout/Footer';
 import { PrivacyPolicy } from '@/pages/PrivacyPolicy';
 import { TermsAndConditions } from '@/pages/TermsAndConditions';
 import { NotFound } from '@/pages/NotFound';
+import { PrivacyFriendlyAnalytics } from '@/components/analytics/PrivacyFriendlyAnalytics';
 
 // Accessibility
 import { SkipLink } from '@/components/accessibility';
@@ -32,17 +34,34 @@ export default function App() {
 
   const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
   if (pathname === '/privacy-policy') {
-    return <PrivacyPolicy />;
+    return (
+      <>
+        <PrivacyFriendlyAnalytics />
+        <PrivacyPolicy />
+      </>
+    );
   }
   if (pathname === '/terms-and-conditions') {
-    return <TermsAndConditions />;
+    return (
+      <>
+        <PrivacyFriendlyAnalytics />
+        <TermsAndConditions />
+      </>
+    );
   }
   if (pathname !== '/') {
-    return <NotFound />;
+    return (
+      <>
+        <PrivacyFriendlyAnalytics />
+        <NotFound />
+      </>
+    );
   }
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-slate-950">
+    <>
+      <PrivacyFriendlyAnalytics />
+      <div className="relative min-h-screen overflow-x-hidden bg-slate-950">
       <SkipLink />
 
       {/* Background */}
@@ -71,7 +90,7 @@ export default function App() {
         </header>
 
         {/* Navigation */}
-        <div className="sticky top-0 z-20 mt-4">
+        <div className="hidden md:sticky md:top-0 md:z-20 md:mt-4 md:block">
           <div style={{ height: '78px', position: 'relative' }}>
             <GooeyNav
               items={NAVIGATION_ITEMS}
@@ -85,6 +104,7 @@ export default function App() {
             />
           </div>
         </div>
+        <MobileNav />
 
         {/* Main Content */}
         <main id="main-content" className="flex-1 pb-8">
@@ -146,5 +166,6 @@ export default function App() {
         <Footer />
       </div>
     </div>
+    </>
   );
 }
