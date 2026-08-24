@@ -23,17 +23,17 @@
   padding: 2px;
   background: linear-gradient(
     45deg,
-    #06b6d4,
-    #3b82f6,
-    #8b5cf6,
-    #ec4899,
-    #06b6d4
+    #0b1f3a,
+    #1d4f82,
+    #d4af37,
+    #f6d365,
+    #0b1f3a
   );
   background-size: 400% 400%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  opacity: 0.8;
+  opacity: 0.9;
   animation: gradientShift 4s ease infinite;
   pointer-events: none;
   z-index: -1;

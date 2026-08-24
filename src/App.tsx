@@ -1,11 +1,9 @@
-import { Section } from '@/components/common';
-import { ArrowDown, Download, Sparkles } from 'lucide-react';
+import { Section, Badge } from '@/components/common';
 import { CosmicParallaxBg } from '@/components/ui/parallax-cosmic-background';
 import HeroDock from '@/components/ui/dock';
 import AnimeScrollbar from '@/components/ui/anime-scrollbar';
 import { AnimatedHero } from '@/components/ui/animated-hero';
 import '@/components/ui/animated-hero.css';
-import '@/components/ui/portfolio-hero.css';
 import GooeyNav from './GooeyNav';
 import MagicBento from './MagicBento';
 import { useThemeSafe } from '@/hooks/useTheme';
@@ -44,62 +42,16 @@ export default function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Header */}
         <header>
-          <AnimatedHero className="portfolio-hero mx-auto mt-4 w-[min(95%,72rem)] rounded-3xl border border-white/10 shadow-xl md:mt-8">
-            <div className="portfolio-hero__content">
-              <div className="portfolio-hero__copy">
-                <div className="portfolio-hero__eyebrow">
-                  <span className="portfolio-hero__status">
-                    <span className="portfolio-hero__status-dot" aria-hidden="true" />
-                    Available for opportunities
-                  </span>
-                  <span className="portfolio-hero__location">Chennai · Open to remote</span>
-                </div>
-
-                <h1 className="portfolio-hero__title">
-                  Building intelligent products at the intersection of{' '}
-                  <span>AI, systems, and user experience.</span>
-                </h1>
-
-                <p className="portfolio-hero__description">
-                  I&apos;m Syed Ashraf, a full-stack developer who turns complex ideas into
-                  production-ready applications, from AI/ML safety tools to dependable web systems.
-                </p>
-
-                <div className="portfolio-hero__actions">
-                  <a className="portfolio-hero__action portfolio-hero__action--primary" href="#projects">
-                    Explore my work
-                    <ArrowDown aria-hidden="true" size={17} strokeWidth={2.4} />
-                  </a>
-                  <a
-                    className="portfolio-hero__action portfolio-hero__action--secondary"
-                    href="/resume/Syed Ashraf S N Resume.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Download résumé
-                    <Download aria-hidden="true" size={16} strokeWidth={2.2} />
-                  </a>
-                </div>
-              </div>
-
-              <div className="portfolio-hero__signal" aria-label="Current technical focus">
-                <div className="portfolio-hero__signal-icon" aria-hidden="true">
-                  <Sparkles size={20} strokeWidth={1.8} />
-                </div>
-                <span className="portfolio-hero__signal-label">Current focus</span>
-                <strong>AI/ML safety &amp; full-stack systems</strong>
-                <div className="portfolio-hero__tags" aria-label="Primary technologies">
-                  <span>Python</span>
-                  <span>React</span>
-                  <span>Flask</span>
-                </div>
-              </div>
+          <AnimatedHero className="hero-original mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 rounded-3xl border border-amber-200/25 bg-gradient-to-br from-black/95 via-[#071a33]/95 to-[#102d52]/95 p-6 text-center shadow-xl shadow-black/40 md:mt-8">
+            <div>
+              <h1 className="text-3xl font-semibold tracking-tight text-amber-100 md:text-4xl">
+                Syed Ashraf S.N
+              </h1>
+              <p className="mt-2 text-sm text-amber-50/80 md:text-base">
+                Software Developer | Full-Stack Developer and Tech Enthusiast
+              </p>
             </div>
-
-            <div className="portfolio-hero__socials">
-              <span className="portfolio-hero__socials-label">Connect with me</span>
-              <HeroDock />
-            </div>
+            <HeroDock />
           </AnimatedHero>
         </header>
 
