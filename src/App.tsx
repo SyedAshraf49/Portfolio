@@ -42,12 +42,12 @@ export default function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Header */}
         <header>
-          <AnimatedHero className="hero-original mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 rounded-3xl border border-amber-200/25 bg-gradient-to-br from-black/95 via-[#071a33]/95 to-[#102d52]/95 p-6 text-center shadow-xl shadow-black/40 md:mt-8">
+          <AnimatedHero className="hero-original mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 rounded-3xl border border-amber-200/15 bg-gradient-to-br from-black/90 via-[#071a33]/88 to-[#102d52]/88 p-6 text-center shadow-xl shadow-black/35 md:mt-8">
             <div>
-              <h1 className="text-3xl font-semibold tracking-tight text-amber-100 md:text-4xl">
+              <h1 className="text-3xl font-semibold tracking-tight text-amber-100/90 md:text-4xl">
                 Syed Ashraf S.N
               </h1>
-              <p className="mt-2 text-sm text-amber-50/80 md:text-base">
+              <p className="mt-2 text-sm text-slate-200/85 md:text-base">
                 Software Developer | Full-Stack Developer and Tech Enthusiast
               </p>
             </div>
