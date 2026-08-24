@@ -18,6 +18,7 @@ import { CertificationsSection } from '@/components/sections/CertificationsSecti
 import { Footer } from '@/components/layout/Footer';
 import { PrivacyPolicy } from '@/pages/PrivacyPolicy';
 import { TermsAndConditions } from '@/pages/TermsAndConditions';
+import { NotFound } from '@/pages/NotFound';
 
 // Accessibility
 import { SkipLink } from '@/components/accessibility';
@@ -35,6 +36,9 @@ export default function App() {
   }
   if (pathname === '/terms-and-conditions') {
     return <TermsAndConditions />;
+  }
+  if (pathname !== '/') {
+    return <NotFound />;
   }
 
   return (
