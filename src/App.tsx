@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Section, Badge } from '@/components/common';
 import { CosmicParallaxBg } from '@/components/ui/parallax-cosmic-background';
 import HeroDock from '@/components/ui/dock';
@@ -21,6 +22,7 @@ import { PrivacyPolicy } from '@/pages/PrivacyPolicy';
 import { TermsAndConditions } from '@/pages/TermsAndConditions';
 import { NotFound } from '@/pages/NotFound';
 import { PrivacyFriendlyAnalytics } from '@/components/analytics/PrivacyFriendlyAnalytics';
+import { PageLoader } from '@/components/ui/PageLoader';
 
 // Accessibility
 import { SkipLink } from '@/components/accessibility';
@@ -31,6 +33,17 @@ import { NAVIGATION_ITEMS } from '@/constants/data';
 export default function App() {
   // Initialize theme system
   useThemeSafe();
+  const [activeSkill, setActiveSkill] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsLoading(false), 520);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
 
   const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
   if (pathname === '/privacy-policy') {
@@ -138,7 +151,7 @@ export default function App() {
           </Section>
 
           {/* Skills Section */}
-          <SkillsSection />
+          <SkillsSection activeSkill={activeSkill} onSelectSkill={setActiveSkill} />
 
           {/* Projects Section */}
           <Section id="projects" title="Projects">
@@ -154,6 +167,8 @@ export default function App() {
               particleCount={12}
               glowColor="25, 118, 210"
               disableAnimations={false}
+              activeSkill={activeSkill}
+              onClearSkill={() => setActiveSkill(null)}
             />
           </Section>
 

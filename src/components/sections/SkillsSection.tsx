@@ -1,49 +1,29 @@
+import { useState } from 'react';
 import { Section } from '../common';
 import { SKILL_GROUPS } from '@/constants/data';
 import './SkillsSection.css';
 
-const getSkillIcon = (skill: string) => {
+const getSkillGlyph = (skill: string) => {
   const skillLower = skill.toLowerCase();
 
-  if (skillLower.includes('python')) return '🐍';
   if (skillLower.includes('javascript')) return 'JS';
   if (skillLower.includes('typescript')) return 'TS';
-  if (skillLower.includes('java') && !skillLower.includes('javascript')) return '☕';
-  if (skillLower.includes('html')) return '<>';
-  if (skillLower.includes('css')) return '🎨';
-  if (skillLower.includes('react')) return '⚛️';
-  if (skillLower.includes('flask')) return '🌶️';
-  if (skillLower.includes('node')) return '🟢';
-  if (skillLower.includes('rest') || skillLower.includes('api')) return '🔌';
-  if (skillLower.includes('mysql') || skillLower.includes('postgresql')) return '🗄️';
-  if (skillLower.includes('pytorch')) return '🔥';
-  if (skillLower.includes('tensorflow') || skillLower.includes('keras')) return '🧠';
-  if (skillLower.includes('transformers')) return '🤖';
-  if (skillLower.includes('scikit') || skillLower.includes('sklearn')) return '📊';
-  if (skillLower.includes('pandas')) return '🐼';
-  if (skillLower.includes('numpy')) return '🔢';
-  if (skillLower.includes('nlp')) return '💬';
-  if (skillLower.includes('vision')) return '👁️';
-  if (skillLower.includes('detection')) return '🎯';
-  if (skillLower.includes('sentiment')) return '😊';
-  if (skillLower.includes('fine-tuning')) return '🎛️';
-  if (skillLower.includes('git') && !skillLower.includes('copilot')) return '📦';
-  if (skillLower.includes('github')) return '🐙';
-  if (skillLower.includes('vs code')) return '💻';
-  if (skillLower.includes('linux')) return '🐧';
-  if (skillLower.includes('render')) return '☁️';
-  if (skillLower.includes('copilot')) return '🤝';
-  if (skillLower.includes('chatgpt')) return '💡';
-  if (skillLower.includes('oop')) return '📐';
-  if (skillLower.includes('data structures')) return '🗂️';
-  if (skillLower.includes('algorithms')) return '⚙️';
-  if (skillLower.includes('sdl')) return '🔒';
-  if (skillLower.includes('responsive')) return '📱';
-  if (skillLower.includes('integration')) return '🔗';
-  if (skillLower.includes('moderation')) return '🛡️';
-  if (skillLower.includes('risk')) return '⚠️';
-  if (skillLower.includes('quality')) return '✓';
-  if (skillLower.includes('audience')) return '👥';
+  if (skillLower.includes('html')) return '</>';
+  if (skillLower.includes('detection')) return 'TGT';
+  if (skillLower.includes('sentiment')) return 'SA';
+  if (skillLower.includes('fine-tuning')) return 'FT';
+  if (skillLower.includes('rest') || skillLower.includes('api')) return 'API';
+  if (skillLower.includes('mysql') || skillLower.includes('postgresql')) return 'DB';
+  if (skillLower.includes('oop')) return 'OOP';
+  if (skillLower.includes('data structures')) return 'DS';
+  if (skillLower.includes('algorithms')) return 'ALG';
+  if (skillLower.includes('sdl')) return 'SDL';
+  if (skillLower.includes('responsive')) return 'RWD';
+  if (skillLower.includes('integration')) return 'API';
+  if (skillLower.includes('moderation')) return 'MOD';
+  if (skillLower.includes('risk')) return 'RISK';
+  if (skillLower.includes('quality')) return 'Q';
+  if (skillLower.includes('audience')) return 'AUD';
 
   return '◆';
 };
@@ -84,11 +64,6 @@ const SIMPLE_ICON_SLUGS: Record<string, string> = {
 
 const getSkillLogo = (skill: string) => SIMPLE_ICON_SLUGS[skill.toLowerCase()];
 
-const getSkillFallback = (skill: string) => {
-  const fallback = getSkillIcon(skill);
-  return fallback.length > 3 ? fallback.slice(0, 3) : fallback;
-};
-
 type Skill = {
   name: string;
   category: string;
@@ -103,8 +78,6 @@ const allSkills: Skill[] = SKILL_GROUPS.flatMap(({ title, items }) =>
   })),
 );
 
-// Keeping rows explicit gives the cluster a predictable desktop honeycomb shape.
-// The CSS turns each row into a responsive grid on smaller screens.
 const SKILL_ROW_LENGTHS = [9, 9, 9, 9, 6];
 const skillRows = SKILL_ROW_LENGTHS.reduce<Skill[][]>((rows, rowLength) => {
   const start = rows.reduce((total, row) => total + row.length, 0);
@@ -120,9 +93,36 @@ const legendItems = [
   { className: 'safety', label: 'Safety & Intelligence' },
 ];
 
-export const SkillsSection = () => {
+interface SkillsSectionProps {
+  activeSkill?: string | null;
+  onSelectSkill?: (skill: string | null) => void;
+}
+
+export const SkillsSection = ({ activeSkill = null, onSelectSkill }: SkillsSectionProps) => {
+  const [internalSkill, setInternalSkill] = useState<string | null>(null);
+  const selectedSkill = onSelectSkill ? activeSkill : internalSkill;
+
+  const selectSkill = (skill: string) => {
+    const nextSkill = selectedSkill === skill ? null : skill;
+    if (onSelectSkill) {
+      onSelectSkill(nextSkill);
+    } else {
+      setInternalSkill(nextSkill);
+    }
+
+    if (nextSkill) {
+      window.setTimeout(() => {
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 40);
+    }
+  };
+
   return (
-    <Section id="skills" title="Skills & Technologies">
+    <Section
+      id="skills"
+      title="Skills & Technologies"
+      subtitle="Select a skill to explore the projects where I have applied it."
+    >
       <div className="skills-honeycomb-container">
         <div className="honeycomb-grid" role="list" aria-label="Skills and technologies">
           {skillRows.map((row, rowIndex) => (
@@ -132,13 +132,16 @@ export const SkillsSection = () => {
             >
               {row.map((skill, index) => {
                 const logo = getSkillLogo(skill.name);
+                const isSelected = selectedSkill === skill.name;
                 return (
                   <div className="hexagon-cell" role="listitem" key={`${skill.name}-${index}`}>
                     <button
                       type="button"
-                      className={`hexagon hexagon--${skill.category}`}
+                      className={`hexagon hexagon--${skill.category} ${isSelected ? 'hexagon--selected' : ''}`}
                       title={`${skill.name} — ${skill.categoryName}`}
-                      aria-label={`${skill.name}, ${skill.categoryName}`}
+                      aria-label={`${skill.name}, ${skill.categoryName}. Select to filter projects.`}
+                      aria-pressed={isSelected}
+                      onClick={() => selectSkill(skill.name)}
                     >
                       <span className="hexagon-inner">
                         <span className="hexagon-content">
@@ -155,10 +158,10 @@ export const SkillsSection = () => {
                                     event.currentTarget.parentElement?.setAttribute('data-logo-failed', 'true');
                                   }}
                                 />
-                                <span className="skill-logo-fallback">{getSkillFallback(skill.name)}</span>
+                                <span className="skill-logo-fallback">{getSkillGlyph(skill.name)}</span>
                               </span>
                             ) : (
-                              getSkillFallback(skill.name)
+                              getSkillGlyph(skill.name)
                             )}
                           </span>
                           <span className="skill-name">{skill.name}</span>
@@ -171,6 +174,17 @@ export const SkillsSection = () => {
             </div>
           ))}
         </div>
+
+        {selectedSkill && (
+          <div className="skills-selection" role="status" aria-live="polite">
+            <span>
+              Showing projects connected to <strong>{selectedSkill}</strong>
+            </span>
+            <button type="button" onClick={() => selectSkill(selectedSkill)}>
+              Clear filter
+            </button>
+          </div>
+        )}
 
         <div className="skills-legend" aria-label="Skill categories">
           {legendItems.map((item) => (

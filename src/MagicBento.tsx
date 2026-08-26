@@ -27,6 +27,8 @@ export interface BentoProps {
   glowColor?: string;
   clickEffect?: boolean;
   enableMagnetism?: boolean;
+  activeSkill?: string | null;
+  onClearSkill?: () => void;
 }
 
 const DEFAULT_PARTICLE_COUNT = 12;
@@ -562,6 +564,8 @@ const MagicBento: React.FC<BentoProps> = ({
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
   enableMagnetism = true,
+  activeSkill = null,
+  onClearSkill,
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
@@ -580,7 +584,10 @@ const MagicBento: React.FC<BentoProps> = ({
       )}
 
       <BentoCardGrid gridRef={gridRef}>
-        {cardData.map((card, index) => {
+        {(activeSkill
+          ? cardData.filter((card) => card.techStack?.toLowerCase().includes(activeSkill.toLowerCase()))
+          : cardData
+        ).map((card, index) => {
           const baseClassName = `magic-bento-card ${
             textAutoHide ? 'magic-bento-card--text-autohide' : ''
           } ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
@@ -673,6 +680,17 @@ const MagicBento: React.FC<BentoProps> = ({
             </div>
           );
         })}
+        {activeSkill &&
+          cardData.filter((card) => card.techStack?.toLowerCase().includes(activeSkill.toLowerCase())).length === 0 && (
+            <div className="magic-bento-empty" role="status">
+              <span>No project currently lists {activeSkill} in its stack.</span>
+              {onClearSkill && (
+                <button type="button" onClick={onClearSkill}>
+                  Show all projects
+                </button>
+              )}
+            </div>
+          )}
       </BentoCardGrid>
     </>
   );
