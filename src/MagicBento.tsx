@@ -36,6 +36,27 @@ const DEFAULT_SPOTLIGHT_RADIUS = 300;
 const DEFAULT_GLOW_COLOR = '25, 118, 210';
 const MOBILE_BREAKPOINT = 768;
 
+const SKILL_FILTER_ALIASES: Record<string, string[]> = {
+  'react 18': ['react 18', 'react.js', 'react'],
+  'scikit-learn': ['scikit-learn', 'scikit learn', 'sklearn'],
+  transformers: ['transformers', 'huggingface'],
+  nlp: ['nlp', 'spacy'],
+  'computer vision': ['computer vision', 'opencv'],
+  'node.js': ['node.js', 'node'],
+  html5: ['html5', 'html'],
+  css3: ['css3', 'css'],
+  'rest api design': ['rest api design', 'rest api', 'api'],
+  'api integration': ['api integration', 'api'],
+  'fine-tuning': ['fine-tuning', 'fine tuning'],
+  chatgpt: ['chatgpt', 'openai'],
+};
+
+const projectMatchesSkill = (card: BentoCardProps, skill: string) => {
+  const stack = card.techStack?.toLowerCase() ?? '';
+  const aliases = SKILL_FILTER_ALIASES[skill.toLowerCase()] ?? [skill.toLowerCase()];
+  return aliases.some((alias) => stack.includes(alias));
+};
+
 const cardData: BentoCardProps[] = [
   {
     color: '#060010',
@@ -570,6 +591,7 @@ const MagicBento: React.FC<BentoProps> = ({
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+  const visibleCards = activeSkill ? cardData.filter((card) => projectMatchesSkill(card, activeSkill)) : cardData;
 
   return (
     <>
@@ -584,10 +606,7 @@ const MagicBento: React.FC<BentoProps> = ({
       )}
 
       <BentoCardGrid gridRef={gridRef}>
-        {(activeSkill
-          ? cardData.filter((card) => card.techStack?.toLowerCase().includes(activeSkill.toLowerCase()))
-          : cardData
-        ).map((card, index) => {
+        {visibleCards.map((card, index) => {
           const baseClassName = `magic-bento-card ${
             textAutoHide ? 'magic-bento-card--text-autohide' : ''
           } ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
@@ -680,8 +699,7 @@ const MagicBento: React.FC<BentoProps> = ({
             </div>
           );
         })}
-        {activeSkill &&
-          cardData.filter((card) => card.techStack?.toLowerCase().includes(activeSkill.toLowerCase())).length === 0 && (
+        {activeSkill && visibleCards.length === 0 && (
             <div className="magic-bento-empty" role="status">
               <span>No project currently lists {activeSkill} in its stack.</span>
               {onClearSkill && (
