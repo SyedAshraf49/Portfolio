@@ -1,256 +1,196 @@
-/* Skills Honeycomb Container */
-.skills-honeycomb-container {
+/* ============================================
+   PERIODIC TABLE SKILLS SECTION
+   ============================================ */
+
+/* Container */
+.periodic-table-container {
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 2rem 1rem;
 }
 
-/* Unified Honeycomb Grid - ALL Skills in ONE Cluster */
-.honeycomb-grid {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
+/* Grid Layout - Periodic Table Style */
+.periodic-table-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
   padding: 2rem 0;
+  justify-items: center;
 }
 
-/* Hexagon Cell - Individual Skill Container */
-.hexagon-cell {
+/* Individual Periodic Card */
+.periodic-card {
   position: relative;
-  width: 80px;
-  height: 70px;
-  margin: -3px -3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: hexagonFloat 0.6s ease-out backwards;
-  z-index: 2;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, rgba(var(--card-bg-rgb, 59, 130, 246), 0.1), rgba(var(--card-bg-rgb, 59, 130, 246), 0.05));
+  border: 2px solid var(--card-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: cardFloat 0.5s ease-out backwards;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
 }
 
-/* Offset every other row for true honeycomb pattern */
-.hexagon-cell:nth-child(10n+6),
-.hexagon-cell:nth-child(10n+7),
-.hexagon-cell:nth-child(10n+8),
-.hexagon-cell:nth-child(10n+9),
-.hexagon-cell:nth-child(10n+10) {
-  margin-left: 39px;
-}
-
-@keyframes hexagonFloat {
+@keyframes cardFloat {
   from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: translateY(30px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Active Hexagon Cell */
-.hexagon-cell--active .hexagon {
-  transform: scale(1.08);
-  z-index: 10;
-}
-
-/* Actual Hexagon Shape */
-.hexagon {
-  width: 80px;
-  height: 80px;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-}
-
-.hexagon::before,
-.hexagon::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  left: 0;
-  transition: all 0.3s ease;
-}
-
-.hexagon::before {
-  bottom: 100%;
-  border-bottom: 23px solid rgba(30, 41, 59, 0.95);
-}
-
-.hexagon::after {
-  top: 100%;
-  border-top: 23px solid rgba(30, 41, 59, 0.95);
-}
-
-.hexagon-inner {
-  width: 80px;
-  height: 46px;
-  background: rgba(30, 41, 59, 0.95);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.3s ease;
-}
-
-/* Hexagon Colors by Category - Color-coded like Periodic Table */
-.hexagon--ai::before { border-bottom-color: rgba(168, 85, 247, 0.3); }
-.hexagon--ai::after { border-top-color: rgba(168, 85, 247, 0.3); }
-.hexagon--ai .hexagon-inner { 
-  background: rgba(168, 85, 247, 0.15);
-  border-color: rgba(168, 85, 247, 0.3);
-}
-
-.hexagon--backend::before { border-bottom-color: rgba(25, 118, 210, 0.3); }
-.hexagon--backend::after { border-top-color: rgba(25, 118, 210, 0.3); }
-.hexagon--backend .hexagon-inner { 
-  background: rgba(25, 118, 210, 0.15);
-  border-color: rgba(25, 118, 210, 0.3);
-}
-
-.hexagon--frontend::before { border-bottom-color: rgba(56, 189, 248, 0.3); }
-.hexagon--frontend::after { border-top-color: rgba(56, 189, 248, 0.3); }
-.hexagon--frontend .hexagon-inner { 
-  background: rgba(56, 189, 248, 0.15);
-  border-color: rgba(56, 189, 248, 0.3);
-}
-
-.hexagon--systems::before { border-bottom-color: rgba(34, 197, 94, 0.3); }
-.hexagon--systems::after { border-top-color: rgba(34, 197, 94, 0.3); }
-.hexagon--systems .hexagon-inner { 
-  background: rgba(34, 197, 94, 0.15);
-  border-color: rgba(34, 197, 94, 0.3);
-}
-
-.hexagon--safety::before { border-bottom-color: rgba(239, 68, 68, 0.3); }
-.hexagon--safety::after { border-top-color: rgba(239, 68, 68, 0.3); }
-.hexagon--safety .hexagon-inner { 
-  background: rgba(239, 68, 68, 0.15);
-  border-color: rgba(239, 68, 68, 0.3);
-}
-
-/* Hexagon Hover Effects - Enhanced Glow */
-.hexagon-cell:hover .hexagon,
-.hexagon-cell--active .hexagon {
-  transform: scale(1.1);
-  z-index: 10;
-}
-
-.hexagon-cell:hover .hexagon--ai::before,
-.hexagon-cell--active .hexagon--ai::before { border-bottom-color: rgba(168, 85, 247, 0.7); }
-.hexagon-cell:hover .hexagon--ai::after,
-.hexagon-cell--active .hexagon--ai::after { border-top-color: rgba(168, 85, 247, 0.7); }
-.hexagon-cell:hover .hexagon--ai .hexagon-inner,
-.hexagon-cell--active .hexagon--ai .hexagon-inner {
-  background: rgba(168, 85, 247, 0.35);
-  border-color: rgba(168, 85, 247, 0.6);
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.2);
-}
-
-.hexagon-cell:hover .hexagon--backend::before,
-.hexagon-cell--active .hexagon--backend::before { border-bottom-color: rgba(25, 118, 210, 0.7); }
-.hexagon-cell:hover .hexagon--backend::after,
-.hexagon-cell--active .hexagon--backend::after { border-top-color: rgba(25, 118, 210, 0.7); }
-.hexagon-cell:hover .hexagon--backend .hexagon-inner,
-.hexagon-cell--active .hexagon--backend .hexagon-inner {
-  background: rgba(25, 118, 210, 0.35);
-  border-color: rgba(25, 118, 210, 0.6);
-  box-shadow: 0 0 30px rgba(25, 118, 210, 0.5), inset 0 0 20px rgba(25, 118, 210, 0.2);
-}
-
-.hexagon-cell:hover .hexagon--frontend::before,
-.hexagon-cell--active .hexagon--frontend::before { border-bottom-color: rgba(56, 189, 248, 0.7); }
-.hexagon-cell:hover .hexagon--frontend::after,
-.hexagon-cell--active .hexagon--frontend::after { border-top-color: rgba(56, 189, 248, 0.7); }
-.hexagon-cell:hover .hexagon--frontend .hexagon-inner,
-.hexagon-cell--active .hexagon--frontend .hexagon-inner {
-  background: rgba(56, 189, 248, 0.35);
-  border-color: rgba(56, 189, 248, 0.6);
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.5), inset 0 0 20px rgba(56, 189, 248, 0.2);
-}
-
-.hexagon-cell:hover .hexagon--systems::before,
-.hexagon-cell--active .hexagon--systems::before { border-bottom-color: rgba(34, 197, 94, 0.7); }
-.hexagon-cell:hover .hexagon--systems::after,
-.hexagon-cell--active .hexagon--systems::after { border-top-color: rgba(34, 197, 94, 0.7); }
-.hexagon-cell:hover .hexagon--systems .hexagon-inner,
-.hexagon-cell--active .hexagon--systems .hexagon-inner {
-  background: rgba(34, 197, 94, 0.35);
-  border-color: rgba(34, 197, 94, 0.6);
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.5), inset 0 0 20px rgba(34, 197, 94, 0.2);
-}
-
-.hexagon-cell:hover .hexagon--safety::before,
-.hexagon-cell--active .hexagon--safety::before { border-bottom-color: rgba(239, 68, 68, 0.7); }
-.hexagon-cell:hover .hexagon--safety::after,
-.hexagon-cell--active .hexagon--safety::after { border-top-color: rgba(239, 68, 68, 0.7); }
-.hexagon-cell:hover .hexagon--safety .hexagon-inner,
-.hexagon-cell--active .hexagon--safety .hexagon-inner {
-  background: rgba(239, 68, 68, 0.35);
-  border-color: rgba(239, 68, 68, 0.6);
-  box-shadow: 0 0 30px rgba(239, 68, 68, 0.5), inset 0 0 20px rgba(239, 68, 68, 0.2);
-}
-
-/* Hexagon Content */
-.hexagon-content {
+/* Card Inner Content */
+.periodic-card-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.1rem;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem;
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
-.skill-icon {
-  font-size: 1.4rem;
-  transition: all 0.3s ease;
+/* Category Label (like atomic number) */
+.periodic-category-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
   line-height: 1;
 }
 
-.hexagon-cell:hover .skill-icon,
-.hexagon-cell--active .skill-icon {
-  transform: scale(1.15) rotate(5deg);
-  filter: drop-shadow(0 0 6px currentColor);
+/* Logo Container */
+.periodic-logo {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
-.skill-name {
-  font-size: 0.65rem;
+.periodic-logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.periodic-logo-fallback {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.periodic-logo-fallback.hidden {
+  display: none;
+}
+
+/* Skill Name */
+.periodic-skill-name {
+  font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95);
   text-align: center;
-  line-height: 1.1;
-  max-width: 70px;
+  line-height: 1.2;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  transition: all 0.3s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-.hexagon-cell:hover .skill-name,
-.hexagon-cell--active .skill-name {
+/* Hover Effects */
+.periodic-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  border-color: var(--card-border);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px var(--card-border),
+    inset 0 0 80px rgba(255, 255, 255, 0.05);
+  z-index: 10;
+}
+
+.periodic-card:hover .periodic-logo {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.periodic-card:hover .periodic-logo-img,
+.periodic-card:hover .periodic-logo-fallback {
+  filter: drop-shadow(0 4px 16px var(--card-border));
+}
+
+.periodic-card:hover .periodic-skill-name {
   color: rgba(255, 255, 255, 1);
-  text-shadow: 0 0 8px currentColor;
+  text-shadow: 0 0 12px var(--card-border);
+}
+
+/* Category-Specific Backgrounds */
+.periodic-card--language {
+  --card-bg-rgb: 59, 130, 246;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+}
+
+.periodic-card--frontend {
+  --card-bg-rgb: 6, 182, 212;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.05));
+}
+
+.periodic-card--backend {
+  --card-bg-rgb: 16, 185, 129;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+}
+
+.periodic-card--database {
+  --card-bg-rgb: 139, 92, 246;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05));
+}
+
+.periodic-card--ml {
+  --card-bg-rgb: 245, 158, 11;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+}
+
+.periodic-card--cloud {
+  --card-bg-rgb: 239, 68, 68;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+}
+
+.periodic-card--tool {
+  --card-bg-rgb: 99, 102, 241;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(99, 102, 241, 0.05));
+}
+
+.periodic-card--concept {
+  --card-bg-rgb: 236, 72, 153;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.05));
 }
 
 /* Tooltip */
-.skill-tooltip {
+.periodic-tooltip {
   position: absolute;
-  bottom: -45px;
+  bottom: -60px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
   white-space: nowrap;
-  font-size: 0.75rem;
-  font-weight: 600;
   z-index: 100;
   animation: tooltipFadeIn 0.2s ease-out;
   pointer-events: none;
@@ -258,12 +198,14 @@
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @keyframes tooltipFadeIn {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(-5px);
+    transform: translateX(-50%) translateY(-10px);
   }
   to {
     opacity: 1;
@@ -271,221 +213,204 @@
   }
 }
 
-.skill-tooltip-category {
-  font-size: 0.65rem;
-  opacity: 0.8;
+.periodic-tooltip-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.periodic-tooltip-category {
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.skill-tooltip-text {
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  font-size: 0.85rem;
-}
-
-.skill-tooltip--ai {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(147, 51, 234, 0.95));
-  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.5);
-  border: 1px solid rgba(168, 85, 247, 0.7);
-}
-
-.skill-tooltip--backend {
-  background: linear-gradient(135deg, rgba(25, 118, 210, 0.95), rgba(21, 101, 192, 0.95));
-  box-shadow: 0 4px 20px rgba(25, 118, 210, 0.5);
-  border: 1px solid rgba(25, 118, 210, 0.7);
-}
-
-.skill-tooltip--frontend {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(14, 165, 233, 0.95));
-  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.5);
-  border: 1px solid rgba(56, 189, 248, 0.7);
-}
-
-.skill-tooltip--systems {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(22, 163, 74, 0.95));
-  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.5);
-  border: 1px solid rgba(34, 197, 94, 0.7);
-}
-
-.skill-tooltip--safety {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.95), rgba(220, 38, 38, 0.95));
-  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5);
-  border: 1px solid rgba(239, 68, 68, 0.7);
-}
-
-/* Skills Legend - Like Periodic Table Key */
-.skills-legend {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 3rem;
-  padding: 1.5rem;
-  background: rgba(15, 23, 42, 0.3);
+/* Legend - Periodic Table Style */
+.periodic-legend {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 41, 59, 0.4));
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
 }
 
-.legend-item {
+.periodic-legend-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.periodic-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.periodic-legend-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.periodic-legend-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(4px);
+}
+
+.periodic-legend-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 2px solid;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.periodic-legend-label {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.8);
-  transition: all 0.3s ease;
-}
-
-.legend-item:hover {
-  transform: translateY(-2px);
-  color: rgba(255, 255, 255, 1);
-}
-
-.legend-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px currentColor;
-  transition: all 0.3s ease;
-}
-
-.legend-item:hover .legend-dot {
-  box-shadow: 0 0 20px currentColor;
-  transform: scale(1.2);
-}
-
-.legend-item--ai .legend-dot {
-  background: rgba(168, 85, 247, 0.8);
-  color: rgb(168, 85, 247);
-}
-
-.legend-item--backend .legend-dot {
-  background: rgba(25, 118, 210, 0.8);
-  color: rgb(25, 118, 210);
-}
-
-.legend-item--frontend .legend-dot {
-  background: rgba(56, 189, 248, 0.8);
-  color: rgb(56, 189, 248);
-}
-
-.legend-item--systems .legend-dot {
-  background: rgba(34, 197, 94, 0.8);
-  color: rgb(34, 197, 94);
-}
-
-.legend-item--safety .legend-dot {
-  background: rgba(239, 68, 68, 0.8);
-  color: rgb(239, 68, 68);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .honeycomb-grid {
-    max-width: 700px;
+  .periodic-table-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.875rem;
   }
 
-  .hexagon-cell {
-    width: 70px;
-    height: 62px;
+  .periodic-card {
+    width: 110px;
+    height: 110px;
   }
-  
-  .hexagon {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .hexagon::before,
-  .hexagon::after {
-    border-left-width: 35px;
-    border-right-width: 35px;
-  }
-  
-  .hexagon::before {
-    border-bottom-width: 20px;
-  }
-  
-  .hexagon::after {
-    border-top-width: 20px;
-  }
-  
-  .hexagon-inner {
-    width: 70px;
+
+  .periodic-logo {
+    width: 40px;
     height: 40px;
   }
 
-  .skill-name {
-    font-size: 0.6rem;
+  .periodic-logo-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .periodic-logo-fallback {
+    font-size: 1.5rem;
+  }
+
+  .periodic-skill-name {
+    font-size: 0.7rem;
   }
 }
 
 @media (max-width: 768px) {
-  .honeycomb-grid {
-    max-width: 500px;
+  .periodic-table-grid {
+    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+    gap: 0.75rem;
   }
 
-  .hexagon-cell {
-    width: 60px;
-    height: 53px;
-    margin: -3px -3px;
+  .periodic-card {
+    width: 95px;
+    height: 95px;
   }
 
-  .hexagon-cell:nth-child(10n+6),
-  .hexagon-cell:nth-child(10n+7),
-  .hexagon-cell:nth-child(10n+8),
-  .hexagon-cell:nth-child(10n+9),
-  .hexagon-cell:nth-child(10n+10) {
-    margin-left: 30px;
+  .periodic-card-inner {
+    padding: 0.5rem;
   }
 
-  .hexagon {
-    width: 60px;
-    height: 60px;
-  }
-
-  .hexagon::before,
-  .hexagon::after {
-    border-left-width: 30px;
-    border-right-width: 30px;
-  }
-
-  .hexagon::before {
-    border-bottom-width: 17px;
-  }
-
-  .hexagon::after {
-    border-top-width: 17px;
-  }
-
-  .hexagon-inner {
-    width: 60px;
-    height: 34px;
-  }
-
-  .skill-icon {
-    font-size: 1.1rem;
-  }
-
-  .skill-name {
+  .periodic-category-label {
     font-size: 0.55rem;
   }
 
-  .skills-legend {
-    gap: 1rem;
-    padding: 1rem;
+  .periodic-logo {
+    width: 36px;
+    height: 36px;
   }
 
-  .legend-item {
+  .periodic-logo-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .periodic-logo-fallback {
+    font-size: 1.25rem;
+  }
+
+  .periodic-skill-name {
+    font-size: 0.65rem;
+  }
+
+  .periodic-legend {
+    padding: 1.5rem 1rem;
+  }
+
+  .periodic-legend-title {
+    font-size: 1.1rem;
+  }
+
+  .periodic-legend-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .periodic-legend-item {
+    gap: 0.5rem;
+  }
+
+  .periodic-legend-box {
+    width: 20px;
+    height: 20px;
+  }
+
+  .periodic-legend-label {
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .periodic-table-grid {
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .periodic-card {
+    width: 85px;
+    height: 85px;
+  }
+
+  .periodic-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .periodic-logo-img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .periodic-logo-fallback {
+    font-size: 1.1rem;
+  }
+
+  .periodic-skill-name {
+    font-size: 0.6rem;
   }
 }
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .hexagon-cell,
-  .hexagon,
-  .skill-icon,
-  .legend-dot {
+  .periodic-card,
+  .periodic-logo,
+  .periodic-tooltip {
     animation: none !important;
     transition: none !important;
   }
