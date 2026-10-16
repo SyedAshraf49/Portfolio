@@ -36,8 +36,9 @@ export const SkillsSection: React.FC = () => {
           {SKILLS_PERIODIC_TABLE.map((skill, index) => {
             const colors = CATEGORY_COLORS[skill.category];
             const isLogo = skill.logo && !skill.logo.startsWith('http') && skill.logo.length > 2;
+            // Use white logos for better visibility on dark backgrounds
             const logoUrl = isLogo 
-              ? `https://cdn.simpleicons.org/${skill.logo}/${skill.color.replace('#', '')}` 
+              ? `https://cdn.simpleicons.org/${skill.logo}/white` 
               : null;
 
             return (

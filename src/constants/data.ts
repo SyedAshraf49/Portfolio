@@ -60,12 +60,12 @@ export const SKILLS_PERIODIC_TABLE: Skill[] = [
   { name: 'NLP', category: 'ml', logo: '💬', color: '#A855F7' },
   
   // Cloud
-  { name: 'AWS', category: 'cloud', logo: 'amazonaws', color: '#FF9900' },
+  { name: 'AWS', category: 'cloud', logo: 'amazonwebservices', color: '#FF9900' },
   { name: 'EC2', category: 'cloud', logo: 'amazonec2', color: '#FF9900' },
   { name: 'S3', category: 'cloud', logo: 'amazons3', color: '#569A31' },
   { name: 'Lambda', category: 'cloud', logo: 'awslambda', color: '#FF9900' },
   { name: 'RDS', category: 'cloud', logo: 'amazonrds', color: '#527FFF' },
-  { name: 'IAM', category: 'cloud', logo: 'amazonaws', color: '#DD344C' },
+  { name: 'IAM', category: 'cloud', logo: 'amazoniam', color: '#DD344C' },
   
   // Tools
   { name: 'Git', category: 'tool', logo: 'git', color: '#F05032' },

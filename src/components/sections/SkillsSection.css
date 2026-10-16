@@ -13,8 +13,8 @@
 /* Grid Layout - Periodic Table Style */
 .periodic-table-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.25rem;
   padding: 2rem 0;
   justify-items: center;
 }
@@ -22,8 +22,8 @@
 /* Individual Periodic Card */
 .periodic-card {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   background: linear-gradient(135deg, rgba(var(--card-bg-rgb, 59, 130, 246), 0.1), rgba(var(--card-bg-rgb, 59, 130, 246), 0.05));
   border: 2px solid var(--card-border);
   border-radius: 12px;
@@ -72,8 +72,8 @@
 /* Logo Container */
 .periodic-logo {
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,15 +81,15 @@
 }
 
 .periodic-logo-img {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
   transition: all 0.3s ease;
 }
 
 .periodic-logo-fallback {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -102,7 +102,7 @@
 
 /* Skill Name */
 .periodic-skill-name {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
   text-align: center;
@@ -284,13 +284,51 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .periodic-table-grid {
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .periodic-card {
+    width: 120px;
+    height: 120px;
+  }
+
+  .periodic-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .periodic-logo-img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .periodic-logo-fallback {
+    font-size: 1.75rem;
+  }
+
+  .periodic-skill-name {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .periodic-table-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 0.875rem;
   }
 
   .periodic-card {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .periodic-card-inner {
+    padding: 0.5rem;
+  }
+
+  .periodic-category-label {
+    font-size: 0.55rem;
   }
 
   .periodic-logo {
@@ -309,44 +347,6 @@
 
   .periodic-skill-name {
     font-size: 0.7rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .periodic-table-grid {
-    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .periodic-card {
-    width: 95px;
-    height: 95px;
-  }
-
-  .periodic-card-inner {
-    padding: 0.5rem;
-  }
-
-  .periodic-category-label {
-    font-size: 0.55rem;
-  }
-
-  .periodic-logo {
-    width: 36px;
-    height: 36px;
-  }
-
-  .periodic-logo-img {
-    width: 36px;
-    height: 36px;
-  }
-
-  .periodic-logo-fallback {
-    font-size: 1.25rem;
-  }
-
-  .periodic-skill-name {
-    font-size: 0.65rem;
   }
 
   .periodic-legend {
@@ -379,7 +379,7 @@
 @media (max-width: 480px) {
   .periodic-table-grid {
     grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
-    gap: 0.5rem;
+    gap: 0.625rem;
   }
 
   .periodic-card {
@@ -388,21 +388,21 @@
   }
 
   .periodic-logo {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
   }
 
   .periodic-logo-img {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
   }
 
   .periodic-logo-fallback {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
   }
 
   .periodic-skill-name {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
   }
 }
 
