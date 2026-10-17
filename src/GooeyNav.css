@@ -4,8 +4,10 @@
   --color-3: rgb(59, 130, 246);
   --color-4: rgb(96, 165, 250);
   position: relative;
-  width: min(98vw, 72rem);
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
   display: flex;
   justify-content: center;
   filter: url('#goo') drop-shadow(0 10px 30px rgba(6, 146, 166, 0.2));
@@ -55,7 +57,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 0.25rem;
+  gap: 0.2rem;
   /* Ensure touch-friendly minimum height */
   min-height: 44px;
 }
@@ -65,7 +67,6 @@
   .gooey-nav-container ul {
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
-    padding: 0.35rem;
   }
 }
 
@@ -95,11 +96,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 0.95rem;
+  padding: 0.5rem 0.85rem;
   border-radius: 999px;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  font-size: 0.85rem;
+  letter-spacing: 0em;
+  font-size: 0.82rem;
   text-decoration: none;
   min-width: 44px;
   min-height: 44px;
@@ -108,10 +109,52 @@
   transition: all 300ms ease, color 0.25s ease, text-shadow 0.25s ease;
 }
 
-@media (max-width: 768px) {
+/* Desktop - large screens */
+@media (min-width: 1200px) {
   .gooey-nav-container a {
-    padding: 0.45rem 0.85rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Tablets and smaller desktops */
+@media (max-width: 1199px) and (min-width: 901px) {
+  .gooey-nav-container a {
+    padding: 0.5rem 0.75rem;
     font-size: 0.8rem;
+  }
+}
+
+/* Medium tablets */
+@media (max-width: 900px) and (min-width: 769px) {
+  .gooey-nav-container ul {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  
+  .gooey-nav-container a {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.78rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 768px) {
+  .gooey-nav-container {
+    padding: 0 0.5rem;
+  }
+  
+  .gooey-nav-container ul {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    padding: 0.35rem;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  
+  .gooey-nav-container a {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.75rem;
     min-height: 40px;
   }
 }
@@ -200,21 +243,21 @@
   }
 }
 
-/* Allow wrapping only on very small screens */
-@media (max-width: 900px) {
-  .gooey-nav-container ul {
-    flex-wrap: wrap;
-  }
-  
+/* Allow wrapping only on very small screens - REMOVED */
+/* Media queries consolidated above */
+
+/* Small mobile */
+@media (max-width: 640px) {
   .gooey-nav-container a {
-    padding: 0.5rem 0.9rem;
-    font-size: 0.82rem;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.7rem;
   }
 }
 
-@media (max-width: 640px) {
+/* Very small mobile */
+@media (max-width: 480px) {
   .gooey-nav-container a {
-    padding: 0.45rem 0.75rem;
-    font-size: 0.75rem;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.65rem;
   }
 }
