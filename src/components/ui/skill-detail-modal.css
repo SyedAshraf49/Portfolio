@@ -1,0 +1,537 @@
+/* Skill Detail Modal */
+.skill-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.skill-modal {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
+  border: 2px solid var(--skill-color, #3B82F6);
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 40px rgba(0, 0, 0, 0.5),
+    0 0 80px var(--skill-color);
+  animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Scanning Effect */
+.skill-scan-effect {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.scan-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--skill-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--skill-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.1;
+  animation: scanGridMove 20s linear infinite;
+}
+
+@keyframes scanGridMove {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(50px, 50px);
+  }
+}
+
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--skill-color), 
+    transparent
+  );
+  box-shadow: 0 0 20px var(--skill-color);
+  animation: scanLineMove 1.5s ease-in-out infinite;
+}
+
+@keyframes scanLineMove {
+  0% {
+    top: -3px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.scan-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: var(--skill-color);
+  text-align: center;
+  z-index: 2;
+  text-shadow: 0 0 10px var(--skill-color);
+  letter-spacing: 0.05em;
+}
+
+.scan-skill-name {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: white;
+}
+
+.scan-dots {
+  display: inline-block;
+  width: 2rem;
+}
+
+.scan-dots span {
+  animation: scanDotBlink 1.4s infinite;
+  opacity: 0;
+}
+
+.scan-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.scan-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes scanDotBlink {
+  0%, 20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Modal Header */
+.skill-modal-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.02), 
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.02)
+  );
+  animation: slideDown 0.5s ease 0.3s both;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-modal-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-modal-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  color: white;
+  margin: 0;
+  text-shadow: 0 0 20px var(--skill-color);
+}
+
+.skill-modal-category {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  color: var(--skill-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.skill-modal-close {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skill-modal-close:hover {
+  background: rgba(255, 0, 0, 0.2);
+  border-color: rgba(255, 0, 0, 0.5);
+  transform: rotate(90deg);
+}
+
+/* Modal Body */
+.skill-modal-body {
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.skill-modal-section {
+  animation: slideUp 0.5s ease both;
+}
+
+.skill-modal-section:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-modal-section-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: var(--skill-color);
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-shadow: 0 0 10px var(--skill-color);
+}
+
+.section-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px var(--skill-color));
+}
+
+/* Grid */
+.skill-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.skill-modal-grid--certs {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+/* Project Cards */
+.skill-modal-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: cardFadeIn 0.5s ease both;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.skill-modal-card:hover {
+  border-color: var(--skill-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 30px var(--skill-color);
+  transform: translateY(-4px);
+}
+
+.skill-card-image-wrapper {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.skill-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.skill-modal-card:hover .skill-card-image {
+  transform: scale(1.05);
+}
+
+.skill-card-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skill-card-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.85rem;
+  color: white;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.skill-card-description {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.skill-card-tech {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.55rem;
+  color: var(--skill-color);
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-card-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.skill-card-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.skill-card-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--skill-color);
+  box-shadow: 0 0 15px var(--skill-color);
+}
+
+.skill-card-link--live {
+  background: rgba(34, 211, 238, 0.1);
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.skill-card-link--live:hover {
+  background: rgba(34, 211, 238, 0.2);
+  border-color: rgba(34, 211, 238, 0.6);
+}
+
+/* Certification Cards */
+.skill-modal-cert-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  animation: cardFadeIn 0.5s ease both;
+}
+
+.skill-modal-cert-card:hover {
+  border-color: var(--skill-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 30px var(--skill-color);
+  transform: translateY(-4px);
+}
+
+.skill-cert-logo {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.skill-cert-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px var(--skill-color));
+}
+
+.skill-cert-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-cert-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  color: white;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.skill-cert-issuer {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Empty State */
+.skill-modal-empty {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.skill-modal-empty p {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skill-modal {
+    max-height: 95vh;
+    margin: 0.5rem;
+  }
+
+  .skill-modal-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .skill-modal-title {
+    font-size: 1rem;
+  }
+
+  .skill-modal-category {
+    font-size: 0.6rem;
+  }
+
+  .skill-modal-body {
+    padding: 1.25rem;
+  }
+
+  .skill-modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-modal-grid--certs {
+    grid-template-columns: 1fr;
+  }
+
+  .scan-text {
+    font-size: 0.75rem;
+  }
+
+  .scan-skill-name {
+    font-size: 1rem;
+  }
+}
+
+/* Custom Scrollbar */
+.skill-modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.skill-modal-body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.skill-modal-body::-webkit-scrollbar-thumb {
+  background: var(--skill-color);
+  border-radius: 4px;
+}
+
+.skill-modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--skill-color);
+  opacity: 0.8;
+}

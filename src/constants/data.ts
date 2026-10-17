@@ -295,6 +295,74 @@ export const CERTIFICATIONS: Certification[] = [
   },
 ];
 
+// Skill Mapping to Projects and Certifications
+export interface SkillMapping {
+  skill: string;
+  projects: string[]; // Project titles
+  certifications: string[]; // Certification IDs
+}
+
+export const SKILL_MAPPINGS: SkillMapping[] = [
+  // Languages
+  { skill: 'Python', projects: ['HateShieldAI', 'Career Path Predictor'], certifications: ['cert-3', 'cert-5'] },
+  { skill: 'JavaScript', projects: ['Local Vendor'], certifications: [] },
+  { skill: 'TypeScript', projects: ['Local Vendor'], certifications: [] },
+  { skill: 'Java', projects: [], certifications: [] },
+  
+  // Frontend
+  { skill: 'React', projects: ['Local Vendor'], certifications: [] },
+  { skill: 'HTML5', projects: ['HateShieldAI', 'Career Path Predictor', 'Local Vendor'], certifications: [] },
+  { skill: 'CSS3', projects: ['HateShieldAI', 'Career Path Predictor', 'Local Vendor'], certifications: [] },
+  
+  // Backend
+  { skill: 'Flask', projects: ['HateShieldAI', 'Career Path Predictor'], certifications: [] },
+  { skill: 'Node.js', projects: [], certifications: [] },
+  { skill: 'REST API', projects: ['HateShieldAI', 'Career Path Predictor'], certifications: [] },
+  
+  // Databases
+  { skill: 'MySQL', projects: [], certifications: [] },
+  { skill: 'PostgreSQL', projects: [], certifications: [] },
+  
+  // ML & Data
+  { skill: 'scikit-learn', projects: ['HateShieldAI', 'Career Path Predictor'], certifications: ['cert-3'] },
+  { skill: 'TensorFlow', projects: [], certifications: ['cert-15', 'cert-16'] },
+  { skill: 'PyTorch', projects: ['HateShieldAI'], certifications: ['cert-15', 'cert-16'] },
+  { skill: 'Keras', projects: [], certifications: ['cert-15'] },
+  { skill: 'Hugging Face', projects: ['HateShieldAI'], certifications: ['cert-2', 'cert-14'] },
+  { skill: 'pandas', projects: ['Career Path Predictor'], certifications: ['cert-3'] },
+  { skill: 'NumPy', projects: ['Career Path Predictor'], certifications: ['cert-3'] },
+  { skill: 'NLP', projects: ['HateShieldAI'], certifications: ['cert-2', 'cert-14', 'cert-15'] },
+  
+  // Cloud
+  { skill: 'AWS', projects: [], certifications: ['cert-1', 'cert-4'] },
+  { skill: 'EC2', projects: [], certifications: ['cert-1'] },
+  { skill: 'S3', projects: [], certifications: ['cert-1'] },
+  { skill: 'Lambda', projects: [], certifications: ['cert-1'] },
+  { skill: 'RDS', projects: [], certifications: ['cert-1'] },
+  { skill: 'IAM', projects: [], certifications: ['cert-1', 'cert-4'] },
+  
+  // Tools
+  { skill: 'Git', projects: ['HateShieldAI', 'Career Path Predictor', 'Local Vendor'], certifications: [] },
+  { skill: 'GitHub', projects: ['HateShieldAI', 'Career Path Predictor', 'Local Vendor'], certifications: [] },
+  { skill: 'VS Code', projects: ['HateShieldAI', 'Career Path Predictor', 'Local Vendor'], certifications: [] },
+  { skill: 'Render', projects: ['HateShieldAI', 'Career Path Predictor'], certifications: [] },
+  { skill: 'Vercel', projects: ['Local Vendor'], certifications: [] },
+  { skill: 'Linux', projects: [], certifications: [] },
+  { skill: 'Copilot', projects: ['HateShieldAI', 'Local Vendor'], certifications: [] },
+  { skill: 'ChatGPT', projects: ['HateShieldAI', 'Career Path Predictor', 'Local Vendor'], certifications: ['cert-2', 'cert-14'] },
+  { skill: 'Claude', projects: ['Local Vendor'], certifications: ['cert-2', 'cert-14'] },
+  
+  // Concepts
+  { skill: 'OOP', projects: ['HateShieldAI', 'Career Path Predictor'], certifications: ['cert-5'] },
+  { skill: 'DSA', projects: [], certifications: [] },
+  { skill: 'SDLC', projects: ['HateShieldAI', 'Career Path Predictor', 'Local Vendor'], certifications: [] },
+];
+
+// Helper function to get skill mappings
+export const getSkillMapping = (skillName: string): SkillMapping | undefined => {
+  return SKILL_MAPPINGS.find(mapping => mapping.skill === skillName);
+};
+
 export const EXPERIENCE_DATA = [
   {
     id: 'exp-2',

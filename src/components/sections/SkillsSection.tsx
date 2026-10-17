@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Section } from '../common';
-import { SKILLS_PERIODIC_TABLE } from '@/constants/data';
+import { SKILLS_PERIODIC_TABLE, getSkillMapping, CERTIFICATIONS } from '@/constants/data';
+import { SkillDetailModal } from '@/components/ui/skill-detail-modal';
 import './SkillsSection.css';
 
 // Category colors matching periodic table groups
@@ -26,8 +27,62 @@ const CATEGORY_LABELS = {
   concept: 'Concepts',
 };
 
+// Project data
+const PROJECT_DATA = [
+  {
+    title: 'HateShieldAI',
+    description: 'AI safety tool focused on toxicity detection, moderation checks, and safer content workflows.',
+    image: '/project-images/HateShieldAI.png',
+    href: 'https://github.com/SyedAshraf49/HateSheildAI-CLI',
+    liveLink: 'https://hatesheildai-v3.onrender.com/',
+    techStack: 'Python · Flask · Flask-CORS · scikit-learn · Joblib · Pillow · Transformers · PyTorch · HTML5 · CSS3 · JavaScript',
+  },
+  {
+    title: 'Career Path Predictor',
+    description: 'Machine learning project that analyzes profile inputs to recommend suitable career paths.',
+    image: '/project-images/Career-Path-Predictor.png',
+    href: 'https://github.com/SyedAshraf49/Carrer-Path-Predictor-FI',
+    liveLink: 'https://carrer-path-predictor-fi.onrender.com/',
+    techStack: 'Python · Flask · scikit-learn · NumPy · pandas · HTML5 · CSS3 · JavaScript · Bootstrap · FPDF · BeautifulSoup',
+  },
+  {
+    title: 'Local Vendor',
+    description: 'Platform concept for connecting local vendors with customers through streamlined discovery and interactions.',
+    image: '/project-images/Local-Vendor.png',
+    href: 'https://github.com/SyedAshraf49/Local-Vendor__',
+    liveLink: 'https://local-vendor-v2.vercel.app/',
+    techStack: 'React.js · TypeScript · Vite · React Context API · JavaScript · CSS · Vercel',
+  },
+];
+
 export const SkillsSection: React.FC = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [selectedSkill, setSelectedSkill] = useState<{
+    name: string;
+    category: string;
+    color: string;
+  } | null>(null);
+
+  const handleSkillClick = (skillName: string, category: string, color: string) => {
+    setSelectedSkill({ name: skillName, category, color });
+  };
+
+  const handleCloseModal = () => {
+    setSelectedSkill(null);
+  };
+
+  // Get mapped data for selected skill
+  const getSkillData = () => {
+    if (!selectedSkill) return { projects: [], certifications: [] };
+
+    const mapping = getSkillMapping(selectedSkill.name);
+    if (!mapping) return { projects: [], certifications: [] };
+
+    const projects = PROJECT_DATA.filter(p => mapping.projects.includes(p.title));
+    const certifications = CERTIFICATIONS.filter(c => mapping.certifications.includes(c.id));
+
+    return { projects, certifications };
+  };
 
   return (
     <Section id="skills" title="Skills & Technologies">
@@ -53,6 +108,16 @@ export const SkillsSection: React.FC = () => {
                 } as React.CSSProperties}
                 onMouseEnter={() => setHoveredSkill(skill.name)}
                 onMouseLeave={() => setHoveredSkill(null)}
+                onClick={() => handleSkillClick(skill.name, CATEGORY_LABELS[skill.category], colors.bg)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleSkillClick(skill.name, CATEGORY_LABELS[skill.category], colors.bg);
+                  }
+                }}
+                aria-label={`View ${skill.name} projects and certifications`}
               >
                 <div className="periodic-card-inner">
                   {/* Category Label (like atomic number) */}
@@ -96,6 +161,13 @@ export const SkillsSection: React.FC = () => {
           })}
         </div>
 
+        {/* Info Text */}
+        <div className="periodic-info-text">
+          <p style={{ fontFamily: "'Press Start 2P', cursive", fontSize: '0.7rem', color: 'rgba(255, 255, 255, 0.6)', textAlign: 'center', lineHeight: '1.8', margin: '1.5rem 0' }}>
+            Click on any skill to see related projects and certifications
+          </p>
+        </div>
+
         {/* Legend - Periodic Table Style */}
         <div className="periodic-legend">
           <div className="periodic-legend-title">Legend</div>
@@ -118,6 +190,18 @@ export const SkillsSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Skill Detail Modal */}
+      {selectedSkill && (
+        <SkillDetailModal
+          skillName={selectedSkill.name}
+          skillCategory={selectedSkill.category}
+          skillColor={selectedSkill.color}
+          projects={getSkillData().projects}
+          certifications={getSkillData().certifications}
+          onClose={handleCloseModal}
+        />
+      )}
     </Section>
   );
 };

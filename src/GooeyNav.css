@@ -53,7 +53,8 @@
   backdrop-filter: blur(14px);
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-wrap: nowrap;
   gap: 0.35rem;
   /* Ensure touch-friendly minimum height */
   min-height: 44px;
@@ -94,14 +95,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.55rem 1.25rem;
+  padding: 0.55rem 1.1rem;
   border-radius: 999px;
   font-weight: 700;
   letter-spacing: 0.02em;
-  font-size: 0.93rem;
+  font-size: 0.9rem;
   text-decoration: none;
   min-width: 44px;
   min-height: 44px;
+  white-space: nowrap;
   color: rgba(191, 219, 254, 0.88);
   transition: all 300ms ease, color 0.25s ease, text-shadow 0.25s ease;
 }
@@ -198,9 +200,15 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .gooey-nav-container ul {
+    flex-wrap: wrap;
+  }
+}
+
 @media (max-width: 640px) {
   .gooey-nav-container a {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.82rem;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.78rem;
   }
 }
