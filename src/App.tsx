@@ -27,7 +27,7 @@ export default function App() {
   useThemeSafe();
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-950">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 pixel-scanline">
       <SkipLink />
 
       {/* Background */}
@@ -40,14 +40,14 @@ export default function App() {
 
       {/* Main Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
-        {/* Header */}
+        {/* Header - Pixel Art Style */}
         <header>
-          <AnimatedHero className="mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 rounded-3xl border border-white/10 bg-gradient-to-r from-cyan-500/70 via-sky-500/50 to-fuchsia-500/60 p-6 text-center shadow-xl md:mt-8">
+          <AnimatedHero className="mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-6 text-center shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)] md:mt-8">
             <div>
-              <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
+              <h1 className="text-xl font-normal tracking-tight text-[var(--pixel-green)] md:text-2xl" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-cyan), 4px 4px 0 var(--pixel-bg-dark)" }}>
                 Syed Ashraf S.N
               </h1>
-              <p className="mt-2 text-sm text-slate-100 md:text-base">
+              <p className="mt-4 text-[0.5rem] leading-relaxed text-[var(--pixel-cyan)] md:text-[0.6rem]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
                 Software Developer | Full-Stack Developer and Tech Enthusiast
               </p>
             </div>
@@ -75,9 +75,9 @@ export default function App() {
         <main id="main-content" className="flex-1 pb-8">
           {/* About Section */}
           <Section id="about" title="About Me">
-            <div className="mx-auto max-w-4xl space-y-4 text-center text-base leading-relaxed text-[var(--muted)] md:text-lg">
+            <div className="mx-auto max-w-4xl space-y-4 text-center text-[0.55rem] leading-loose text-[var(--pixel-white)] md:text-[0.65rem]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
               <p>
-                I&apos;m <strong className="text-white">Syed Ashraf</strong>, a passionate developer
+                I'm <strong className="text-[var(--pixel-green)]">Syed Ashraf</strong>, a passionate developer
                 building intelligent, production-ready applications at the intersection of machine
                 learning, backend systems, and user experience.
               </p>
@@ -94,10 +94,10 @@ export default function App() {
 
           {/* Education Section */}
           <Section id="education" title="Education">
-            <p className="text-center text-lg text-[var(--muted)]">
-              <strong className="text-white">BSc Computer Science</strong> — Graduated 2026
+            <p className="text-center text-[0.6rem] leading-loose text-[var(--pixel-white)] md:text-[0.7rem]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+              <strong className="text-[var(--pixel-green)]">BSc Computer Science</strong> — Graduated 2026
               <br />
-              <span className="text-[var(--muted)]">CGPA: 8.44 / 10.0</span>
+              <span className="text-[var(--pixel-cyan)]">CGPA: 8.44 / 10.0</span>
             </p>
           </Section>
 

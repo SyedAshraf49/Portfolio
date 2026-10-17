@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import clsx from 'clsx';
 
-// Badge Component
+// Badge Component - Pixel Art Style
 interface BadgeProps {
   children: ReactNode;
   variant?: 'default' | 'primary' | 'secondary';
@@ -10,26 +10,28 @@ interface BadgeProps {
 
 export const Badge: React.FC<BadgeProps> = ({ children, variant = 'default', className }) => {
   const variants = {
-    default: 'border-white/10 bg-white/5 text-slate-200',
-    primary: 'border-cyan-300/30 bg-sky-950/35 text-cyan-100/90',
-    secondary: 'border-cyan-300/30 bg-sky-950/35 text-cyan-100/90',
+    default: 'border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] text-[var(--pixel-white)]',
+    primary: 'border-[var(--pixel-cyan)] bg-[var(--pixel-bg-mid)] text-[var(--pixel-cyan)]',
+    secondary: 'border-[var(--pixel-magenta)] bg-[var(--pixel-bg-mid)] text-[var(--pixel-magenta)]',
   };
 
   return (
     <span
       className={clsx(
-        'rounded-full border px-3 py-1.5 text-xs font-medium transition',
-        'focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-1 focus-visible:ring-offset-slate-950',
+        'border-4 px-3 py-1.5 text-[0.4rem] font-normal',
+        'focus:outline-none focus-visible:outline-4 focus-visible:outline-dotted focus-visible:outline-[var(--pixel-green)]',
+        'shadow-[4px_4px_0_var(--pixel-bg-dark)]',
         variants[variant],
         className
       )}
+      style={{ fontFamily: "'Press Start 2P', cursive" }}
     >
       {children}
     </span>
   );
 };
 
-// Input Component with Accessibility
+// Input Component with Accessibility - Pixel Art Style
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   label?: string;
@@ -39,29 +41,30 @@ export const Input: React.FC<InputProps> = ({ error, label, className, id, ...pr
   const inputId = id || props.name;
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-2">
       {label && (
-        <label htmlFor={inputId} className="text-sm font-medium text-slate-300">
+        <label htmlFor={inputId} className="text-[0.5rem] font-normal text-[var(--pixel-green)]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
           {label}
         </label>
       )}
       <input
         id={inputId}
         className={clsx(
-          'rounded-xl border bg-slate-950/50 px-3 py-2.5 text-sm text-slate-100',
-          'outline-none transition min-h-[44px]',
-          'focus:border-cyan-300/65 focus:ring-1 focus:ring-cyan-300/30',
+          'border-4 bg-[var(--pixel-bg-mid)] px-3 py-2.5 text-[0.55rem] text-[var(--pixel-white)]',
+          'outline-none min-h-[44px]',
+          'focus:border-[var(--pixel-cyan)] focus:shadow-[4px_4px_0_var(--pixel-cyan)]',
           error
-            ? 'border-red-500/50 focus:border-red-400 focus:ring-red-400/30'
-            : 'border-cyan-300/25',
+            ? 'border-[var(--pixel-red)] shadow-[4px_4px_0_var(--pixel-red)]'
+            : 'border-[var(--pixel-green)] shadow-[4px_4px_0_var(--pixel-bg-dark)]',
           className
         )}
+        style={{ fontFamily: "'Press Start 2P', cursive" }}
         aria-invalid={!!error}
         aria-describedby={error ? `${inputId}-error` : undefined}
         {...props}
       />
       {error && (
-        <span id={`${inputId}-error`} className="text-xs text-red-400" role="alert">
+        <span id={`${inputId}-error`} className="text-[0.45rem] text-[var(--pixel-red)]" role="alert" style={{ fontFamily: "'Press Start 2P', cursive" }}>
           {error}
         </span>
       )}
@@ -69,7 +72,7 @@ export const Input: React.FC<InputProps> = ({ error, label, className, id, ...pr
   );
 };
 
-// Textarea Component with Accessibility
+// Textarea Component with Accessibility - Pixel Art Style
 interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   error?: string;
   label?: string;
@@ -79,29 +82,30 @@ export const Textarea: React.FC<TextareaProps> = ({ error, label, className, id,
   const textareaId = id || props.name;
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-2">
       {label && (
-        <label htmlFor={textareaId} className="text-sm font-medium text-slate-300">
+        <label htmlFor={textareaId} className="text-[0.5rem] font-normal text-[var(--pixel-green)]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
           {label}
         </label>
       )}
       <textarea
         id={textareaId}
         className={clsx(
-          'rounded-xl border bg-slate-950/50 px-3 py-2.5 text-sm text-slate-100',
-          'outline-none transition resize-none min-h-[100px]',
-          'focus:border-cyan-300/65 focus:ring-1 focus:ring-cyan-300/30',
+          'border-4 bg-[var(--pixel-bg-mid)] px-3 py-2.5 text-[0.55rem] text-[var(--pixel-white)]',
+          'outline-none resize-none min-h-[100px]',
+          'focus:border-[var(--pixel-cyan)] focus:shadow-[4px_4px_0_var(--pixel-cyan)]',
           error
-            ? 'border-red-500/50 focus:border-red-400 focus:ring-red-400/30'
-            : 'border-cyan-300/25',
+            ? 'border-[var(--pixel-red)] shadow-[4px_4px_0_var(--pixel-red)]'
+            : 'border-[var(--pixel-green)] shadow-[4px_4px_0_var(--pixel-bg-dark)]',
           className
         )}
+        style={{ fontFamily: "'Press Start 2P', cursive" }}
         aria-invalid={!!error}
         aria-describedby={error ? `${textareaId}-error` : undefined}
         {...props}
       />
       {error && (
-        <span id={`${textareaId}-error`} className="text-xs text-red-400" role="alert">
+        <span id={`${textareaId}-error`} className="text-[0.45rem] text-[var(--pixel-red)]" role="alert" style={{ fontFamily: "'Press Start 2P', cursive" }}>
           {error}
         </span>
       )}
@@ -109,7 +113,7 @@ export const Textarea: React.FC<TextareaProps> = ({ error, label, className, id,
   );
 };
 
-// Button Component with Accessibility
+// Button Component with Accessibility - Pixel Art Style
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'tertiary';
   size?: 'sm' | 'md' | 'lg';
@@ -127,35 +131,38 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const variants = {
-    primary: 'bg-gradient-to-r from-cyan-500 to-sky-500 text-slate-950 hover:brightness-110',
-    secondary: 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:brightness-110',
-    tertiary: 'border border-cyan-300/25 bg-slate-950/50 text-slate-100 hover:border-cyan-300/65',
+    primary: 'bg-[var(--pixel-green)] text-[var(--pixel-bg-dark)] border-[var(--pixel-green)] hover:bg-[var(--pixel-cyan)] hover:border-[var(--pixel-cyan)]',
+    secondary: 'bg-[var(--pixel-magenta)] text-[var(--pixel-white)] border-[var(--pixel-magenta)] hover:bg-[var(--pixel-cyan)] hover:border-[var(--pixel-cyan)]',
+    tertiary: 'border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] text-[var(--pixel-white)] hover:border-[var(--pixel-cyan)] hover:text-[var(--pixel-cyan)]',
   };
 
   const sizes = {
-    sm: 'px-3 py-1.5 text-xs min-h-[32px]',
-    md: 'px-4 py-2 text-sm min-h-[44px]',
-    lg: 'px-6 py-2.5 text-base min-h-[48px]',
+    sm: 'px-3 py-1.5 text-[0.4rem] min-h-[32px]',
+    md: 'px-4 py-2 text-[0.5rem] min-h-[44px]',
+    lg: 'px-6 py-2.5 text-[0.6rem] min-h-[48px]',
   };
 
   return (
     <button
       className={clsx(
-        'rounded-xl font-semibold transition',
+        'border-4 font-normal',
         'disabled:opacity-50 disabled:cursor-not-allowed',
-        'focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950',
-        'active:scale-95 transition-transform',
+        'focus:outline-none focus-visible:outline-4 focus-visible:outline-dotted focus-visible:outline-[var(--pixel-green)]',
+        'active:translate-x-[2px] active:translate-y-[2px]',
+        'shadow-[4px_4px_0_var(--pixel-bg-dark)]',
+        'active:shadow-[2px_2px_0_var(--pixel-bg-dark)]',
         variants[variant],
         sizes[size],
         className
       )}
+      style={{ fontFamily: "'Press Start 2P', cursive" }}
       disabled={disabled || isLoading}
       aria-busy={isLoading}
       {...props}
     >
       {isLoading ? (
         <span className="flex items-center gap-2">
-          <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+          <span className="h-4 w-4 animate-[spin_1s_steps(8)_infinite] border-2 border-current border-t-transparent" />
           Loading...
         </span>
       ) : (
@@ -165,7 +172,7 @@ export const Button: React.FC<ButtonProps> = ({
   );
 };
 
-// Card Component
+// Card Component - Pixel Art Style
 interface CardProps {
   children: ReactNode;
   className?: string;
@@ -174,14 +181,14 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ children, className, variant = 'default' }) => {
   const variants = {
-    default: 'rounded-2xl border border-white/10 bg-black/25 p-5',
-    experience: 'rounded-xl border border-cyan-300/20 bg-gradient-to-br from-cyan-500/10 via-slate-950/50 to-slate-950/50 p-6',
+    default: 'border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-5 shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)]',
+    experience: 'border-4 border-[var(--pixel-cyan)] bg-[var(--pixel-bg-mid)] p-6 shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-cyan)]',
   };
 
   return (
     <div
       className={clsx(
-        'transition hover:border-cyan-400/40 hover:shadow-[0_0_18px_rgba(74,144,226,0.2)]',
+        'hover:border-[var(--pixel-cyan)] hover:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-cyan)]',
         variants[variant],
         className
       )}
@@ -191,7 +198,7 @@ export const Card: React.FC<CardProps> = ({ children, className, variant = 'defa
   );
 };
 
-// Section Wrapper with Accessibility
+// Section Wrapper with Accessibility - Pixel Art Style
 interface SectionProps {
   id: string;
   title: string;
@@ -204,8 +211,8 @@ export const Section: React.FC<SectionProps> = ({ id, title, children, subtitle 
     <section id={id} className="mx-auto w-full max-w-5xl px-4 py-6 md:py-8 section-fade-in">
       <Card variant="default">
         <div className="mb-4">
-          <h2 className="text-center text-2xl font-semibold text-[var(--primary)]">{title}</h2>
-          {subtitle && <p className="mt-2 text-center text-sm text-[var(--muted)]">{subtitle}</p>}
+          <h2 className="text-center text-xl font-normal text-[var(--pixel-green)] md:text-2xl" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-bg-dark)" }}>{title}</h2>
+          {subtitle && <p className="mt-4 text-center text-[0.5rem] leading-relaxed text-[var(--pixel-cyan)]" style={{ fontFamily: "'Press Start 2P', cursive" }}>{subtitle}</p>}
         </div>
         {children}
       </Card>

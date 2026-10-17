@@ -1,5 +1,5 @@
 /* ============================================
-   PERIODIC TABLE SKILLS SECTION
+   PIXEL ART SKILLS SECTION
    ============================================ */
 
 /* Container */
@@ -8,9 +8,10 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  font-family: 'Press Start 2P', cursive;
 }
 
-/* Grid Layout - Periodic Table Style */
+/* Grid Layout - Pixel Art Grid Style */
 .periodic-table-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -19,29 +20,32 @@
   justify-items: center;
 }
 
-/* Individual Periodic Card */
+/* Individual Pixel Card */
 .periodic-card {
   position: relative;
   width: 140px;
   height: 140px;
-  background: linear-gradient(135deg, rgba(var(--card-bg-rgb, 59, 130, 246), 0.1), rgba(var(--card-bg-rgb, 59, 130, 246), 0.05));
-  border: 2px solid var(--card-border);
-  border-radius: 12px;
+  background: var(--pixel-bg-mid);
+  border: 4px solid var(--card-border);
+  border-radius: 0; /* Remove rounded corners for pixel art */
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation: cardFloat 0.5s ease-out backwards;
-  backdrop-filter: blur(10px);
+  transition: none; /* Remove smooth transitions */
+  animation: cardPixelFloat 0.4s steps(8) backwards;
   overflow: hidden;
+  box-shadow: 
+    4px 4px 0 var(--pixel-bg-dark),
+    4px 4px 0 0 var(--card-border);
+  image-rendering: pixelated;
 }
 
-@keyframes cardFloat {
+@keyframes cardPixelFloat {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.9);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -56,17 +60,26 @@
   padding: 0.75rem;
   position: relative;
   z-index: 1;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 255, 65, 0.03) 2px,
+    rgba(0, 255, 65, 0.03) 4px
+  );
 }
 
-/* Category Label (like atomic number) */
+/* Category Label (like retro game HUD) */
 .periodic-category-label {
-  font-size: 0.625rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.4rem;
+  font-weight: 400;
+  color: var(--pixel-green);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-align: center;
-  line-height: 1;
+  line-height: 1.4;
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 2px 2px 0 var(--pixel-bg-dark);
 }
 
 /* Logo Container */
@@ -77,23 +90,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: none;
+  filter: contrast(1.2) brightness(1.1);
 }
 
 .periodic-logo-img {
   width: 56px;
   height: 56px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-  transition: all 0.3s ease;
+  filter: drop-shadow(2px 2px 0 var(--pixel-bg-dark));
+  transition: none;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 .periodic-logo-fallback {
-  font-size: 2rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--pixel-green);
+  text-shadow: 2px 2px 0 var(--pixel-bg-dark);
+  transition: none;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .periodic-logo-fallback.hidden {
@@ -102,107 +120,149 @@
 
 /* Skill Name */
 .periodic-skill-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.45rem;
+  font-weight: 400;
+  color: var(--pixel-white);
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.4;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 0 var(--pixel-bg-dark);
+  font-family: 'Press Start 2P', cursive;
 }
 
-/* Hover Effects */
+/* Pixel Hover Effects - stepped animation */
 .periodic-card:hover {
-  transform: translateY(-8px) scale(1.05);
-  border-color: var(--card-border);
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.4),
-    0 0 0 1px var(--card-border),
-    inset 0 0 80px rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+  animation: pixelBounce 0.4s steps(4) forwards;
   z-index: 10;
 }
 
-.periodic-card:hover .periodic-logo {
-  transform: scale(1.15) rotate(5deg);
+@keyframes pixelBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(-4px); }
 }
 
-.periodic-card:hover .periodic-logo-img,
-.periodic-card:hover .periodic-logo-fallback {
-  filter: drop-shadow(0 4px 16px var(--card-border));
+.periodic-card:hover .periodic-logo {
+  animation: pixelSpin 0.6s steps(8) forwards;
+}
+
+@keyframes pixelSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(5deg) scale(1.1); }
+  100% { transform: rotate(0deg) scale(1.1); }
 }
 
 .periodic-card:hover .periodic-skill-name {
-  color: rgba(255, 255, 255, 1);
-  text-shadow: 0 0 12px var(--card-border);
+  color: var(--pixel-green);
+  animation: pixelTextGlow 0.8s steps(4) infinite;
 }
 
-/* Category-Specific Backgrounds */
+@keyframes pixelTextGlow {
+  0%, 100% { 
+    text-shadow: 1px 1px 0 var(--pixel-bg-dark);
+  }
+  50% { 
+    text-shadow: 
+      1px 1px 0 var(--pixel-bg-dark),
+      0 0 4px var(--pixel-green);
+  }
+}
+
+/* Category-Specific Pixel Backgrounds */
 .periodic-card--language {
   --card-bg-rgb: 59, 130, 246;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+  background: var(--pixel-blue);
+  border-color: #6688ff;
 }
 
 .periodic-card--frontend {
   --card-bg-rgb: 6, 182, 212;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.05));
+  background: var(--pixel-cyan);
+  border-color: #44ffff;
 }
 
 .periodic-card--backend {
   --card-bg-rgb: 16, 185, 129;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+  background: var(--pixel-green);
+  border-color: #44ff88;
 }
 
 .periodic-card--database {
   --card-bg-rgb: 139, 92, 246;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05));
+  background: #8844ff;
+  border-color: #aa88ff;
 }
 
 .periodic-card--ml {
   --card-bg-rgb: 245, 158, 11;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+  background: var(--pixel-orange);
+  border-color: #ffaa44;
 }
 
 .periodic-card--cloud {
   --card-bg-rgb: 239, 68, 68;
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+  background: var(--pixel-red);
+  border-color: #ff4488;
 }
 
 .periodic-card--tool {
   --card-bg-rgb: 99, 102, 241;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(99, 102, 241, 0.05));
+  background: var(--pixel-blue);
+  border-color: #8888ff;
 }
 
 .periodic-card--concept {
   --card-bg-rgb: 236, 72, 153;
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.05));
+  background: var(--pixel-magenta);
+  border-color: #ff44ff;
 }
 
-/* Tooltip */
+/* Pixel dithering pattern overlay on cards */
+.periodic-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Tooltip - Pixel Style */
 .periodic-tooltip {
   position: absolute;
   bottom: -60px;
   left: 50%;
   transform: translateX(-50%);
   padding: 0.75rem 1rem;
-  border-radius: 8px;
+  border-radius: 0;
   white-space: nowrap;
   z-index: 100;
-  animation: tooltipFadeIn 0.2s ease-out;
+  animation: tooltipPixelFadeIn 0.2s steps(4);
   pointer-events: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 0.5rem;
+  box-shadow: 
+    4px 4px 0 var(--pixel-bg-dark),
+    4px 4px 0 0 var(--pixel-green);
+  border: 4px solid var(--pixel-green);
+  font-family: 'Press Start 2P', cursive;
 }
 
-@keyframes tooltipFadeIn {
+@keyframes tooltipPixelFadeIn {
   from {
     opacity: 0;
     transform: translateX(-50%) translateY(-10px);
@@ -214,36 +274,42 @@
 }
 
 .periodic-tooltip-name {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 0.5rem;
+  font-weight: 400;
+  color: var(--pixel-white);
+  text-shadow: 1px 1px 0 var(--pixel-bg-dark);
+  font-family: 'Press Start 2P', cursive;
 }
 
 .periodic-tooltip-category {
-  font-size: 0.625rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.4rem;
+  color: var(--pixel-green);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-family: 'Press Start 2P', cursive;
 }
 
-/* Legend - Periodic Table Style */
+/* Legend - Pixel Art Style */
 .periodic-legend {
   margin-top: 4rem;
   padding: 2rem;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 41, 59, 0.4));
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
+  background: var(--pixel-bg-mid);
+  border-radius: 0;
+  border: 4px solid var(--pixel-green);
+  box-shadow: 
+    8px 8px 0 var(--pixel-bg-dark),
+    8px 8px 0 0 var(--pixel-green);
 }
 
 .periodic-legend-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--pixel-green);
   margin-bottom: 1.5rem;
   text-align: center;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.1em;
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 2px 2px 0 var(--pixel-bg-dark);
 }
 
 .periodic-legend-grid {
@@ -256,29 +322,33 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  transition: all 0.3s ease;
+  transition: none;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0;
+  border: 2px solid transparent;
 }
 
 .periodic-legend-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  transform: translateX(4px);
+  background: var(--pixel-bg-light);
+  border-color: var(--pixel-green);
+  transform: none;
 }
 
 .periodic-legend-box {
   width: 24px;
   height: 24px;
-  border-radius: 4px;
-  border: 2px solid;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  border: 4px solid;
+  box-shadow: 
+    2px 2px 0 var(--pixel-bg-dark);
   flex-shrink: 0;
 }
 
 .periodic-legend-label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.5rem;
+  font-weight: 400;
+  color: var(--pixel-white);
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Responsive Design */
@@ -304,11 +374,15 @@
   }
 
   .periodic-logo-fallback {
-    font-size: 1.75rem;
+    font-size: 1.2rem;
   }
 
   .periodic-skill-name {
-    font-size: 0.75rem;
+    font-size: 0.4rem;
+  }
+
+  .periodic-category-label {
+    font-size: 0.35rem;
   }
 }
 
@@ -328,7 +402,7 @@
   }
 
   .periodic-category-label {
-    font-size: 0.55rem;
+    font-size: 0.3rem;
   }
 
   .periodic-logo {
@@ -342,11 +416,11 @@
   }
 
   .periodic-logo-fallback {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .periodic-skill-name {
-    font-size: 0.7rem;
+    font-size: 0.35rem;
   }
 
   .periodic-legend {
@@ -354,7 +428,7 @@
   }
 
   .periodic-legend-title {
-    font-size: 1.1rem;
+    font-size: 0.7rem;
   }
 
   .periodic-legend-grid {
@@ -372,7 +446,7 @@
   }
 
   .periodic-legend-label {
-    font-size: 0.75rem;
+    font-size: 0.45rem;
   }
 }
 
@@ -398,20 +472,27 @@
   }
 
   .periodic-logo-fallback {
-    font-size: 1.25rem;
+    font-size: 0.9rem;
   }
 
   .periodic-skill-name {
-    font-size: 0.65rem;
+    font-size: 0.3rem;
+  }
+
+  .periodic-category-label {
+    font-size: 0.25rem;
   }
 }
 
-/* Reduced Motion */
+/* Reduced Motion - Keep pixel aesthetics */
 @media (prefers-reduced-motion: reduce) {
   .periodic-card,
   .periodic-logo,
   .periodic-tooltip {
     animation: none !important;
-    transition: none !important;
+  }
+  
+  .periodic-card:hover {
+    animation: none !important;
   }
 }

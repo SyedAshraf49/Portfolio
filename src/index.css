@@ -1,13 +1,32 @@
+/* Pixel Art Font - Press Start 2P from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
 :root {
-  --background: #1a1a2e;
-  --foreground: #f5f5f7;
-  --primary: #22d3ee;
-  --card: #2d1f4d;
-  --muted: #c8d1e0;
+  --background: #0f0f23;
+  --foreground: #f0f0f0;
+  --primary: #00ff41;
+  --secondary: #ff00ff;
+  --accent: #00ffff;
+  --card: #1a1a2e;
+  --muted: #8b9bb4;
   --animation-iteration: infinite;
+  
+  /* Pixel Art Color Palette - inspired by retro games */
+  --pixel-bg-dark: #0f0f23;
+  --pixel-bg-mid: #1a1a2e;
+  --pixel-bg-light: #2d2d44;
+  --pixel-green: #00ff41;
+  --pixel-cyan: #00ffff;
+  --pixel-magenta: #ff00ff;
+  --pixel-yellow: #ffff00;
+  --pixel-orange: #ff8800;
+  --pixel-red: #ff0044;
+  --pixel-blue: #4466ff;
+  --pixel-white: #f0f0f0;
+  --pixel-gray: #8b9bb4;
 }
 
 .dark {
@@ -16,10 +35,14 @@
 
 * {
   box-sizing: border-box;
+  /* Disable anti-aliasing for crisp pixel look */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Changed from smooth for instant pixel-style scrolling */
 }
 
 body {
@@ -27,7 +50,69 @@ body {
   min-height: 100vh;
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Press Start 2P', cursive, monospace;
+  font-size: 8px; /* Base pixel font size */
+  line-height: 1.6;
+  
+  /* Pixel grid overlay */
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.03) 2px,
+      rgba(0, 255, 65, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.03) 2px,
+      rgba(0, 255, 65, 0.03) 4px
+    );
+}
+
+/* Pixel Art Utilities */
+.pixel-border {
+  border: 4px solid var(--pixel-green);
+  border-image: repeating-linear-gradient(
+    90deg,
+    var(--pixel-green) 0,
+    var(--pixel-green) 4px,
+    transparent 4px,
+    transparent 8px
+  ) 4;
+}
+
+.pixel-box-shadow {
+  box-shadow: 
+    4px 0 0 var(--pixel-green),
+    -4px 0 0 var(--pixel-green),
+    0 4px 0 var(--pixel-green),
+    0 -4px 0 var(--pixel-green),
+    8px 8px 0 rgba(0, 255, 65, 0.3);
+}
+
+.pixel-text-shadow {
+  text-shadow: 
+    2px 0 0 var(--pixel-cyan),
+    -2px 0 0 var(--pixel-magenta),
+    0 2px 0 var(--pixel-yellow);
+}
+
+.pixel-glow {
+  animation: pixelGlow 1s steps(4) infinite;
+}
+
+@keyframes pixelGlow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 2px var(--pixel-green)) 
+            drop-shadow(0 0 4px var(--pixel-green));
+  }
+  50% { 
+    filter: drop-shadow(0 0 4px var(--pixel-cyan)) 
+            drop-shadow(0 0 8px var(--pixel-cyan));
+  }
 }
 
 /* Accessibility - Screen Reader Only */
@@ -43,18 +128,25 @@ body {
   border-width: 0;
 }
 
-/* Focus Visible for Keyboard Navigation */
+/* Focus Visible for Keyboard Navigation - Pixel Style */
 *:focus-visible {
-  outline: 2px solid #22d3ee;
-  outline-offset: 2px;
+  outline: 4px dotted var(--pixel-green);
+  outline-offset: 4px;
 }
 
 .cosmic-parallax-container {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 70%, rgba(31, 93, 214, 0.22), transparent 46%),
-    radial-gradient(circle at 50% 120%, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 1) 60%);
+  /* Pixel art starfield background */
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      var(--pixel-bg-dark) 0px,
+      var(--pixel-bg-dark) 4px,
+      var(--pixel-bg-mid) 4px,
+      var(--pixel-bg-mid) 8px
+    );
 }
 
 .cosmic-stars,
@@ -66,24 +158,27 @@ body {
   background: transparent;
 }
 
+/* Pixelated stars */
 .cosmic-stars {
-  width: 1px;
-  height: 1px;
-  animation: animStar 150s linear var(--animation-iteration);
+  width: 2px;
+  height: 2px;
+  box-shadow: none; /* Remove blur */
+  animation: animPixelStar 80s steps(400) var(--animation-iteration);
 }
 
 .cosmic-stars-medium {
-  width: 2px;
-  height: 2px;
-  animation: animStar 100s linear var(--animation-iteration);
+  width: 4px;
+  height: 4px;
+  animation: animPixelStar 60s steps(300) var(--animation-iteration);
 }
 
 .cosmic-stars-large {
-  width: 3px;
-  height: 3px;
-  animation: animStar 70s linear var(--animation-iteration);
+  width: 6px;
+  height: 6px;
+  animation: animPixelStar 40s steps(200) var(--animation-iteration);
 }
 
+/* Pixel horizon line */
 #horizon {
   position: absolute;
   left: 50%;
@@ -91,15 +186,29 @@ body {
   width: min(1200px, 130vw);
   height: 110px;
   transform: translateX(-50%);
-  border-top: 2px solid rgba(95, 150, 255, 0.35);
-  border-radius: 50%;
+  border-top: 4px solid var(--pixel-cyan);
+  border-radius: 0; /* Remove smooth curves */
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 8px,
+    rgba(0, 255, 255, 0.1) 8px,
+    rgba(0, 255, 255, 0.1) 12px
+  );
 }
 
 #horizon .glow {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  box-shadow: 0 -20px 60px rgba(86, 152, 255, 0.28);
+  border-radius: 0;
+  box-shadow: none; /* Remove blur */
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 4px,
+    rgba(0, 255, 255, 0.2) 4px,
+    rgba(0, 255, 255, 0.2) 8px
+  );
 }
 
 #earth {
@@ -109,22 +218,40 @@ body {
   width: min(1200px, 130vw);
   height: min(1200px, 130vw);
   transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 25%, rgba(18, 127, 255, 0.18), rgba(2, 6, 23, 0.95) 58%, #020617 85%);
-  box-shadow: inset 0 40px 120px rgba(102, 178, 255, 0.14), 0 -40px 120px rgba(42, 125, 255, 0.12);
+  border-radius: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      var(--pixel-bg-dark) 0px,
+      var(--pixel-bg-dark) 8px,
+      var(--pixel-bg-mid) 8px,
+      var(--pixel-bg-mid) 16px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 16px,
+      rgba(68, 102, 255, 0.1) 16px,
+      rgba(68, 102, 255, 0.1) 32px
+    );
+  box-shadow: none;
 }
 
+/* Pixel art title styling */
 #title {
   position: absolute;
   left: 50%;
   top: 24%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: clamp(1.8rem, 5vw, 4.6rem);
-  letter-spacing: 0.35em;
-  font-weight: 700;
-  color: rgba(232, 245, 255, 0.82);
-  text-shadow: 0 0 36px rgba(95, 176, 255, 0.4);
+  font-size: clamp(1rem, 3vw, 2rem);
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  color: var(--pixel-green);
+  text-shadow: 
+    2px 2px 0 var(--pixel-cyan),
+    4px 4px 0 var(--pixel-bg-dark);
+  font-family: 'Press Start 2P', cursive;
 }
 
 #subtitle {
@@ -133,26 +260,27 @@ body {
   top: 36%;
   transform: translateX(-50%);
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
   width: min(90vw, 900px);
   text-align: center;
-  font-size: clamp(0.7rem, 1.4vw, 1rem);
-  letter-spacing: 0.4em;
-  color: rgba(196, 226, 255, 0.85);
+  font-size: clamp(0.5rem, 1vw, 0.7rem);
+  letter-spacing: 0.3em;
+  color: var(--pixel-cyan);
+  font-family: 'Press Start 2P', cursive;
 }
 
 .subtitle-part-1 {
-  animation: animGravity 5.2s ease-in-out var(--animation-iteration);
+  animation: animPixelGravity 5.2s steps(26) var(--animation-iteration);
 }
 
 .subtitle-part-2 {
-  animation: animDont 5.2s ease-in-out var(--animation-iteration);
+  animation: animPixelDont 5.2s steps(26) var(--animation-iteration);
 }
 
 .subtitle-part-3 {
-  animation: animLet 5.2s ease-in-out var(--animation-iteration);
+  animation: animPixelLet 5.2s steps(26) var(--animation-iteration);
 }
 
 .subtitle-part-4,
@@ -162,10 +290,11 @@ body {
 .subtitle-part-8,
 .subtitle-part-9,
 .subtitle-part-10 {
-  animation: animGo 5.2s ease-in-out var(--animation-iteration);
+  animation: animPixelGo 5.2s steps(26) var(--animation-iteration);
 }
 
-@keyframes animStar {
+/* Stepped animations for pixel art style */
+@keyframes animPixelStar {
   from {
     transform: translateY(0px);
   }
@@ -174,7 +303,7 @@ body {
   }
 }
 
-@keyframes animGravity {
+@keyframes animPixelGravity {
   0% {
     transform: translateY(-26px);
     opacity: 0;
@@ -195,7 +324,7 @@ body {
   }
 }
 
-@keyframes animDont {
+@keyframes animPixelDont {
   0%,
   15% {
     transform: translateY(-26px);
@@ -213,7 +342,7 @@ body {
   }
 }
 
-@keyframes animLet {
+@keyframes animPixelLet {
   0%,
   25% {
     transform: translateY(-26px);
@@ -231,7 +360,7 @@ body {
   }
 }
 
-@keyframes animGo {
+@keyframes animPixelGo {
   0%,
   35% {
     transform: translateY(-26px);
@@ -249,12 +378,12 @@ body {
   }
 }
 
-/* Section fade-in animation */
+/* Section pixel art fade-in animation */
 .section-fade-in {
-  animation: sectionFadeIn 0.8s ease-out;
+  animation: sectionPixelFadeIn 0.6s steps(12);
 }
 
-@keyframes sectionFadeIn {
+@keyframes sectionPixelFadeIn {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -265,12 +394,12 @@ body {
   }
 }
 
-/* Experience card stagger animation */
+/* Experience card pixel stagger animation */
 .experience-card {
-  animation: cardFadeIn 0.6s ease-out backwards;
+  animation: cardPixelFadeIn 0.4s steps(8) backwards;
 }
 
-@keyframes cardFadeIn {
+@keyframes cardPixelFadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -279,4 +408,70 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Pixel blink animation */
+@keyframes pixelBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Scanline effect */
+.pixel-scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.pixel-scanline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 3px
+  );
+  pointer-events: none;
+  z-index: 1000;
+  animation: scanlineMove 8s linear infinite;
+}
+
+@keyframes scanlineMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+/* Pixel art dithering patterns */
+.pixel-dither-1 {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 2px,
+      rgba(0, 255, 65, 0.1) 2px,
+      rgba(0, 255, 65, 0.1) 4px
+    );
+}
+
+.pixel-dither-2 {
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 1px,
+      rgba(0, 255, 255, 0.1) 1px,
+      rgba(0, 255, 255, 0.1) 2px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 1px,
+      rgba(0, 255, 255, 0.1) 1px,
+      rgba(0, 255, 255, 0.1) 2px
+    );
 }
