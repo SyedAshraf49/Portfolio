@@ -5,6 +5,7 @@ import AnimeScrollbar from '@/components/ui/anime-scrollbar';
 import { AnimatedHero } from '@/components/ui/animated-hero';
 import '@/components/ui/animated-hero.css';
 import GooeyNav from './GooeyNav';
+import MobileNav from './MobileNav';
 import MagicBento from './MagicBento';
 import { useThemeSafe } from '@/hooks/useTheme';
 
@@ -56,9 +57,10 @@ export default function App() {
           </AnimatedHero>
         </header>
 
-        {/* Navigation */}
+        {/* Navigation - Desktop and Mobile */}
         <div className="sticky top-0 z-20 mt-2 sm:mt-4 px-2 sm:px-0">
-          <div style={{ height: '78px', position: 'relative' }}>
+          {/* Desktop Navigation */}
+          <div className="hidden md:block" style={{ height: '78px', position: 'relative' }}>
             <GooeyNav
               items={NAVIGATION_ITEMS}
               particleCount={15}
@@ -69,6 +71,11 @@ export default function App() {
               timeVariance={300}
               colors={[1, 2, 3, 1, 2, 3, 1, 4]}
             />
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <MobileNav items={NAVIGATION_ITEMS} initialActiveIndex={0} />
           </div>
         </div>
 

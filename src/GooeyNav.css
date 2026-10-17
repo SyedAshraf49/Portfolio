@@ -243,8 +243,12 @@
   }
 }
 
-/* Allow wrapping only on very small screens - REMOVED */
-/* Media queries consolidated above */
+/* Desktop Navigation - Hide on mobile */
+@media (max-width: 900px) {
+  .gooey-nav-container {
+    display: none;
+  }
+}
 
 /* Small mobile */
 @media (max-width: 640px) {
