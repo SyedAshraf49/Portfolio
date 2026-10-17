@@ -60,7 +60,7 @@ export const SKILLS_PERIODIC_TABLE: Skill[] = [
   { name: 'NLP', category: 'ml', logo: '💬', color: '#A855F7' },
   
   // Cloud
-  { name: 'AWS', category: 'cloud', logo: 'amazonwebservices', color: '#FF9900' },
+  { name: 'AWS', category: 'cloud', logo: '/logos/aws.svg', color: '#FF9900' },
   { name: 'EC2', category: 'cloud', logo: 'amazonec2', color: '#FF9900' },
   { name: 'S3', category: 'cloud', logo: 'amazons3', color: '#569A31' },
   { name: 'Lambda', category: 'cloud', logo: 'awslambda', color: '#FF9900' },
@@ -185,7 +185,7 @@ export const CERTIFICATIONS: Certification[] = [
     id: 'cert-1',
     title: 'AWS Cloud Practitioner Essentials',
     issuer: 'Amazon Web Services (AWS)',
-    logo: 'amazonwebservices',
+    logo: '/logos/aws.svg',
     featured: true,
   },
   {
@@ -207,7 +207,7 @@ export const CERTIFICATIONS: Certification[] = [
     id: 'cert-4',
     title: 'AWS Security Fundamentals',
     issuer: 'Amazon Web Services (AWS)',
-    logo: 'amazonwebservices',
+    logo: '/logos/aws.svg',
   },
   {
     id: 'cert-5',

@@ -29,7 +29,7 @@ export const CertificationsSection: React.FC = () => {
                 {/* Logo */}
                 <div className="certification-logo">
                   <img 
-                    src={`https://cdn.simpleicons.org/${cert.logo}/white`}
+                    src={cert.logo.startsWith('/') ? cert.logo : `https://cdn.simpleicons.org/${cert.logo}/white`}
                     alt={`${cert.issuer} logo`}
                     className="certification-logo-img"
                     onError={(e) => {

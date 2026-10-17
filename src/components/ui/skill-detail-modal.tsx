@@ -184,7 +184,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                       >
                         <div className="skill-cert-logo">
                           <img 
-                            src={`https://cdn.simpleicons.org/${cert.logo}/white`}
+                            src={cert.logo.startsWith('/') ? cert.logo : `https://cdn.simpleicons.org/${cert.logo}/white`}
                             alt={`${cert.issuer} logo`}
                             className="skill-cert-logo-img"
                             onError={(e) => {
