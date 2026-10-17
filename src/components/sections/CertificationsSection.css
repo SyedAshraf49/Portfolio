@@ -10,11 +10,11 @@
 
 .certifications-intro {
   text-align: center;
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: var(--pixel-cyan);
   margin-bottom: 2rem;
   text-shadow: 2px 2px 0 var(--pixel-bg-dark);
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 /* Grid Layout */
@@ -125,18 +125,18 @@
 }
 
 .certification-title {
-  font-size: 0.55rem;
+  font-size: 0.875rem;
   font-weight: 400;
   color: var(--pixel-white);
-  line-height: 1.6;
+  line-height: 1.8;
   text-shadow: 1px 1px 0 var(--pixel-bg-dark);
   margin: 0;
 }
 
 .certification-issuer {
-  font-size: 0.45rem;
+  font-size: 0.75rem;
   color: var(--pixel-cyan);
-  line-height: 1.6;
+  line-height: 1.8;
   text-shadow: 1px 1px 0 var(--pixel-bg-dark);
   margin: 0;
 }

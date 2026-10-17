@@ -51,8 +51,8 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Press Start 2P', cursive, monospace;
-  font-size: 8px; /* Base pixel font size */
-  line-height: 1.6;
+  font-size: 16px; /* Better base size for readability */
+  line-height: 1.8;
   
   /* Pixel grid overlay */
   background-image: 
@@ -70,6 +70,16 @@ body {
       rgba(0, 255, 65, 0.03) 2px,
       rgba(0, 255, 65, 0.03) 4px
     );
+  
+  /* Prevent flash of unstyled content */
+  opacity: 0;
+  animation: bodyFadeIn 0.3s ease-out 0.1s forwards;
+}
+
+@keyframes bodyFadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 /* Pixel Art Utilities */
@@ -158,24 +168,27 @@ body {
   background: transparent;
 }
 
-/* Pixelated stars */
+/* Smooth stars at 60fps */
 .cosmic-stars {
   width: 2px;
   height: 2px;
-  box-shadow: none; /* Remove blur */
-  animation: animPixelStar 80s steps(400) var(--animation-iteration);
+  box-shadow: none;
+  animation: animSmoothStar 150s linear var(--animation-iteration);
+  will-change: transform;
 }
 
 .cosmic-stars-medium {
   width: 4px;
   height: 4px;
-  animation: animPixelStar 60s steps(300) var(--animation-iteration);
+  animation: animSmoothStar 100s linear var(--animation-iteration);
+  will-change: transform;
 }
 
 .cosmic-stars-large {
   width: 6px;
   height: 6px;
-  animation: animPixelStar 40s steps(200) var(--animation-iteration);
+  animation: animSmoothStar 70s linear var(--animation-iteration);
+  will-change: transform;
 }
 
 /* Pixel horizon line */
@@ -293,8 +306,8 @@ body {
   animation: animPixelGo 5.2s steps(26) var(--animation-iteration);
 }
 
-/* Stepped animations for pixel art style */
-@keyframes animPixelStar {
+/* Smooth star animation for 60fps */
+@keyframes animSmoothStar {
   from {
     transform: translateY(0px);
   }

@@ -18,13 +18,13 @@ export const Badge: React.FC<BadgeProps> = ({ children, variant = 'default', cla
   return (
     <span
       className={clsx(
-        'border-4 px-3 py-1.5 text-[0.4rem] font-normal',
+        'border-4 px-3 py-1.5 text-xs font-normal',
         'focus:outline-none focus-visible:outline-4 focus-visible:outline-dotted focus-visible:outline-[var(--pixel-green)]',
         'shadow-[4px_4px_0_var(--pixel-bg-dark)]',
         variants[variant],
         className
       )}
-      style={{ fontFamily: "'Press Start 2P', cursive" }}
+      style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}
     >
       {children}
     </span>
@@ -43,14 +43,14 @@ export const Input: React.FC<InputProps> = ({ error, label, className, id, ...pr
   return (
     <div className="flex flex-col gap-2">
       {label && (
-        <label htmlFor={inputId} className="text-[0.5rem] font-normal text-[var(--pixel-green)]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+        <label htmlFor={inputId} className="text-sm font-normal text-[var(--pixel-green)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}>
           {label}
         </label>
       )}
       <input
         id={inputId}
         className={clsx(
-          'border-4 bg-[var(--pixel-bg-mid)] px-3 py-2.5 text-[0.55rem] text-[var(--pixel-white)]',
+          'border-4 bg-[var(--pixel-bg-mid)] px-3 py-2.5 text-sm text-[var(--pixel-white)]',
           'outline-none min-h-[44px]',
           'focus:border-[var(--pixel-cyan)] focus:shadow-[4px_4px_0_var(--pixel-cyan)]',
           error
@@ -58,13 +58,13 @@ export const Input: React.FC<InputProps> = ({ error, label, className, id, ...pr
             : 'border-[var(--pixel-green)] shadow-[4px_4px_0_var(--pixel-bg-dark)]',
           className
         )}
-        style={{ fontFamily: "'Press Start 2P', cursive" }}
+        style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}
         aria-invalid={!!error}
         aria-describedby={error ? `${inputId}-error` : undefined}
         {...props}
       />
       {error && (
-        <span id={`${inputId}-error`} className="text-[0.45rem] text-[var(--pixel-red)]" role="alert" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+        <span id={`${inputId}-error`} className="text-xs text-[var(--pixel-red)]" role="alert" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}>
           {error}
         </span>
       )}
@@ -84,14 +84,14 @@ export const Textarea: React.FC<TextareaProps> = ({ error, label, className, id,
   return (
     <div className="flex flex-col gap-2">
       {label && (
-        <label htmlFor={textareaId} className="text-[0.5rem] font-normal text-[var(--pixel-green)]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+        <label htmlFor={textareaId} className="text-sm font-normal text-[var(--pixel-green)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}>
           {label}
         </label>
       )}
       <textarea
         id={textareaId}
         className={clsx(
-          'border-4 bg-[var(--pixel-bg-mid)] px-3 py-2.5 text-[0.55rem] text-[var(--pixel-white)]',
+          'border-4 bg-[var(--pixel-bg-mid)] px-3 py-2.5 text-sm text-[var(--pixel-white)]',
           'outline-none resize-none min-h-[100px]',
           'focus:border-[var(--pixel-cyan)] focus:shadow-[4px_4px_0_var(--pixel-cyan)]',
           error
@@ -99,13 +99,13 @@ export const Textarea: React.FC<TextareaProps> = ({ error, label, className, id,
             : 'border-[var(--pixel-green)] shadow-[4px_4px_0_var(--pixel-bg-dark)]',
           className
         )}
-        style={{ fontFamily: "'Press Start 2P', cursive" }}
+        style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}
         aria-invalid={!!error}
         aria-describedby={error ? `${textareaId}-error` : undefined}
         {...props}
       />
       {error && (
-        <span id={`${textareaId}-error`} className="text-[0.45rem] text-[var(--pixel-red)]" role="alert" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+        <span id={`${textareaId}-error`} className="text-xs text-[var(--pixel-red)]" role="alert" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}>
           {error}
         </span>
       )}
@@ -137,9 +137,9 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const sizes = {
-    sm: 'px-3 py-1.5 text-[0.4rem] min-h-[32px]',
-    md: 'px-4 py-2 text-[0.5rem] min-h-[44px]',
-    lg: 'px-6 py-2.5 text-[0.6rem] min-h-[48px]',
+    sm: 'px-3 py-1.5 text-xs min-h-[32px]',
+    md: 'px-4 py-2 text-sm min-h-[44px]',
+    lg: 'px-6 py-2.5 text-base min-h-[48px]',
   };
 
   return (
@@ -155,7 +155,7 @@ export const Button: React.FC<ButtonProps> = ({
         sizes[size],
         className
       )}
-      style={{ fontFamily: "'Press Start 2P', cursive" }}
+      style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}
       disabled={disabled || isLoading}
       aria-busy={isLoading}
       {...props}
@@ -211,8 +211,8 @@ export const Section: React.FC<SectionProps> = ({ id, title, children, subtitle 
     <section id={id} className="mx-auto w-full max-w-5xl px-4 py-6 md:py-8 section-fade-in">
       <Card variant="default">
         <div className="mb-4">
-          <h2 className="text-center text-xl font-normal text-[var(--pixel-green)] md:text-2xl" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-bg-dark)" }}>{title}</h2>
-          {subtitle && <p className="mt-4 text-center text-[0.5rem] leading-relaxed text-[var(--pixel-cyan)]" style={{ fontFamily: "'Press Start 2P', cursive" }}>{subtitle}</p>}
+          <h2 className="text-center text-2xl font-normal text-[var(--pixel-green)] md:text-3xl" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-bg-dark)", lineHeight: "1.6" }}>{title}</h2>
+          {subtitle && <p className="mt-4 text-center text-sm leading-relaxed text-[var(--pixel-cyan)] md:text-base" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>{subtitle}</p>}
         </div>
         {children}
       </Card>

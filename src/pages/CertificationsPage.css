@@ -47,21 +47,21 @@
 }
 
 .certifications-page-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--pixel-green);
   text-shadow: 
     2px 2px 0 var(--pixel-cyan),
     4px 4px 0 var(--pixel-bg-dark);
   margin: 0 0 1rem;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 .certifications-page-subtitle {
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: var(--pixel-cyan);
   text-shadow: 2px 2px 0 var(--pixel-bg-dark);
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 /* Filter Bar */
@@ -83,9 +83,10 @@
 }
 
 .filter-label {
-  font-size: 0.5rem;
+  font-size: 0.875rem;
   color: var(--pixel-white);
   text-shadow: 1px 1px 0 var(--pixel-bg-dark);
+  line-height: 1.6;
 }
 
 .filter-buttons {
@@ -96,7 +97,7 @@
 
 .filter-button {
   padding: 0.75rem 1rem;
-  font-size: 0.45rem;
+  font-size: 0.75rem;
   font-family: 'Press Start 2P', cursive;
   color: var(--pixel-white);
   background: var(--pixel-bg-light);
@@ -104,6 +105,7 @@
   cursor: pointer;
   box-shadow: 4px 4px 0 var(--pixel-bg-dark);
   transition: none;
+  line-height: 1.6;
 }
 
 .filter-button:hover {
@@ -196,13 +198,14 @@
   top: 8px;
   right: 8px;
   padding: 0.4rem 0.6rem;
-  font-size: 0.35rem;
+  font-size: 0.625rem;
   background: var(--pixel-yellow);
   color: var(--pixel-bg-dark);
   border: 2px solid var(--pixel-orange);
   box-shadow: 2px 2px 0 var(--pixel-bg-dark);
   z-index: 2;
   animation: featuredPulse 2s steps(4) infinite;
+  line-height: 1.6;
 }
 
 @keyframes featuredPulse {
@@ -262,18 +265,18 @@
 }
 
 .certification-full-title {
-  font-size: 0.5rem;
+  font-size: 0.875rem;
   font-weight: 400;
   color: var(--pixel-white);
-  line-height: 1.6;
+  line-height: 1.8;
   text-shadow: 1px 1px 0 var(--pixel-bg-dark);
   margin: 0;
 }
 
 .certification-full-issuer {
-  font-size: 0.4rem;
+  font-size: 0.75rem;
   color: var(--pixel-cyan);
-  line-height: 1.6;
+  line-height: 1.8;
   text-shadow: 1px 1px 0 var(--pixel-bg-dark);
   margin: 0;
 }
@@ -326,9 +329,10 @@
 .no-results {
   text-align: center;
   padding: 4rem 2rem;
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: var(--pixel-red);
   text-shadow: 2px 2px 0 var(--pixel-bg-dark);
+  line-height: 1.8;
 }
 
 /* Footer */

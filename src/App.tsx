@@ -45,10 +45,10 @@ export default function App() {
         <header>
           <AnimatedHero className="mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-6 text-center shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)] md:mt-8">
             <div>
-              <h1 className="text-xl font-normal tracking-tight text-[var(--pixel-green)] md:text-2xl" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-cyan), 4px 4px 0 var(--pixel-bg-dark)" }}>
+              <h1 className="text-2xl font-normal tracking-tight text-[var(--pixel-green)] md:text-4xl" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-cyan), 4px 4px 0 var(--pixel-bg-dark)", lineHeight: "1.6" }}>
                 Syed Ashraf S.N
               </h1>
-              <p className="mt-4 text-[0.5rem] leading-relaxed text-[var(--pixel-cyan)] md:text-[0.6rem]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+              <p className="mt-4 text-sm leading-relaxed text-[var(--pixel-cyan)] md:text-base" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
                 Software Developer | Full-Stack Developer and Tech Enthusiast
               </p>
             </div>
@@ -76,7 +76,7 @@ export default function App() {
         <main id="main-content" className="flex-1 pb-8">
           {/* About Section */}
           <Section id="about" title="About Me">
-            <div className="mx-auto max-w-4xl space-y-4 text-center text-[0.55rem] leading-loose text-[var(--pixel-white)] md:text-[0.65rem]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+            <div className="mx-auto max-w-4xl space-y-4 text-center text-sm leading-loose text-[var(--pixel-white)] md:text-base" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "2" }}>
               <p>
                 I'm <strong className="text-[var(--pixel-green)]">Syed Ashraf</strong>, a passionate developer
                 building intelligent, production-ready applications at the intersection of machine
@@ -95,7 +95,7 @@ export default function App() {
 
           {/* Education Section */}
           <Section id="education" title="Education">
-            <p className="text-center text-[0.6rem] leading-loose text-[var(--pixel-white)] md:text-[0.7rem]" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+            <p className="text-center text-sm leading-loose text-[var(--pixel-white)] md:text-base" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "2" }}>
               <strong className="text-[var(--pixel-green)]">BSc Computer Science</strong> — Graduated 2026
               <br />
               <span className="text-[var(--pixel-cyan)]">CGPA: 8.44 / 10.0</span>

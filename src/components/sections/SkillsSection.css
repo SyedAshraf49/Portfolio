@@ -71,13 +71,13 @@
 
 /* Category Label (like retro game HUD) */
 .periodic-category-label {
-  font-size: 0.4rem;
+  font-size: 0.625rem;
   font-weight: 400;
   color: var(--pixel-green);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.6;
   font-family: 'Press Start 2P', cursive;
   text-shadow: 2px 2px 0 var(--pixel-bg-dark);
 }
@@ -120,11 +120,11 @@
 
 /* Skill Name */
 .periodic-skill-name {
-  font-size: 0.45rem;
+  font-size: 0.75rem;
   font-weight: 400;
   color: var(--pixel-white);
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.6;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -274,19 +274,21 @@
 }
 
 .periodic-tooltip-name {
-  font-size: 0.5rem;
+  font-size: 0.875rem;
   font-weight: 400;
   color: var(--pixel-white);
   text-shadow: 1px 1px 0 var(--pixel-bg-dark);
   font-family: 'Press Start 2P', cursive;
+  line-height: 1.6;
 }
 
 .periodic-tooltip-category {
-  font-size: 0.4rem;
+  font-size: 0.75rem;
   color: var(--pixel-green);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: 'Press Start 2P', cursive;
+  line-height: 1.6;
 }
 
 /* Legend - Pixel Art Style */
@@ -302,7 +304,7 @@
 }
 
 .periodic-legend-title {
-  font-size: 0.8rem;
+  font-size: 1.25rem;
   font-weight: 400;
   color: var(--pixel-green);
   margin-bottom: 1.5rem;
@@ -310,6 +312,7 @@
   letter-spacing: 0.1em;
   font-family: 'Press Start 2P', cursive;
   text-shadow: 2px 2px 0 var(--pixel-bg-dark);
+  line-height: 1.6;
 }
 
 .periodic-legend-grid {
@@ -345,10 +348,11 @@
 }
 
 .periodic-legend-label {
-  font-size: 0.5rem;
+  font-size: 0.875rem;
   font-weight: 400;
   color: var(--pixel-white);
   font-family: 'Press Start 2P', cursive;
+  line-height: 1.6;
 }
 
 /* Responsive Design */
