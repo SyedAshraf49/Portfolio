@@ -181,14 +181,14 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ children, className, variant = 'default' }) => {
   const variants = {
-    default: 'border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-5 shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)]',
-    experience: 'border-4 border-[var(--pixel-cyan)] bg-[var(--pixel-bg-mid)] p-6 shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-cyan)]',
+    default: 'border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-3 sm:p-5 shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-green)] sm:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)]',
+    experience: 'border-4 border-[var(--pixel-cyan)] bg-[var(--pixel-bg-mid)] p-4 sm:p-6 shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-cyan)] sm:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-cyan)]',
   };
 
   return (
     <div
       className={clsx(
-        'hover:border-[var(--pixel-cyan)] hover:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-cyan)]',
+        'hover:border-[var(--pixel-cyan)] hover:shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-cyan)] sm:hover:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-cyan)]',
         variants[variant],
         className
       )}
@@ -208,11 +208,11 @@ interface SectionProps {
 
 export const Section: React.FC<SectionProps> = ({ id, title, children, subtitle }) => {
   return (
-    <section id={id} className="mx-auto w-full max-w-5xl px-4 py-6 md:py-8 section-fade-in">
+    <section id={id} className="mx-auto w-full max-w-5xl px-3 sm:px-4 py-4 sm:py-6 md:py-8 section-fade-in">
       <Card variant="default">
-        <div className="mb-4">
-          <h2 className="text-center text-2xl font-normal text-[var(--pixel-green)] md:text-3xl" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-bg-dark)", lineHeight: "1.6" }}>{title}</h2>
-          {subtitle && <p className="mt-4 text-center text-sm leading-relaxed text-[var(--pixel-cyan)] md:text-base" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>{subtitle}</p>}
+        <div className="mb-3 sm:mb-4">
+          <h2 className="text-center text-lg sm:text-2xl md:text-3xl font-normal text-[var(--pixel-green)] break-words" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-bg-dark)", lineHeight: "1.8" }}>{title}</h2>
+          {subtitle && <p className="mt-3 sm:mt-4 text-center text-xs sm:text-sm md:text-base leading-relaxed text-[var(--pixel-cyan)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>{subtitle}</p>}
         </div>
         {children}
       </Card>

@@ -1,0 +1,359 @@
+/* ============================================
+   MOBILE OPTIMIZATION - PIXEL ART PORTFOLIO
+   ============================================ */
+
+/* Mobile-First Base Styles */
+@media (max-width: 640px) {
+  /* Base font size adjustment */
+  body {
+    font-size: 12px;
+  }
+
+  /* Hero Section */
+  .animated-hero {
+    padding: 1rem !important;
+    margin-top: 0.5rem !important;
+    box-shadow: 4px 4px 0 var(--pixel-bg-dark), 4px 4px 0 0 var(--pixel-green) !important;
+  }
+
+  .animated-hero h1 {
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
+    word-break: break-word;
+  }
+
+  .animated-hero p {
+    font-size: 0.65rem !important;
+    line-height: 1.8 !important;
+  }
+
+  /* Navigation - Make it scrollable on mobile */
+  .gooey-nav-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0.5rem;
+  }
+
+  .gooey-nav-container nav ul {
+    min-width: max-content;
+    padding: 0 0.5rem;
+  }
+
+  .gooey-nav-container nav ul li a {
+    font-size: 0.6rem;
+    padding: 0.75rem 1rem;
+    white-space: nowrap;
+  }
+
+  /* Section Spacing */
+  section {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    margin-bottom: 2rem;
+  }
+
+  /* Section Titles */
+  section h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.8 !important;
+    margin-bottom: 1.5rem !important;
+    word-break: break-word;
+  }
+
+  /* Cards */
+  .periodic-card,
+  .certification-card,
+  .magic-bento-card {
+    padding: 1rem !important;
+    margin: 0.5rem 0 !important;
+  }
+
+  /* Experience Cards */
+  .experience-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .experience-card h3 {
+    font-size: 0.75rem !important;
+    line-height: 1.8 !important;
+    word-break: break-word;
+  }
+
+  .experience-card p {
+    font-size: 0.65rem !important;
+    line-height: 1.8 !important;
+  }
+
+  .experience-card li {
+    font-size: 0.65rem !important;
+    line-height: 1.8 !important;
+    margin-bottom: 1rem;
+  }
+
+  /* Skills Grid */
+  .periodic-table-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .periodic-card {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 120px;
+    padding: 0.75rem !important;
+  }
+
+  .periodic-skill-name {
+    font-size: 0.55rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .periodic-category-label {
+    font-size: 0.45rem !important;
+  }
+
+  .periodic-logo {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  /* Certifications */
+  .certifications-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .certification-card {
+    min-height: 200px !important;
+  }
+
+  .certification-title {
+    font-size: 0.65rem !important;
+    line-height: 1.8 !important;
+  }
+
+  .certification-issuer {
+    font-size: 0.55rem !important;
+  }
+
+  /* Projects/Bento Grid */
+  .card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .magic-bento-card {
+    min-height: 300px !important;
+  }
+
+  .magic-bento-card__title {
+    font-size: 0.75rem !important;
+    line-height: 1.8 !important;
+  }
+
+  .magic-bento-card__description {
+    font-size: 0.6rem !important;
+    line-height: 1.8 !important;
+  }
+
+  /* Contact Form */
+  .contact-section input,
+  .contact-section textarea,
+  .contact-section button {
+    font-size: 0.65rem !important;
+    padding: 0.75rem !important;
+  }
+
+  .contact-section label {
+    font-size: 0.6rem !important;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Buttons */
+  button,
+  .button,
+  a[class*="button"] {
+    font-size: 0.65rem !important;
+    padding: 0.75rem 1rem !important;
+    min-height: 44px !important;
+  }
+
+  /* Badges */
+  span[class*="badge"] {
+    font-size: 0.5rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  /* Footer */
+  footer {
+    padding: 1.5rem 0.75rem !important;
+  }
+
+  footer p {
+    font-size: 0.5rem !important;
+    line-height: 1.8 !important;
+    text-align: center;
+  }
+
+  footer a {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 0.75rem !important;
+  }
+
+  /* Legend/Info sections */
+  .periodic-legend {
+    padding: 1rem !important;
+    margin-top: 2rem !important;
+  }
+
+  .periodic-legend-title {
+    font-size: 0.75rem !important;
+  }
+
+  .periodic-legend-label {
+    font-size: 0.5rem !important;
+  }
+
+  /* Dock/Social Icons */
+  .dock-container {
+    scale: 0.8;
+  }
+
+  /* Hide complex animations on mobile for performance */
+  .pixel-scanline::before {
+    display: none;
+  }
+
+  /* Better touch targets */
+  a, button, input, textarea, select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent text overflow */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Optimize images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Better spacing for paragraphs on mobile */
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Tablet optimizations (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  body {
+    font-size: 14px;
+  }
+
+  .animated-hero h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .animated-hero p {
+    font-size: 0.75rem !important;
+  }
+
+  section h2 {
+    font-size: 1.5rem !important;
+  }
+
+  .periodic-table-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .certifications-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 900px) and (orientation: landscape) {
+  .animated-hero {
+    padding: 0.75rem !important;
+  }
+
+  section {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .periodic-table-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* Extra small devices (< 375px) */
+@media (max-width: 374px) {
+  body {
+    font-size: 11px;
+  }
+
+  .animated-hero h1 {
+    font-size: 0.85rem !important;
+  }
+
+  .animated-hero p {
+    font-size: 0.55rem !important;
+  }
+
+  .periodic-table-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  button, .button {
+    font-size: 0.55rem !important;
+    padding: 0.6rem 0.8rem !important;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Fix for iOS Safari viewport height */
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode improvements */
+@media (prefers-contrast: high) {
+  .periodic-card,
+  .certification-card,
+  .magic-bento-card {
+    border-width: 6px !important;
+  }
+
+  button, a {
+    border-width: 4px !important;
+  }
+}

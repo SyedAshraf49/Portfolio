@@ -42,13 +42,13 @@ export default function App() {
       {/* Main Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
         {/* Header - Pixel Art Style */}
-        <header>
-          <AnimatedHero className="mx-auto mt-4 flex w-[min(95%,72rem)] flex-col items-center gap-4 border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-6 text-center shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)] md:mt-8">
-            <div>
-              <h1 className="text-2xl font-normal tracking-tight text-[var(--pixel-green)] md:text-4xl" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-cyan), 4px 4px 0 var(--pixel-bg-dark)", lineHeight: "1.6" }}>
+        <header className="px-2 sm:px-4">
+          <AnimatedHero className="mx-auto mt-2 flex w-full max-w-[95%] sm:w-[min(95%,72rem)] flex-col items-center gap-3 sm:gap-4 border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-4 sm:p-6 text-center shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-green)] sm:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)] sm:mt-4 md:mt-8">
+            <div className="w-full">
+              <h1 className="text-base sm:text-2xl md:text-4xl font-normal tracking-tight text-[var(--pixel-green)] break-words" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-cyan), 4px 4px 0 var(--pixel-bg-dark)", lineHeight: "1.8" }}>
                 Syed Ashraf S.N
               </h1>
-              <p className="mt-4 text-sm leading-relaxed text-[var(--pixel-cyan)] md:text-base" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
+              <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base leading-relaxed text-[var(--pixel-cyan)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
                 Software Developer | Full-Stack Developer and Tech Enthusiast
               </p>
             </div>
@@ -57,7 +57,7 @@ export default function App() {
         </header>
 
         {/* Navigation */}
-        <div className="sticky top-0 z-20 mt-4">
+        <div className="sticky top-0 z-20 mt-2 sm:mt-4 px-2 sm:px-0">
           <div style={{ height: '78px', position: 'relative' }}>
             <GooeyNav
               items={NAVIGATION_ITEMS}
@@ -73,10 +73,10 @@ export default function App() {
         </div>
 
         {/* Main Content */}
-        <main id="main-content" className="flex-1 pb-8">
+        <main id="main-content" className="flex-1 pb-4 sm:pb-8 px-2 sm:px-4">
           {/* About Section */}
           <Section id="about" title="About Me">
-            <div className="mx-auto max-w-4xl space-y-4 text-center text-sm leading-loose text-[var(--pixel-white)] md:text-base" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "2" }}>
+            <div className="mx-auto max-w-4xl space-y-3 sm:space-y-4 text-center text-xs sm:text-sm md:text-base leading-loose text-[var(--pixel-white)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "2" }}>
               <p>
                 I'm <strong className="text-[var(--pixel-green)]">Syed Ashraf</strong>, a passionate developer
                 building intelligent, production-ready applications at the intersection of machine
@@ -95,8 +95,11 @@ export default function App() {
 
           {/* Education Section */}
           <Section id="education" title="Education">
-            <p className="text-center text-sm leading-loose text-[var(--pixel-white)] md:text-base" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "2" }}>
-              <strong className="text-[var(--pixel-green)]">BSc Computer Science</strong> — Graduated 2026
+            <p className="text-center text-xs sm:text-sm md:text-base leading-loose text-[var(--pixel-white)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "2" }}>
+              <strong className="text-[var(--pixel-green)]">BSc Computer Science</strong>
+              <br className="sm:hidden" />
+              <span className="hidden sm:inline"> — </span>
+              Graduated 2026
               <br />
               <span className="text-[var(--pixel-cyan)]">CGPA: 8.44 / 10.0</span>
             </p>
