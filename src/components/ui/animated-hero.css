@@ -1,6 +1,6 @@
 .animated-hero {
   position: relative;
-  animation: pixelFadeIn 0.4s steps(8);
+  animation: pixelFadeIn 0.5s ease-out 0.4s backwards;
   border: 4px solid var(--pixel-green);
   background: var(--pixel-bg-mid);
   box-shadow: 

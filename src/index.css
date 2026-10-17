@@ -76,7 +76,7 @@ body {
   
   /* Prevent flash of unstyled content */
   opacity: 0;
-  animation: bodyFadeIn 0.3s ease-out 0.1s forwards;
+  animation: bodyFadeIn 0.4s ease-out 0.2s forwards;
 }
 
 @keyframes bodyFadeIn {
@@ -432,10 +432,9 @@ body {
   50%, 100% { opacity: 0; }
 }
 
-/* Scanline effect */
+/* Scanline effect - Subtle and less glitchy */
 .pixel-scanline {
   position: relative;
-  overflow: hidden;
 }
 
 .pixel-scanline::before {
@@ -447,14 +446,21 @@ body {
   height: 100%;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.03) 0px,
     transparent 1px,
     transparent 2px,
-    rgba(0, 0, 0, 0.15) 3px
+    rgba(0, 0, 0, 0.03) 3px
   );
   pointer-events: none;
   z-index: 1000;
-  animation: scanlineMove 8s linear infinite;
+  opacity: 0;
+  animation: scanlineFadeIn 1s ease-in 0.5s forwards, scanlineMove 8s linear 1.5s infinite;
+}
+
+@keyframes scanlineFadeIn {
+  to {
+    opacity: 0.5;
+  }
 }
 
 @keyframes scanlineMove {
