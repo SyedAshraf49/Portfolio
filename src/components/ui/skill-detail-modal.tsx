@@ -40,7 +40,8 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Scanning animation
+    // Start showing content immediately, scanning is just visual
+    // Scanning animation duration
     const scanTimer = setTimeout(() => {
       setIsScanning(false);
       setShowContent(true);
@@ -51,9 +52,10 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
 
   // Prevent body scroll when modal is open
   useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = originalOverflow;
     };
   }, []);
 
@@ -63,13 +65,24 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
     }
   };
 
+  // Handle Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [onClose]);
+
   const hasProjects = projects.length > 0;
   const hasCertifications = certifications.length > 0;
 
   return (
     <div className="skill-modal-backdrop" onClick={handleBackdropClick}>
       <div className="skill-modal" style={{ '--skill-color': skillColor } as React.CSSProperties}>
-        {/* Scanning Effect */}
+        {/* Scanning Effect - Always shows first */}
         {isScanning && (
           <div className="skill-scan-effect">
             <div className="scan-line" />
@@ -85,7 +98,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
           </div>
         )}
 
-        {/* Content */}
+        {/* Content - Hidden during scan */}
         {showContent && (
           <>
             {/* Header */}
