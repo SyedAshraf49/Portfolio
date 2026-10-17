@@ -165,8 +165,134 @@ export const NAVIGATION_ITEMS = [
   { label: 'Education', href: '#education' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Certifications', href: '#certifications' },
   { label: 'Resume', href: '/resume/Syed Ashraf S N Resume.pdf', isResume: true },
   { label: 'Contact', href: '#contact' },
+];
+
+export interface Certification {
+  id: string;
+  title: string;
+  issuer: string;
+  logo: string; // Simple Icons slug
+  year?: string;
+  featured?: boolean;
+}
+
+export const CERTIFICATIONS: Certification[] = [
+  // Featured Top 3
+  {
+    id: 'cert-1',
+    title: 'AWS Cloud Practitioner Essentials',
+    issuer: 'Amazon Web Services (AWS)',
+    logo: 'amazonwebservices',
+    featured: true,
+  },
+  {
+    id: 'cert-2',
+    title: 'AI Fluency Framework & Foundations',
+    issuer: 'Anthropic',
+    logo: 'anthropic',
+    featured: true,
+  },
+  {
+    id: 'cert-3',
+    title: 'Data Science Essentials With Python',
+    issuer: 'Cisco',
+    logo: 'cisco',
+    featured: true,
+  },
+  // Rest of certifications
+  {
+    id: 'cert-4',
+    title: 'AWS Security Fundamentals',
+    issuer: 'Amazon Web Services (AWS)',
+    logo: 'amazonwebservices',
+  },
+  {
+    id: 'cert-5',
+    title: 'Object Oriented Programming using Python',
+    issuer: 'Infosys Springboard',
+    logo: 'infosys',
+  },
+  {
+    id: 'cert-6',
+    title: 'Connecting to a MongoDB Database',
+    issuer: 'MongoDB',
+    logo: 'mongodb',
+  },
+  {
+    id: 'cert-7',
+    title: 'MongoDB Transactions',
+    issuer: 'MongoDB',
+    logo: 'mongodb',
+  },
+  {
+    id: 'cert-8',
+    title: 'MongoDB Data Modeling Intro',
+    issuer: 'MongoDB',
+    logo: 'mongodb',
+  },
+  {
+    id: 'cert-9',
+    title: 'MongoDB CRUD Operations: Modifying Query Results',
+    issuer: 'MongoDB',
+    logo: 'mongodb',
+  },
+  {
+    id: 'cert-10',
+    title: 'MongoDB CRUD Operations: Replace and Delete Documents',
+    issuer: 'MongoDB',
+    logo: 'mongodb',
+  },
+  {
+    id: 'cert-11',
+    title: 'MongoDB CRUD Operations: Insert and Find Documents',
+    issuer: 'MongoDB',
+    logo: 'mongodb',
+  },
+  {
+    id: 'cert-12',
+    title: 'MongoDB Atlas Search',
+    issuer: 'MongoDB',
+    logo: 'mongodb',
+  },
+  {
+    id: 'cert-13',
+    title: 'MongoDB Indexes',
+    issuer: 'MongoDB',
+    logo: 'mongodb',
+  },
+  {
+    id: 'cert-14',
+    title: 'AI Fluency for Students',
+    issuer: 'Anthropic',
+    logo: 'anthropic',
+  },
+  {
+    id: 'cert-15',
+    title: 'Getting Started with Artificial Intelligence',
+    issuer: 'IBM',
+    logo: 'ibm',
+  },
+  {
+    id: 'cert-16',
+    title: 'Generative AI in Action',
+    issuer: 'IBM',
+    logo: 'ibm',
+  },
+  {
+    id: 'cert-17',
+    title: 'Code Generation and Optimization Using IBM Granite',
+    issuer: 'IBM',
+    logo: 'ibm',
+  },
+  {
+    id: 'cert-18',
+    title: 'Data Classification and Summarization Using IBM Granite',
+    issuer: 'IBM',
+    logo: 'ibm',
+  },
 ];
 
 export const EXPERIENCE_DATA = [

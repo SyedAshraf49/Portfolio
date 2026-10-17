@@ -11,6 +11,7 @@ import { useThemeSafe } from '@/hooks/useTheme';
 // Sections
 import { ExperienceSection } from '@/components/sections/ExperienceSection';
 import { SkillsSection } from '@/components/sections/SkillsSection';
+import { CertificationsSection } from '@/components/sections/CertificationsSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 
 // Layout
@@ -103,6 +104,9 @@ export default function App() {
 
           {/* Skills Section */}
           <SkillsSection />
+
+          {/* Certifications Section */}
+          <CertificationsSection />
 
           {/* Projects Section */}
           <Section id="projects" title="Projects">
