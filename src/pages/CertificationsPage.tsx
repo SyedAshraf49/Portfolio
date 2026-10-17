@@ -18,7 +18,7 @@ export const CertificationsPage: React.FC = () => {
   };
 
   return (
-    <div className="certifications-page pixel-scanline">
+    <div className="certifications-page">
       {/* Header */}
       <header className="certifications-header">
         <div className="certifications-header-content">

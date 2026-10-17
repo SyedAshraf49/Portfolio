@@ -28,7 +28,7 @@ export default function App() {
   useThemeSafe();
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-950 pixel-scanline">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950">
       <SkipLink />
 
       {/* Background */}

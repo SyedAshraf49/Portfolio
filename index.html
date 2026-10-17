@@ -42,15 +42,19 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- Prevent scanline glitch on load -->
-    <style>
-      #root {
-        opacity: 0;
-        animation: rootFadeIn 0.3s ease-out 0.3s forwards;
-      }
-      @keyframes rootFadeIn {
-        to { opacity: 1; }
-      }
-    </style>
+    <!-- Smooth page load without glitches -->
+    <script>
+      // Add loaded class after DOM is ready
+      window.addEventListener('DOMContentLoaded', function() {
+        requestAnimationFrame(function() {
+          document.body.classList.add('loaded');
+        });
+      });
+      
+      // Fallback: add loaded class after a short delay
+      setTimeout(function() {
+        document.body.classList.add('loaded');
+      }, 100);
+    </script>
   </body>
 </html>

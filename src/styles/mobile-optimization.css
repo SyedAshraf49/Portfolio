@@ -222,9 +222,9 @@
     scale: 0.8;
   }
 
-  /* Hide complex animations on mobile for performance */
+  /* Disable scanline effect */
   .pixel-scanline::before {
-    display: none;
+    display: none !important;
   }
 
   /* Better touch targets */

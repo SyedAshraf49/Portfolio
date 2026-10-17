@@ -45,7 +45,8 @@
 }
 
 html {
-  scroll-behavior: auto; /* Changed from smooth for instant pixel-style scrolling */
+  scroll-behavior: auto;
+  background: var(--pixel-bg-dark); /* Match body background to prevent flash */
 }
 
 body {
@@ -54,7 +55,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Press Start 2P', cursive, monospace;
-  font-size: 16px; /* Better base size for readability */
+  font-size: 16px;
   line-height: 1.8;
   
   /* Pixel grid overlay */
@@ -74,9 +75,14 @@ body {
       rgba(0, 255, 65, 0.03) 4px
     );
   
-  /* Prevent flash of unstyled content */
+  /* Smooth fade-in without glitch */
+  visibility: hidden;
   opacity: 0;
-  animation: bodyFadeIn 0.4s ease-out 0.2s forwards;
+}
+
+body.loaded {
+  visibility: visible;
+  animation: bodyFadeIn 0.3s ease-out forwards;
 }
 
 @keyframes bodyFadeIn {
@@ -432,40 +438,14 @@ body {
   50%, 100% { opacity: 0; }
 }
 
-/* Scanline effect - Subtle and less glitchy */
+/* Remove scanline effect entirely to prevent glitches */
 .pixel-scanline {
   position: relative;
 }
 
+/* Scanline disabled - was causing visual glitches on page load */
 .pixel-scanline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.03) 0px,
-    transparent 1px,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 3px
-  );
-  pointer-events: none;
-  z-index: 1000;
-  opacity: 0;
-  animation: scanlineFadeIn 1s ease-in 0.5s forwards, scanlineMove 8s linear 1.5s infinite;
-}
-
-@keyframes scanlineFadeIn {
-  to {
-    opacity: 0.5;
-  }
-}
-
-@keyframes scanlineMove {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(100%); }
+  display: none;
 }
 
 /* Pixel art dithering patterns */
