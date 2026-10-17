@@ -7,6 +7,7 @@
     8px 8px 0 0 var(--pixel-green);
   opacity: 0;
   animation: heroFadeIn 0.4s ease-out 0.2s forwards;
+  overflow: hidden; /* Prevent border animation overflow */
 }
 
 @keyframes heroFadeIn {
@@ -20,56 +21,24 @@
   }
 }
 
-/* Animated pixel border - cycling colors */
-.animated-hero::before {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  padding: 4px;
-  background: repeating-linear-gradient(
-    0deg,
-    var(--pixel-green) 0px,
-    var(--pixel-green) 4px,
-    var(--pixel-cyan) 4px,
-    var(--pixel-cyan) 8px,
-    var(--pixel-magenta) 8px,
-    var(--pixel-magenta) 12px,
-    var(--pixel-yellow) 12px,
-    var(--pixel-yellow) 16px
-  );
-  animation: pixelBorderShift 2s steps(4) infinite;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.6;
-}
-
-@keyframes pixelBorderShift {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(4px, 0);
-  }
-  50% {
-    transform: translate(4px, 4px);
-  }
-  75% {
-    transform: translate(0, 4px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-/* Corner pixels decoration */
+/* Removed animated border - was causing the colored lines glitch */
+/* Simple corner accents instead */
 .animated-hero::after {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: 
-    linear-gradient(var(--pixel-green), var(--pixel-green)) 0 0 / 8px 8px no-repeat,
-    linear-gradient(var(--pixel-green), var(--pixel-green)) 100% 0 / 8px 8px no-repeat,
-    linear-gradient(var(--pixel-green), var(--pixel-green)) 0 100% / 8px 8px no-repeat,
-    linear-gradient(var(--pixel-green), var(--pixel-green)) 100% 100% / 8px 8px no-repeat;
+    linear-gradient(var(--pixel-cyan), var(--pixel-cyan)) 0 0 / 12px 12px no-repeat,
+    linear-gradient(var(--pixel-cyan), var(--pixel-cyan)) 100% 0 / 12px 12px no-repeat,
+    linear-gradient(var(--pixel-cyan), var(--pixel-cyan)) 0 100% / 12px 12px no-repeat,
+    linear-gradient(var(--pixel-cyan), var(--pixel-cyan)) 100% 100% / 12px 12px no-repeat;
+  opacity: 0;
+  animation: cornersFadeIn 0.3s ease-out 0.6s forwards;
+}
+
+@keyframes cornersFadeIn {
+  to {
+    opacity: 0.6;
+  }
 }
