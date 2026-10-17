@@ -36,15 +36,12 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
   certifications,
   onClose,
 }) => {
-  const [isScanning, setIsScanning] = useState(true);
+  // No scanning delay - show content immediately
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Quick scanning animation - 800ms
-    const scanTimer = setTimeout(() => {
-      setIsScanning(false);
-    }, 800);
-
-    return () => clearTimeout(scanTimer);
+    // Just trigger entrance animation
+    setIsVisible(true);
   }, []);
 
   // Prevent body scroll when modal is open
@@ -78,40 +75,24 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
 
   return (
     <div className="skill-modal-backdrop" onClick={handleBackdropClick}>
-      <div className="skill-modal" style={{ '--skill-color': skillColor } as React.CSSProperties}>
-        {/* Scanning Effect - Shows for 800ms */}
-        {isScanning ? (
-          <div className="skill-scan-effect">
-            <div className="scan-line" />
-            <div className="scan-grid" />
-            <div className="scan-text">
-              Scanning <span className="scan-skill-name">{skillName}</span>
-              <span className="scan-dots">
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-              </span>
-            </div>
+      <div className={`skill-modal ${isVisible ? 'visible' : ''}`} style={{ '--skill-color': skillColor } as React.CSSProperties}>
+        {/* Header */}
+        <div className="skill-modal-header">
+          <div className="skill-modal-title-group">
+            <h2 className="skill-modal-title">{skillName}</h2>
+            <span className="skill-modal-category">{skillCategory}</span>
           </div>
-        ) : (
-          <>
-            {/* Header */}
-            <div className="skill-modal-header">
-              <div className="skill-modal-title-group">
-                <h2 className="skill-modal-title">{skillName}</h2>
-                <span className="skill-modal-category">{skillCategory}</span>
-              </div>
-              <button 
-                className="skill-modal-close" 
-                onClick={onClose}
-                aria-label="Close modal"
-              >
-                <X size={24} />
-              </button>
-            </div>
+          <button 
+            className="skill-modal-close" 
+            onClick={onClose}
+            aria-label="Close modal"
+          >
+            <X size={24} />
+          </button>
+        </div>
 
-            {/* Body */}
-            <div className="skill-modal-body">
+        {/* Body */}
+        <div className="skill-modal-body">
               {/* Projects Section */}
               {hasProjects ? (
                 <div className="skill-modal-section">
@@ -124,7 +105,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                       <div 
                         key={index} 
                         className="skill-modal-card"
-                        style={{ animationDelay: `${index * 0.1}s` }}
+                        style={{ animationDelay: `${index * 0.05}s` }}
                       >
                         {project.image && (
                           <div className="skill-card-image-wrapper">
@@ -199,7 +180,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                       <div 
                         key={cert.id} 
                         className="skill-modal-cert-card"
-                        style={{ animationDelay: `${(hasProjects ? projects.length : 0) * 0.1 + index * 0.1}s` }}
+                        style={{ animationDelay: `${(hasProjects ? projects.length : 0) * 0.05 + index * 0.05}s` }}
                       >
                         <div className="skill-cert-logo">
                           <img 
@@ -232,8 +213,6 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
                 </div>
               )}
             </div>
-          </>
-        )}
       </div>
     </div>
   );
