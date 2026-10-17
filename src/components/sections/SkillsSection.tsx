@@ -57,6 +57,7 @@ const PROJECT_DATA = [
 
 export const SkillsSection: React.FC = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [selectedSkill, setSelectedSkill] = useState<{
     name: string;
     category: string;
@@ -69,6 +70,19 @@ export const SkillsSection: React.FC = () => {
 
   const handleCloseModal = () => {
     setSelectedSkill(null);
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>, skillName: string) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setTooltipPosition({
+      x: rect.left + rect.width / 2,
+      y: rect.bottom
+    });
+    setHoveredSkill(skillName);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredSkill(null);
   };
 
   // Get mapped data for selected skill
@@ -106,8 +120,8 @@ export const SkillsSection: React.FC = () => {
                   '--card-text': colors.text,
                   '--card-border': colors.border,
                 } as React.CSSProperties}
-                onMouseEnter={() => setHoveredSkill(skill.name)}
-                onMouseLeave={() => setHoveredSkill(null)}
+                onMouseEnter={(e) => handleMouseEnter(e, skill.name)}
+                onMouseLeave={handleMouseLeave}
                 onClick={() => handleSkillClick(skill.name, CATEGORY_LABELS[skill.category], colors.bg)}
                 role="button"
                 tabIndex={0}
@@ -148,18 +162,31 @@ export const SkillsSection: React.FC = () => {
                   {/* Skill Name */}
                   <div className="periodic-skill-name">{skill.name}</div>
                 </div>
-
-                {/* Hover Tooltip */}
-                {hoveredSkill === skill.name && (
-                  <div className="periodic-tooltip" style={{ background: colors.bg }}>
-                    <span className="periodic-tooltip-name">{skill.name}</span>
-                    <span className="periodic-tooltip-category">{CATEGORY_LABELS[skill.category]}</span>
-                  </div>
-                )}
               </div>
             );
           })}
         </div>
+
+        {/* Global Tooltip */}
+        {hoveredSkill && (
+          <div 
+            className="periodic-tooltip" 
+            style={{ 
+              left: `${tooltipPosition.x}px`,
+              top: `${tooltipPosition.y}px`,
+              background: CATEGORY_COLORS[
+                SKILLS_PERIODIC_TABLE.find(s => s.name === hoveredSkill)?.category || 'language'
+              ].bg
+            }}
+          >
+            <span className="periodic-tooltip-name">{hoveredSkill}</span>
+            <span className="periodic-tooltip-category">
+              {CATEGORY_LABELS[
+                SKILLS_PERIODIC_TABLE.find(s => s.name === hoveredSkill)?.category || 'language'
+              ]}
+            </span>
+          </div>
+        )}
 
         {/* Info Text */}
         <div className="periodic-info-text">

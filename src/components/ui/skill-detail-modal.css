@@ -94,7 +94,7 @@
     transparent
   );
   box-shadow: 0 0 20px var(--skill-color);
-  animation: scanLineMove 1.5s ease-in-out infinite;
+  animation: scanLineMove 0.8s ease-in-out infinite;
 }
 
 @keyframes scanLineMove {
@@ -137,16 +137,16 @@
 }
 
 .scan-dots span {
-  animation: scanDotBlink 1.4s infinite;
+  animation: scanDotBlink 0.9s infinite;
   opacity: 0;
 }
 
 .scan-dots span:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.15s;
 }
 
 .scan-dots span:nth-child(3) {
-  animation-delay: 0.4s;
+  animation-delay: 0.3s;
 }
 
 @keyframes scanDotBlink {

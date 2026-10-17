@@ -37,15 +37,12 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
   onClose,
 }) => {
   const [isScanning, setIsScanning] = useState(true);
-  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Start showing content immediately, scanning is just visual
-    // Scanning animation duration
+    // Quick scanning animation - 800ms
     const scanTimer = setTimeout(() => {
       setIsScanning(false);
-      setShowContent(true);
-    }, 1500);
+    }, 800);
 
     return () => clearTimeout(scanTimer);
   }, []);
@@ -82,8 +79,8 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
   return (
     <div className="skill-modal-backdrop" onClick={handleBackdropClick}>
       <div className="skill-modal" style={{ '--skill-color': skillColor } as React.CSSProperties}>
-        {/* Scanning Effect - Always shows first */}
-        {isScanning && (
+        {/* Scanning Effect - Shows for 800ms */}
+        {isScanning ? (
           <div className="skill-scan-effect">
             <div className="scan-line" />
             <div className="scan-grid" />
@@ -96,10 +93,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               </span>
             </div>
           </div>
-        )}
-
-        {/* Content - Hidden during scan */}
-        {showContent && (
+        ) : (
           <>
             {/* Header */}
             <div className="skill-modal-header">
