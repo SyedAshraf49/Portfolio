@@ -488,3 +488,71 @@ body {
       rgba(0, 255, 255, 0.1) 2px
     );
 }
+
+/* Section alignment and spacing improvements */
+section {
+  scroll-margin-top: 80px; /* Account for fixed navigation */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Ensure all sections have consistent width and centering */
+main > section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card consistency */
+.experience-card,
+.certification-card,
+.magic-bento-card {
+  width: 100%;
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.25rem !important;
+  }
+  
+  h3 {
+    font-size: 1rem !important;
+  }
+}
+
+/* Improve text readability with pixel font */
+p, li, span, a, button, input, textarea, label {
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Better spacing for list items */
+ul li {
+  margin-bottom: 0.75rem;
+}
+
+/* Ensure proper vertical rhythm */
+.space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}

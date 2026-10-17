@@ -10,27 +10,31 @@ export const ExperienceSection: React.FC = () => {
           <div 
             key={experience.id}
             className="experience-card"
-            style={{ animationDelay: `${index * 0.15}s` }}
+            style={{ animationDelay: `${index * 0.15}s`, fontFamily: "'Press Start 2P', cursive" }}
           >
             <Card variant="experience">
               <div className="mb-4">
-                <div className="flex flex-col justify-between gap-2 md:flex-row md:items-start">
+                <div className="flex flex-col justify-between gap-3">
                   <div>
-                    <h3 className="text-lg font-semibold text-cyan-300" role="heading" aria-level={3}>
+                    <h3 className="text-base font-normal text-[var(--pixel-green)] leading-relaxed" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
                       {experience.title}
                     </h3>
-                    <p className="mt-1 text-sm text-slate-400">
+                    <p className="mt-3 text-sm text-[var(--pixel-cyan)] leading-relaxed" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
                       {experience.company} | {experience.location}
-                      {experience.period && ` • ${experience.period}`}
                     </p>
+                    {experience.period && (
+                      <p className="mt-2 text-xs text-[var(--pixel-yellow)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
+                        {experience.period}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
-              <ul className="space-y-2.5 text-sm leading-relaxed text-[var(--muted)]">
+              <ul className="space-y-3 text-sm leading-loose text-[var(--pixel-white)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "2" }}>
                 {experience.highlights.map((highlight, idx) => (
                   <li key={idx} className="flex gap-3">
-                    <span className="mt-1 flex-shrink-0 text-cyan-400" aria-hidden="true">
-                      ●
+                    <span className="mt-1 flex-shrink-0 text-[var(--pixel-green)]" aria-hidden="true" style={{ fontFamily: "'Press Start 2P', cursive" }}>
+                      ▶
                     </span>
                     <span>{highlight}</span>
                   </li>

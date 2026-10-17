@@ -24,19 +24,19 @@ export const ContactSection: React.FC = () => {
       />
 
       <Section id="contact" title="Contact">
-        <div className="mx-auto max-w-3xl space-y-4">
-          <div className="space-y-2 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-200/80">
+        <div className="mx-auto max-w-3xl space-y-6">
+          <div className="space-y-3 text-center">
+            <p className="text-base font-normal uppercase tracking-wider text-[var(--pixel-cyan)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
               Let&apos;s Connect
             </p>
-            <p className="text-sm text-cyan-100/90 md:text-base">
+            <p className="text-sm text-[var(--pixel-green)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
               Open to work
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <Badge variant="primary">Software developer</Badge>
-            <Badge variant="primary">full stack developer</Badge>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Badge variant="primary">Software Developer</Badge>
+            <Badge variant="primary">Full Stack</Badge>
             <Badge variant="primary">Tech Enthusiast</Badge>
           </div>
 
@@ -44,14 +44,15 @@ export const ContactSection: React.FC = () => {
             <a
               href="/resume/Syed Ashraf S N Resume.pdf"
               download="Syed Ashraf S N Resume.pdf"
-              className="inline-flex items-center rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 min-h-[44px]"
+              className="inline-flex items-center border-4 border-[var(--pixel-green)] bg-[var(--pixel-green)] text-[var(--pixel-bg-dark)] px-6 py-3 text-sm font-normal shadow-[4px_4px_0_var(--pixel-bg-dark)] hover:bg-[var(--pixel-cyan)] hover:border-[var(--pixel-cyan)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_var(--pixel-bg-dark)] min-h-[48px]"
+              style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}
             >
               📥 Download Resume
             </a>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3" noValidate>
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <Input
                 label="Your name"
                 placeholder="Enter your Name"
@@ -77,14 +78,15 @@ export const ContactSection: React.FC = () => {
               disabled={isSubmitting}
             />
 
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-cyan-300/20 bg-slate-950/35 px-3 py-2">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-4 border-[var(--pixel-cyan)] bg-[var(--pixel-bg-mid)] px-4 py-3 shadow-[4px_4px_0_var(--pixel-bg-dark)]">
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="text-xs text-sky-200/80 hover:text-cyan-200 md:text-sm"
+                className="text-xs text-[var(--pixel-cyan)] hover:text-[var(--pixel-green)] md:text-sm break-all"
+                style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.6" }}
               >
                 {CONTACT_EMAIL}
               </a>
-              <Button type="submit" variant="primary" size="md" isLoading={isSubmitting}>
+              <Button type="submit" variant="primary" size="lg" isLoading={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </div>
