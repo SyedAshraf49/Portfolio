@@ -49,9 +49,11 @@ export default function App() {
               <h1 className="text-base sm:text-2xl md:text-4xl font-normal tracking-tight text-[var(--pixel-green)] break-words" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-cyan), 4px 4px 0 var(--pixel-bg-dark)", lineHeight: "1.8" }}>
                 Syed Ashraf S.N
               </h1>
-              <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base leading-relaxed text-[var(--pixel-cyan)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
-                Software Developer | Full-Stack Developer and Tech Enthusiast
-              </p>
+              <div className="mt-3 sm:mt-4 flex flex-wrap justify-center gap-2 sm:gap-3">
+                <Badge variant="primary">Software Developer</Badge>
+                <Badge variant="secondary">Full-Stack Developer</Badge>
+                <Badge variant="default">Tech Enthusiast</Badge>
+              </div>
             </div>
             <HeroDock />
           </AnimatedHero>
