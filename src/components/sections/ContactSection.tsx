@@ -26,9 +26,13 @@ export const ContactSection: React.FC = () => {
       />
 
       <Section id="contact" title="Contact">
-        {/* Pixel Dinosaur Background Decoration */}
-        <div className="absolute right-4 bottom-8 opacity-30 pointer-events-none hidden md:block">
-          <PixelDino animate={true} />
+        {/* Pixel Dinosaur Background Decoration - Running Animation */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block" style={{ zIndex: 0 }}>
+          <div style={{ position: 'absolute', right: '-100px', bottom: '80px' }}>
+            <div style={{ opacity: 0.3 }}>
+              <PixelDino animate={true} />
+            </div>
+          </div>
         </div>
         
         <div className="mx-auto max-w-3xl space-y-6 relative z-10">

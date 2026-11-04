@@ -1,8 +1,20 @@
 /* Pixel Dinosaur Styles */
 .pixel-dino-container {
-  position: relative;
+  position: absolute;
   display: inline-block;
   filter: drop-shadow(4px 4px 0 var(--pixel-bg-dark));
+  animation: dino-run 15s linear infinite;
+  will-change: transform;
+}
+
+/* Dino running across screen */
+@keyframes dino-run {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-120vw);
+  }
 }
 
 .pixel-dino {
