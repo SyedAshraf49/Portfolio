@@ -1,0 +1,208 @@
+.pixel-shark-stage {
+  --shark-body: #35c8de;
+  --shark-shadow: #087a9b;
+  --shark-belly: #e8ffff;
+  --shark-eye: #101827;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 7.5rem;
+  margin: 0 auto 0.75rem;
+  overflow: hidden;
+}
+
+.pixel-shark-runner {
+  --shark-size: clamp(6.5rem, 17vw, 10rem);
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  width: var(--shark-size);
+  height: calc(var(--shark-size) * 0.61);
+  transform: translate3d(calc(100vw + var(--shark-size)), 0, 0);
+  will-change: transform;
+  filter: drop-shadow(3px 3px 0 var(--pixel-bg-dark, #0f0f23));
+}
+
+.pixel-shark-runner.phase-swimming {
+  animation: pixel-shark-cross 4.2s cubic-bezier(0.2, 0.68, 0.18, 1) forwards;
+}
+
+.pixel-shark-runner.phase-greeting {
+  transform: translate3d(1rem, 0, 0);
+}
+
+.pixel-shark-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  image-rendering: pixelated;
+  shape-rendering: crispEdges;
+  animation: pixel-shark-bob 0.72s ease-in-out infinite;
+}
+
+.pixel-shark-tail {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pixel-shark-tail-flick 0.42s steps(3, end) infinite alternate;
+}
+
+.pixel-shark-runner.phase-greeting .pixel-shark-tail {
+  animation-duration: 1.1s;
+}
+
+.pixel-shark-bubbles {
+  animation: pixel-shark-bubbles 1.1s steps(3, end) infinite;
+}
+
+.pixel-shark-greeting {
+  position: absolute;
+  z-index: 2;
+  top: 0.25rem;
+  left: calc(var(--shark-size) + 0.55rem);
+  width: min(19rem, calc(100vw - var(--shark-size) - 3rem));
+  padding: 0.65rem 0.75rem;
+  border: 4px solid var(--pixel-green, #00ff41);
+  background: var(--pixel-bg-mid, #1a1a2e);
+  box-shadow: 4px 4px 0 var(--pixel-bg-dark, #0f0f23);
+  color: var(--pixel-green, #00ff41);
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(0.44rem, 1.7vw, 0.62rem);
+  line-height: 1.8;
+  text-shadow: 1px 1px 0 var(--pixel-bg-dark, #0f0f23);
+  overflow-wrap: anywhere;
+  animation: pixel-shark-greeting-in 0.28s steps(5, end) both;
+}
+
+.pixel-shark-greeting::before,
+.pixel-shark-greeting::after {
+  position: absolute;
+  top: 1.1rem;
+  left: -0.75rem;
+  width: 0;
+  height: 0;
+  content: '';
+  border-top: 0.45rem solid transparent;
+  border-bottom: 0.45rem solid transparent;
+  border-right: 0.75rem solid var(--pixel-green, #00ff41);
+}
+
+.pixel-shark-greeting::after {
+  left: -0.42rem;
+  border-top-width: 0.3rem;
+  border-bottom-width: 0.3rem;
+  border-right-width: 0.5rem;
+  border-right-color: var(--pixel-bg-mid, #1a1a2e);
+}
+
+@keyframes pixel-shark-cross {
+  0% {
+    transform: translate3d(calc(100vw + var(--shark-size)), 0.2rem, 0);
+  }
+  18% {
+    transform: translate3d(80vw, -0.15rem, 0);
+  }
+  42% {
+    transform: translate3d(55vw, 0.1rem, 0);
+  }
+  72% {
+    transform: translate3d(25vw, -0.1rem, 0);
+  }
+  100% {
+    transform: translate3d(1rem, 0, 0);
+  }
+}
+
+@keyframes pixel-shark-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes pixel-shark-tail-flick {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes pixel-shark-bubbles {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateY(1px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes pixel-shark-greeting-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .pixel-shark-stage {
+    height: 7rem;
+  }
+
+  .pixel-shark-runner {
+    --shark-size: clamp(6rem, 30vw, 7.25rem);
+  }
+
+  .pixel-shark-greeting {
+    top: 0.15rem;
+    left: calc(var(--shark-size) + 0.4rem);
+    width: calc(100vw - var(--shark-size) - 2.5rem);
+    padding: 0.45rem 0.5rem;
+    border-width: 3px;
+  }
+
+  .pixel-shark-greeting::before {
+    top: 0.9rem;
+    left: -0.6rem;
+    border-top-width: 0.35rem;
+    border-bottom-width: 0.35rem;
+    border-right-width: 0.6rem;
+  }
+
+  .pixel-shark-greeting::after {
+    left: -0.35rem;
+    border-top-width: 0.22rem;
+    border-bottom-width: 0.22rem;
+    border-right-width: 0.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-shark-runner.phase-swimming {
+    animation-duration: 1ms;
+  }
+
+  .pixel-shark-art,
+  .pixel-shark-tail,
+  .pixel-shark-bubbles {
+    animation: none;
+  }
+
+  .pixel-shark-greeting {
+    animation-duration: 1ms;
+  }
+}

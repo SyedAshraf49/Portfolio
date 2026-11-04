@@ -1,7 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Instagram } from 'lucide-react';
-import { PixelDino } from '../ui/pixel-dino';
-import '../ui/pixel-dino.css';
+import { PixelShark } from '../ui/pixel-shark';
 
 export const Footer: React.FC = () => {
   const year = new Date().getFullYear();
@@ -26,14 +25,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="relative border-t-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] py-8 overflow-hidden">
-      {/* Dinosaur running across footer */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div style={{ position: 'absolute', right: '-100px', bottom: '20px' }}>
-          <div style={{ opacity: 0.6 }}>
-            <PixelDino animate={true} />
-          </div>
-        </div>
-      </div>
+      <PixelShark />
 
       <div className="mx-auto max-w-5xl px-4 relative z-10">
         <div className="mb-6 flex flex-col items-center justify-between gap-6 md:flex-row">
