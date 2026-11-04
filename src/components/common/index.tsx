@@ -181,8 +181,8 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ children, className, variant = 'default' }) => {
   const variants = {
-    default: 'border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-3 sm:p-5 shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-green)] sm:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)] relative overflow-hidden',
-    experience: 'border-4 border-[var(--pixel-cyan)] bg-[var(--pixel-bg-mid)] p-4 sm:p-6 shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-cyan)] sm:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-cyan)] relative overflow-hidden',
+    default: 'border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-3 sm:p-5 shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-green)] sm:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)] relative',
+    experience: 'border-4 border-[var(--pixel-cyan)] bg-[var(--pixel-bg-mid)] p-4 sm:p-6 shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-cyan)] sm:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-cyan)] relative',
   };
 
   return (

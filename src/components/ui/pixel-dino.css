@@ -2,18 +2,18 @@
 .pixel-dino-container {
   position: absolute;
   display: inline-block;
-  filter: drop-shadow(4px 4px 0 var(--pixel-bg-dark));
-  animation: dino-run 15s linear infinite;
+  filter: drop-shadow(2px 2px 0 var(--pixel-bg-dark));
+  animation: dino-run 12s linear infinite;
   will-change: transform;
 }
 
 /* Dino running across screen */
 @keyframes dino-run {
   0% {
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
   100% {
-    transform: translateX(-120vw);
+    transform: translateX(-120vw) scale(1);
   }
 }
 
@@ -69,13 +69,13 @@
 /* Responsive sizing */
 @media (max-width: 768px) {
   .pixel-dino-container {
-    transform: scale(0.7);
+    transform: scale(0.4) !important;
   }
 }
 
 @media (max-width: 480px) {
   .pixel-dino-container {
-    transform: scale(0.5);
+    transform: scale(0.3) !important;
   }
 }
 

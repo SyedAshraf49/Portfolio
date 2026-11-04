@@ -1,5 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, Instagram } from 'lucide-react';
+import { PixelDino } from '../ui/pixel-dino';
+import '../ui/pixel-dino.css';
 
 export const Footer: React.FC = () => {
   const year = new Date().getFullYear();
@@ -23,8 +25,17 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="border-t-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] py-8">
-      <div className="mx-auto max-w-5xl px-4">
+    <footer className="relative border-t-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] py-8 overflow-hidden">
+      {/* Dinosaur running across footer */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div style={{ position: 'absolute', right: '-100px', bottom: '10px' }}>
+          <div style={{ opacity: 0.2, transform: 'scale(0.5)' }}>
+            <PixelDino animate={true} />
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-5xl px-4 relative z-10">
         <div className="mb-6 flex flex-col items-center justify-between gap-6 md:flex-row">
           <p className="text-xs text-[var(--pixel-white)] text-center md:text-left" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
             © {year} Syed Ashraf S.N
