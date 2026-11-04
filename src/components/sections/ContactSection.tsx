@@ -4,6 +4,8 @@ import { Section, Input, Textarea, Button, Badge } from '../common';
 import { CONTACT_EMAIL } from '@/constants/data';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PixelDino } from '../ui/pixel-dino';
+import '../ui/pixel-dino.css';
 
 export const ContactSection: React.FC = () => {
   const { register, handleSubmit, errors, isSubmitting, onSubmit } = useContactForm();
@@ -24,7 +26,12 @@ export const ContactSection: React.FC = () => {
       />
 
       <Section id="contact" title="Contact">
-        <div className="mx-auto max-w-3xl space-y-6">
+        {/* Pixel Dinosaur Background Decoration */}
+        <div className="absolute right-4 bottom-8 opacity-30 pointer-events-none hidden md:block">
+          <PixelDino animate={true} />
+        </div>
+        
+        <div className="mx-auto max-w-3xl space-y-6 relative z-10">
           <div className="space-y-3 text-center">
             <p className="text-base font-normal uppercase tracking-wider text-[var(--pixel-cyan)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
               Let&apos;s Connect

@@ -1,0 +1,82 @@
+/* Pixel Dinosaur Styles */
+.pixel-dino-container {
+  position: relative;
+  display: inline-block;
+  filter: drop-shadow(4px 4px 0 var(--pixel-bg-dark));
+}
+
+.pixel-dino {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Jump animation */
+.pixel-dino.jumping {
+  animation: dino-jump 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes dino-jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+/* Leg walking animation - alternating legs */
+.pixel-dino:not(.jumping) .dino-leg-left {
+  animation: leg-walk-left 0.4s steps(2) infinite;
+}
+
+.pixel-dino:not(.jumping) .dino-leg-right {
+  animation: leg-walk-right 0.4s steps(2) infinite;
+}
+
+@keyframes leg-walk-left {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+@keyframes leg-walk-right {
+  0%, 100% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive sizing */
+@media (max-width: 768px) {
+  .pixel-dino-container {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .pixel-dino-container {
+    transform: scale(0.5);
+  }
+}
+
+/* Optional: Add floating animation */
+.pixel-dino-container.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
