@@ -1,4 +1,10 @@
 /* Pixel Dinosaur Styles */
+.pixel-dino-wrapper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
 .pixel-dino-container {
   position: absolute;
   display: inline-block;
@@ -6,6 +12,13 @@
   animation: dino-run 12s linear infinite;
   will-change: transform;
   transform: scale(1.5);
+  bottom: 20px;
+  right: -100px;
+}
+
+/* Stop animation when footer is visible */
+.pixel-dino-container.stopped {
+  animation: dino-stop 1s ease-out forwards;
 }
 
 /* Dino running across screen */
@@ -15,6 +28,19 @@
   }
   100% {
     transform: translateX(-120vw) scale(1.5);
+  }
+}
+
+/* Dino stopping at left side */
+@keyframes dino-stop {
+  0% {
+    right: -100px;
+    transform: translateX(0) scale(1.5);
+  }
+  100% {
+    right: auto;
+    left: 50px;
+    transform: translateX(0) scale(1.5);
   }
 }
 
@@ -32,6 +58,12 @@
 
 .pixel-dino .dino-leg-right {
   animation: leg-walk-right 0.4s steps(2) infinite;
+}
+
+/* Stop leg animation when stopped */
+.pixel-dino-container.stopped .dino-leg-left,
+.pixel-dino-container.stopped .dino-leg-right {
+  animation: none;
 }
 
 @keyframes leg-walk-left {
@@ -94,5 +126,91 @@
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+
+/* Speech Bubble */
+.dino-speech-bubble {
+  position: absolute;
+  left: 80px;
+  top: -10px;
+  background: var(--pixel-bg-mid);
+  border: 4px solid var(--pixel-green);
+  padding: 0.75rem 1rem;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--pixel-bg-dark);
+  white-space: nowrap;
+  animation: speech-appear 0.3s ease-out;
+  z-index: 10;
+}
+
+/* Speech bubble tail (pointing to dino) */
+.dino-speech-bubble::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 12px solid var(--pixel-green);
+}
+
+.dino-speech-bubble::after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid var(--pixel-bg-mid);
+}
+
+.speech-content {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.625rem;
+  line-height: 1.6;
+  color: var(--pixel-green);
+  text-shadow: 1px 1px 0 var(--pixel-bg-dark);
+}
+
+@keyframes speech-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive speech bubble */
+@media (max-width: 768px) {
+  .dino-speech-bubble {
+    left: 60px;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .speech-content {
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dino-speech-bubble {
+    left: 50px;
+    top: -5px;
+    padding: 0.4rem 0.6rem;
+  }
+  
+  .speech-content {
+    font-size: 0.45rem;
   }
 }
