@@ -209,7 +209,7 @@
   background: var(--pixel-blue);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
   .mobile-nav-toggle {
     display: flex;
   }
@@ -217,7 +217,9 @@
 
 @media (max-width: 480px) {
   .mobile-nav-menu {
-    width: 100vw;
+    width: min(94vw, 25rem);
+    max-width: 100dvw;
+    box-shadow: none;
   }
 
   .mobile-nav-toggle-text {

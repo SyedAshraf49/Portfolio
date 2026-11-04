@@ -44,6 +44,7 @@
 
 .back-button {
   margin-bottom: 2rem;
+  min-height: 44px;
 }
 
 .certifications-page-title {
@@ -339,6 +340,7 @@
 
 .footer-back-button {
   min-width: 300px;
+  min-height: 44px;
 }
 
 /* Responsive Design */
@@ -391,6 +393,10 @@
   .filter-button {
     font-size: 0.4rem;
     padding: 0.6rem 0.8rem;
+    max-width: 100%;
+    min-height: 44px;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .certifications-full-grid {

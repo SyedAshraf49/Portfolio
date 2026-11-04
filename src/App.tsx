@@ -29,7 +29,7 @@ export default function App() {
   useThemeSafe();
 
   return (
-    <div className="retro-scanline relative min-h-screen overflow-hidden bg-slate-950">
+    <div className="retro-scanline relative min-h-screen overflow-x-clip bg-slate-950">
       <SkipLink />
 
       {/* Background */}
@@ -62,7 +62,7 @@ export default function App() {
         {/* Navigation - Desktop and Mobile */}
         <div className="sticky top-0 z-20 mt-2 sm:mt-4 px-2 sm:px-0">
           {/* Desktop Navigation */}
-          <div className="hidden md:block" style={{ height: '78px', position: 'relative' }}>
+          <div className="hidden lg:block" style={{ height: '78px', position: 'relative' }}>
             <GooeyNav
               items={NAVIGATION_ITEMS}
               particleCount={15}
@@ -76,7 +76,7 @@ export default function App() {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <MobileNav items={NAVIGATION_ITEMS} initialActiveIndex={0} />
           </div>
         </div>

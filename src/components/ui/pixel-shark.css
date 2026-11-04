@@ -183,6 +183,8 @@
     width: calc(100vw - var(--shark-size) - 2.5rem);
     padding: 0.45rem 0.5rem;
     border-width: 3px;
+    font-size: clamp(0.5625rem, 2.8vw, 0.65rem);
+    line-height: 1.6;
   }
 
   .pixel-shark-greeting::before {

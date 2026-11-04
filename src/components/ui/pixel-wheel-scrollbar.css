@@ -95,24 +95,24 @@ html {
 
 @media (max-width: 768px) {
   .pixel-wheel-scrollbar {
-    width: 24px;
+    width: 16px;
     opacity: 0.72;
   }
 
   .pixel-wheel-scrollbar__wheel {
-    width: 21px;
-    height: 21px;
+    width: 14px;
+    height: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .pixel-wheel-scrollbar {
-    width: 20px;
+    width: 16px;
   }
 
   .pixel-wheel-scrollbar__wheel {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
 
   .pixel-wheel-scrollbar__track {
@@ -121,6 +121,7 @@ html {
 }
 
 @media (pointer: coarse) {
+  /* Keep the position marker visible without intercepting native touch scrolling. */
   .pixel-wheel-scrollbar {
     pointer-events: none;
     cursor: default;

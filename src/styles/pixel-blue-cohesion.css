@@ -65,20 +65,33 @@ select,
   .certification-issuer,
   .certification-full-title,
   .certification-full-issuer,
+  .certifications-intro,
+  .certifications-page-subtitle,
+  .filter-label,
   .filter-button,
   .skill-card-description,
   .skill-card-tech,
   .skill-cert-title,
   .skill-cert-issuer {
-    font-size: max(0.65rem, 11px) !important;
+    font-size: max(0.75rem, 12px) !important;
     line-height: 1.8;
+  }
+
+  .featured-badge {
+    font-size: max(0.625rem, 10px) !important;
+    line-height: 1.6;
   }
 
   .certifications-page-title {
     font-size: clamp(0.85rem, 4vw, 1.2rem) !important;
   }
 
-  .periodic-category-label,
+  .periodic-category-label {
+    font-size: max(0.5rem, 9px) !important;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
   .periodic-legend-label,
   .periodic-skill-name {
     font-size: max(0.55rem, 10px) !important;
@@ -90,6 +103,29 @@ select,
   .portfolio-hero-title {
     padding-right: 3rem;
     font-size: clamp(0.65rem, 3.6vw, 0.85rem) !important;
+  }
+}
+
+@media (max-width: 374px) {
+  .periodic-card {
+    min-height: 100px !important;
+    aspect-ratio: 1 / 1;
+  }
+
+  .periodic-card-inner {
+    padding: 0.25rem !important;
+  }
+
+  .periodic-category-label {
+    font-size: 8px !important;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  .periodic-logo,
+  .periodic-logo-img {
+    width: 32px !important;
+    height: 32px !important;
   }
 }
 
