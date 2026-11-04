@@ -1,0 +1,139 @@
+/* Keep native page scrolling; the pixel wheel is a custom, keyboard- and pointer-operable indicator. */
+html {
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.pixel-wheel-scrollbar {
+  position: fixed;
+  z-index: 80;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  opacity: 0.58;
+  cursor: ns-resize;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 160ms ease-out;
+}
+
+.pixel-wheel-scrollbar:not(.has-scroll) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pixel-wheel-scrollbar.is-active,
+.pixel-wheel-scrollbar:hover,
+.pixel-wheel-scrollbar:focus-visible {
+  opacity: 1;
+}
+
+.pixel-wheel-scrollbar:focus-visible {
+  outline: 2px dotted var(--pixel-green, #00ff41);
+  outline-offset: -3px;
+}
+
+.pixel-wheel-scrollbar.is-dragging {
+  cursor: grabbing;
+}
+
+.pixel-wheel-scrollbar__track {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 255, 0.7) 0 4px,
+    transparent 4px 9px
+  );
+  box-shadow: 0 0 0 1px rgba(15, 15, 35, 0.85);
+  pointer-events: none;
+}
+
+.pixel-wheel-scrollbar__wheel {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  display: block;
+  width: 24px;
+  height: 24px;
+  overflow: visible;
+  transform: translate3d(-50%, 10px, 0);
+  image-rendering: pixelated;
+  shape-rendering: crispEdges;
+  pointer-events: none;
+}
+
+.pixel-wheel-scrollbar.is-active .pixel-wheel-rotor,
+.pixel-wheel-scrollbar.is-dragging .pixel-wheel-rotor {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+  animation: pixel-wheel-roll 480ms steps(8, end) infinite;
+}
+
+.pixel-wheel-scrollbar.is-dragging .pixel-wheel-rotor {
+  animation-duration: 300ms;
+}
+
+@keyframes pixel-wheel-roll {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .pixel-wheel-scrollbar {
+    width: 24px;
+    opacity: 0.72;
+  }
+
+  .pixel-wheel-scrollbar__wheel {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pixel-wheel-scrollbar {
+    width: 20px;
+  }
+
+  .pixel-wheel-scrollbar__wheel {
+    width: 18px;
+    height: 18px;
+  }
+
+  .pixel-wheel-scrollbar__track {
+    width: 2px;
+  }
+}
+
+@media (pointer: coarse) {
+  .pixel-wheel-scrollbar {
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-wheel-scrollbar {
+    transition: none;
+  }
+
+  .pixel-wheel-scrollbar.is-active .pixel-wheel-rotor,
+  .pixel-wheel-scrollbar.is-dragging .pixel-wheel-rotor {
+    animation: none;
+  }
+}

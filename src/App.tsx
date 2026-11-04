@@ -1,7 +1,7 @@
 import { Section, Badge } from '@/components/common';
 import { CosmicParallaxBg } from '@/components/ui/parallax-cosmic-background';
 import HeroDock from '@/components/ui/dock';
-import AnimeScrollbar from '@/components/ui/anime-scrollbar';
+import PixelWheelScrollbar from '@/components/ui/pixel-wheel-scrollbar';
 import { AnimatedHero } from '@/components/ui/animated-hero';
 import '@/components/ui/animated-hero.css';
 import GooeyNav from './GooeyNav';
@@ -37,11 +37,11 @@ export default function App() {
         <CosmicParallaxBg head="" text="" loop={true} />
       </div>
 
-      {/* Custom Scrollbar */}
-      <AnimeScrollbar />
+      {/* Pixel wheel scrollbar */}
+      <PixelWheelScrollbar />
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col min-h-screen">
+      <div id="page-scroll-region" className="relative z-10 flex flex-col min-h-screen">
         {/* Header - Pixel Art Style */}
         <header className="px-2 sm:px-4">
           <AnimatedHero className="mx-auto mt-2 flex w-full max-w-[95%] sm:w-[min(95%,72rem)] flex-col items-center gap-3 sm:gap-4 border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-4 sm:p-6 text-center shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-green)] sm:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)] sm:mt-4 md:mt-8">
