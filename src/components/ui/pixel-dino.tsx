@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './pixel-dino.css';
 
 interface PixelDinoProps {
@@ -7,23 +7,10 @@ interface PixelDinoProps {
 }
 
 export const PixelDino: React.FC<PixelDinoProps> = ({ className = '', animate = true }) => {
-  const [isJumping, setIsJumping] = useState(false);
-
-  useEffect(() => {
-    if (!animate) return;
-
-    const jumpInterval = setInterval(() => {
-      setIsJumping(true);
-      setTimeout(() => setIsJumping(false), 500);
-    }, 3000);
-
-    return () => clearInterval(jumpInterval);
-  }, [animate]);
-
   return (
     <div className={`pixel-dino-container ${className}`}>
       <svg
-        className={`pixel-dino ${isJumping ? 'jumping' : ''}`}
+        className="pixel-dino"
         width="44"
         height="47"
         viewBox="0 0 44 47"

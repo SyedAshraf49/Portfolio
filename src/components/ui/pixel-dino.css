@@ -23,29 +23,14 @@
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-/* Jump animation */
-.pixel-dino.jumping {
-  animation: dino-jump 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-@keyframes dino-jump {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-30px);
-  }
 }
 
 /* Leg walking animation - alternating legs */
-.pixel-dino:not(.jumping) .dino-leg-left {
+.pixel-dino .dino-leg-left {
   animation: leg-walk-left 0.4s steps(2) infinite;
 }
 
-.pixel-dino:not(.jumping) .dino-leg-right {
+.pixel-dino .dino-leg-right {
   animation: leg-walk-right 0.4s steps(2) infinite;
 }
 
