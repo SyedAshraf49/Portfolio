@@ -50,6 +50,7 @@ export const CertificationsPage: React.FC = () => {
           <div className="filter-buttons">
             <button
               className={`filter-button ${filter === 'all' ? 'active' : ''}`}
+              aria-pressed={filter === 'all'}
               onClick={() => setFilter('all')}
               style={{ fontFamily: "'Press Start 2P', cursive" }}
             >
@@ -61,6 +62,7 @@ export const CertificationsPage: React.FC = () => {
                 <button
                   key={issuer}
                   className={`filter-button ${filter === issuer ? 'active' : ''}`}
+                  aria-pressed={filter === issuer}
                   onClick={() => setFilter(issuer)}
                   style={{ fontFamily: "'Press Start 2P', cursive" }}
                 >

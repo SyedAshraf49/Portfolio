@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 import './MagicBento.css';
 
 export interface BentoCardProps {
-  color?: string;
   title?: string;
   description?: string;
   label?: string;
@@ -31,12 +30,11 @@ export interface BentoProps {
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '25, 118, 210';
+const DEFAULT_GLOW_COLOR = '77, 141, 255';
 const MOBILE_BREAKPOINT = 768;
 
 const cardData: BentoCardProps[] = [
   {
-    color: '#060010',
     title: 'HateShieldAI',
     description: 'AI safety tool focused on toxicity detection, moderation checks, and safer content workflows.',
     label: 'AI Safety',
@@ -46,7 +44,6 @@ const cardData: BentoCardProps[] = [
     techStack: 'Python · Flask · Flask-CORS · scikit-learn · Joblib · Pillow · Transformers · PyTorch · HTML5 · CSS3 · JavaScript',
   },
   {
-    color: '#060010',
     title: 'Career Path Predictor',
     description: 'Machine learning project that analyzes profile inputs to recommend suitable career paths.',
     label: 'Machine Learning',
@@ -56,7 +53,6 @@ const cardData: BentoCardProps[] = [
     techStack: 'Python · Flask · scikit-learn · NumPy · pandas · HTML5 · CSS3 · JavaScript · Bootstrap · FPDF · BeautifulSoup',
   },
   {
-    color: '#060010',
     title: 'Local Vendor',
     description: 'Platform concept for connecting local vendors with customers through streamlined discovery and interactions.',
     label: 'Platform',
@@ -645,7 +641,6 @@ const MagicBento: React.FC<BentoProps> = ({
           const cardProps = {
             className: baseClassName,
             style: {
-              backgroundColor: card.color,
               '--glow-color': glowColor,
             } as React.CSSProperties,
           };

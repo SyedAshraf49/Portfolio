@@ -64,8 +64,8 @@
     0deg,
     transparent 0px,
     transparent 2px,
-    rgba(0, 255, 65, 0.03) 2px,
-    rgba(0, 255, 65, 0.03) 4px
+    rgba(77, 141, 255, 0.035) 2px,
+    rgba(77, 141, 255, 0.035) 4px
   );
 }
 
@@ -123,11 +123,8 @@
   width: 56px;
   height: 56px;
   object-fit: contain;
-  filter: drop-shadow(2px 2px 0 var(--pixel-bg-dark));
+  filter: brightness(0) saturate(100%) invert(72%) sepia(24%) saturate(1058%) hue-rotate(184deg) brightness(103%) contrast(103%);
   transition: none;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
 }
 
 .periodic-logo-fallback {
@@ -184,7 +181,6 @@
   opacity: 0;
   pointer-events: none;
   z-index: 5;
-  box-shadow: 0 0 20px var(--card-border);
   transition: opacity 0.2s ease;
 }
 
@@ -237,53 +233,18 @@
   }
 }
 
-/* Category-Specific Pixel Backgrounds */
-.periodic-card--language {
-  --card-bg-rgb: 59, 130, 246;
-  background: var(--pixel-blue);
-  border-color: #6688ff;
-}
-
-.periodic-card--frontend {
-  --card-bg-rgb: 6, 182, 212;
-  background: var(--pixel-cyan);
-  border-color: #44ffff;
-}
-
-.periodic-card--backend {
-  --card-bg-rgb: 16, 185, 129;
-  background: var(--pixel-green);
-  border-color: #44ff88;
-}
-
-.periodic-card--database {
-  --card-bg-rgb: 139, 92, 246;
-  background: #8844ff;
-  border-color: #aa88ff;
-}
-
-.periodic-card--ml {
-  --card-bg-rgb: 245, 158, 11;
-  background: var(--pixel-orange);
-  border-color: #ffaa44;
-}
-
-.periodic-card--cloud {
-  --card-bg-rgb: 239, 68, 68;
-  background: var(--pixel-red);
-  border-color: #ff4488;
-}
-
-.periodic-card--tool {
-  --card-bg-rgb: 99, 102, 241;
-  background: var(--pixel-blue);
-  border-color: #8888ff;
-}
-
+/* All categories use blue shades supplied through CATEGORY_COLORS. */
+.periodic-card--language,
+.periodic-card--frontend,
+.periodic-card--backend,
+.periodic-card--database,
+.periodic-card--ml,
+.periodic-card--cloud,
+.periodic-card--tool,
 .periodic-card--concept {
-  --card-bg-rgb: 236, 72, 153;
-  background: var(--pixel-magenta);
-  border-color: #ff44ff;
+  --card-bg-rgb: 77, 141, 255;
+  background: var(--card-bg, var(--pixel-bg-mid));
+  border-color: var(--card-border, var(--pixel-border));
 }
 
 /* Pixel dithering pattern overlay on cards */

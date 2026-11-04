@@ -30,58 +30,58 @@ export interface Skill {
 
 export const SKILLS_PERIODIC_TABLE: Skill[] = [
   // Languages
-  { name: 'Python', category: 'language', logo: 'python', color: '#3776AB' },
-  { name: 'JavaScript', category: 'language', logo: 'javascript', color: '#F7DF1E' },
-  { name: 'TypeScript', category: 'language', logo: 'typescript', color: '#3178C6' },
-  { name: 'Java', category: 'language', logo: 'openjdk', color: '#007396' },
+  { name: 'Python', category: 'language', logo: 'python', color: '#1d4ed8' },
+  { name: 'JavaScript', category: 'language', logo: 'javascript', color: '#1d4ed8' },
+  { name: 'TypeScript', category: 'language', logo: 'typescript', color: '#1d4ed8' },
+  { name: 'Java', category: 'language', logo: 'openjdk', color: '#1d4ed8' },
   
   // Frontend
-  { name: 'React', category: 'frontend', logo: 'react', color: '#61DAFB' },
-  { name: 'HTML5', category: 'frontend', logo: 'html5', color: '#E34F26' },
-  { name: 'CSS3', category: 'frontend', logo: 'css3', color: '#1572B6' },
+  { name: 'React', category: 'frontend', logo: 'react', color: '#2563eb' },
+  { name: 'HTML5', category: 'frontend', logo: 'html5', color: '#2563eb' },
+  { name: 'CSS3', category: 'frontend', logo: 'css3', color: '#2563eb' },
   
   // Backend
-  { name: 'Flask', category: 'backend', logo: 'flask', color: '#000000' },
-  { name: 'Node.js', category: 'backend', logo: 'nodedotjs', color: '#339933' },
-  { name: 'REST API', category: 'backend', logo: 'fastapi', color: '#009688' },
+  { name: 'Flask', category: 'backend', logo: 'flask', color: '#3b82f6' },
+  { name: 'Node.js', category: 'backend', logo: 'nodedotjs', color: '#3b82f6' },
+  { name: 'REST API', category: 'backend', logo: 'fastapi', color: '#3b82f6' },
   
   // Databases
-  { name: 'MySQL', category: 'database', logo: 'mysql', color: '#4479A1' },
-  { name: 'PostgreSQL', category: 'database', logo: 'postgresql', color: '#4169E1' },
+  { name: 'MySQL', category: 'database', logo: 'mysql', color: '#1e40af' },
+  { name: 'PostgreSQL', category: 'database', logo: 'postgresql', color: '#1e40af' },
   
   // ML & Data
-  { name: 'scikit-learn', category: 'ml', logo: 'scikitlearn', color: '#F7931E' },
-  { name: 'TensorFlow', category: 'ml', logo: 'tensorflow', color: '#FF6F00' },
-  { name: 'PyTorch', category: 'ml', logo: 'pytorch', color: '#EE4C2C' },
-  { name: 'Keras', category: 'ml', logo: 'keras', color: '#D00000' },
-  { name: 'Hugging Face', category: 'ml', logo: 'huggingface', color: '#FFD21E' },
+  { name: 'scikit-learn', category: 'ml', logo: 'scikitlearn', color: '#2f5f9e' },
+  { name: 'TensorFlow', category: 'ml', logo: 'tensorflow', color: '#2f5f9e' },
+  { name: 'PyTorch', category: 'ml', logo: 'pytorch', color: '#2f5f9e' },
+  { name: 'Keras', category: 'ml', logo: 'keras', color: '#2f5f9e' },
+  { name: 'Hugging Face', category: 'ml', logo: 'huggingface', color: '#2f5f9e' },
   { name: 'pandas', category: 'ml', logo: 'pandas', color: '#150458' },
   { name: 'NumPy', category: 'ml', logo: 'numpy', color: '#013243' },
-  { name: 'NLP', category: 'ml', logo: '💬', color: '#A855F7' },
+  { name: 'NLP', category: 'ml', logo: 'NL', color: '#60A5FA' },
   
   // Cloud
-  { name: 'AWS', category: 'cloud', logo: '/logos/aws.svg', color: '#FF9900' },
-  { name: 'EC2', category: 'cloud', logo: 'amazonec2', color: '#FF9900' },
-  { name: 'S3', category: 'cloud', logo: 'amazons3', color: '#569A31' },
-  { name: 'Lambda', category: 'cloud', logo: 'awslambda', color: '#FF9900' },
-  { name: 'RDS', category: 'cloud', logo: 'amazonrds', color: '#527FFF' },
-  { name: 'IAM', category: 'cloud', logo: 'amazoniam', color: '#DD344C' },
+  { name: 'AWS', category: 'cloud', logo: '/logos/aws.svg', color: '#1e3a8a' },
+  { name: 'EC2', category: 'cloud', logo: 'amazonec2', color: '#1e3a8a' },
+  { name: 'S3', category: 'cloud', logo: 'amazons3', color: '#1e3a8a' },
+  { name: 'Lambda', category: 'cloud', logo: 'awslambda', color: '#1e3a8a' },
+  { name: 'RDS', category: 'cloud', logo: 'amazonrds', color: '#1e3a8a' },
+  { name: 'IAM', category: 'cloud', logo: 'amazoniam', color: '#1e3a8a' },
   
   // Tools
-  { name: 'Git', category: 'tool', logo: 'git', color: '#F05032' },
-  { name: 'GitHub', category: 'tool', logo: 'github', color: '#181717' },
-  { name: 'VS Code', category: 'tool', logo: 'visualstudiocode', color: '#007ACC' },
-  { name: 'Render', category: 'tool', logo: 'render', color: '#46E3B7' },
-  { name: 'Vercel', category: 'tool', logo: 'vercel', color: '#000000' },
-  { name: 'Linux', category: 'tool', logo: 'linux', color: '#FCC624' },
-  { name: 'Copilot', category: 'tool', logo: 'githubcopilot', color: '#000000' },
-  { name: 'ChatGPT', category: 'tool', logo: 'openai', color: '#10A37F' },
-  { name: 'Claude', category: 'tool', logo: 'anthropic', color: '#D4A373' },
+  { name: 'Git', category: 'tool', logo: 'git', color: '#4d8dff' },
+  { name: 'GitHub', category: 'tool', logo: 'github', color: '#4d8dff' },
+  { name: 'VS Code', category: 'tool', logo: 'visualstudiocode', color: '#4d8dff' },
+  { name: 'Render', category: 'tool', logo: 'render', color: '#4d8dff' },
+  { name: 'Vercel', category: 'tool', logo: 'vercel', color: '#4d8dff' },
+  { name: 'Linux', category: 'tool', logo: 'linux', color: '#4d8dff' },
+  { name: 'Copilot', category: 'tool', logo: 'githubcopilot', color: '#4d8dff' },
+  { name: 'ChatGPT', category: 'tool', logo: 'openai', color: '#4d8dff' },
+  { name: 'Claude', category: 'tool', logo: 'anthropic', color: '#4d8dff' },
   
   // Concepts
-  { name: 'OOP', category: 'concept', logo: '📐', color: '#8B5CF6' },
-  { name: 'DSA', category: 'concept', logo: '🗂️', color: '#8B5CF6' },
-  { name: 'SDLC', category: 'concept', logo: '🔄', color: '#8B5CF6' },
+  { name: 'OOP', category: 'concept', logo: 'OP', color: '#60A5FA' },
+  { name: 'DSA', category: 'concept', logo: 'DS', color: '#60A5FA' },
+  { name: 'SDLC', category: 'concept', logo: 'SD', color: '#60A5FA' },
 ];
 
 export const SKILL_GROUPS = [

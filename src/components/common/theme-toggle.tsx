@@ -26,11 +26,10 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
         onClick={() => setTheme(effectiveTheme === 'dark' ? 'light' : 'dark')}
         aria-label={`Switch to ${effectiveTheme === 'dark' ? 'light' : 'dark'} mode`}
         className={`
-          inline-flex items-center justify-center p-2 rounded-lg
-          text-slate-400 hover:text-cyan-400
-          hover:bg-slate-900/50
-          transition-all duration-200
-          focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950
+          inline-flex items-center justify-center border-2 border-[var(--pixel-border)] bg-[var(--pixel-bg-mid)] p-2
+          text-[var(--pixel-gray)] shadow-[3px_3px_0_var(--pixel-bg-dark)] hover:border-[var(--pixel-cyan)] hover:bg-[var(--pixel-bg-light)] hover:text-[var(--pixel-cyan)]
+          transition-colors duration-100
+          focus:outline-none focus-visible:outline-2 focus-visible:outline-dotted focus-visible:outline-[var(--pixel-cyan)]
           min-w-10 min-h-10
           ${className}
         `}
@@ -45,8 +44,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
   return (
     <div
       className={`
-        flex gap-1 p-1 rounded-lg
-        bg-slate-950/50 border border-cyan-300/20
+        flex gap-1 border-4 border-[var(--pixel-border)] bg-[var(--pixel-bg-mid)] p-1 shadow-[4px_4px_0_var(--pixel-bg-dark)]
         ${className}
       `}
     >
@@ -57,13 +55,13 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
           aria-label={`Switch to ${label} theme`}
           title={label}
           className={`
-            inline-flex items-center justify-center p-2 rounded-md
-            transition-all duration-200
-            focus:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400
+            inline-flex items-center justify-center border-2 p-2
+            transition-colors duration-100
+            focus:outline-none focus-visible:outline-2 focus-visible:outline-dotted focus-visible:outline-[var(--pixel-cyan)]
             min-w-9 min-h-9 text-sm font-medium
             ${theme === value
-              ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-300/40'
-              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/30'
+              ? 'border-[var(--pixel-cyan)] bg-[var(--pixel-blue)] text-[var(--pixel-bg-dark)]'
+              : 'border-[var(--pixel-border)] bg-[var(--pixel-bg-dark)] text-[var(--pixel-gray)] hover:text-[var(--pixel-cyan)] hover:bg-[var(--pixel-bg-light)]'
             }
           `}
         >

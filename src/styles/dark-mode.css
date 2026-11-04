@@ -155,13 +155,13 @@ select {
 
 /* Button styling per theme */
 :root.dark-mode .btn-secondary {
-  background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
+  background: rgba(77, 141, 255, 0.15);
+  color: #4d8dff;
 }
 
 :root.light-mode .btn-secondary {
-  background: rgba(16, 185, 129, 0.2);
-  color: #059669;
+  background: rgba(37, 99, 235, 0.15);
+  color: #1d4ed8;
 }
 
 /* Scrollbar styling (dark mode) */
@@ -175,7 +175,7 @@ select {
 
 :root.dark-mode ::-webkit-scrollbar-thumb {
   background: rgba(34, 211, 238, 0.4);
-  border-radius: 5px;
+  border-radius: 0;
 }
 
 :root.dark-mode ::-webkit-scrollbar-thumb:hover {
@@ -193,7 +193,7 @@ select {
 
 :root.light-mode ::-webkit-scrollbar-thumb {
   background: rgba(8, 145, 178, 0.4);
-  border-radius: 5px;
+  border-radius: 0;
 }
 
 :root.light-mode ::-webkit-scrollbar-thumb:hover {

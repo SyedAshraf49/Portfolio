@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { X } from 'lucide-react';
+import { Award, FolderGit2, X } from 'lucide-react';
 import { CERTIFICATIONS } from '@/constants/data';
 import './skill-detail-modal.css';
 
@@ -75,11 +75,18 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
 
   return (
     <div className="skill-modal-backdrop" onClick={handleBackdropClick}>
-      <div className={`skill-modal ${isVisible ? 'visible' : ''}`} style={{ '--skill-color': skillColor } as React.CSSProperties}>
+      <div
+        className={`skill-modal ${isVisible ? 'visible' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="skill-modal-title"
+        tabIndex={-1}
+        style={{ '--skill-color': skillColor } as React.CSSProperties}
+      >
         {/* Header */}
         <div className="skill-modal-header">
           <div className="skill-modal-title-group">
-            <h2 className="skill-modal-title">{skillName}</h2>
+            <h2 id="skill-modal-title" className="skill-modal-title">{skillName}</h2>
             <span className="skill-modal-category">{skillCategory}</span>
           </div>
           <button 
@@ -97,7 +104,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               {hasProjects ? (
                 <div className="skill-modal-section">
                   <h3 className="skill-modal-section-title">
-                    <span className="section-icon">🚀</span>
+                    <span className="section-icon" aria-hidden="true"><FolderGit2 size={20} /></span>
                     Projects ({projects.length})
                   </h3>
                   <div className="skill-modal-grid">
@@ -159,7 +166,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               ) : (
                 <div className="skill-modal-section">
                   <h3 className="skill-modal-section-title">
-                    <span className="section-icon">🚀</span>
+                    <span className="section-icon" aria-hidden="true"><FolderGit2 size={20} /></span>
                     Projects
                   </h3>
                   <div className="skill-modal-empty">
@@ -172,7 +179,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               {hasCertifications ? (
                 <div className="skill-modal-section">
                   <h3 className="skill-modal-section-title">
-                    <span className="section-icon">🏆</span>
+                    <span className="section-icon" aria-hidden="true"><Award size={20} /></span>
                     Certifications ({certifications.length})
                   </h3>
                   <div className="skill-modal-grid skill-modal-grid--certs">
@@ -204,7 +211,7 @@ export const SkillDetailModal: React.FC<SkillDetailModalProps> = ({
               ) : (
                 <div className="skill-modal-section">
                   <h3 className="skill-modal-section-title">
-                    <span className="section-icon">🏆</span>
+                    <span className="section-icon" aria-hidden="true"><Award size={20} /></span>
                     Certifications
                   </h3>
                   <div className="skill-modal-empty">

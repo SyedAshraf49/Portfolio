@@ -230,19 +230,19 @@ const PixelWheelScrollbar = () => {
         shapeRendering="crispEdges"
       >
         <g className="pixel-wheel-rotor">
-          <g fill="var(--pixel-cyan, #00ffff)">
+          <g fill="var(--pixel-cyan, #8cc6ff)">
             <rect x="8" y="0" width="8" height="4" />
             <rect x="4" y="4" width="16" height="4" />
             <rect x="0" y="8" width="24" height="8" />
             <rect x="4" y="16" width="16" height="4" />
             <rect x="8" y="20" width="8" height="4" />
           </g>
-          <g fill="var(--pixel-bg-dark, #0f0f23)">
+          <g fill="var(--pixel-bg-dark, #080d1b)">
             <rect x="9" y="4" width="6" height="16" />
             <rect x="4" y="9" width="16" height="6" />
           </g>
-          <rect x="10" y="10" width="4" height="4" fill="var(--pixel-green, #00ff41)" />
-          <rect x="5" y="6" width="2" height="2" fill="var(--pixel-white, #f0f0f0)" />
+          <rect x="10" y="10" width="4" height="4" fill="var(--pixel-blue, #4d8dff)" />
+          <rect x="5" y="6" width="2" height="2" fill="var(--pixel-white, #e8f2ff)" />
         </g>
       </svg>
     </div>

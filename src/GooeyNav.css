@@ -1,31 +1,15 @@
 .gooey-nav-container {
-  --color-1: rgb(34, 211, 238);
-  --color-2: rgb(0, 184, 212);
-  --color-3: rgb(59, 130, 246);
-  --color-4: rgb(96, 165, 250);
+  --color-1: #4d8dff;
+  --color-2: #2f5f9e;
+  --color-3: #8cc6ff;
+  --color-4: #1d4ed8;
   position: relative;
+  display: flex;
+  justify-content: center;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-  display: flex;
-  justify-content: center;
-  filter: url('#goo') drop-shadow(0 10px 30px rgba(6, 146, 166, 0.2));
-  will-change: filter;
-}
-
-/* Optimize filters for mobile - reduce complexity */
-@media (max-width: 768px) {
-  .gooey-nav-container {
-    filter: drop-shadow(0 5px 15px rgba(6, 146, 166, 0.15));
-  }
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .gooey-nav-container {
-    filter: drop-shadow(0 2px 8px rgba(6, 146, 166, 0.1));
-  }
 }
 
 .gooey-nav-svg {
@@ -43,31 +27,18 @@
 .gooey-nav-container ul {
   position: relative;
   z-index: 2;
-  list-style: none;
-  margin: 0;
-  padding: 0.45rem;
-  border-radius: 999px;
-  border: 1px solid rgba(34, 211, 238, 0.2);
-  background: linear-gradient(180deg, rgba(0, 20, 40, 0.85), rgba(2, 12, 28, 0.8));
-  box-shadow: inset 0 1px 0 rgba(34, 211, 238, 0.08);
-  /* Cross-browser backdrop filter support */
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-wrap: nowrap;
-  gap: 0.2rem;
-  /* Ensure touch-friendly minimum height */
-  min-height: 44px;
-}
-
-/* Reduce blur on mobile for performance */
-@media (max-width: 768px) {
-  .gooey-nav-container ul {
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-  }
+  gap: 0.4rem;
+  min-height: 56px;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  border: 4px solid var(--pixel-border, #2f5f9e);
+  background: var(--pixel-bg-mid, #111d36);
+  box-shadow: 6px 6px 0 var(--pixel-bg-dark, #080d1b);
 }
 
 .gooey-nav-container li {
@@ -76,192 +47,114 @@
 }
 
 .gooey-nav-container li::before {
-  content: '';
   position: absolute;
   inset: 0;
-  border-radius: 999px;
-  background: linear-gradient(120deg, rgba(34, 211, 238, 0.12), rgba(59, 130, 246, 0.13), rgba(96, 165, 250, 0.12));
-  transform: scale(0.7);
+  content: '';
+  border: 2px solid var(--pixel-cyan, #8cc6ff);
+  background: var(--pixel-bg-light, #192b4a);
   opacity: 0;
-  transition: transform var(--gooey-duration, 600ms) ease, opacity var(--gooey-duration, 600ms) ease;
   pointer-events: none;
 }
 
 .gooey-nav-container li.active::before {
-  transform: scale(1);
   opacity: 1;
 }
 
 .gooey-nav-container a {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 0.85rem;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 0em;
-  font-size: 0.82rem;
-  text-decoration: none;
   min-width: 44px;
   min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  color: var(--pixel-gray, #9fb5d1);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.68rem;
+  font-weight: 400;
+  line-height: 1.7;
+  text-decoration: none;
   white-space: nowrap;
-  color: rgba(191, 219, 254, 0.88);
-  transition: all 300ms ease, color 0.25s ease, text-shadow 0.25s ease;
-}
-
-/* Desktop - large screens */
-@media (min-width: 1200px) {
-  .gooey-nav-container a {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-  }
-}
-
-/* Tablets and smaller desktops */
-@media (max-width: 1199px) and (min-width: 901px) {
-  .gooey-nav-container a {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.8rem;
-  }
-}
-
-/* Medium tablets */
-@media (max-width: 900px) and (min-width: 769px) {
-  .gooey-nav-container ul {
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-  
-  .gooey-nav-container a {
-    padding: 0.45rem 0.7rem;
-    font-size: 0.78rem;
-  }
-}
-
-/* Mobile phones */
-@media (max-width: 768px) {
-  .gooey-nav-container {
-    padding: 0 0.5rem;
-  }
-  
-  .gooey-nav-container ul {
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    padding: 0.35rem;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-  }
-  
-  .gooey-nav-container a {
-    padding: 0.4rem 0.65rem;
-    font-size: 0.75rem;
-    min-height: 40px;
-  }
+  transition: color 120ms steps(2, end);
 }
 
 .gooey-nav-container li.active a,
 .gooey-nav-container a:hover,
 .gooey-nav-container a:focus-visible {
-  color: rgb(34, 211, 238);
-  text-shadow: 0 0 16px rgba(34, 211, 238, 0.48);
-  outline: none;
+  color: var(--pixel-cyan, #8cc6ff);
+  text-shadow: 2px 2px 0 var(--pixel-bg-dark, #080d1b);
 }
 
 .gooey-nav-container .effect {
   position: absolute;
   z-index: 4;
-  border-radius: 999px;
   pointer-events: none;
 }
 
 .gooey-nav-container .effect.filter {
-  background: linear-gradient(120deg, rgba(34, 211, 238, 0.82), rgba(0, 184, 212, 0.78), rgba(59, 130, 246, 0.75));
-  box-shadow: 0 0 28px rgba(34, 211, 238, 0.4), 0 0 44px rgba(59, 130, 246, 0.25),
-    inset 0 0 0 1px rgba(191, 219, 254, 0.2);
-  opacity: 0.9;
-  transition: left var(--gooey-duration, 600ms) ease, top var(--gooey-duration, 600ms) ease,
-    width var(--gooey-duration, 600ms) ease, height var(--gooey-duration, 600ms) ease;
-  overflow: visible;
+  border: 2px solid var(--pixel-cyan, #8cc6ff);
+  background: var(--pixel-blue, #4d8dff);
+  box-shadow: 4px 4px 0 var(--pixel-bg-dark, #080d1b);
+  opacity: 0.18;
+  transition: left var(--gooey-duration, 600ms) steps(8, end),
+    top var(--gooey-duration, 600ms) steps(8, end),
+    width var(--gooey-duration, 600ms) steps(8, end),
+    height var(--gooey-duration, 600ms) steps(8, end);
 }
 
 .gooey-nav-container .effect.text {
-  display: grid;
-  place-items: center;
-  z-index: 6;
-  color: rgb(8, 15, 28);
-  text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
-  font-size: 0.93rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  opacity: 0;
-}
-
-.gooey-nav-container .effect.text.active {
-  animation: text-pop 320ms ease;
-  opacity: 1;
+  display: none;
 }
 
 .gooey-nav-container .particle {
   position: absolute;
-  left: 50%;
   top: 50%;
-  width: 10px;
-  height: 10px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
   transform: translate(-50%, -50%);
-  animation: particle-move var(--time, 1200ms) cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: pixel-particle-move var(--time, 900ms) steps(8, end) forwards;
 }
 
 .gooey-nav-container .particle .point {
+  display: block;
   width: 100%;
   height: 100%;
-  border-radius: 999px;
-  background: var(--color);
-  transform: rotate(var(--rotate)) scale(var(--scale));
-  opacity: 0.95;
-  box-shadow: 0 0 12px var(--color);
+  background: var(--color, var(--pixel-cyan));
 }
 
-@keyframes particle-move {
-  0% {
-    transform: translate(var(--start-x), var(--start-y)) scale(1);
+@keyframes pixel-particle-move {
+  from {
+    transform: translate(var(--start-x), var(--start-y));
     opacity: 1;
   }
-  100% {
-    transform: translate(var(--end-x), var(--end-y)) scale(0.2);
+  to {
+    transform: translate(var(--end-x), var(--end-y));
     opacity: 0;
   }
 }
 
-@keyframes text-pop {
-  0% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
+@media (max-width: 1199px) and (min-width: 768px) {
+  .gooey-nav-container a {
+    padding-inline: 0.65rem;
+    font-size: 0.6rem;
   }
 }
 
-/* Desktop Navigation - Hide on mobile */
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .gooey-nav-container {
     display: none;
   }
 }
 
-/* Small mobile */
-@media (max-width: 640px) {
-  .gooey-nav-container a {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.7rem;
+@media (prefers-reduced-motion: reduce) {
+  .gooey-nav-container a,
+  .gooey-nav-container .effect.filter {
+    transition: none;
   }
-}
 
-/* Very small mobile */
-@media (max-width: 480px) {
-  .gooey-nav-container a {
-    padding: 0.35rem 0.5rem;
-    font-size: 0.65rem;
+  .gooey-nav-container .particle {
+    animation: none;
   }
 }

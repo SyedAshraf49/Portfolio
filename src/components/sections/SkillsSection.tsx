@@ -4,16 +4,16 @@ import { SKILLS_PERIODIC_TABLE, getSkillMapping, CERTIFICATIONS } from '@/consta
 import { SkillDetailModal } from '@/components/ui/skill-detail-modal';
 import './SkillsSection.css';
 
-// Category colors matching periodic table groups
+// Related blue shades keep the periodic-table grouping distinct without adding other accent hues.
 const CATEGORY_COLORS = {
-  language: { bg: '#3B82F6', text: '#DBEAFE', border: '#60A5FA' },
-  frontend: { bg: '#06B6D4', text: '#CFFAFE', border: '#22D3EE' },
-  backend: { bg: '#10B981', text: '#D1FAE5', border: '#34D399' },
-  database: { bg: '#8B5CF6', text: '#EDE9FE', border: '#A78BFA' },
-  ml: { bg: '#F59E0B', text: '#FEF3C7', border: '#FBBF24' },
-  cloud: { bg: '#EF4444', text: '#FEE2E2', border: '#F87171' },
-  tool: { bg: '#6366F1', text: '#E0E7FF', border: '#818CF8' },
-  concept: { bg: '#EC4899', text: '#FCE7F3', border: '#F472B6' },
+  language: { bg: '#1d4ed8', text: '#e8f2ff', border: '#8cc6ff' },
+  frontend: { bg: '#2563eb', text: '#e8f2ff', border: '#b7d8ff' },
+  backend: { bg: '#3b82f6', text: '#080d1b', border: '#8cc6ff' },
+  database: { bg: '#1e40af', text: '#e8f2ff', border: '#60a5fa' },
+  ml: { bg: '#2f5f9e', text: '#e8f2ff', border: '#b7d8ff' },
+  cloud: { bg: '#1e3a8a', text: '#e8f2ff', border: '#60a5fa' },
+  tool: { bg: '#4d8dff', text: '#080d1b', border: '#b7d8ff' },
+  concept: { bg: '#60a5fa', text: '#080d1b', border: '#b7d8ff' },
 };
 
 const CATEGORY_LABELS = {

@@ -1,0 +1,102 @@
+/* Shared visual rules for the navy-and-blue pixel-art theme. */
+:root {
+  color-scheme: dark;
+  --pixel-shadow: #030711;
+}
+
+html,
+body {
+  background-color: var(--pixel-bg-dark);
+  color: var(--pixel-white);
+}
+
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+button,
+input,
+textarea,
+select,
+[role='button'] {
+  border-radius: 0 !important;
+}
+
+:focus-visible {
+  outline: 3px solid var(--pixel-cyan) !important;
+  outline-offset: 3px;
+}
+
+.Toastify__toast {
+  border: 3px solid var(--pixel-border);
+  background: var(--pixel-bg-mid);
+  box-shadow: 4px 4px 0 var(--pixel-shadow);
+  color: var(--pixel-white);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  line-height: 1.8;
+}
+
+.Toastify__progress-bar,
+.Toastify__progress-bar--success,
+.Toastify__progress-bar--error,
+.Toastify__progress-bar--warning,
+.Toastify__progress-bar--info {
+  background: var(--pixel-blue) !important;
+}
+
+.Toastify__toast-icon {
+  color: var(--pixel-cyan);
+  filter: grayscale(1) brightness(0) saturate(100%) invert(72%) sepia(24%) saturate(1058%) hue-rotate(184deg) brightness(103%) contrast(103%);
+}
+
+/* Only actual pixel sprites should use nearest-neighbour rendering. */
+.pixel-art,
+.pixel-sprite {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Keep small-screen content readable without changing the pixel type treatment. */
+@media (max-width: 768px) {
+  .certification-title,
+  .certification-issuer,
+  .certification-full-title,
+  .certification-full-issuer,
+  .filter-button,
+  .skill-card-description,
+  .skill-card-tech,
+  .skill-cert-title,
+  .skill-cert-issuer {
+    font-size: max(0.65rem, 11px) !important;
+    line-height: 1.8;
+  }
+
+  .certifications-page-title {
+    font-size: clamp(0.85rem, 4vw, 1.2rem) !important;
+  }
+
+  .periodic-category-label,
+  .periodic-legend-label,
+  .periodic-skill-name {
+    font-size: max(0.55rem, 10px) !important;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-hero-title {
+    padding-right: 3rem;
+    font-size: clamp(0.65rem, 3.6vw, 0.85rem) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,44 +1,48 @@
+/* Pixel Art Font - Press Start 2P from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Pixel Art Font - Press Start 2P from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 /* Mobile Optimization Styles */
 @import "./styles/mobile-optimization.css";
+@import "./styles/pixel-blue-cohesion.css";
 
 :root {
-  --background: #0f0f23;
-  --foreground: #f0f0f0;
-  --primary: #00ff41;
-  --secondary: #ff00ff;
-  --accent: #00ffff;
-  --card: #1a1a2e;
-  --muted: #8b9bb4;
+  --background: #080d1b;
+  --foreground: #e8f2ff;
+  --primary: #4d8dff;
+  --secondary: #2f5f9e;
+  --accent: #8cc6ff;
+  --card: #111d36;
+  --muted: #9fb5d1;
   --animation-iteration: infinite;
-  
-  /* Pixel Art Color Palette - inspired by retro games */
-  --pixel-bg-dark: #0f0f23;
-  --pixel-bg-mid: #1a1a2e;
-  --pixel-bg-light: #2d2d44;
-  --pixel-green: #00ff41;
-  --pixel-cyan: #00ffff;
-  --pixel-magenta: #ff00ff;
-  --pixel-yellow: #ffff00;
-  --pixel-orange: #ff8800;
-  --pixel-red: #ff0044;
-  --pixel-blue: #4466ff;
-  --pixel-white: #f0f0f0;
-  --pixel-gray: #8b9bb4;
+  /* Backward-compatible aliases; every accent stays within the blue palette. */
+  --pixel-bg-dark: #080d1b;
+  --pixel-bg-mid: #111d36;
+  --pixel-bg-light: #192b4a;
+  --pixel-green: #4d8dff;
+  --pixel-cyan: #8cc6ff;
+  --pixel-magenta: #4d8dff;
+  --pixel-yellow: #b7d8ff;
+  --pixel-orange: #1d4ed8;
+  --pixel-red: #1e3a8a;
+  --pixel-blue: #4d8dff;
+  --pixel-white: #e8f2ff;
+  --pixel-gray: #9fb5d1;
+  --pixel-border: #2f5f9e;
 }
-
 .dark {
-  --background: oklch(0 0 0);
+  --background: #080d1b;
+  --foreground: #e8f2ff;
 }
 
 * {
   box-sizing: border-box;
-  /* Disable anti-aliasing for crisp pixel look */
+}
+
+.pixel-art,
+.pixel-art img,
+.pixel-sprite {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
@@ -64,15 +68,15 @@ body {
       0deg,
       transparent,
       transparent 2px,
-      rgba(0, 255, 65, 0.03) 2px,
-      rgba(0, 255, 65, 0.03) 4px
+      rgba(77, 141, 255, 0.025) 2px,
+      rgba(77, 141, 255, 0.025) 4px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 2px,
-      rgba(0, 255, 65, 0.03) 2px,
-      rgba(0, 255, 65, 0.03) 4px
+      rgba(77, 141, 255, 0.025) 2px,
+      rgba(77, 141, 255, 0.025) 4px
     );
   
   /* Smooth fade-in without glitch */
@@ -109,7 +113,7 @@ body.loaded {
     -4px 0 0 var(--pixel-green),
     0 4px 0 var(--pixel-green),
     0 -4px 0 var(--pixel-green),
-    8px 8px 0 rgba(0, 255, 65, 0.3);
+    8px 8px 0 rgba(77, 141, 255, 0.3);
 }
 
 .pixel-text-shadow {
@@ -124,14 +128,8 @@ body.loaded {
 }
 
 @keyframes pixelGlow {
-  0%, 100% { 
-    filter: drop-shadow(0 0 2px var(--pixel-green)) 
-            drop-shadow(0 0 4px var(--pixel-green));
-  }
-  50% { 
-    filter: drop-shadow(0 0 4px var(--pixel-cyan)) 
-            drop-shadow(0 0 8px var(--pixel-cyan));
-  }
+  0%, 100% { text-shadow: 2px 2px 0 var(--pixel-blue); }
+  50% { text-shadow: 4px 4px 0 var(--pixel-cyan); }
 }
 
 /* Accessibility - Screen Reader Only */
@@ -214,8 +212,8 @@ body.loaded {
     90deg,
     transparent 0px,
     transparent 8px,
-    rgba(0, 255, 255, 0.1) 8px,
-    rgba(0, 255, 255, 0.1) 12px
+    rgba(77, 141, 255, 0.1) 8px,
+    rgba(77, 141, 255, 0.1) 12px
   );
 }
 
@@ -228,8 +226,8 @@ body.loaded {
     0deg,
     transparent 0px,
     transparent 4px,
-    rgba(0, 255, 255, 0.2) 4px,
-    rgba(0, 255, 255, 0.2) 8px
+    rgba(77, 141, 255, 0.18) 4px,
+    rgba(77, 141, 255, 0.18) 8px
   );
 }
 
@@ -486,12 +484,11 @@ body.loaded {
   pointer-events: none;
   z-index: 9998;
   
-  /* Subtle vignette effect */
-  background: radial-gradient(
-    circle at center,
-    transparent 0%,
-    transparent 60%,
-    rgba(0, 0, 0, 0.1) 100%
+  /* Crisp blue scanline texture in place of a soft vignette. */
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 4px,
+    rgba(77, 141, 255, 0.015) 4px 5px
   );
   
   opacity: 0;
@@ -528,8 +525,8 @@ body.loaded {
       45deg,
       transparent 0,
       transparent 2px,
-      rgba(0, 255, 65, 0.1) 2px,
-      rgba(0, 255, 65, 0.1) 4px
+      rgba(77, 141, 255, 0.08) 2px,
+      rgba(77, 141, 255, 0.08) 4px
     );
 }
 
@@ -539,15 +536,15 @@ body.loaded {
       90deg,
       transparent 0,
       transparent 1px,
-      rgba(0, 255, 255, 0.1) 1px,
-      rgba(0, 255, 255, 0.1) 2px
+      rgba(140, 198, 255, 0.08) 1px,
+      rgba(140, 198, 255, 0.08) 2px
     ),
     repeating-linear-gradient(
       0deg,
       transparent 0,
       transparent 1px,
-      rgba(0, 255, 255, 0.1) 1px,
-      rgba(0, 255, 255, 0.1) 2px
+      rgba(140, 198, 255, 0.08) 1px,
+      rgba(140, 198, 255, 0.08) 2px
     );
 }
 

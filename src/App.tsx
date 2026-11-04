@@ -46,7 +46,7 @@ export default function App() {
         <header className="px-2 sm:px-4">
           <AnimatedHero className="mx-auto mt-2 flex w-full max-w-[95%] sm:w-[min(95%,72rem)] flex-col items-center gap-3 sm:gap-4 border-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] p-4 sm:p-6 text-center shadow-[4px_4px_0_var(--pixel-bg-dark),4px_4px_0_0_var(--pixel-green)] sm:shadow-[8px_8px_0_var(--pixel-bg-dark),8px_8px_0_0_var(--pixel-green)] sm:mt-4 md:mt-8">
             <div className="w-full">
-              <h1 className="text-base sm:text-2xl md:text-4xl font-normal tracking-tight text-[var(--pixel-green)] break-words" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-cyan), 4px 4px 0 var(--pixel-bg-dark)", lineHeight: "1.8" }}>
+              <h1 className="portfolio-hero-title text-xs min-[360px]:text-sm sm:text-2xl md:text-4xl font-normal tracking-tight text-[var(--pixel-green)] break-words" style={{ fontFamily: "'Press Start 2P', cursive", textShadow: "2px 2px 0 var(--pixel-cyan), 4px 4px 0 var(--pixel-bg-dark)", lineHeight: "1.8" }}>
                 Syed Ashraf S.N
               </h1>
               <div className="mt-3 sm:mt-4 flex flex-wrap justify-center gap-2 sm:gap-3">
@@ -123,16 +123,16 @@ export default function App() {
           {/* Projects Section */}
           <Section id="projects" title="Projects">
             <MagicBento
-              textAutoHide={true}
-              enableStars
-              enableSpotlight
-              enableBorderGlow={true}
+              textAutoHide={false}
+              enableStars={false}
+              enableSpotlight={false}
+              enableBorderGlow={false}
               enableTilt={false}
               enableMagnetism={false}
-              clickEffect
+              clickEffect={false}
               spotlightRadius={400}
               particleCount={12}
-              glowColor="25, 118, 210"
+              glowColor="77, 141, 255"
               disableAnimations={false}
             />
           </Section>
