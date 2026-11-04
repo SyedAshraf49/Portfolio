@@ -12,7 +12,7 @@ export const Badge: React.FC<BadgeProps> = ({ children, variant = 'default', cla
   const variants = {
     default: 'border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] text-[var(--pixel-white)]',
     primary: 'border-[var(--pixel-cyan)] bg-[var(--pixel-bg-mid)] text-[var(--pixel-cyan)]',
-    secondary: 'border-[var(--pixel-magenta)] bg-[var(--pixel-bg-mid)] text-[var(--pixel-magenta)]',
+    secondary: 'border-[var(--pixel-amber)] bg-[var(--pixel-bg-mid)] text-[var(--pixel-amber)]',
   };
 
   return (
@@ -132,7 +132,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const variants = {
     primary: 'bg-[var(--pixel-green)] text-[var(--pixel-bg-dark)] border-[var(--pixel-green)] hover:bg-[var(--pixel-cyan)] hover:border-[var(--pixel-cyan)]',
-    secondary: 'bg-[var(--pixel-magenta)] text-[var(--pixel-white)] border-[var(--pixel-magenta)] hover:bg-[var(--pixel-cyan)] hover:border-[var(--pixel-cyan)]',
+    secondary: 'bg-[var(--pixel-amber)] text-[var(--pixel-bg-dark)] border-[var(--pixel-amber)] hover:bg-[var(--pixel-gold)] hover:border-[var(--pixel-gold)]',
     tertiary: 'border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] text-[var(--pixel-white)] hover:border-[var(--pixel-cyan)] hover:text-[var(--pixel-cyan)]',
   };
 

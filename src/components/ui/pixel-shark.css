@@ -73,7 +73,7 @@
   left: calc(var(--shark-size) + 0.55rem);
   width: min(19rem, calc(100vw - var(--shark-size) - 3rem));
   padding: 0.65rem 0.75rem;
-  border: 4px solid var(--pixel-blue, #4d8dff);
+  border: 4px solid var(--pixel-teal, #42cbb4);
   background: var(--pixel-bg-mid, #111d36);
   box-shadow: 4px 4px 0 var(--pixel-bg-dark, #080d1b);
   color: var(--pixel-cyan, #8cc6ff);
@@ -93,7 +93,7 @@
   width: 0.55rem;
   height: 0.55rem;
   content: '';
-  background: var(--pixel-blue, #4d8dff);
+  background: var(--pixel-teal, #42cbb4);
 }
 
 .pixel-shark-greeting::after {

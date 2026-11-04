@@ -11,22 +11,28 @@
   --background: #080d1b;
   --foreground: #e8f2ff;
   --primary: #4d8dff;
-  --secondary: #2f5f9e;
-  --accent: #8cc6ff;
+  --secondary: #42cbb4;
+  --accent: #ffc857;
   --card: #111d36;
   --muted: #9fb5d1;
   --animation-iteration: infinite;
-  /* Backward-compatible aliases; every accent stays within the blue palette. */
+  /* Core palette: cobalt blue with teal and amber accents on navy. */
   --pixel-bg-dark: #080d1b;
   --pixel-bg-mid: #111d36;
   --pixel-bg-light: #192b4a;
-  --pixel-green: #4d8dff;
-  --pixel-cyan: #8cc6ff;
-  --pixel-magenta: #4d8dff;
-  --pixel-yellow: #b7d8ff;
-  --pixel-orange: #1d4ed8;
-  --pixel-red: #1e3a8a;
   --pixel-blue: #4d8dff;
+  --pixel-blue-rgb: 77, 141, 255;
+  --pixel-teal: #42cbb4;
+  --pixel-teal-rgb: 66, 203, 180;
+  --pixel-cyan: #62d9e6;
+  --pixel-amber: #ffc857;
+  --pixel-gold: #ffd166;
+  --pixel-orange: #e99b4f;
+  --pixel-red: #d97755;
+  /* Legacy aliases retained for components that still use the old names. */
+  --pixel-green: var(--pixel-blue);
+  --pixel-magenta: var(--pixel-amber);
+  --pixel-yellow: var(--pixel-gold);
   --pixel-white: #e8f2ff;
   --pixel-gray: #9fb5d1;
   --pixel-border: #2f5f9e;
@@ -68,15 +74,15 @@ body {
       0deg,
       transparent,
       transparent 2px,
-      rgba(77, 141, 255, 0.025) 2px,
-      rgba(77, 141, 255, 0.025) 4px
+      rgba(var(--pixel-blue-rgb), 0.025) 2px,
+      rgba(var(--pixel-blue-rgb), 0.025) 4px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 2px,
-      rgba(77, 141, 255, 0.025) 2px,
-      rgba(77, 141, 255, 0.025) 4px
+      rgba(var(--pixel-teal-rgb), 0.025) 2px,
+      rgba(var(--pixel-teal-rgb), 0.025) 4px
     );
   
   /* Smooth fade-in without glitch */
@@ -113,14 +119,14 @@ body.loaded {
     -4px 0 0 var(--pixel-green),
     0 4px 0 var(--pixel-green),
     0 -4px 0 var(--pixel-green),
-    8px 8px 0 rgba(77, 141, 255, 0.3);
+    8px 8px 0 rgba(var(--pixel-blue-rgb), 0.3);
 }
 
 .pixel-text-shadow {
   text-shadow: 
     2px 0 0 var(--pixel-cyan),
-    -2px 0 0 var(--pixel-magenta),
-    0 2px 0 var(--pixel-yellow);
+    -2px 0 0 var(--pixel-teal),
+    0 2px 0 var(--pixel-amber);
 }
 
 .pixel-glow {
@@ -209,11 +215,11 @@ body.loaded {
   border-top: 4px solid var(--pixel-cyan);
   border-radius: 0; /* Remove smooth curves */
   background: repeating-linear-gradient(
-    90deg,
-    transparent 0px,
-    transparent 8px,
-    rgba(77, 141, 255, 0.1) 8px,
-    rgba(77, 141, 255, 0.1) 12px
+      90deg,
+      transparent 0px,
+      transparent 8px,
+      rgba(var(--pixel-teal-rgb), 0.08) 8px,
+      rgba(var(--pixel-teal-rgb), 0.08) 12px
   );
 }
 

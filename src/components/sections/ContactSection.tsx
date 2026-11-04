@@ -30,15 +30,15 @@ export const ContactSection: React.FC = () => {
             <p className="text-base font-normal uppercase tracking-wider text-[var(--pixel-cyan)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
               Let&apos;s Connect
             </p>
-            <p className="text-sm text-[var(--pixel-green)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
+            <p className="text-sm text-[var(--pixel-teal)]" style={{ fontFamily: "'Press Start 2P', cursive", lineHeight: "1.8" }}>
               Open to work
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Badge variant="primary">Software Developer</Badge>
-            <Badge variant="primary">Full Stack</Badge>
-            <Badge variant="primary">Tech Enthusiast</Badge>
+            <Badge variant="secondary">Full Stack</Badge>
+            <Badge variant="default">Tech Enthusiast</Badge>
           </div>
 
           <div className="flex items-center justify-center">

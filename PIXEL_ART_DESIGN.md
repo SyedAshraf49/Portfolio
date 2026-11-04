@@ -11,19 +11,21 @@ This portfolio now features a complete pixel art aesthetic inspired by retro 8-b
 
 ### Color Palette
 ```
---pixel-bg-dark: #0f0f23    (Deep dark background)
---pixel-bg-mid: #1a1a2e     (Mid-tone background)
---pixel-bg-light: #2d2d44   (Light background)
---pixel-green: #00ff41      (Primary accent - Matrix green)
---pixel-cyan: #00ffff       (Secondary accent)
---pixel-magenta: #ff00ff    (Tertiary accent)
---pixel-yellow: #ffff00     (Highlight)
---pixel-orange: #ff8800     (Warning)
---pixel-red: #ff0044        (Error/danger)
---pixel-blue: #4466ff       (Info)
---pixel-white: #f0f0f0      (Text)
---pixel-gray: #8b9bb4       (Muted text)
+--pixel-bg-dark: #080d1b    (Deep navy background)
+--pixel-bg-mid: #111d36     (Card and panel surface)
+--pixel-bg-light: #192b4a   (Raised navy surface)
+--pixel-blue: #4d8dff       (Primary cobalt accent)
+--pixel-cyan: #62d9e6       (Bright cyan highlight)
+--pixel-teal: #42cbb4       (Secondary ocean accent)
+--pixel-amber: #ffc857      (Warm highlight and secondary badge)
+--pixel-gold: #ffd166       (Achievement and featured marker)
+--pixel-orange: #e99b4f    (Warning accent)
+--pixel-red: #d97755       (Error feedback)
+--pixel-white: #e8f2ff     (Text)
+--pixel-gray: #9fb5d1      (Muted text)
 ```
+
+Blue remains dominant; teal and amber provide restrained contrast. Pink is not part of the palette. Legacy `green`, `magenta`, and `yellow` variable names are compatibility aliases only.
 
 ### Visual Effects
 

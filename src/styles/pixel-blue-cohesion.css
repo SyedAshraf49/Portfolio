@@ -1,4 +1,4 @@
-/* Shared visual rules for the navy-and-blue pixel-art theme. */
+/* Shared visual rules for the navy, blue, teal, and amber pixel-art theme. */
 :root {
   color-scheme: dark;
   --pixel-shadow: #030711;
@@ -40,16 +40,36 @@ select,
 }
 
 .Toastify__progress-bar,
-.Toastify__progress-bar--success,
-.Toastify__progress-bar--error,
-.Toastify__progress-bar--warning,
 .Toastify__progress-bar--info {
   background: var(--pixel-blue) !important;
 }
 
+.Toastify__progress-bar--success {
+  background: var(--pixel-teal) !important;
+}
+
+.Toastify__progress-bar--warning {
+  background: var(--pixel-amber) !important;
+}
+
+.Toastify__progress-bar--error {
+  background: var(--pixel-red) !important;
+}
+
 .Toastify__toast-icon {
   color: var(--pixel-cyan);
-  filter: grayscale(1) brightness(0) saturate(100%) invert(72%) sepia(24%) saturate(1058%) hue-rotate(184deg) brightness(103%) contrast(103%);
+}
+
+.Toastify__toast--success .Toastify__toast-icon {
+  color: var(--pixel-teal);
+}
+
+.Toastify__toast--warning .Toastify__toast-icon {
+  color: var(--pixel-amber);
+}
+
+.Toastify__toast--error .Toastify__toast-icon {
+  color: var(--pixel-red);
 }
 
 /* Only actual pixel sprites should use nearest-neighbour rendering. */

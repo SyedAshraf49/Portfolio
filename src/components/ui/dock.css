@@ -93,3 +93,26 @@
     transition: none;
   }
 }
+
+/* Subtle per-link accents keep the dock colorful without changing its pixel geometry. */
+.pixel-dock__link:nth-child(1) { --dock-accent: var(--pixel-blue); }
+.pixel-dock__link:nth-child(2) { --dock-accent: var(--pixel-teal); }
+.pixel-dock__link:nth-child(3) { --dock-accent: var(--pixel-amber); }
+.pixel-dock__link:nth-child(4) { --dock-accent: var(--pixel-cyan); }
+
+.pixel-dock__link {
+  border-color: var(--dock-accent, var(--pixel-border));
+  color: var(--dock-accent, var(--pixel-cyan));
+}
+
+.pixel-dock__link:hover,
+.pixel-dock__link:focus-visible {
+  border-color: var(--dock-accent, var(--pixel-cyan));
+  background: var(--dock-accent, var(--pixel-blue));
+  color: var(--pixel-bg-dark);
+}
+
+.pixel-dock__link .pixel-dock__tooltip {
+  border-color: var(--dock-accent, var(--pixel-border));
+  color: var(--dock-accent, var(--pixel-cyan));
+}

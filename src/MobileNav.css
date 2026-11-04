@@ -243,3 +243,12 @@
     transition: none !important;
   }
 }
+
+/* Amber marks the current section; teal remains the hover accent. */
+.mobile-nav-link.active {
+  color: var(--pixel-amber);
+}
+
+.mobile-nav-link.active::before {
+  background: var(--pixel-amber);
+}
