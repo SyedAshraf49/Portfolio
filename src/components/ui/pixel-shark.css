@@ -9,6 +9,8 @@
   height: 7.5rem;
   margin: 0 auto 0.75rem;
   overflow: hidden;
+  contain: layout paint;
+  pointer-events: none;
 }
 
 .pixel-shark-runner {
@@ -22,12 +24,12 @@
   width: var(--shark-size);
   height: calc(var(--shark-size) * 0.61);
   transform: translate3d(calc(100vw + var(--shark-size)), 0, 0);
-  will-change: transform;
-  filter: drop-shadow(3px 3px 0 var(--pixel-bg-dark, #0f0f23));
+  backface-visibility: hidden;
 }
 
 .pixel-shark-runner.phase-swimming {
-  animation: pixel-shark-cross 4.2s cubic-bezier(0.2, 0.68, 0.18, 1) forwards;
+  animation: pixel-shark-cross 3.1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  will-change: transform;
 }
 
 .pixel-shark-runner.phase-greeting {
@@ -41,20 +43,26 @@
   overflow: visible;
   image-rendering: pixelated;
   shape-rendering: crispEdges;
+}
+
+.pixel-shark-runner.phase-swimming .pixel-shark-art {
   animation: pixel-shark-bob 0.72s ease-in-out infinite;
 }
 
 .pixel-shark-tail {
   transform-box: fill-box;
   transform-origin: center;
+}
+
+.pixel-shark-runner.phase-swimming .pixel-shark-tail {
   animation: pixel-shark-tail-flick 0.42s steps(3, end) infinite alternate;
 }
 
 .pixel-shark-runner.phase-greeting .pixel-shark-tail {
-  animation-duration: 1.1s;
+  animation: pixel-shark-tail-flick 1.1s steps(3, end) infinite alternate;
 }
 
-.pixel-shark-bubbles {
+.pixel-shark-runner.phase-swimming .pixel-shark-bubbles {
   animation: pixel-shark-bubbles 1.1s steps(3, end) infinite;
 }
 
@@ -101,15 +109,6 @@
 @keyframes pixel-shark-cross {
   0% {
     transform: translate3d(calc(100vw + var(--shark-size)), 0.2rem, 0);
-  }
-  18% {
-    transform: translate3d(80vw, -0.15rem, 0);
-  }
-  42% {
-    transform: translate3d(55vw, 0.1rem, 0);
-  }
-  72% {
-    transform: translate3d(25vw, -0.1rem, 0);
   }
   100% {
     transform: translate3d(1rem, 0, 0);
@@ -165,6 +164,19 @@
 
   .pixel-shark-runner {
     --shark-size: clamp(6rem, 30vw, 7.25rem);
+  }
+
+  .pixel-shark-runner.phase-swimming {
+    animation-duration: 2.5s;
+  }
+
+  .pixel-shark-runner.phase-swimming .pixel-shark-art,
+  .pixel-shark-runner.phase-swimming .pixel-shark-bubbles {
+    animation: none;
+  }
+
+  .pixel-shark-runner.phase-swimming .pixel-shark-tail {
+    animation-duration: 0.62s;
   }
 
   .pixel-shark-greeting {
