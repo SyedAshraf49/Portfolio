@@ -5,15 +5,16 @@
   filter: drop-shadow(2px 2px 0 var(--pixel-bg-dark));
   animation: dino-run 12s linear infinite;
   will-change: transform;
+  transform: scale(1.5);
 }
 
 /* Dino running across screen */
 @keyframes dino-run {
   0% {
-    transform: translateX(0) scale(1);
+    transform: translateX(0) scale(1.5);
   }
   100% {
-    transform: translateX(-120vw) scale(1);
+    transform: translateX(-120vw) scale(1.5);
   }
 }
 
@@ -69,13 +70,31 @@
 /* Responsive sizing */
 @media (max-width: 768px) {
   .pixel-dino-container {
-    transform: scale(0.4) !important;
+    transform: scale(1.2) !important;
+  }
+  
+  @keyframes dino-run {
+    0% {
+      transform: translateX(0) scale(1.2);
+    }
+    100% {
+      transform: translateX(-120vw) scale(1.2);
+    }
   }
 }
 
 @media (max-width: 480px) {
   .pixel-dino-container {
-    transform: scale(0.3) !important;
+    transform: scale(1) !important;
+  }
+  
+  @keyframes dino-run {
+    0% {
+      transform: translateX(0) scale(1);
+    }
+    100% {
+      transform: translateX(-120vw) scale(1);
+    }
   }
 }
 

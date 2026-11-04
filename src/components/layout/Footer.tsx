@@ -28,8 +28,8 @@ export const Footer: React.FC = () => {
     <footer className="relative border-t-4 border-[var(--pixel-green)] bg-[var(--pixel-bg-mid)] py-8 overflow-hidden">
       {/* Dinosaur running across footer */}
       <div className="absolute inset-0 pointer-events-none">
-        <div style={{ position: 'absolute', right: '-100px', bottom: '10px' }}>
-          <div style={{ opacity: 0.2, transform: 'scale(0.5)' }}>
+        <div style={{ position: 'absolute', right: '-100px', bottom: '20px' }}>
+          <div style={{ opacity: 0.6 }}>
             <PixelDino animate={true} />
           </div>
         </div>

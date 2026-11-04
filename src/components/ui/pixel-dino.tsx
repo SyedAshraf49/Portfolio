@@ -24,52 +24,52 @@ export const PixelDino: React.FC<PixelDinoProps> = ({ className = '', animate = 
     <div className={`pixel-dino-container ${className}`}>
       <svg
         className={`pixel-dino ${isJumping ? 'jumping' : ''}`}
-        width="88"
-        height="94"
-        viewBox="0 0 88 94"
+        width="44"
+        height="47"
+        viewBox="0 0 44 47"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Dino body - Chrome style */}
-        <g className="dino-body">
-          {/* Head */}
-          <rect x="48" y="0" width="8" height="8" fill="var(--pixel-cyan)" />
-          <rect x="40" y="8" width="24" height="8" fill="var(--pixel-cyan)" />
-          <rect x="32" y="16" width="32" height="8" fill="var(--pixel-cyan)" />
+        {/* Chrome T-Rex Dinosaur - Simplified and accurate */}
+        <g className="dino-body" fill="var(--pixel-cyan)">
+          {/* Head outline */}
+          <rect x="24" y="0" width="4" height="4" />
+          <rect x="20" y="4" width="12" height="4" />
+          <rect x="16" y="8" width="16" height="4" />
           
           {/* Eye */}
-          <rect x="40" y="16" width="8" height="8" fill="var(--pixel-bg-dark)" />
+          <rect x="20" y="8" width="4" height="4" fill="var(--pixel-bg-dark)" />
           
-          {/* Mouth area */}
-          <rect x="24" y="24" width="40" height="8" fill="var(--pixel-cyan)" />
-          <rect x="16" y="32" width="48" height="8" fill="var(--pixel-cyan)" />
-          <rect x="16" y="40" width="48" height="8" fill="var(--pixel-cyan)" />
+          {/* Mouth/Nose area */}
+          <rect x="12" y="12" width="20" height="4" />
+          <rect x="8" y="16" width="24" height="4" />
+          <rect x="8" y="20" width="24" height="4" />
           
           {/* Body */}
-          <rect x="16" y="48" width="56" height="8" fill="var(--pixel-cyan)" />
-          <rect x="16" y="56" width="56" height="8" fill="var(--pixel-cyan)" />
-          <rect x="16" y="64" width="40" height="8" fill="var(--pixel-cyan)" />
+          <rect x="8" y="24" width="28" height="4" />
+          <rect x="8" y="28" width="28" height="4" />
+          <rect x="8" y="32" width="20" height="4" />
           
           {/* Tail */}
-          <rect x="64" y="40" width="8" height="8" fill="var(--pixel-cyan)" />
-          <rect x="72" y="32" width="8" height="8" fill="var(--pixel-cyan)" />
-          <rect x="80" y="24" width="8" height="8" fill="var(--pixel-cyan)" />
+          <rect x="32" y="20" width="4" height="4" />
+          <rect x="36" y="16" width="4" height="4" />
+          <rect x="40" y="12" width="4" height="4" />
           
-          {/* Arms */}
-          <rect x="24" y="48" width="8" height="8" fill="var(--pixel-cyan)" />
-          <rect x="24" y="56" width="8" height="8" fill="var(--pixel-cyan)" />
+          {/* Arms (small) */}
+          <rect x="12" y="24" width="4" height="4" />
+          <rect x="12" y="28" width="4" height="4" />
           
           {/* Legs - Animated */}
           <g className="dino-leg-left">
-            <rect x="24" y="72" width="8" height="8" fill="var(--pixel-cyan)" />
-            <rect x="24" y="80" width="8" height="8" fill="var(--pixel-cyan)" />
-            <rect x="16" y="88" width="16" height="6" fill="var(--pixel-cyan)" />
+            <rect x="12" y="36" width="4" height="4" />
+            <rect x="12" y="40" width="4" height="4" />
+            <rect x="8" y="44" width="8" height="3" />
           </g>
           
           <g className="dino-leg-right">
-            <rect x="40" y="72" width="8" height="8" fill="var(--pixel-cyan)" />
-            <rect x="40" y="80" width="8" height="8" fill="var(--pixel-cyan)" />
-            <rect x="32" y="88" width="16" height="6" fill="var(--pixel-cyan)" />
+            <rect x="20" y="36" width="4" height="4" />
+            <rect x="20" y="40" width="4" height="4" />
+            <rect x="16" y="44" width="8" height="3" />
           </g>
         </g>
       </svg>
