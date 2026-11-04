@@ -8,6 +8,7 @@ interface PixelDinoProps {
 
 export const PixelDino: React.FC<PixelDinoProps> = ({ className = '', animate = true }) => {
   const [isStopped, setIsStopped] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,9 +16,13 @@ export const PixelDino: React.FC<PixelDinoProps> = ({ className = '', animate = 
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Footer is visible, stop the dinosaur
+            // Footer is visible, stop the shark
             setTimeout(() => {
               setIsStopped(true);
+              // Show message after shark stops
+              setTimeout(() => {
+                setShowMessage(true);
+              }, 500);
             }, 100);
           }
         });
@@ -27,13 +32,14 @@ export const PixelDino: React.FC<PixelDinoProps> = ({ className = '', animate = 
       }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    const footerElement = document.querySelector('footer');
+    if (footerElement) {
+      observer.observe(footerElement);
     }
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (footerElement) {
+        observer.unobserve(footerElement);
       }
     };
   }, []);
@@ -42,59 +48,49 @@ export const PixelDino: React.FC<PixelDinoProps> = ({ className = '', animate = 
     <div ref={containerRef} className={`pixel-dino-wrapper ${isStopped ? 'stopped' : ''}`}>
       <div className={`pixel-dino-container ${className} ${isStopped ? 'stopped' : ''}`}>
         <svg
-          className="pixel-dino"
-          width="44"
-          height="47"
-          viewBox="0 0 44 47"
+          className="pixel-shark"
+          width="60"
+          height="40"
+          viewBox="0 0 60 40"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Chrome T-Rex Dinosaur */}
-          <g className="dino-body" fill="var(--pixel-cyan)">
-            {/* Head outline */}
-            <rect x="24" y="0" width="4" height="4" />
-            <rect x="20" y="4" width="12" height="4" />
-            <rect x="16" y="8" width="16" height="4" />
+          {/* Pixel Art Shark */}
+          <g className="shark-body" fill="var(--pixel-cyan)">
+            {/* Tail */}
+            <rect x="0" y="16" width="4" height="8" />
+            <rect x="4" y="12" width="4" height="4" />
+            <rect x="4" y="24" width="4" height="4" />
+            
+            {/* Back body */}
+            <rect x="8" y="12" width="8" height="16" />
+            
+            {/* Top fin */}
+            <rect x="12" y="4" width="4" height="8" />
+            <rect x="16" y="0" width="4" height="4" />
+            
+            {/* Main body */}
+            <rect x="16" y="12" width="20" height="16" />
+            
+            {/* Head/Nose */}
+            <rect x="36" y="16" width="8" height="12" />
+            <rect x="44" y="20" width="4" height="8" />
             
             {/* Eye */}
-            <rect x="20" y="8" width="4" height="4" fill="var(--pixel-bg-dark)" />
+            <rect x="32" y="16" width="4" height="4" fill="var(--pixel-bg-dark)" />
             
-            {/* Mouth/Nose area */}
-            <rect x="12" y="12" width="20" height="4" />
-            <rect x="8" y="16" width="24" height="4" />
-            <rect x="8" y="20" width="24" height="4" />
+            {/* Bottom fin */}
+            <rect x="20" y="28" width="8" height="4" />
+            <rect x="24" y="32" width="4" height="4" />
             
-            {/* Body */}
-            <rect x="8" y="24" width="28" height="4" />
-            <rect x="8" y="28" width="28" height="4" />
-            <rect x="8" y="32" width="20" height="4" />
-            
-            {/* Tail */}
-            <rect x="32" y="20" width="4" height="4" />
-            <rect x="36" y="16" width="4" height="4" />
-            <rect x="40" y="12" width="4" height="4" />
-            
-            {/* Arms (small) */}
-            <rect x="12" y="24" width="4" height="4" />
-            <rect x="12" y="28" width="4" height="4" />
-            
-            {/* Legs - Animated */}
-            <g className="dino-leg-left">
-              <rect x="12" y="36" width="4" height="4" />
-              <rect x="12" y="40" width="4" height="4" />
-              <rect x="8" y="44" width="8" height="3" />
-            </g>
-            
-            <g className="dino-leg-right">
-              <rect x="20" y="36" width="4" height="4" />
-              <rect x="20" y="40" width="4" height="4" />
-              <rect x="16" y="44" width="8" height="3" />
-            </g>
+            {/* Gills (detail) */}
+            <rect x="24" y="16" width="2" height="2" fill="var(--pixel-bg-dark)" opacity="0.3" />
+            <rect x="28" y="16" width="2" height="2" fill="var(--pixel-bg-dark)" opacity="0.3" />
           </g>
         </svg>
         
         {/* Speech bubble */}
-        {isStopped && (
+        {showMessage && (
           <div className="dino-speech-bubble">
             <div className="speech-content">
               Hello, have a nice day! 👋

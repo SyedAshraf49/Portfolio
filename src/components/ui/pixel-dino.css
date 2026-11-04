@@ -1,4 +1,4 @@
-/* Pixel Dinosaur Styles */
+/* Pixel Shark Styles */
 .pixel-dino-wrapper {
   position: absolute;
   inset: 0;
@@ -9,20 +9,20 @@
   position: absolute;
   display: inline-block;
   filter: drop-shadow(2px 2px 0 var(--pixel-bg-dark));
-  animation: dino-run 12s linear infinite;
+  animation: shark-swim 12s linear infinite;
   will-change: transform;
   transform: scale(1.5);
-  bottom: 20px;
+  bottom: 30px;
   right: -100px;
 }
 
 /* Stop animation when footer is visible */
 .pixel-dino-container.stopped {
-  animation: dino-stop 1s ease-out forwards;
+  animation: shark-stop 1.5s ease-out forwards;
 }
 
-/* Dino running across screen */
-@keyframes dino-run {
+/* Shark swimming across screen */
+@keyframes shark-swim {
   0% {
     transform: translateX(0) scale(1.5);
   }
@@ -31,8 +31,8 @@
   }
 }
 
-/* Dino stopping at left side */
-@keyframes dino-stop {
+/* Shark stopping at left side */
+@keyframes shark-stop {
   0% {
     right: -100px;
     transform: translateX(0) scale(1.5);
@@ -44,25 +44,15 @@
   }
 }
 
-.pixel-dino {
+.pixel-shark {
   display: block;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
 }
 
-/* Leg walking animation - alternating legs */
-.pixel-dino .dino-leg-left {
-  animation: leg-walk-left 0.4s steps(2) infinite;
-}
-
-.pixel-dino .dino-leg-right {
-  animation: leg-walk-right 0.4s steps(2) infinite;
-}
-
-/* Stop leg animation when stopped */
-.pixel-dino-container.stopped .dino-leg-left,
-.pixel-dino-container.stopped .dino-leg-right {
+/* Stop tail animation when stopped */
+.pixel-dino-container.stopped .shark-body rect:first-child {
   animation: none;
 }
 
@@ -81,6 +71,20 @@
   }
   50% {
     transform: translateY(0);
+  }
+}
+
+/* Shark tail wave animation */
+.pixel-shark .shark-body rect:first-child {
+  animation: tail-wave 0.6s ease-in-out infinite;
+}
+
+@keyframes tail-wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
   }
 }
 
