@@ -45,7 +45,7 @@ export const PixelDino: React.FC<PixelDinoProps> = ({ className = '', animate = 
   }, []);
 
   return (
-    <div ref={containerRef} className={`pixel-dino-wrapper ${isStopped ? 'stopped' : ''}`}>
+    <div ref={containerRef} className={`pixel-dino-wrapper ${isStopped ? 'stopped' : ''}`} style={{ opacity: 0.7 }}>
       <div className={`pixel-dino-container ${className} ${isStopped ? 'stopped' : ''}`}>
         <svg
           className="pixel-shark"

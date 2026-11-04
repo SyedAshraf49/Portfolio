@@ -3,17 +3,18 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: 5;
 }
 
 .pixel-dino-container {
   position: absolute;
   display: inline-block;
   filter: drop-shadow(2px 2px 0 var(--pixel-bg-dark));
-  animation: shark-swim 12s linear infinite;
+  animation: shark-swim 10s linear infinite;
   will-change: transform;
-  transform: scale(1.5);
-  bottom: 30px;
-  right: -100px;
+  transform: scale(1.8);
+  bottom: 40px;
+  right: -150px;
 }
 
 /* Stop animation when footer is visible */
@@ -24,23 +25,23 @@
 /* Shark swimming across screen */
 @keyframes shark-swim {
   0% {
-    transform: translateX(0) scale(1.5);
+    transform: translateX(0) scale(1.8);
   }
   100% {
-    transform: translateX(-120vw) scale(1.5);
+    transform: translateX(-120vw) scale(1.8);
   }
 }
 
 /* Shark stopping at left side */
 @keyframes shark-stop {
   0% {
-    right: -100px;
-    transform: translateX(0) scale(1.5);
+    right: -150px;
+    transform: translateX(0) scale(1.8);
   }
   100% {
     right: auto;
-    left: 50px;
-    transform: translateX(0) scale(1.5);
+    left: 80px;
+    transform: translateX(0) scale(1.8);
   }
 }
 
@@ -137,16 +138,16 @@
 /* Speech Bubble */
 .dino-speech-bubble {
   position: absolute;
-  left: 80px;
-  top: -10px;
+  left: 120px;
+  top: -20px;
   background: var(--pixel-bg-mid);
   border: 4px solid var(--pixel-green);
   padding: 0.75rem 1rem;
   border-radius: 0;
   box-shadow: 4px 4px 0 var(--pixel-bg-dark);
   white-space: nowrap;
-  animation: speech-appear 0.3s ease-out;
-  z-index: 10;
+  animation: speech-appear 0.5s ease-out;
+  z-index: 20;
 }
 
 /* Speech bubble tail (pointing to dino) */
