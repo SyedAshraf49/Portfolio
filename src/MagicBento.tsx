@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { gsap } from 'gsap';
 import './MagicBento.css';
 
+export type PixelProjectIconKind = 'transport' | 'attendance' | 'shield' | 'monitor';
+
 export interface BentoCardProps {
   title?: string;
   description?: string;
@@ -9,6 +11,7 @@ export interface BentoCardProps {
   href?: string;
   liveLink?: string;
   image?: string;
+  pixelIcon?: PixelProjectIconKind;
   techStack?: string;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
@@ -28,10 +31,80 @@ export interface BentoProps {
   enableMagnetism?: boolean;
 }
 
+const ProjectPixelIcon: React.FC<{ kind: PixelProjectIconKind }> = ({ kind }) => (
+  <svg
+    className="magic-bento-card__pixel-icon"
+    viewBox="0 0 32 32"
+    aria-hidden="true"
+    focusable="false"
+    shapeRendering="crispEdges"
+  >
+    {kind === 'transport' && (
+      <>
+        <rect x="5" y="4" width="22" height="17" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="8" y="7" width="7" height="6" fill="var(--pixel-bg-dark, #080d1b)" />
+        <rect x="17" y="7" width="7" height="6" fill="var(--pixel-bg-dark, #080d1b)" />
+        <rect x="8" y="8" width="2" height="2" fill="var(--pixel-white, #e8f2ff)" />
+        <rect x="19" y="8" width="2" height="2" fill="var(--pixel-white, #e8f2ff)" />
+        <rect x="5" y="17" width="22" height="4" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="2" y="21" width="28" height="3" fill="var(--pixel-bg-dark, #080d1b)" />
+        <rect x="7" y="23" width="6" height="6" fill="var(--pixel-bg-dark, #080d1b)" />
+        <rect x="20" y="23" width="6" height="6" fill="var(--pixel-bg-dark, #080d1b)" />
+        <rect x="9" y="25" width="2" height="2" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="22" y="25" width="2" height="2" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="2" y="14" width="3" height="3" fill="var(--pixel-white, #e8f2ff)" />
+        <rect x="27" y="14" width="3" height="3" fill="var(--pixel-white, #e8f2ff)" />
+      </>
+    )}
+    {kind === 'attendance' && (
+      <>
+        <rect x="10" y="3" width="12" height="4" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="6" y="6" width="20" height="24" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="9" y="9" width="14" height="18" fill="var(--pixel-bg-dark, #080d1b)" />
+        <rect x="11" y="12" width="3" height="3" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="12" y="13" width="2" height="2" fill="var(--pixel-white, #e8f2ff)" />
+        <rect x="16" y="12" width="5" height="2" fill="var(--pixel-white, #e8f2ff)" />
+        <rect x="11" y="18" width="3" height="3" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="12" y="19" width="2" height="2" fill="var(--pixel-white, #e8f2ff)" />
+        <rect x="16" y="18" width="5" height="2" fill="var(--pixel-white, #e8f2ff)" />
+        <rect x="11" y="24" width="3" height="2" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="16" y="24" width="5" height="2" fill="var(--pixel-white, #e8f2ff)" />
+      </>
+    )}
+    {kind === 'shield' && (
+      <>
+        <rect x="11" y="3" width="10" height="4" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="6" y="7" width="20" height="6" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="8" y="13" width="16" height="6" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="11" y="19" width="10" height="5" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="14" y="24" width="4" height="5" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="12" y="10" width="8" height="8" fill="var(--pixel-bg-dark, #080d1b)" />
+        <rect x="14" y="12" width="2" height="3" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="16" y="14" width="4" height="2" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="20" y="13" width="2" height="2" fill="var(--pixel-cyan, #8cc6ff)" />
+      </>
+    )}
+    {kind === 'monitor' && (
+      <>
+        <rect x="3" y="4" width="26" height="19" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="6" y="7" width="20" height="13" fill="var(--pixel-bg-dark, #080d1b)" />
+        <rect x="9" y="15" width="3" height="3" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="14" y="12" width="3" height="6" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="19" y="9" width="3" height="9" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="13" y="23" width="6" height="4" fill="var(--pixel-blue, #4d8dff)" />
+        <rect x="9" y="27" width="14" height="3" fill="var(--pixel-cyan, #8cc6ff)" />
+        <rect x="23" y="24" width="6" height="5" fill="var(--pixel-white, #e8f2ff)" />
+        <rect x="25" y="22" width="2" height="2" fill="var(--pixel-white, #e8f2ff)" />
+      </>
+    )}
+  </svg>
+);
+
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
 const DEFAULT_GLOW_COLOR = '77, 141, 255';
 const MOBILE_BREAKPOINT = 768;
+const INITIAL_PROJECT_COUNT = 3;
 
 const cardData: BentoCardProps[] = [
   {
@@ -60,6 +133,38 @@ const cardData: BentoCardProps[] = [
     liveLink: 'https://local-vendor-v2.vercel.app/',
     image: '/project-images/Local-Vendor.png',
     techStack: 'React.js · TypeScript · Vite · React Context API · JavaScript · CSS · Vercel',
+  },
+  {
+    title: 'College Transport Tracker',
+    description: 'Role-based transport prototype with student bus and ETA views, simulated driver trip controls, and administrator fleet and route analytics.',
+    label: 'College Transport',
+    href: 'https://github.com/SyedAshraf49/College-Transport-Tracking-',
+    pixelIcon: 'transport',
+    techStack: 'React · TypeScript · Vite · Tailwind CSS · Recharts',
+  },
+  {
+    title: 'Student Attendance Management System',
+    description: 'Role-based attendance frontend for administrators, teachers, students, and parents, covering attendance, leave workflows, timetables, and reports. Uses sample data and demo authentication.',
+    label: 'Education',
+    href: 'https://github.com/SyedAshraf49/Student-Attendance-Management-System',
+    pixelIcon: 'attendance',
+    techStack: 'React · TypeScript · Vite · Tailwind CSS · Recharts',
+  },
+  {
+    title: 'ScreenGuard',
+    description: 'Local-first screen-time and digital-wellbeing app with a PyQt6 desktop client and FastAPI dashboard for usage tracking, trends, recovery tools, and per-app limits.',
+    label: 'Digital Wellbeing',
+    href: 'https://github.com/SyedAshraf49/ScreenGuard',
+    pixelIcon: 'shield',
+    techStack: 'Python · PyQt6 · FastAPI · SQLite · psutil',
+  },
+  {
+    title: 'System Monitor',
+    description: 'Python desktop dashboard for live CPU, memory, disk, network, and process activity, with resource charts, process controls, configurable alerts, and optional sensor readings.',
+    label: 'System Monitoring',
+    href: 'https://github.com/SyedAshraf49/System-Monitor',
+    pixelIcon: 'monitor',
+    techStack: 'Python · PyQt5 · psutil · Qt Charts · SQLite',
   },
 ];
 
@@ -526,7 +631,7 @@ const BentoCardGrid: React.FC<{
   children: React.ReactNode;
   gridRef?: React.RefObject<HTMLDivElement>;
 }> = ({ children, gridRef }) => (
-  <div className="card-grid bento-section" ref={gridRef}>
+  <div id="project-card-grid" className="card-grid bento-section" ref={gridRef}>
     {children}
   </div>
 );
@@ -562,6 +667,10 @@ const MagicBento: React.FC<BentoProps> = ({
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+  const [showMoreProjects, setShowMoreProjects] = useState(false);
+  const visibleProjects = showMoreProjects
+    ? cardData
+    : cardData.slice(0, INITIAL_PROJECT_COUNT);
 
   return (
     <>
@@ -576,7 +685,7 @@ const MagicBento: React.FC<BentoProps> = ({
       )}
 
       <BentoCardGrid gridRef={gridRef}>
-        {cardData.map((card, index) => {
+        {visibleProjects.map((card, index) => {
           const baseClassName = `magic-bento-card ${
             textAutoHide ? 'magic-bento-card--text-autohide' : ''
           } ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
@@ -591,6 +700,11 @@ const MagicBento: React.FC<BentoProps> = ({
                     loading="lazy"
                   />
                   <div className="magic-bento-card__image-overlay" />
+                </div>
+              )}
+              {card.pixelIcon && (
+                <div className="magic-bento-card__pixel-icon-wrapper" aria-hidden="true">
+                  <ProjectPixelIcon kind={card.pixelIcon} />
                 </div>
               )}
               <div className="magic-bento-card__header">
@@ -669,6 +783,19 @@ const MagicBento: React.FC<BentoProps> = ({
           );
         })}
       </BentoCardGrid>
+      {cardData.length > INITIAL_PROJECT_COUNT && (
+        <div className="magic-bento-card__more-actions">
+          <button
+            type="button"
+            className="magic-bento-card__more-button"
+            aria-expanded={showMoreProjects}
+            aria-controls="project-card-grid"
+            onClick={() => setShowMoreProjects((expanded) => !expanded)}
+          >
+            {showMoreProjects ? 'View less' : 'View more'}
+          </button>
+        </div>
+      )}
     </>
   );
 };
