@@ -80,11 +80,11 @@ html {
 .pixel-wheel-scrollbar.is-dragging .pixel-wheel-rotor {
   transform-box: view-box;
   transform-origin: 12px 12px;
-  animation: pixel-wheel-roll 480ms steps(8, end) infinite;
+  animation: pixel-wheel-roll 800ms steps(24, end) infinite;
 }
 
 .pixel-wheel-scrollbar.is-dragging .pixel-wheel-rotor {
-  animation-duration: 300ms;
+  animation: pixel-wheel-roll 300ms steps(9, end) infinite;
 }
 
 @keyframes pixel-wheel-roll {
