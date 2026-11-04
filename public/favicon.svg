@@ -5,9 +5,9 @@
   <!-- Terminal symbol ">_" perfectly centered -->
   <text 
     x="50" 
-    y="58" 
+    y="62" 
     font-family="'Courier New', Consolas, monospace" 
-    font-size="40" 
+    font-size="38" 
     font-weight="bold" 
     fill="#38bdf8" 
     text-anchor="middle"
