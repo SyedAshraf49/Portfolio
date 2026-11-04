@@ -4,13 +4,10 @@ import HeroDock from '@/components/ui/dock';
 import AnimeScrollbar from '@/components/ui/anime-scrollbar';
 import { AnimatedHero } from '@/components/ui/animated-hero';
 import '@/components/ui/animated-hero.css';
-import { Breadcrumb } from '@/components/ui/breadcrumb';
-import '@/components/ui/breadcrumb.css';
 import GooeyNav from './GooeyNav';
 import MobileNav from './MobileNav';
 import MagicBento from './MagicBento';
 import { useThemeSafe } from '@/hooks/useTheme';
-import { useActiveSection } from '@/hooks/useActiveSection';
 
 // Sections
 import { ExperienceSection } from '@/components/sections/ExperienceSection';
@@ -30,33 +27,6 @@ import { NAVIGATION_ITEMS } from '@/constants/data';
 export default function App() {
   // Initialize theme system
   useThemeSafe();
-
-  // Track active section for breadcrumb
-  const activeSection = useActiveSection([
-    'about',
-    'experience',
-    'education',
-    'skills',
-    'projects',
-    'certifications',
-    'contact',
-  ]);
-
-  // Get breadcrumb items based on active section
-  const getBreadcrumbItems = () => {
-    const sectionLabels: Record<string, string> = {
-      about: 'About',
-      experience: 'Experience',
-      education: 'Education',
-      skills: 'Skills',
-      projects: 'Projects',
-      certifications: 'Certifications',
-      contact: 'Contact',
-    };
-
-    const label = sectionLabels[activeSection] || 'About';
-    return [{ label, href: `#${activeSection}`, active: true }];
-  };
 
   return (
     <div className="retro-scanline relative min-h-screen overflow-hidden bg-slate-950">
@@ -108,11 +78,6 @@ export default function App() {
           {/* Mobile Navigation */}
           <div className="md:hidden">
             <MobileNav items={NAVIGATION_ITEMS} initialActiveIndex={0} />
-          </div>
-
-          {/* Breadcrumb - Shows current section */}
-          <div className="flex justify-center mt-3 sm:mt-4">
-            <Breadcrumb items={getBreadcrumbItems()} separator="chevron" showHome={true} />
           </div>
         </div>
 
